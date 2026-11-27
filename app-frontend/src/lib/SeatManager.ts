@@ -10,7 +10,7 @@ import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
 import { pixelToTile } from "web-shared/lib/types";
 import { isDesk } from "shared-protocol/map";
-import { cancelClaim, confirmClaim, deskAt, deskOf, deskState, openToClaim, requestClaim, setGoHome, setMySeat, subscribeDesks } from "./desks";
+import { cancelClaim, confirmClaim, deskAt, deskOf, deskState, openToClaim, requestClaim, setFindDesk, setGoHome, setMySeat, subscribeDesks } from "./desks";
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
 import { decorateState, subscribeDecorate } from "./decorate";
@@ -132,6 +132,11 @@ export class SeatManager {
       const mine = deskOf(deskState().desks, this.selfId);
       if (mine) this.goToDesk(mine.seat);
     });
+    setFindDesk(() => {
+      const free = this.nearestFreeDesk();
+      if (free) this.goToDesk(free.id);
+      return !!free;
+    });
     // An owner's dot follows them in and out of the office.
     this.unsubscribeFloor = subscribeFloor(() => this.showPlates());
     // While a desk is decorated the plates step aside, so nothing sits over what's being arranged.
@@ -237,6 +242,20 @@ export class SeatManager {
     if (!seat || this.seated === seat) return;
     if (this.seated) this.stand();
     this.walkTo(seat);
+  }
+
+  /** The free desk nearest you, as the crow flies: one nobody has, nobody sits at, or the one you're at already. */
+  private nearestFreeDesk(): Seat | undefined {
+    const { desks } = deskState();
+    let best: { seat: Seat; distance: number } | undefined;
+    for (const seat of this.seats) {
+      if (!isDesk(seat.id)) continue;
+      if (this.seated === seat && !deskAt(desks, seat.id)) return seat;
+      if (seat.occupant || deskAt(desks, seat.id)) continue;
+      const distance = Math.hypot(seat.x - this.player.x, seat.baseY - this.player.y);
+      if (!best || distance < best.distance) best = { seat, distance };
+    }
+    return best?.seat;
   }
 
   /** The desk offering itself to you last frame, so a change is shown once. */
@@ -404,6 +423,7 @@ export class SeatManager {
     this.unsubscribe?.();
     this.unsubscribeDesks();
     setGoHome(null);
+    setFindDesk(null);
     this.unsubscribeFloor();
     this.unsubscribeDecorate();
     this.plates.forEach((plate) => plate.destroy());

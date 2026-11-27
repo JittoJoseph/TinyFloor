@@ -902,7 +902,9 @@
       "chair": "의자",
       "wood": "나무"
     },
-    "remove": "치우기"
+    "remove": "치우기",
+    "surprise": "알아서 꾸며 줘",
+    "nothing": "없음"
   },
   "look": {
     "open": "모습 바꾸기",
@@ -946,7 +948,8 @@
     "customizeDesk": "내 책상 꾸미기",
     "noDeskTitle": "아직 책상이 없어요",
     "noDesk": "빈 책상에 앉아 내 자리로 만드세요",
-    "atDesk": "내 책상에 있음"
+    "atDesk": "내 책상에 있음",
+    "findDesk": "책상 찾기"
   },
   "note": {
     "title": "상태 메모",
@@ -1113,5 +1116,17 @@
     "notLinked": "연결 안 됨",
     "emptyTitle": "여기에 회의가 표시돼요",
     "readOnly": "읽기 전용"
+  },
+  "settle": {
+    "move": "아무 곳이나 클릭해 걸어 보세요",
+    "moveTouch": "아무 곳이나 탭해 걸어 보세요",
+    "look": "캐릭터를 나답게 꾸며 보세요",
+    "desk": "내 책상을 마련해 보세요",
+    "claim": "내 책상으로 만들기",
+    "decorate": "책상을 나답게 꾸며 보세요",
+    "hello": "인사해 보세요",
+    "invite": "팀을 초대해 보세요",
+    "calendar": "회의 일정을 층에 표시하기",
+    "notNow": "나중에"
   }
 }

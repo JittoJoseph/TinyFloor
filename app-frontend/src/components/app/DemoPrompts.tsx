@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useEffectEvent, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Check } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
@@ -12,6 +11,7 @@ import { saveIdentity } from "@/lib/identity";
 import { lobbyPath, officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
 import { renameOnFloor } from "@/lib/floor";
+import { busyNow, whenFree } from "@/lib/attention";
 import { makeOfficeHref } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { CLIENT_ID, GoogleButton, googleAvailable, loadGoogle } from "web-shared/components/auth/GoogleButton";
@@ -60,14 +60,13 @@ function useFloorTime(active: boolean, ms: number, due: () => void) {
  */
 export function DemoPrompts() {
   const { user, signInWithGoogle } = useAuth();
-  const pathname = usePathname();
   const guest = !!user?.guest;
 
   // One Tap, for a guest: Google decides whether to show it, and stays quiet once it's closed.
   const cancel = useRef<(() => void) | null>(null);
   useFloorTime(guest && googleAvailable, ONE_TAP_AFTER_MS, () => {
     const clientId = CLIENT_ID;
-    if (!clientId || document.querySelector("[aria-modal=true]")) return;
+    if (!clientId || busyNow()) return;
     loadGoogle().then(
       (google) => {
         google.id.initialize({
@@ -105,18 +104,25 @@ export function DemoPrompts() {
   if (user?.guest && guestId !== user.id) setGuestId(user.id);
   const [asking, setAsking] = useState(false);
   const eligible = !!user && user.id === guestId;
+  const waiting = useRef<(() => void) | null>(null);
   useFloorTime(eligible, OFFICE_AFTER_MS, () => {
     try {
       const last = Number(localStorage.getItem(OFFICE_KEY) ?? 0);
       if (Date.now() - last < OFFICE_QUIET_MS) return;
-      localStorage.setItem(OFFICE_KEY, String(Date.now()));
     } catch {}
-    // Not over something else they're doing: another view, or a dialog.
-    if (!pathname.endsWith(lobbyPath) || document.querySelector("[aria-modal=true]")) return;
-    cancel.current?.();
-    track("office_prompt_shown");
-    setAsking(true);
+    // Not over something else they're doing (a desk being decorated, a call, a dialog): once they're done.
+    waiting.current = whenFree(() => {
+      waiting.current = null;
+      if (!window.location.pathname.endsWith(lobbyPath)) return;
+      try {
+        localStorage.setItem(OFFICE_KEY, String(Date.now()));
+      } catch {}
+      cancel.current?.();
+      track("office_prompt_shown");
+      setAsking(true);
+    });
   });
+  useEffect(() => () => waiting.current?.(), []);
 
   return <OfficePrompt open={asking} onClose={() => setAsking(false)} />;
 }

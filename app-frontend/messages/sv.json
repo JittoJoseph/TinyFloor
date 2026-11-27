@@ -902,7 +902,9 @@
       "chair": "Stol",
       "wood": "Trä"
     },
-    "remove": "Ta bort"
+    "remove": "Ta bort",
+    "surprise": "Överraska mig",
+    "nothing": "Inget"
   },
   "look": {
     "open": "Ändra utseende",
@@ -946,7 +948,8 @@
     "customizeDesk": "Anpassa ditt skrivbord",
     "noDeskTitle": "Inget skrivbord än",
     "noDesk": "Sätt dig vid ett ledigt skrivbord för att ta det",
-    "atDesk": "Vid ditt skrivbord"
+    "atDesk": "Vid ditt skrivbord",
+    "findDesk": "Hitta ett skrivbord"
   },
   "note": {
     "title": "Statusnotis",
@@ -1113,5 +1116,17 @@
     "notLinked": "Inte ansluten",
     "emptyTitle": "Här visas dina möten",
     "readOnly": "Endast läsbehörighet"
+  },
+  "settle": {
+    "move": "Klicka var som helst för att gå",
+    "moveTouch": "Tryck var som helst för att gå",
+    "look": "Gör din figur till din",
+    "desk": "Skaffa ett eget skrivbord",
+    "claim": "Gör det till ditt",
+    "decorate": "Gör skrivbordet till ditt",
+    "hello": "Säg hej",
+    "invite": "Ta in ditt team",
+    "calendar": "Visa dina möten på våningen",
+    "notNow": "Inte nu"
   }
 }

@@ -120,13 +120,13 @@ export class TileHover {
 }
 
 /** Whether the floor's own map says this tile is grass. */
-function isGrass(tileX: number, tileY: number): boolean {
+export function isGrass(tileX: number, tileY: number): boolean {
   const char = FLOOR.shell.rows[tileY]?.[tileX];
   return !!char && FLOOR.shell.legend[char]?.material === "grass";
 }
 
 /** Four short brackets just inside the tile's corners, drawn around (0, 0), the tile's centre, so it grows from the middle. */
-function drawCorners(g: Phaser.GameObjects.Graphics, light: boolean) {
+export function drawCorners(g: Phaser.GameObjects.Graphics, light: boolean) {
   const inset = 3;
   const arm = 6;
   const e = TILE_SIZE / 2 - inset;

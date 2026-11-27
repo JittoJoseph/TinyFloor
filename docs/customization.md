@@ -377,10 +377,24 @@ something that's gone is left out.
 
 Claimed by sitting at a free one. The dock has the way back to it (a key of
 its own) and **you**, its first key: pressed, the dock opens up into your
-status and note, and, sitting at your desk, Customize your desk. Customizing
-opens the desk's panel, a card at the floor's right (over its foot on a
-phone), and the floor brings the desk into the floor it leaves showing,
-without zooming. Nothing is dimmed: the floor stays the floor.
+status and note, and **your desk, always**: Customize your desk from
+anywhere (you run there and sit down, then it opens), or, without one, Find
+a desk (you're walked to the nearest free one and sat down; claiming it
+opens it for customizing). The dock's desk key does the same without a
+desk. Customizing opens the desk's panel, a card at the floor's right (a
+sheet over its foot on a phone), and the floor brings the desk close: it
+zooms until the desk and its chair fill about a third of the floor left
+showing (no further than 5 screen pixels to a floor pixel, past which pixel
+art looks blown up), and Done zooms back to where you were. Around it, the
+rest of the floor goes soft: dimmed and out of focus, the desk in a clear
+oval (a bare close-up showed the neighbours' desks as sharply as yours, and
+the eye didn't know where to land). The blur is one picture of the floor
+taken once the camera settles, blurred, dimmed and cut once into its pixels:
+a live blur over the floor, or even a blur or mask over a still picture, is
+worked out again every frame and cost a third of the frame rate, and
+Phaser's own snapshot left the floor drawing slower for good after one; the
+canvas copied straight after a frame costs nothing. While the camera glides
+in, only the dimming shows.
 
 **A desk is three spots, its chair and its wood**, changed one part at a
 time, so nothing ever stands over anything else.
@@ -392,15 +406,29 @@ time, so nothing ever stands over anything else.
   small things on yours; its far desk: screens on the strip in front of you,
   a small thing either side. A spot takes what's no wider than it and suits
   the desk's side; a single desk takes only our drawn things.
-- **The panel**: its top is the desk in small (the three spots as wide as
-  they are on the desk, the chair, the wood), the part picked marked; under
-  it, what that part can be, grouped (tech, lamps, personal, setups), or the
-  chairs, or the woods; Remove empties a spot. Undo, redo, Reset after a
+- **The panel** (27 November): its top is the desk in small, each part named
+  under it (Left, Middle, Right, Chair, Wood), the one picked marked. Under
+  it, what that part can be. A spot's things are in groups shown as tabs with
+  how many each holds (Tech 10, Lamps 4, Personal 14), so nothing waits below
+  a scroll to be found: the old panel listed every group down one column and
+  most people never scrolled past the first. A spot fits 13 to 28 things, a
+  group at most 14, so one group's tiles plus Nothing (always the first
+  tile) fit without scrolling: five across beside the floor, six on a phone.
+  The panel keeps one height whichever tab is open, so nothing under the
+  pointer moves between tabs. It opens on the group of what stands there,
+  and follows it when it changes from elsewhere. Undo, redo, Reset after a
   confirm, and Done.
-- **On the floor**: the spots are outlined faintly while decorating; pointed
-  at, a part is outlined; pressed (a spot, the chair, the desk itself),
-  picked, the same part the panel shows. Delete empties the picked spot;
-  Escape, Ctrl+Z and Ctrl+Y work too.
+- **Trying before choosing**: the pointer resting on a thing shows it on the
+  desk, drawn over the office's pieces and never sent; leaving it puts the
+  desk back (after a moment, so going from one to the next doesn't flash the
+  desk between them). A press keeps it.
+- **Surprise me** makes the whole desk up at once: something that fits in
+  each spot (the widest always gets one, the others are now and then left
+  clear), a chair and a wood, as one step, so one undo takes it all back.
+- **On the floor**: the spots are outlined faintly while decorating, an
+  empty one with a small plus; pointed at, a part is outlined; pressed (a
+  spot, the chair, the desk itself), picked, the same part the panel shows.
+  Delete empties the picked spot; Escape, Ctrl+Z and Ctrl+Y work too.
 - **Seen happening, by everyone**: a new thing drops on, one taken away lifts
   off, one swapped hops.
 

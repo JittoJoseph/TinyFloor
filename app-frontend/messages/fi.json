@@ -902,7 +902,9 @@
       "chair": "Tuoli",
       "wood": "Puu"
     },
-    "remove": "Poista"
+    "remove": "Poista",
+    "surprise": "Yllätä minut",
+    "nothing": "Ei mitään"
   },
   "look": {
     "open": "Muuta ulkonäköäsi",
@@ -946,7 +948,8 @@
     "customizeDesk": "Muokkaa työpöytääsi",
     "noDeskTitle": "Ei vielä työpöytää",
     "noDesk": "Istu vapaan työpöydän ääreen ottaaksesi sen",
-    "atDesk": "Työpöydän ääressä"
+    "atDesk": "Työpöydän ääressä",
+    "findDesk": "Etsi työpöytä"
   },
   "note": {
     "title": "Tilaviesti",
@@ -1113,5 +1116,17 @@
     "notLinked": "Ei yhdistetty",
     "emptyTitle": "Kokouksesi näkyvät tässä",
     "readOnly": "Vain lukuoikeus"
+  },
+  "settle": {
+    "move": "Kävele klikkaamalla mihin tahansa",
+    "moveTouch": "Kävele napauttamalla mihin tahansa",
+    "look": "Tee hahmosta omasi",
+    "desk": "Hanki oma työpöytä",
+    "claim": "Tee siitä omasi",
+    "decorate": "Tee työpöydästä omasi",
+    "hello": "Sano hei",
+    "invite": "Tuo tiimisi mukaan",
+    "calendar": "Näytä kokouksesi kerroksessa",
+    "notNow": "Ei nyt"
   }
 }

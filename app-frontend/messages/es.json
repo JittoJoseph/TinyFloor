@@ -902,7 +902,9 @@
       "chair": "Silla",
       "wood": "Madera"
     },
-    "remove": "Quitar"
+    "remove": "Quitar",
+    "surprise": "Sorpréndeme",
+    "nothing": "Nada"
   },
   "look": {
     "open": "Cambiar tu aspecto",
@@ -946,7 +948,8 @@
     "customizeDesk": "Personaliza tu escritorio",
     "noDeskTitle": "Aún sin escritorio",
     "noDesk": "Siéntate en un escritorio libre para quedártelo",
-    "atDesk": "En tu escritorio"
+    "atDesk": "En tu escritorio",
+    "findDesk": "Buscar un escritorio"
   },
   "note": {
     "title": "Nota de estado",
@@ -1113,5 +1116,17 @@
     "notLinked": "Sin conectar",
     "emptyTitle": "Aquí aparecen tus reuniones",
     "readOnly": "Solo lectura"
+  },
+  "settle": {
+    "move": "Haz clic en cualquier sitio para caminar",
+    "moveTouch": "Toca en cualquier sitio para caminar",
+    "look": "Haz tuyo tu personaje",
+    "desk": "Consigue tu propio escritorio",
+    "claim": "Hazlo tuyo",
+    "decorate": "Personaliza tu escritorio",
+    "hello": "Saluda",
+    "invite": "Trae a tu equipo",
+    "calendar": "Muestra tus reuniones en la planta",
+    "notNow": "Ahora no"
   }
 }

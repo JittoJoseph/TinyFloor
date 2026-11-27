@@ -95,6 +95,8 @@ export class DeskPlate {
     this.chipAnchor = scene.add.container(x, chip.y).setDepth(depth);
     this.chip = document.createElement("div");
     this.chip.className = "desk-claim";
+    // Where settling in points, when claiming a desk is the next thing to try (SettleIn).
+    this.chip.dataset.settle = "claim";
     this.chip.dataset.hang = chip.hang;
     this.chip.hidden = true;
     this.chip.addEventListener("click", (event) => {

@@ -15,7 +15,7 @@ import { MicMutedHint } from "@/components/meetings/MicMutedHint";
 import { cn } from "web-shared/lib/utils";
 import { YouKey, YouPanel } from "@/components/room/DockYou";
 import { DemoPanel, HereKey, HerePanel } from "@/components/room/DockHere";
-import { useDecorate } from "@/lib/decorate";
+import { findDeskToDecorate, useDecorate } from "@/lib/decorate";
 
 /** The dock's buttons: compact rounded squares. */
 const KEY = "size-9 rounded-[10px]";
@@ -238,6 +238,7 @@ export default function ControlBar({
           key="invite"
           type="button"
           onClick={onInvite}
+          data-settle="invite"
           className="flex h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-[10px] px-3 text-[13px] font-medium text-foreground outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:ring-2 focus-visible:ring-ring/60"
         >
           {copied ? <Check className="size-4" /> : <UserPlus className="size-4" />}
@@ -333,22 +334,25 @@ export default function ControlBar({
 
 /**
  * Back to your desk: walks you there and sits you down, from anywhere on the
- * floor. Without a desk it rests, and says how to get one; at it, it says so.
+ * floor. Without one, where you can have one, it finds you a free one to make
+ * yours (lib/decorate); at it, it rests and says so.
  */
 function BackToDesk() {
   const tDesk = useTranslations("desk");
   const tYou = useTranslations("you");
   const { user } = useAuth();
-  const { desks, seat } = useDesks();
+  const { desks, seat, canClaim } = useDesks();
   const mine = user ? deskOf(desks, user.id) : undefined;
   const there = !!mine && seat === mine.seat;
-  const label = !mine ? `${tYou("noDeskTitle")}. ${tYou("noDesk")}` : there ? tYou("atDesk") : tDesk("goTo");
+  const finds = !mine && canClaim;
+  const resting = there || (!mine && !canClaim);
+  const label = mine ? (there ? tYou("atDesk") : tDesk("goTo")) : finds ? tYou("findDesk") : `${tYou("noDeskTitle")}. ${tYou("noDesk")}`;
   return (
     <IconButton
       label={label}
-      className={cn(KEY, (!mine || there) && "cursor-default opacity-40 hover:bg-transparent hover:text-muted-foreground")}
-      aria-disabled={!mine || there}
-      onClick={() => mine && !there && goToMyDesk()}
+      className={cn(KEY, resting && "cursor-default opacity-40 hover:bg-transparent hover:text-muted-foreground")}
+      aria-disabled={resting}
+      onClick={() => (mine ? !there && goToMyDesk() : finds && findDeskToDecorate())}
       icon={<Desk />}
     />
   );

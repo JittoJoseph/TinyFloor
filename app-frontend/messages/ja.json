@@ -902,7 +902,9 @@
       "chair": "椅子",
       "wood": "木目"
     },
-    "remove": "外す"
+    "remove": "外す",
+    "surprise": "おまかせ",
+    "nothing": "なし"
   },
   "look": {
     "open": "見た目を変える",
@@ -946,7 +948,8 @@
     "customizeDesk": "デスクをカスタマイズ",
     "noDeskTitle": "まだデスクがありません",
     "noDesk": "空いているデスクに座って確保しましょう",
-    "atDesk": "自分のデスクにいます"
+    "atDesk": "自分のデスクにいます",
+    "findDesk": "デスクを探す"
   },
   "note": {
     "title": "ステータスメモ",
@@ -1113,5 +1116,17 @@
     "notLinked": "未接続",
     "emptyTitle": "ここに会議が表示されます",
     "readOnly": "読み取り専用"
+  },
+  "settle": {
+    "move": "どこかをクリックして歩く",
+    "moveTouch": "どこかをタップして歩く",
+    "look": "キャラクターを自分らしく",
+    "desk": "自分のデスクを持とう",
+    "claim": "自分のデスクにする",
+    "decorate": "デスクを自分らしく",
+    "hello": "あいさつしよう",
+    "invite": "チームを招待しよう",
+    "calendar": "会議をフロアに表示",
+    "notNow": "あとで"
   }
 }

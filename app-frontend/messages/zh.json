@@ -902,7 +902,9 @@
       "chair": "椅子",
       "wood": "木色"
     },
-    "remove": "移除"
+    "remove": "移除",
+    "surprise": "随机装扮",
+    "nothing": "无"
   },
   "look": {
     "open": "更换形象",
@@ -946,7 +948,8 @@
     "customizeDesk": "自定义你的工位",
     "noDeskTitle": "还没有工位",
     "noDesk": "坐到空工位上即可认领",
-    "atDesk": "在工位上"
+    "atDesk": "在工位上",
+    "findDesk": "找张工位"
   },
   "note": {
     "title": "状态备注",
@@ -1113,5 +1116,17 @@
     "notLinked": "未连接",
     "emptyTitle": "你的会议会显示在这里",
     "readOnly": "只读"
+  },
+  "settle": {
+    "move": "点击任意位置即可行走",
+    "moveTouch": "轻点任意位置即可行走",
+    "look": "打造你的专属形象",
+    "desk": "拥有自己的工位",
+    "claim": "设为我的工位",
+    "decorate": "布置你的工位",
+    "hello": "打个招呼",
+    "invite": "邀请你的团队",
+    "calendar": "在楼层上显示你的会议",
+    "notNow": "以后再说"
   }
 }

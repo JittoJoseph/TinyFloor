@@ -9,7 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useMyNote, useMyStatus } from "@/lib/floor";
 import { PresenceControls } from "@/components/app/Presence";
 import { deskOf, useDesks } from "@/lib/desks";
-import { openDecorate } from "@/lib/decorate";
+import { decorateMyDesk, findDeskToDecorate } from "@/lib/decorate";
 import { NoteGlyph } from "@/lib/noteIcons";
 import { cn } from "web-shared/lib/utils";
 
@@ -32,6 +32,7 @@ export function YouKey({ open, onToggle }: { open: boolean; onToggle: () => void
       title={user.displayName}
       aria-expanded={open}
       onClick={onToggle}
+      data-settle="you"
       onPointerEnter={warmCharacterCreator}
       className={cn(
         "flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-[10px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring/60",
@@ -45,8 +46,9 @@ export function YouKey({ open, onToggle }: { open: boolean; onToggle: () => void
 
 /**
  * The dock opened up over you: who you are and how your team sees you
- * (status and note: PresenceControls), then, sitting at your desk,
- * customizing it (going to it is the dock's own key), and how you look.
+ * (status and note: PresenceControls), then your desk and how you look.
+ * Your desk is always here: customizing it from anywhere (you're walked to
+ * it and sat down first), or, without one, finding a free one to make yours.
  */
 function YouPanelBody({ onDone }: { onDone: () => void }) {
   const t = useTranslations("you");
@@ -55,7 +57,7 @@ function YouPanelBody({ onDone }: { onDone: () => void }) {
   const { user } = useAuth();
   const status = useMyStatus();
   const note = useMyNote();
-  const { desks, seat } = useDesks();
+  const { desks, seat, canClaim } = useDesks();
   if (!user) return null;
   const presence = status === "offline" ? "away" : status;
   const mine = deskOf(desks, user.id);
@@ -92,12 +94,18 @@ function YouPanelBody({ onDone }: { onDone: () => void }) {
       </div>
 
       <div className="flex flex-col gap-px border-t border-border p-1.5">
-        {atDesk && (
-          <Row icon={<Desk />} onClick={act(openDecorate)}>
+        {mine ? (
+          <Row icon={<Desk />} onClick={act(decorateMyDesk)} settle="decorate">
             {t("customizeDesk")}
           </Row>
+        ) : (
+          canClaim && (
+            <Row icon={<Desk />} onClick={act(findDeskToDecorate)} settle="desk">
+              {t("findDesk")}
+            </Row>
+          )
         )}
-        <Row icon={<Shirt />} onClick={act(openCharacterCreator)}>
+        <Row icon={<Shirt />} onClick={act(openCharacterCreator)} settle="look">
           {tLook("open")}
         </Row>
       </div>
@@ -106,11 +114,14 @@ function YouPanelBody({ onDone }: { onDone: () => void }) {
 }
 
 /** A row of the open dock, as the rail's menu has them: what it does, and a chevron. */
-function Row({ icon, onClick, children }: { icon: ReactNode; onClick: () => void; children: ReactNode }) {
+function Row({ icon, onClick, settle, children }: { icon: ReactNode; onClick: () => void; settle?: string; children: ReactNode }) {
   return (
     <button
       type="button"
       onClick={onClick}
+      // Where settling in points, when this is the next thing to try (SettleIn).
+      data-settle={settle}
+      data-settle-side="right"
       className="group flex min-h-9 w-full cursor-pointer items-center gap-2.5 rounded-[10px] px-2.5 py-1.5 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06]"
     >
       <span className="flex size-5 shrink-0 items-center justify-center text-muted-foreground [&_svg]:size-4">{icon}</span>

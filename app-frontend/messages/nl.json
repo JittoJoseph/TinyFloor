@@ -902,7 +902,9 @@
       "chair": "Stoel",
       "wood": "Hout"
     },
-    "remove": "Weghalen"
+    "remove": "Weghalen",
+    "surprise": "Verras me",
+    "nothing": "Niets"
   },
   "look": {
     "open": "Uiterlijk aanpassen",
@@ -946,7 +948,8 @@
     "customizeDesk": "Je bureau aanpassen",
     "noDeskTitle": "Nog geen bureau",
     "noDesk": "Ga aan een vrij bureau zitten om het te claimen",
-    "atDesk": "Aan je bureau"
+    "atDesk": "Aan je bureau",
+    "findDesk": "Zoek een bureau"
   },
   "note": {
     "title": "Statusnotitie",
@@ -1113,5 +1116,17 @@
     "notLinked": "Niet gekoppeld",
     "emptyTitle": "Hier komen je meetings",
     "readOnly": "Alleen lezen"
+  },
+  "settle": {
+    "move": "Klik ergens om te lopen",
+    "moveTouch": "Tik ergens om te lopen",
+    "look": "Maak je personage van jou",
+    "desk": "Neem een eigen bureau",
+    "claim": "Maak het van jou",
+    "decorate": "Richt je bureau in",
+    "hello": "Zeg hoi",
+    "invite": "Haal je team erbij",
+    "calendar": "Laat je afspraken zien op de verdieping",
+    "notNow": "Niet nu"
   }
 }

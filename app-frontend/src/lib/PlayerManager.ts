@@ -127,7 +127,7 @@ export class PlayerManager {
 
     // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
     // that and leave the name behind while the character walks off.
-    const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, { person: true });
+    const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, { person: true }).mark("me");
     tag.container.setDepth(TAG_DEPTH).setScale(this.tagScale).setVisible(false);
 
     this.localPlayer = player;

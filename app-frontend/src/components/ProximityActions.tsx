@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "motion/react";
 import { AudioLines, MessageSquare, Users } from "web-shared/components/ui/icons";
 import { pokeAt, waveAt } from "@/lib/floor";
+import { did } from "@/lib/settle";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePlace } from "@/components/app/place";
 import { surface } from "./room/ui";
@@ -104,7 +105,7 @@ export const ProximityActions = memo(function ProximityActions({
         <span className={cn("px-1.5 text-muted-foreground", touch ? "text-[14px]" : "text-[12.5px]")}>{status}</span>
       ) : (
         <>
-          <Gesture className={button} label={t("wave")} onSend={() => waveAt(player.id)}>
+          <Gesture className={button} label={t("wave")} onSend={() => waveAt(player.id)} settle="wave">
             <span className={cn(EMOJI, glyph)}>👋</span>
           </Gesture>
           <Gesture className={button} label={t("poke")} onSend={() => pokeAt(player.id)}>
@@ -116,7 +117,10 @@ export const ProximityActions = memo(function ProximityActions({
         <button
           type="button"
           aria-label={tShell("message")}
-          onClick={() => window.dispatchEvent(new CustomEvent(OPEN_CONVERSATION_EVENT, { detail: { id: player.id, name: player.name } }))}
+          onClick={() => {
+            did("hello");
+            window.dispatchEvent(new CustomEvent(OPEN_CONVERSATION_EVENT, { detail: { id: player.id, name: player.name } }));
+          }}
           className={cn(BUTTON, button)}
         >
           <MessageSquare className={touch ? "size-[18px]" : "size-[15px]"} />
@@ -173,7 +177,7 @@ const GESTURE_REST_MS = 1500;
  * jabbing at them). Pressed, it springs out as it goes, then rests a moment
  * before it can go again.
  */
-function Gesture({ className, label, children, onSend }: { className: string; label: string; children: ReactNode; onSend: () => void }) {
+function Gesture({ className, label, children, onSend, settle }: { className: string; label: string; children: ReactNode; onSend: () => void; settle?: string }) {
   const reduce = useReducedMotion();
   const [sent, setSent] = useState(0);
   const [resting, setResting] = useState(false);
@@ -183,6 +187,7 @@ function Gesture({ className, label, children, onSend }: { className: string; la
         type="button"
         aria-label={label}
         aria-disabled={resting}
+        data-settle={settle}
         className={cn(BUTTON, className, resting && "cursor-default hover:bg-transparent")}
         onClick={() => {
           if (resting) return;

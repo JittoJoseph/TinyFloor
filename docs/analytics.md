@@ -38,6 +38,8 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 | `floor_failed` | `reason` (full, replaced, closed, revoked, signedOut, notFound) | The room turned them away. |
 | `call_connected`, `meeting_joined` | `people_here` on meetings | Do people actually talk? |
 | `desk_claimed`, `wave_sent` | | Are desks and waves used? |
+| `settle_done`, `settle_skipped` | `step` (move, look, desk, decorate, hello, invite, calendar) | Settling in (docs/product.md): which first things new people get to, and which pointers they wave away. Done counts however it was done, pointed at or not. |
+| `desk_surprise` | | Surprise me pressed in the desk's panel: the whole desk made up at once. |
 | `message_sent` | `kind` (dm, channel), `picture` | Is chat used? Never the words. |
 | `music_played` | `kind` (track, album, playlist, artist, show, episode, jam), `source` (pick, recent, link, card) | Is the music player used, and how music gets started: a pick, a recent play, a pasted link, or Listen on someone's card. Never the song. |
 | `upgrade_opened` | `reason` (full, hours, trial, plans) | The Pro offer was shown, and what brought it up. |

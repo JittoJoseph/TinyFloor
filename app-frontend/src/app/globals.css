@@ -267,11 +267,6 @@
   cursor: default;
 }
 
-.desk-claim-go[data-done] .desk-claim-dot {
-  background: #22a35a;
-  color: #fff;
-}
-
 .desk-claim-go[data-done] .desk-claim-plus {
   opacity: 0;
   transform: scale(0.5);
@@ -624,4 +619,37 @@ button.cal-event:hover {
     var(--fill) 0 5px,
     color-mix(in oklab, var(--c) 5%, var(--ui-card)) 5px 10px
   );
+}
+
+/*
+ * What settling in points at (SettleIn): an outline round the very thing to
+ * try, the same shape as it, no pulse. Two rings so it shows on anything (the
+ * dock, a light floor, dark grass): the page's own colour, then ink. An
+ * outline, never a transform: the floor's chips are placed by their transform.
+ */
+.settle-target {
+  outline: 2px solid var(--ui-foreground) !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--ui-background) !important;
+}
+
+/* The Claim chip's box is square; its pill is what the outline follows. */
+.desk-claim.settle-target {
+  border-radius: 9999px;
+}
+
+/* Settling in's coach card (SettleIn): two small nudges toward what it points at, then a rest. */
+@keyframes settle-nudge {
+  0%,
+  30%,
+  100% {
+    transform: translate(0, 0);
+  }
+  7%,
+  21% {
+    transform: translate(var(--nudge-x), var(--nudge-y));
+  }
+  14% {
+    transform: translate(0, 0);
+  }
 }

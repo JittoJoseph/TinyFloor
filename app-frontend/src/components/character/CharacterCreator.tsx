@@ -10,6 +10,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { changeLookOnFloor } from "@/lib/floor";
 import { saveIdentity } from "@/lib/identity";
 import { track } from "web-shared/lib/analytics";
+import { did } from "@/lib/settle";
 import { EASE_OUT, SPRING_LAYOUT } from "@/lib/ease";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { cn } from "web-shared/lib/utils";
@@ -122,6 +123,7 @@ export function Creator({ onClose }: { onClose: () => void }) {
       if (user) saveIdentity({ name: user.displayName, character });
       changeLookOnFloor(character);
       track("look_saved", { preset: isPreset(character) });
+      did("look");
       onClose();
     } catch (err) {
       setError(explain(err));

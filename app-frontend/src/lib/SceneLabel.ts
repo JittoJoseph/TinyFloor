@@ -108,6 +108,12 @@ export class SceneLabel {
   }
 
   /** Where it would cover a nearer tag it fades away, and back when there's room. */
+  /** Marks it for settling in to point at (SettleIn): your own tag, when walking is the next thing to try. */
+  mark(settle: string): this {
+    this.root.dataset.settle = settle;
+    return this;
+  }
+
   setCrowded(crowded: boolean): this {
     if (crowded === this.crowded) return this;
     this.crowded = crowded;

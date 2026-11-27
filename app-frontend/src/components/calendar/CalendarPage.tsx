@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { did } from "@/lib/settle";
 import { useLocale, useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Plus } from "web-shared/components/ui/icons";
 import type { CalendarEvent } from "web-shared/lib/api";
@@ -58,6 +59,8 @@ function useWide() {
  * an empty half hour (or Schedule) puts a meeting here on everyone's calendar.
  */
 export function CalendarPage() {
+  // Looked at: settling in has shown the way here, and needn't again (lib/settle).
+  useEffect(() => did("calendar"), []);
   const t = useTranslations("calendar");
   const locale = useLocale();
   const place = usePlace();

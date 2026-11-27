@@ -7,7 +7,7 @@ import { GROUNDS } from "shared-protocol/shell";
 import { officePieces, officeSolids, type OfficePiece } from "shared-protocol/office";
 import { crisp } from "./crisp";
 import { floorWalls, floorWallsNow } from "./floorWalls";
-import { pieceChanges, subscribePieces } from "./pieces";
+import { drawnChanges, subscribePieces } from "./pieces";
 import atlas from "shared-protocol/catalog/atlas.json";
 
 export interface MapAnchor {
@@ -85,7 +85,7 @@ export class MapManager {
   preload() {
     this.scene.load.image(ITEMS, FLOOR_FILES.items);
     void floorWalls().catch(() => {});
-    this.solidRects = this.solidsOf(officePieces(pieceChanges()));
+    this.solidRects = this.solidsOf(officePieces(drawnChanges()));
     this.nav = new NavGrid(this.solidRects);
   }
 
@@ -121,7 +121,7 @@ export class MapManager {
     const frames = atlas.frames as unknown as Record<string, [number, number, number, number]>;
     const tweens = this.scene.tweens;
     const animate = this.drawn && !reducedMotion();
-    this.pieces = officePieces(pieceChanges());
+    this.pieces = officePieces(drawnChanges());
     // What's solid is the pieces' own, wherever they stand now: a piece moved or swapped is walked round where it is.
     this.solidRects = [...this.solidsOf(this.pieces), ...this.extraSolids];
     this.nav.rebuild(this.solidRects);

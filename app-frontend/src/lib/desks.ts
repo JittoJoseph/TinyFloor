@@ -2,6 +2,7 @@ import { useSyncExternalStore } from "react";
 import type { ClientMessage, Desk } from "shared-protocol/messages";
 import { lobbyDeskOpen } from "shared-protocol/lobby";
 import { track } from "web-shared/lib/analytics";
+import { did } from "./settle";
 
 /**
  * The office's desks (docs/product.md), in one place for the floor and the page
@@ -89,6 +90,7 @@ export function requestClaim(seat: number, me: string) {
 export function confirmClaim(seat: number) {
   send?.({ t: "desk_claim", seat });
   track("desk_claimed");
+  did("desk");
   set({ asking: null, claimed: seat });
 }
 
@@ -103,5 +105,26 @@ export const setGoHome = (walk: (() => void) | null) => {
   goHome = walk;
 };
 
-/** Walks you to your desk and sits you down, from anywhere on the floor. */
-export const goToMyDesk = () => goHome?.();
+/** Walks you to your desk and sits you down, from anywhere on the floor. Going somewhere you asked to go is walking (settling in). */
+export const goToMyDesk = () => {
+  if (!goHome) return;
+  did("move");
+  goHome();
+};
+
+let findDesk: (() => boolean) | null = null;
+
+/** The floor says how to walk you to the nearest free desk, while it's open. */
+export const setFindDesk = (walk: (() => boolean) | null) => {
+  findDesk = walk;
+};
+
+/**
+ * Walks you to the nearest free desk and sits you down there, where its chip
+ * offers it to you: claiming stays yours to press. False when none is free.
+ */
+export const findAFreeDesk = (): boolean => {
+  const found = findDesk?.() ?? false;
+  if (found) did("move");
+  return found;
+};

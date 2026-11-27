@@ -902,7 +902,9 @@
       "chair": "Krzesło",
       "wood": "Drewno"
     },
-    "remove": "Usuń"
+    "remove": "Usuń",
+    "surprise": "Zaskocz mnie",
+    "nothing": "Nic"
   },
   "look": {
     "open": "Zmień wygląd",
@@ -946,7 +948,8 @@
     "customizeDesk": "Dostosuj swoje biurko",
     "noDeskTitle": "Nie masz jeszcze biurka",
     "noDesk": "Usiądź przy wolnym biurku, aby je zająć",
-    "atDesk": "Przy swoim biurku"
+    "atDesk": "Przy swoim biurku",
+    "findDesk": "Znajdź biurko"
   },
   "note": {
     "title": "Notatka statusu",
@@ -1113,5 +1116,17 @@
     "notLinked": "Nie połączono",
     "emptyTitle": "Tu pojawią się Twoje spotkania",
     "readOnly": "Tylko odczyt"
+  },
+  "settle": {
+    "move": "Kliknij gdziekolwiek, by iść",
+    "moveTouch": "Stuknij gdziekolwiek, by iść",
+    "look": "Zrób postać na swoją modłę",
+    "desk": "Zdobądź własne biurko",
+    "claim": "Zrób je swoim",
+    "decorate": "Urządź swoje biurko",
+    "hello": "Przywitaj się",
+    "invite": "Zaproś swój zespół",
+    "calendar": "Pokaż swoje spotkania na piętrze",
+    "notNow": "Nie teraz"
   }
 }

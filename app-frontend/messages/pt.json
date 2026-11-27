@@ -902,7 +902,9 @@
       "chair": "Cadeira",
       "wood": "Madeira"
     },
-    "remove": "Remover"
+    "remove": "Remover",
+    "surprise": "Surpreenda-me",
+    "nothing": "Nada"
   },
   "look": {
     "open": "Mudar sua aparência",
@@ -946,7 +948,8 @@
     "customizeDesk": "Personalize sua mesa",
     "noDeskTitle": "Ainda sem mesa",
     "noDesk": "Sente-se em uma mesa livre para ficar com ela",
-    "atDesk": "Na sua mesa"
+    "atDesk": "Na sua mesa",
+    "findDesk": "Encontrar uma mesa"
   },
   "note": {
     "title": "Nota de status",
@@ -1113,5 +1116,17 @@
     "notLinked": "Não conectado",
     "emptyTitle": "Suas reuniões aparecem aqui",
     "readOnly": "Somente leitura"
+  },
+  "settle": {
+    "move": "Clique em qualquer lugar para andar",
+    "moveTouch": "Toque em qualquer lugar para andar",
+    "look": "Deixe seu personagem com a sua cara",
+    "desk": "Tenha sua própria mesa",
+    "claim": "Torne-a sua",
+    "decorate": "Deixe sua mesa com a sua cara",
+    "hello": "Diga oi",
+    "invite": "Traga sua equipe",
+    "calendar": "Mostre suas reuniões no andar",
+    "notNow": "Agora não"
   }
 }

@@ -902,7 +902,9 @@
       "chair": "Stuhl",
       "wood": "Holz"
     },
-    "remove": "Entfernen"
+    "remove": "Entfernen",
+    "surprise": "Überrasch mich",
+    "nothing": "Nichts"
   },
   "look": {
     "open": "Aussehen ändern",
@@ -946,7 +948,8 @@
     "customizeDesk": "Schreibtisch gestalten",
     "noDeskTitle": "Noch kein Schreibtisch",
     "noDesk": "Setz dich an einen freien Schreibtisch, um ihn zu beanspruchen",
-    "atDesk": "Am Schreibtisch"
+    "atDesk": "Am Schreibtisch",
+    "findDesk": "Schreibtisch finden"
   },
   "note": {
     "title": "Statusnotiz",
@@ -1113,5 +1116,17 @@
     "notLinked": "Nicht verbunden",
     "emptyTitle": "Hier erscheinen deine Meetings",
     "readOnly": "Nur Lesezugriff"
+  },
+  "settle": {
+    "move": "Klick irgendwohin, um zu laufen",
+    "moveTouch": "Tippe irgendwohin, um zu laufen",
+    "look": "Gestalte deine Figur",
+    "desk": "Hol dir einen eigenen Schreibtisch",
+    "claim": "Mach ihn zu deinem",
+    "decorate": "Richte deinen Schreibtisch ein",
+    "hello": "Sag Hallo",
+    "invite": "Hol dein Team dazu",
+    "calendar": "Zeig deine Termine auf der Etage",
+    "notNow": "Nicht jetzt"
   }
 }

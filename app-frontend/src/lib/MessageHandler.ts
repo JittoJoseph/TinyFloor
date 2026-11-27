@@ -31,6 +31,8 @@ export class MessageHandler {
     private send: (message: ClientMessage) => void,
     /** The room has put us where it says: any walk of ours under way stops (MovementManager.halt). */
     private placed: () => void = () => {},
+    /** Whether the camera is the floor's to move: not while it's held on your desk for decorating (DeskDecorator). */
+    private cameraFree: () => boolean = () => true,
   ) {}
 
   handleMessage(message: ServerMessage) {
@@ -187,8 +189,9 @@ export class MessageHandler {
     this.playerManager.updatePlayerNote(this.playerId, self.guest ? null : myStatusNote(), () => this.dispatchPlayerList());
     this.playerManager.updatePlayerCalendar(this.playerId, busy, () => this.dispatchPlayerList());
     this.playerManager.updatePlayerListening(this.playerId, isListening());
-    // The view starts where you are, rather than sweeping over from where it was.
-    this.scene.cameras.main.centerOn(spawn.x, spawn.y);
+    // The view starts where you are, rather than sweeping over from where it was; a reconnect
+    // while you decorate leaves it on your desk.
+    if (this.cameraFree()) this.scene.cameras.main.centerOn(spawn.x, spawn.y);
     this.animationManager.wear(this.player, self.character);
     this.animationManager.play(this.player, "idle", "down");
 

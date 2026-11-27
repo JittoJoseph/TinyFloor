@@ -61,6 +61,8 @@ export class DeskDecorator {
   private moving: Phaser.Tweens.Tween | null = null;
   /** The floor changed size while decorating: a moment after it settles, the camera aims again and the focus is taken again. */
   private reaiming: ReturnType<typeof setTimeout> | null = null;
+  /** Where the camera was left looking, settled on the desk: moved from there by anything else, it's brought back. */
+  private settledAt: { x: number; y: number; zoom: number } | null = null;
   private unsubscribe: () => void;
   private readonly keys = (event: KeyboardEvent) => this.key(event);
 
@@ -105,7 +107,14 @@ export class DeskDecorator {
     // Past the floor's edge if it has to be, to clear the panel: a desk near an edge, a phone's view far out.
     camera.useBounds = false;
     this.showFocus();
-    this.glide(zoom, goal, FOCUS_MS, () => this.blurBehind(desk));
+    this.glide(zoom, goal, FOCUS_MS, () => this.settle(desk));
+  }
+
+  /** The camera is on the desk: noted, and the focus taken around it. */
+  private settle(desk: string) {
+    const camera = this.scene.cameras.main;
+    this.settledAt = { x: camera.scrollX, y: camera.scrollY, zoom: camera.zoom };
+    this.blurBehind(desk);
   }
 
   /**
@@ -137,15 +146,45 @@ export class DeskDecorator {
 
   /** The window or the floor changed size while decorating (a phone turned, the panel became a sheet): aim again once it settles, and take the focus again. */
   private resized() {
+    this.reaim(250);
+  }
+
+  /** Aims again, after a moment (`wait`), and takes the focus again once there: the picture of the floor is dropped meanwhile, the dimming follows. */
+  private reaim(wait: number) {
     if (!this.desk) return;
+    this.settledAt = null;
+    this.unbake();
     if (this.reaiming) clearTimeout(this.reaiming);
     this.reaiming = setTimeout(() => {
       this.reaiming = null;
       const desk = this.desk;
       if (!desk) return;
       const { zoom, goal } = this.aim(desk);
-      this.glide(zoom, goal, 260, () => this.blurBehind(desk));
-    }, 250);
+      this.glide(zoom, goal, 260, () => this.settle(desk));
+    }, wait);
+  }
+
+  /**
+   * The camera was moved off the desk by something else (the room placing you
+   * again after a reconnect, a zoom): the still picture no longer lines up with
+   * the floor under it, so the camera goes back and the picture is taken again.
+   */
+  private keepAimed() {
+    const at = this.settledAt;
+    if (!at || this.moving || this.reaiming) return;
+    const camera = this.scene.cameras.main;
+    if (Math.abs(camera.scrollX - at.x) < 0.5 && Math.abs(camera.scrollY - at.y) < 0.5 && Math.abs(camera.zoom - at.zoom) < 0.001) return;
+    this.reaim(0);
+  }
+
+  /** Back from the still picture to the live dimming, which follows the desk wherever it's drawn. */
+  private unbake() {
+    const layer = this.focus;
+    if (!layer || !this.baked) return;
+    layer.querySelector("canvas")?.remove();
+    layer.style.background = `rgb(12 12 16 / ${FOCUS_DIM})`;
+    this.baked = false;
+    this.focusMask = "";
   }
 
   /**
@@ -280,10 +319,7 @@ export class DeskDecorator {
       // The floor changed size under it (the window, a panel): the picture no longer lines up, so back to the dimming, which follows.
       const game = this.scene.game.canvas;
       if (`${game.offsetWidth}x${game.offsetHeight}` === this.bakedSize) return;
-      layer.querySelector("canvas")?.remove();
-      layer.style.background = `rgb(12 12 16 / ${FOCUS_DIM})`;
-      this.baked = false;
-      this.focusMask = "";
+      this.unbake();
     }
     const oval = this.spotlight(desk);
     const mask = `radial-gradient(ellipse ${oval.rx.toFixed(0)}px ${oval.ry.toFixed(0)}px at ${oval.x.toFixed(0)}px ${oval.y.toFixed(0)}px, transparent ${OVAL_CLEAR * 100}%, #000 100%)`;
@@ -320,6 +356,7 @@ export class DeskDecorator {
   private leave() {
     if (this.reaiming) clearTimeout(this.reaiming);
     this.reaiming = null;
+    this.settledAt = null;
     this.hideFocus();
     this.desk = null;
     this.hovered = null;
@@ -425,6 +462,7 @@ export class DeskDecorator {
   update() {
     const desk = this.desk;
     if (!desk) return;
+    this.keepAimed();
     this.placeFocus(desk);
     this.spots.clear();
     this.frame.clear();

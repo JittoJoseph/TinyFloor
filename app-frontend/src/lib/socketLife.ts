@@ -40,19 +40,27 @@ export function retryDelay(attempt: number): number {
 
 /**
  * Pings an open socket and calls `dead` when it stops answering. Anything
- * heard counts as an answer, so a busy socket needs no pings answered.
+ * heard counts as an answer. The pings go out however busy the socket is:
+ * they're also how the service knows we're still here, and someone sitting
+ * still says nothing else (decorating their desk, in a background tab), while
+ * everyone else moving keeps this side hearing. Without them the service let
+ * a quiet person go after 90 s.
  */
 export class Lifeline {
   private timer?: ReturnType<typeof setInterval>;
   private heardAt = Date.now();
+  /** When a ping last went out. */
+  private askedAt = Date.now();
   /** By when an answer to the pings out must have come; 0 while none is waited for. */
   private dueBy = 0;
   private done = false;
 
-  constructor(
-    private readonly socket: WebSocket,
-    private readonly dead: () => void,
-  ) {
+  private readonly socket: WebSocket;
+  private readonly dead: () => void;
+
+  constructor(socket: WebSocket, dead: () => void) {
+    this.socket = socket;
+    this.dead = dead;
     this.timer = setInterval(() => this.tick(), PING_EVERY_MS / 2);
   }
 
@@ -81,17 +89,26 @@ export class Lifeline {
     if (this.dueBy && now > this.dueBy) {
       this.stop();
       this.dead();
-    } else if (!this.dueBy && now - this.heardAt >= PING_EVERY_MS) {
-      this.ask(ANSWER_WITHIN_MS);
+    } else if (!this.dueBy && now - this.askedAt >= PING_EVERY_MS) {
+      // Not waited on when something was heard a moment ago: the socket is plainly alive, the ping is for the service.
+      if (now - this.heardAt >= PING_EVERY_MS) this.ask(ANSWER_WITHIN_MS);
+      else this.ping();
     }
   }
 
-  private ask(within: number) {
+  /** A ping out; true if it went. */
+  private ping(): boolean {
     try {
       this.socket.send(HEARTBEAT_PING);
     } catch {
-      return;
+      return false;
     }
+    this.askedAt = Date.now();
+    return true;
+  }
+
+  private ask(within: number) {
+    if (!this.ping()) return;
     const due = Date.now() + within;
     this.dueBy = this.dueBy ? Math.min(this.dueBy, due) : due;
   }

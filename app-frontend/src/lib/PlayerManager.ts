@@ -89,6 +89,8 @@ export class PlayerManager {
   private looks: Map<string, string> = new Map();
   private noteTimers: Map<string, Phaser.Time.TimerEvent> = new Map();
   private localPlayer?: Phaser.GameObjects.Sprite;
+  /** Your own tag kept out of sight (decorating your desk), through being placed again. */
+  private ownTagHidden = false;
   private scratch: Vec = { x: 0, y: 0 };
   /** Everyone's last status, to tell a change from the first word on it. */
   private statuses = new Map<string, PlayerStatus>();
@@ -182,7 +184,8 @@ export class PlayerManager {
   /** The room has placed you: you and your name come into view. */
   showLocalPlayer() {
     this.localPlayer?.setVisible(true);
-    this.nameTags.get(this.playerId)?.container.setVisible(true);
+    // Placed again after a reconnect while decorating: the tag stays hidden until that's done.
+    this.nameTags.get(this.playerId)?.container.setVisible(!this.ownTagHidden);
   }
 
   /**
@@ -229,6 +232,7 @@ export class PlayerManager {
 
   /** Your own tag off the floor while your desk is decorated (the panel is about you; the tag would only sit in the picture). */
   hideOwnTag(hidden: boolean) {
+    this.ownTagHidden = hidden;
     this.nameTags.get(this.playerId)?.container.setVisible(!hidden && !!this.localPlayer?.visible);
   }
 

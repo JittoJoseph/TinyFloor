@@ -239,6 +239,7 @@ class GameScene extends Phaser.Scene {
       this.player,
       (message) => this.wsManager.send(message),
       () => this.movementManager.halt(),
+      () => !this.deskDecorator?.active(),
     );
     // Joining a meeting from anywhere walks you into the meeting room, where everyone sees you go.
     this.listen(WALK_TO_MEETING_EVENT, () => this.walkIntoMeetingRoom());

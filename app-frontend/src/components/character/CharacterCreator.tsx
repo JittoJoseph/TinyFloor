@@ -498,8 +498,14 @@ function Styles({ part, look, onPick, tryOn }: { part: StyledPart; look: ReturnT
   const [style, colour] = current?.split("-") ?? [];
   const colours = style ? styles.get(style) : undefined;
   const wearing = (id: string | undefined) => lookString({ ...look, [part]: id });
-  // A hairstyle is shown without your hat, which would hide it; trying one on keeps the hat.
-  const pictured = (id: string | undefined) => (part === "hair" ? lookString({ ...look, hair: id, hat: undefined }) : wearing(id));
+  // What a choice is shown on: you, less what would hide it or make every tile look alike (a hairstyle
+  // without your hat; an outfit, gloves or a bag without your extras). Trying one on keeps them all.
+  const pictured = (id: string | undefined) => {
+    if (part === "hair") return lookString({ ...look, hair: id, hat: undefined });
+    if (view === "head") return wearing(id);
+    const bare = Object.fromEntries(EXTRAS.map((extra) => [extra, undefined]));
+    return lookString({ ...look, ...bare, [part]: id });
+  };
   const view = VIEW[part];
 
   return (

@@ -269,7 +269,11 @@
     "meetingUnderMinute": "Under ett minutt",
     "voiceSendHint": "send",
     "voiceDeleteHint": "slett",
-    "meetingStartedAt": "Startet {time}"
+    "meetingStartedAt": "Startet {time}",
+    "talkWants": "{name} vil snakke",
+    "talkWanted": "{name} ville snakke",
+    "talkAsked": "Du ba om å snakke",
+    "talkTalking": "Snakker nå"
   },
   "proximity": {
     "talk": "Snakk",

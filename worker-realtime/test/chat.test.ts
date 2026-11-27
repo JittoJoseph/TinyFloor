@@ -113,6 +113,33 @@ describe("office chat", () => {
     expect(ready.channels).toContainEqual(expect.objectContaining({ id: channel, kind: "dm", name: "Ada", unread: 1 }));
   });
 
+  it("puts an ask to talk in the two people's direct messages, as a card that stays and can't be edited", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, { id: "ada", name: "Ada" });
+    const bo = await ChatClient.open(office, { id: "bo", name: "Bo" });
+    const cy = await ChatClient.open(office, { id: "cy", name: "Cy" });
+    await Promise.all([ada.next("chat_ready"), bo.next("chat_ready"), cy.next("chat_ready")]);
+
+    ada.send({ t: "chat_talk", userId: "bo" });
+    const card = (await bo.next("chat_new")).message;
+    expect(card).toMatchObject({ channel: dmChannelId("ada", "bo"), author: "ada", body: "", talk: true });
+    expect((await ada.next("chat_new")).message.talk).toBe(true);
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(cy.messages.some((message) => message.t === "chat_new")).toBe(false);
+
+    // Not words: it can't be edited into some.
+    ada.send({ t: "chat_edit", seq: card.seq, body: "sneaky" });
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(bo.messages.some((message) => message.t === "chat_edited")).toBe(false);
+
+    // And it's still there, in the history, for Bo to talk back from.
+    const later = await ChatClient.open(office, { id: "bo", name: "Bo" });
+    await later.next("chat_ready");
+    later.send({ t: "chat_history", channel: card.channel });
+    const page = await later.next("chat_page");
+    expect(page.messages).toContainEqual(expect.objectContaining({ seq: card.seq, talk: true }));
+  });
+
   it("refuses a direct message between two other people", async () => {
     const office = officeId();
     const cy = await ChatClient.open(office, { id: "cy", name: "Cy" });

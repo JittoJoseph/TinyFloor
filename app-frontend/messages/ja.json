@@ -269,7 +269,11 @@
     "meetingUnderMinute": "1分未満",
     "voiceSendHint": "送信",
     "voiceDeleteHint": "削除",
-    "meetingStartedAt": "{time}に開始"
+    "meetingStartedAt": "{time}に開始",
+    "talkWants": "{name}さんが話したがっています",
+    "talkWanted": "{name}さんが話したがっていました",
+    "talkAsked": "話しかけました",
+    "talkTalking": "会話中"
   },
   "proximity": {
     "talk": "話す",

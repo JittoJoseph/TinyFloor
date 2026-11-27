@@ -32,6 +32,8 @@ export function CharacterBust({
   size = 32,
   center = CENTER,
   zoom = ZOOM,
+  corner = CORNER,
+  alive = false,
   className,
 }: {
   character: string;
@@ -39,18 +41,23 @@ export function CharacterBust({
   size?: number;
   center?: number;
   zoom?: number;
+  /** How round its corners are, of its size, where the dock's own keys don't set it. */
+  corner?: number;
+  /** Breathing, as someone sitting at their desk does on the floor (a long still, then a breath), rather than a still picture. */
+  alive?: boolean;
   className?: string;
 }) {
   return (
-    <span className={cn("relative inline-flex shrink-0", className)} style={{ width: size, height: size, borderRadius: Math.round(size * CORNER) }} aria-hidden>
+    <span className={cn("relative inline-flex shrink-0", className)} style={{ width: size, height: size, borderRadius: Math.round(size * corner) }} aria-hidden>
       <span
-        className="relative overflow-hidden rounded-[inherit] bg-[color-mix(in_oklab,var(--ui-muted)_70%,var(--ui-foreground)_8%)] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.08)]"
+        className="relative overflow-hidden rounded-[inherit] [corner-shape:inherit] bg-[color-mix(in_oklab,var(--ui-muted)_70%,var(--ui-foreground)_8%)] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.08)]"
         style={{ width: size, height: size }}
       >
         {/* The frame's feet this far down, so the row it's framed around sits in the circle's middle. */}
         <PixelAvatar
           character={character}
-          still
+          still={!alive}
+          sitting={alive}
           width={32 * zoom}
           style={{ left: "50%", top: (64 - center) * zoom + size / 2, ...(zoom < 1 ? { imageRendering: "auto" } : {}) }}
         />

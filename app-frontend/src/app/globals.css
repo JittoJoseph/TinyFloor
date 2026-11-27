@@ -653,3 +653,24 @@ button.cal-event:hover {
     transform: translate(0, 0);
   }
 }
+
+/* The talk mark moving like a voice (CallRing's Voice): each bar shallowly, in its own time. */
+.voice line {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: voice-level 1.5s ease-in-out infinite;
+}
+@keyframes voice-level {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.5);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .voice line {
+    animation: none;
+  }
+}

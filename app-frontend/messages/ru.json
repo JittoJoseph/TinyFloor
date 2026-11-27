@@ -269,7 +269,11 @@
     "meetingUnderMinute": "Меньше минуты",
     "voiceSendHint": "отправить",
     "voiceDeleteHint": "удалить",
-    "meetingStartedAt": "Начало в {time}"
+    "meetingStartedAt": "Начало в {time}",
+    "talkWants": "{name} хочет поговорить",
+    "talkWanted": "{name} хотел(а) поговорить",
+    "talkAsked": "Вы попросили поговорить",
+    "talkTalking": "Разговариваете"
   },
   "proximity": {
     "talk": "Поговорить",

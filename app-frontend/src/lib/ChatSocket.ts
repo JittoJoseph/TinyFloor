@@ -427,6 +427,11 @@ class ChatSocket {
     this.send({ t: "chat_channel", name });
   }
 
+  /** You've just asked someone to talk: its card goes in your direct messages with them. */
+  askedToTalk(userId: string) {
+    this.send({ t: "chat_talk", userId });
+  }
+
   /** Opens (or finds) the direct message with someone, and returns its id. */
   openDm(userId: string): string {
     this.send({ t: "chat_dm", userId });

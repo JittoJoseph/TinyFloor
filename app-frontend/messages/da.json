@@ -269,7 +269,11 @@
     "meetingUnderMinute": "Under et minut",
     "voiceSendHint": "send",
     "voiceDeleteHint": "slet",
-    "meetingStartedAt": "Startet {time}"
+    "meetingStartedAt": "Startet {time}",
+    "talkWants": "{name} vil gerne tale",
+    "talkWanted": "{name} ville gerne tale",
+    "talkAsked": "Du bad om at tale",
+    "talkTalking": "Taler nu"
   },
   "proximity": {
     "talk": "Snak",

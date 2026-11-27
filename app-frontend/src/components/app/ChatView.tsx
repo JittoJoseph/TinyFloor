@@ -197,6 +197,7 @@ export function ChatView({ channel }: { channel?: string }) {
     reactions: message.reactions,
     edited: message.edited,
     meeting: message.meeting,
+    talk: message.talk,
     reply: message.reply && {
       id: String(message.reply.seq),
       author: message.reply.author,

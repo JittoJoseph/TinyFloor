@@ -269,7 +269,11 @@
     "meetingUnderMinute": "פחות מדקה",
     "voiceSendHint": "שליחה",
     "voiceDeleteHint": "מחיקה",
-    "meetingStartedAt": "התחיל ב-{time}"
+    "meetingStartedAt": "התחיל ב-{time}",
+    "talkWants": "{name} רוצה לדבר",
+    "talkWanted": "{name} רצה לדבר",
+    "talkAsked": "ביקשת לדבר",
+    "talkTalking": "מדברים עכשיו"
   },
   "proximity": {
     "talk": "לדבר",

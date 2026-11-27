@@ -227,16 +227,9 @@ export class PlayerManager {
     this.nameTags.forEach((tag) => tag.container.setScale(scale));
   }
 
-  /**
-   * While we sit in a meeting the cards carry everyone's name, so the names of
-   * the people at the table, ours included, come off the map.
-   */
-  hideNameTags(people: ReadonlySet<string> | null) {
-    this.nameTags.forEach((tag, id) =>
-      tag.container.setVisible(
-        !people || (id !== this.playerId && !people.has(id)),
-      ),
-    );
+  /** Your own tag off the floor while your desk is decorated (the panel is about you; the tag would only sit in the picture). */
+  hideOwnTag(hidden: boolean) {
+    this.nameTags.get(this.playerId)?.container.setVisible(!hidden && !!this.localPlayer?.visible);
   }
 
   /**

@@ -199,6 +199,7 @@ class GameScene extends Phaser.Scene {
       this.mapManager,
       (decorating) => {
         this.movementManager.setInputEnabled(!decorating);
+        this.playerManager.hideOwnTag(decorating);
         if (decorating) return this.cameraRig?.release();
         // Back to following you: the camera glides there.
         this.cameraRig?.follow();

@@ -38,7 +38,7 @@ export interface Floor {
    */
   things: Record<string, { facing: "front" | "back" | "any"; size: [number, number]; art: [number, number, number, number]; shelf?: string; set?: string }>;
   /** The chairs each side of a desk can have, lined up by their seat (dx, dy from where the floor's chair stands). */
-  chairs: Record<"front" | "back", Array<{ item: string; dx: number; dy: number; sortY: number }>>;
+  chairs: Record<"front" | "back", Array<{ item: string; dx: number; dy: number; sortY: number; art?: [number, number, number, number] }>>;
 }
 
 export interface FloorDesk {
@@ -64,6 +64,8 @@ export interface DeskSpot {
   id: string;
   x: [number, number];
   foot: number;
+  /** What it holds: a single desk's middle things (its screens, a typewriter…) or the rest (its sides); without, anything that fits. */
+  holds?: "middle" | "side";
 }
 
 export interface FloorSeat {

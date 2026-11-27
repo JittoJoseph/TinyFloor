@@ -3496,7 +3496,7 @@
         "rows": 2
       },
       "random": true,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -3538,7 +3538,7 @@
         "rows": 2
       },
       "random": true,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -3580,7 +3580,7 @@
         "rows": 2
       },
       "random": true,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -3622,7 +3622,7 @@
         "rows": 2
       },
       "random": true,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -3664,7 +3664,7 @@
         "rows": 2
       },
       "random": true,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -3706,7 +3706,7 @@
         "rows": 2
       },
       "random": true,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -3748,7 +3748,7 @@
         "rows": 2
       },
       "random": true,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -3790,7 +3790,7 @@
         "rows": 2
       },
       "random": false,
-      "shelf": "tech",
+      "shelf": "middle",
       "notes": "Drawn (art.js): ours."
     },
     {
@@ -7916,7 +7916,10 @@
               "chair-black-back",
               "chair-black-mesh-back",
               "chair-tan-back",
-              "chair-tan-mesh-back"
+              "chair-tan-mesh-back",
+              "chair-cognac-back",
+              "chair-cream-back",
+              "chair-teal-back"
             ],
             "default": "chair-black-back"
           },
@@ -7958,7 +7961,10 @@
               "chair-black-back",
               "chair-black-mesh-back",
               "chair-tan-back",
-              "chair-tan-mesh-back"
+              "chair-tan-mesh-back",
+              "chair-cognac-back",
+              "chair-cream-back",
+              "chair-teal-back"
             ],
             "default": "chair-black-back"
           },
@@ -8000,7 +8006,10 @@
               "chair-black-back",
               "chair-black-mesh-back",
               "chair-tan-back",
-              "chair-tan-mesh-back"
+              "chair-tan-mesh-back",
+              "chair-cognac-back",
+              "chair-cream-back",
+              "chair-teal-back"
             ],
             "default": "chair-black-back"
           },
@@ -8042,7 +8051,10 @@
               "chair-black-back",
               "chair-black-mesh-back",
               "chair-tan-back",
-              "chair-tan-mesh-back"
+              "chair-tan-mesh-back",
+              "chair-cognac-back",
+              "chair-cream-back",
+              "chair-teal-back"
             ],
             "default": "chair-black-back"
           },
@@ -8525,6 +8537,354 @@
           48
         ]
       }
+    },
+    {
+      "id": "ours-book-navy",
+      "name": "Open book, navy",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:book-navy",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "middle",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-book-teal",
+      "name": "Open book, teal",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:book-teal",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "middle",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-book-coral",
+      "name": "Open book, coral",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:book-coral",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "middle",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-book-pictures",
+      "name": "Open book, with pictures",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:book-pictures",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "middle",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "chair-cognac-back",
+      "name": "Office chair, cognac, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_106.png",
+            "rect": [
+              0,
+              48,
+              32,
+              38
+            ],
+            "at": [
+              0,
+              0
+            ],
+            "recolor": {
+              "#46465e": "#6e4230",
+              "#565972": "#8c563a",
+              "#666982": "#a66a46",
+              "#6c6e85": "#b0744e"
+            }
+          },
+          {
+            "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_106.png",
+            "rect": [
+              0,
+              86,
+              32,
+              10
+            ],
+            "at": [
+              0,
+              38
+            ]
+          }
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "A back view: the pack's office chair in another colour (its wheels kept as they are)."
+    },
+    {
+      "id": "chair-cream-back",
+      "name": "Office chair, cream, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_106.png",
+            "rect": [
+              0,
+              48,
+              32,
+              38
+            ],
+            "at": [
+              0,
+              0
+            ],
+            "recolor": {
+              "#46465e": "#aaa496",
+              "#565972": "#c8c2b4",
+              "#666982": "#dcd6ca",
+              "#6c6e85": "#e4dfd4"
+            }
+          },
+          {
+            "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_106.png",
+            "rect": [
+              0,
+              86,
+              32,
+              10
+            ],
+            "at": [
+              0,
+              38
+            ]
+          }
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "A back view: the pack's office chair in another colour (its wheels kept as they are)."
+    },
+    {
+      "id": "chair-teal-back",
+      "name": "Office chair, teal, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_106.png",
+            "rect": [
+              0,
+              48,
+              32,
+              38
+            ],
+            "at": [
+              0,
+              0
+            ],
+            "recolor": {
+              "#46465e": "#2a5e5e",
+              "#565972": "#357a78",
+              "#666982": "#40928e",
+              "#6c6e85": "#469a96"
+            }
+          },
+          {
+            "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_106.png",
+            "rect": [
+              0,
+              86,
+              32,
+              10
+            ],
+            "at": [
+              0,
+              38
+            ]
+          }
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "A back view: the pack's office chair in another colour (its wheels kept as they are)."
     }
   ]
 }

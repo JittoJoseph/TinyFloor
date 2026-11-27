@@ -63,12 +63,14 @@ function chairAt(floor: Floor, desk: string, item: string): { x: number; y: numb
   return { x, y, depth: y + option.sortY };
 }
 
-/** Whether a thing can stand in a spot: one of the desk's set that suits its side, its pixels no wider than the spot. */
+/** Whether a thing can stand in a spot: one of the desk's set that suits its side and what the spot holds, its pixels no wider than the spot. */
 export function fitsIn(desk: string, spot: DeskSpot, item: string, floor: Floor = FLOOR): boolean {
   const spec = floor.desks[desk];
   const thing = floor.things[item];
   if (!spec || !thing || (thing.facing !== "any" && thing.facing !== spec.side)) return false;
   if (spec.set && thing.set !== spec.set) return false;
+  // The middle of a single desk is for what you work at (its shelf "middle"), the sides for the rest: a lamp in front of you, or a screen off to one side, isn't a desk.
+  if (spot.holds && (thing.shelf === "middle") !== (spot.holds === "middle")) return false;
   return thing.art[2] - thing.art[0] <= spot.x[1] - spot.x[0];
 }
 

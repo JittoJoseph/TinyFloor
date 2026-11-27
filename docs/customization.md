@@ -401,23 +401,35 @@ time, so nothing ever stands over anything else.
 
 - **Spots**, left to right, one thing each, centred across the spot with its
   foot on the desk's line, so a row of desks lines up. A single desk: a lamp,
-  a plant or something small on the left, the screen in front of you,
+  a plant or something small on the left, what you work at in front of you,
   something small on the right. A bank's near desk: a setup on one side, two
   small things on yours; its far desk: screens on the strip in front of you,
   a small thing either side. A spot takes what's no wider than it and suits
   the desk's side; a single desk takes only our drawn things.
+- **Each spot has its own things** (27 November): a single desk's middle
+  holds only middle things (shelf `middle`: its screens and laptops, and an
+  open book in navy, teal or coral, or with pictures), its sides only the
+  rest (lamps, plants, small things). A lamp or a mug in front
+  of you read as a desk set up wrong. A desk that had something in its middle
+  that no longer fits there shows the floor's own screen again, without
+  anything being rewritten: a change that doesn't fit is left out when the
+  office is drawn (`officePieces`). The new middle things aren't dealt onto
+  the floor's own desks (`random: false`); they're for whoever makes a desk
+  theirs.
 - **The panel** (27 November): its top is the desk in small, each part named
   under it (Left, Middle, Right, Chair, Wood), the one picked marked. Under
-  it, what that part can be. A spot's things are in groups shown as tabs with
-  how many each holds (Tech 10, Lamps 4, Personal 14), so nothing waits below
-  a scroll to be found: the old panel listed every group down one column and
-  most people never scrolled past the first. A spot fits 13 to 28 things, a
-  group at most 14, so one group's tiles plus Nothing (always the first
-  tile) fit without scrolling: five across beside the floor, six on a phone.
-  The panel keeps one height whichever tab is open, so nothing under the
-  pointer moves between tabs. It opens on the group of what stands there,
-  and follows it when it changes from elsewhere. Undo, redo, Reset after a
-  confirm, and Done.
+  it, everything that part can be, at once, Nothing first, kinds kept
+  together: with each spot holding its own things there's nothing to choose
+  a group for, so the tabs it had (Tech, Lamps, Personal) went. Anything
+  wider than a tile holds at its own size takes two. Undo, redo, Reset after
+  a confirm, and Done. While it's open your name tag and the dock step out
+  of the picture (a call's keys stay).
+- **Chairs**: the pack's office chair from behind, black or tan, plain or
+  mesh, and the plain one also in cognac, cream and teal (the pack's picture
+  recoloured, its wheels kept as they are), all the same size. Chairs drawn
+  by hand, the pack's lounge armchairs and a taller-backed version of the
+  office chair were tried and dropped: too crude beside the pack's, too low
+  at a desk, and a chair out of step with the rest.
 - **Trying before choosing**: the pointer resting on a thing shows it on the
   desk, drawn over the office's pieces and never sent; leaving it puts the
   desk back (after a moment, so going from one to the next doesn't flash the

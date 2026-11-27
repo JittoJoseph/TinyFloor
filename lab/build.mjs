@@ -329,16 +329,19 @@ function singleIn(id, finish) {
 
 /** The chairs a desk can have, each side's, lined up by their seat so you sit in the same spot whichever it is. */
 function chairOptions() {
-  const cluster = catalog.items.find((item) => item.cluster);
+  const clusters = catalog.items.filter((item) => item.cluster);
   return Object.fromEntries(
-    Object.entries(cluster.cluster.chairs).map(([side, slot]) => {
+    Object.entries(clusters[0].cluster.chairs).map(([side, slot]) => {
       const want = byId.get(slot.default).seats[0];
+      // Every bank's chairs for that side, together: the single desks have more than the banks.
+      const options = [...new Set(clusters.flatMap((one) => one.cluster.chairs[side]?.options ?? []))];
       return [
         side,
-        slot.options.map((id) => {
+        options.map((id) => {
           const item = byId.get(id);
           const have = item.seats[0];
-          return { item: id, dx: want.x - have.x, dy: want.y - have.y, sortY: item.sortY };
+          // Its own pixels too, for its picture in a desk's panel (as a desk thing's art).
+          return { item: id, dx: want.x - have.x, dy: want.y - have.y, sortY: item.sortY, art: artOf.get(id) };
         }),
       ];
     }),

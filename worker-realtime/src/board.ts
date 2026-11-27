@@ -40,31 +40,35 @@ export class Board {
   /**
    * Strokes arrive in slices while the pen is still moving: an unknown id starts
    * a stroke, a known one extends it. The oldest stroke makes way for a new one
-   * past the limit, and points past the per-stroke limit are dropped.
+   * past the limit, and points past the per-stroke limit are dropped. Says
+   * whether this slice was kept, and which strokes made way.
    */
-  append(stroke: BoardStroke): void {
+  append(stroke: BoardStroke): { kept: boolean; forgotten: string[] } {
     const existing = this.sql
       .exec<{ points: string }>("SELECT points FROM board_strokes WHERE id = ?", stroke.id)
       .toArray()[0];
 
     if (existing) {
       const points = JSON.parse(existing.points) as number[];
-      if (points.length + stroke.points.length > BOARD_MAX_POINTS_PER_STROKE) return;
+      if (points.length + stroke.points.length > BOARD_MAX_POINTS_PER_STROKE) return { kept: false, forgotten: [] };
       this.sql.exec(
         "UPDATE board_strokes SET points = ? WHERE id = ?",
         JSON.stringify(points.concat(stroke.points)),
         stroke.id,
       );
-      return;
+      return { kept: true, forgotten: [] };
     }
 
-    this.sql.exec(
-      `DELETE FROM board_strokes WHERE id IN (
-        SELECT id FROM board_strokes ORDER BY seq
-        LIMIT MAX(0, (SELECT COUNT(*) FROM board_strokes) - ?)
-      )`,
-      BOARD_MAX_STROKES - 1,
-    );
+    // The oldest go to make room: which, so everyone's board lets them go too.
+    const forgotten = this.sql
+      .exec<{ id: string }>(
+        `SELECT id FROM board_strokes ORDER BY seq
+         LIMIT MAX(0, (SELECT COUNT(*) FROM board_strokes) - ?)`,
+        BOARD_MAX_STROKES - 1,
+      )
+      .toArray()
+      .map((row) => row.id);
+    for (const id of forgotten) this.sql.exec("DELETE FROM board_strokes WHERE id = ?", id);
     this.sql.exec(
       `INSERT INTO board_strokes (id, color, size, erase, points, seq)
        VALUES (?, ?, ?, ?, ?, (SELECT COALESCE(MAX(seq), 0) + 1 FROM board_strokes))`,
@@ -74,6 +78,7 @@ export class Board {
       stroke.erase ? 1 : 0,
       JSON.stringify(stroke.points),
     );
+    return { kept: true, forgotten };
   }
 
   clear(): void {

@@ -51,6 +51,40 @@ describe("files in chat", () => {
   });
 });
 
+describe("files belong to one message", () => {
+  it("refuses a file another message has, so taking yours back can't take theirs", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, person("Ada"));
+    const bo = await ChatClient.open(office, person("Bo"));
+    await Promise.all([ada.next("chat_ready"), bo.next("chat_ready")]);
+    const file = await stored(office, "plan.pdf");
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "the plan", files: [file] });
+    await ada.next("chat_new");
+    await bo.next("chat_new");
+
+    // Bo copies the key from Ada's message: refused, and Ada's file stays.
+    bo.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "", files: [file], nonce: "copy-1" });
+    expect(await bo.next("chat_error")).toMatchObject({ code: "bad_files" });
+    expect(await env.FILES.head(file.key)).not.toBeNull();
+  });
+
+  it("only lets people in a conversation react in it", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, { id: "ada", name: "Ada" });
+    const bo = await ChatClient.open(office, { id: "bo", name: "Bo" });
+    const cy = await ChatClient.open(office, { id: "cy", name: "Cy" });
+    await Promise.all([ada.next("chat_ready"), bo.next("chat_ready"), cy.next("chat_ready")]);
+    const dm = dmChannelId("ada", "bo");
+    ada.send({ t: "chat_send", channel: dm, body: "just us" });
+    const posted = await ada.next("chat_new");
+
+    cy.send({ t: "chat_react", seq: posted.message.seq, emoji: "👀", on: true });
+    bo.send({ t: "chat_react", seq: posted.message.seq, emoji: "👍", on: true });
+    // Only Bo's reaction comes through.
+    expect(await ada.next("chat_reacted")).toMatchObject({ emoji: "👍", by: "bo" });
+  });
+});
+
 describe("mentions", () => {
   it("counts a channel's unread mentions for the person mentioned, and keeps them through an edit", async () => {
     const office = officeId();

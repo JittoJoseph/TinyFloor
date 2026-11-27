@@ -1,9 +1,9 @@
 import { runDurableObjectAlarm, runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { FLOOR, LOBBY_DESK_HOLD_MS, LOBBY_PIECE_MS, deskArrival, deskOfSeat, deskSeats, fitsIn, seatTile, spotKey, type ServerMessage } from "shared-protocol";
+import { FLOOR, LOBBY_DESK_HOLD_MS, LOBBY_PIECE_MS, deskArrival, deskOfSeat, deskSeats, fitsIn, seatTile, signTicket, spotKey, type ServerMessage } from "shared-protocol";
 import { Desks } from "../src/desks";
-import { Client, settle, uniqueRoom } from "./client";
+import { Client, ORIGIN, settle, uniqueRoom } from "./client";
 
 const DESK_SEATS = deskSeats();
 const DESK = DESK_SEATS[0];
@@ -108,6 +108,24 @@ describe("desks", () => {
 
     await exports.RealtimeAdmin.removeMember(room, "ava");
     expect((await ben.next("desks")).desks).toEqual([]);
+  });
+
+  it("doesn't let someone taken out of the office back in on a ticket issued before", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    await exports.RealtimeAdmin.removeMember(room, "ava");
+
+    const open = async (exp: number) => {
+      const ticket = await signTicket({ v: 1, room, sub: "ava", name: "Ava", character: "Adam", role: "member", cap: 20, exp }, env.TICKET_SECRET);
+      return exports.default.fetch(`https://realtime.tinyfloor.com/rooms/${room}?ticket=${encodeURIComponent(ticket)}`, {
+        headers: { Upgrade: "websocket", Origin: ORIGIN },
+      });
+    };
+    // Issued half a minute ago, still unexpired: refused.
+    expect((await open(Date.now() + 30_000)).status).toBe(403);
+    // Issued now, after it (added back): let in.
+    expect((await open(Date.now() + 60_000 + 50)).status).toBe(101);
   });
 
   it("moves an office's claims from the old floor onto Campus's desks, earliest first, once", async () => {

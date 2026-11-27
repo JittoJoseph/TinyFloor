@@ -36,7 +36,12 @@ import {
   type LobbyChatPage,
   type HelpNews,
   type RoomTicket,
+  issuedBefore,
+  REVOKED_FOR_MS,
 } from "shared-protocol";
+
+/** Where a membership taken away lately is remembered, by person (issuedBefore). */
+const revokedKey = (userId: string) => `revoked:${userId}`;
 import { readTicket, TICKET_HEADER } from "./headers";
 import { pushTo } from "./push";
 import { markActive } from "./usage";
@@ -222,6 +227,10 @@ export class Chat extends DurableObject<Env> {
   async fetch(request: Request): Promise<Response> {
     const ticket = readTicket(request.headers.get(TICKET_HEADER));
     if (!ticket) return new Response("Unauthorized", { status: 401 });
+    // Taken out of the office after this ticket was issued: it doesn't let them back in.
+    const revoked = await this.ctx.storage.get<number>(revokedKey(ticket.sub));
+    if (revoked !== undefined && Date.now() - revoked > REVOKED_FOR_MS) await this.ctx.storage.delete(revokedKey(ticket.sub));
+    else if (issuedBefore(ticket, revoked)) return new Response("Forbidden", { status: 403 });
 
     const pair = new WebSocketPair();
     const [client, server] = Object.values(pair);
@@ -246,7 +255,7 @@ export class Chat extends DurableObject<Env> {
     );
 
     // One person can have several tabs open; each gets its own socket.
-    this.send(server, { t: "chat_ready", me: ticket.sub, channels: this.channelsFor(ticket.sub) });
+    this.send(server, { t: "chat_ready", me: ticket.sub, channels: this.channelsFor(ticket.sub, this.since(attachment)) });
     return new Response(null, { status: 101, webSocket: client });
   }
 
@@ -342,6 +351,8 @@ export class Chat extends DurableObject<Env> {
 
   /** Someone's membership ended: their sockets close and their DMs stay put. */
   async removeMember(userId: string): Promise<void> {
+    // A ticket they got just before still has up to a minute to run: it mustn't let them back in (fetch).
+    await this.ctx.storage.put(revokedKey(userId), Date.now());
     for (const socket of this.ctx.getWebSockets()) {
       if (this.attachmentOf(socket)?.userId !== userId) continue;
       try {
@@ -424,7 +435,7 @@ export class Chat extends DurableObject<Env> {
     this.sql.exec("DELETE FROM people");
   }
 
-  /** Keeps each channel to its last messages, and their files with them. */
+  /** Keeps each channel to its last messages, and their files and reactions with them. The demo office's chat only. */
   async trim(keep = CHANNEL_HISTORY_MAX): Promise<string[]> {
     const channels = this.sql.exec<{ channel: string }>("SELECT DISTINCT channel FROM messages").toArray();
     const dropped: string[] = [];
@@ -440,6 +451,16 @@ export class Chat extends DurableObject<Env> {
         .toArray();
       if (!rows.length) continue;
       for (const row of rows) dropped.push(...keysOf(row.files));
+      // Their reactions with them, not left behind for messages that are gone.
+      this.sql.exec(
+        `DELETE FROM reactions WHERE seq IN (
+           SELECT seq FROM messages WHERE channel = ?1 AND seq <= (
+             SELECT seq FROM messages WHERE channel = ?1 ORDER BY seq DESC LIMIT 1 OFFSET ?2
+           )
+         )`,
+        channel,
+        keep,
+      );
       this.sql.exec(
         `DELETE FROM messages WHERE channel = ?1 AND seq <= (
            SELECT seq FROM messages WHERE channel = ?1 ORDER BY seq DESC LIMIT 1 OFFSET ?2
@@ -498,6 +519,9 @@ export class Chat extends DurableObject<Env> {
         .toArray()[0];
       if (posted) return this.send(socket, { t: "chat_new", message: this.withReplies([posted], [toMessage(posted)])[0] });
     }
+    // A file another message already has (someone else's, copied from what they sent): not yours to send again, and
+    // deleting your message would delete theirs with it.
+    if (shared.some((file) => this.fileInUse(file.key))) return this.send(socket, { t: "chat_error", code: "bad_files", ...tagged });
 
     this.ensureChannel(channel, me.userId, now);
     if (this.office && now - this.activeAt > HOUR_MS) {
@@ -540,8 +564,9 @@ export class Chat extends DurableObject<Env> {
     this.deliver(channel, { t: "chat_new", message });
     this.reachAway(message);
 
-    // History trims itself as it grows, so no nightly job has to walk offices.
-    if (seq % TRIM_EVERY === 0) this.trim();
+    // The demo office's history trims itself as it grows (it also keeps only a week). An office's is kept whole:
+    // nothing is deleted, and Pro shows all of it (docs/pricing.md).
+    if (this.lobby && seq % TRIM_EVERY === 0) this.trim();
 
     if (this.lobby) this.ctx.waitUntil(this.keepAWeek(now));
   }
@@ -630,10 +655,16 @@ export class Chat extends DurableObject<Env> {
 
   private drop(seq: number, channel: string, by: string): void {
     const row = this.sql.exec<{ files: string | null }>("SELECT files FROM messages WHERE seq = ?", seq).toArray()[0];
-    this.unfile(keysOf(row?.files ?? null));
     this.sql.exec("DELETE FROM reactions WHERE seq = ?", seq);
     this.sql.exec("DELETE FROM messages WHERE seq = ?", seq);
+    // Its files go, unless another message still has one.
+    this.unfile(keysOf(row?.files ?? null).filter((key) => !this.fileInUse(key)));
     this.deliver(channel, { t: "chat_deleted", seq, channel, by });
+  }
+
+  /** Whether a message here has this file (keys are random, so finding the key in a message's files is finding it). */
+  private fileInUse(key: string): boolean {
+    return this.sql.exec("SELECT 1 FROM messages WHERE files IS NOT NULL AND instr(files, ?) > 0 LIMIT 1", key).toArray().length > 0;
   }
 
   private ownMessage(me: Attachment, seq: number): { channel: string } | null {
@@ -873,7 +904,8 @@ export class Chat extends DurableObject<Env> {
     const mark = typeof emoji === "string" ? emoji.slice(0, 8) : "";
     if (!mark || !Number.isFinite(seq)) return;
     const row = this.sql.exec<{ channel: string }>("SELECT channel FROM messages WHERE seq = ?", seq).toArray()[0];
-    if (!row) return;
+    // Only on a message in a conversation you're in: two other people's direct messages aren't yours to react to.
+    if (!row || !this.mayPost(me.userId, String(row.channel))) return;
     if (on) {
       this.sql.exec("INSERT OR IGNORE INTO reactions (seq, member, emoji) VALUES (?, ?, ?)", seq, me.userId, mark);
     } else {
@@ -906,7 +938,7 @@ export class Chat extends DurableObject<Env> {
     const id = dmChannelId(me.userId, userId);
     // The lobby's direct messages are never stored, so there is no channel to write down.
     if (!this.lobby) this.ensureChannel(id, me.userId, now);
-    this.send(socket, { t: "chat_channel", channel: this.summary(id, me.userId) });
+    this.send(socket, { t: "chat_channel", channel: this.summary(id, me.userId, this.since(me)) });
   }
 
   /** A channel row appears the first time it is actually used. */
@@ -933,29 +965,31 @@ export class Chat extends DurableObject<Env> {
   }
 
   /** Everything this person should see in their sidebar. */
-  private channelsFor(userId: string): ChannelSummary[] {
+  private channelsFor(userId: string, since = 0): ChannelSummary[] {
     if (this.lobby) return LOBBY_CHANNELS.map((channel) => this.summary(channel, userId));
     const rows = this.sql
       .exec<ChannelRow>("SELECT id, kind, name, created_at FROM channels ORDER BY created_at")
       .toArray();
     const ids = new Set(rows.map((row) => row.id));
     const summaries: ChannelSummary[] = [];
-    if (!ids.has(GENERAL_CHANNEL)) summaries.push(this.summary(GENERAL_CHANNEL, userId));
+    if (!ids.has(GENERAL_CHANNEL)) summaries.push(this.summary(GENERAL_CHANNEL, userId, since));
     for (const row of rows) {
       const pair = dmMembers(row.id);
       if (pair && !pair.includes(userId)) continue;
-      summaries.push(this.summary(row.id, userId));
+      summaries.push(this.summary(row.id, userId, since));
     }
     return summaries;
   }
 
-  private summary(channel: string, userId: string): ChannelSummary {
+  /** A channel in someone's sidebar: its last message and their unread, only from what their plan lets them read (`since`). */
+  private summary(channel: string, userId: string, since = 0): ChannelSummary {
     const pair = dmMembers(channel);
     const other = pair ? (pair[0] === userId ? pair[1] : pair[0]) : undefined;
     const last = this.sql
       .exec<MessageRow>(
-        "SELECT seq, author_name, body, files, at FROM messages WHERE channel = ? AND meeting IS NULL ORDER BY seq DESC LIMIT 1",
+        "SELECT seq, author_name, body, files, at FROM messages WHERE channel = ? AND meeting IS NULL AND at >= ? ORDER BY seq DESC LIMIT 1",
         channel,
+        since,
       )
       .toArray()[0];
     const read = this.sql
@@ -963,10 +997,11 @@ export class Chat extends DurableObject<Env> {
       .toArray()[0];
     const unread = this.sql
       .exec<{ n: number }>(
-        "SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq > ? AND author != ? AND meeting IS NULL",
+        "SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq > ? AND author != ? AND meeting IS NULL AND at >= ?",
         channel,
         read?.seq ?? 0,
         userId,
+        since,
       )
       .one().n;
     // In a channel, the unread ones that mention you: what's counted there, the rest only make it bold.
@@ -976,11 +1011,12 @@ export class Chat extends DurableObject<Env> {
           this.sql
             .exec<{ n: number }>(
               `SELECT COUNT(*) AS n FROM messages
-               WHERE channel = ? AND seq > ? AND author != ? AND mentions IS NOT NULL
+               WHERE channel = ? AND seq > ? AND author != ? AND mentions IS NOT NULL AND at >= ?
                  AND EXISTS (SELECT 1 FROM json_each(messages.mentions) WHERE value = ?)`,
               channel,
               read?.seq ?? 0,
               userId,
+              since,
               userId,
             )
             .one().n,

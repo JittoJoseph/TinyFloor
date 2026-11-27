@@ -113,15 +113,15 @@ function Panel({ desk }: { desk: string }) {
             const item = now[key];
             return (
               <PartButton key={key} label={spotName(n)} picked={part === key} onPick={() => pickPart(key)} grow={one.x[1] - one.x[0]}>
-                {/* The desk in small: everything at half its size, so a notebook is as small beside a screen as it is on the desk. */}
-                {item ? <Thumb item={item} box={[52, 34]} at={0.5} /> : <EmptyMark />}
+                {/* The desk as it is: everything at its own size, so a notebook is as small beside a screen as it is on the desk. */}
+                {item ? <Thumb item={item} box={[52, 34]} at={1} /> : <EmptyMark />}
               </PartButton>
             );
           })}
         </div>
         <div className="flex gap-1 rounded-[14px] bg-foreground/[0.05] p-1">
           <PartButton label={t("part.chair")} picked={part === spec.chair.key} onPick={() => pickPart(spec.chair.key)} width="w-[52px]">
-            <Thumb item={chair} box={[34, 34]} />
+            <Thumb item={chair} box={[34, 34]} at={1} />
           </PartButton>
           {spec.body && wood && (
             <PartButton label={t("part.wood")} picked={part === spec.body.key} onPick={() => pickPart(spec.body!.key)} width="w-[52px]">

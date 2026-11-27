@@ -5527,62 +5527,32 @@
    ],
    "shelf": "tech"
   },
-  "ours-book-navy": {
+  "ours-book": {
    "facing": "front",
    "size": [
     64,
     48
    ],
    "art": [
-    4,
-    18,
-    60,
-    46
+    10,
+    22,
+    54,
+    44
    ],
    "shelf": "middle",
    "set": "ours"
   },
-  "ours-book-teal": {
+  "ours-typewriter": {
    "facing": "front",
    "size": [
     64,
     48
    ],
    "art": [
-    4,
-    18,
-    60,
-    46
-   ],
-   "shelf": "middle",
-   "set": "ours"
-  },
-  "ours-book-coral": {
-   "facing": "front",
-   "size": [
-    64,
-    48
-   ],
-   "art": [
-    4,
-    18,
-    60,
-    46
-   ],
-   "shelf": "middle",
-   "set": "ours"
-  },
-  "ours-book-pictures": {
-   "facing": "front",
-   "size": [
-    64,
-    48
-   ],
-   "art": [
-    4,
-    18,
-    60,
-    46
+    10,
+    6,
+    54,
+    44
    ],
    "shelf": "middle",
    "set": "ours"

@@ -8539,174 +8539,6 @@
       }
     },
     {
-      "id": "ours-book-navy",
-      "name": "Open book, navy",
-      "category": "desk",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "size": [
-          64,
-          48
-        ],
-        "layers": [
-          {
-            "draw": "desk:book-navy",
-            "rect": [
-              0,
-              0,
-              64,
-              48
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 46,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "facing": "front",
-      "desk": {
-        "cols": 2,
-        "rows": 2
-      },
-      "random": false,
-      "shelf": "middle",
-      "notes": "Drawn (art.js): ours."
-    },
-    {
-      "id": "ours-book-teal",
-      "name": "Open book, teal",
-      "category": "desk",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "size": [
-          64,
-          48
-        ],
-        "layers": [
-          {
-            "draw": "desk:book-teal",
-            "rect": [
-              0,
-              0,
-              64,
-              48
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 46,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "facing": "front",
-      "desk": {
-        "cols": 2,
-        "rows": 2
-      },
-      "random": false,
-      "shelf": "middle",
-      "notes": "Drawn (art.js): ours."
-    },
-    {
-      "id": "ours-book-coral",
-      "name": "Open book, coral",
-      "category": "desk",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "size": [
-          64,
-          48
-        ],
-        "layers": [
-          {
-            "draw": "desk:book-coral",
-            "rect": [
-              0,
-              0,
-              64,
-              48
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 46,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "facing": "front",
-      "desk": {
-        "cols": 2,
-        "rows": 2
-      },
-      "random": false,
-      "shelf": "middle",
-      "notes": "Drawn (art.js): ours."
-    },
-    {
-      "id": "ours-book-pictures",
-      "name": "Open book, with pictures",
-      "category": "desk",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "size": [
-          64,
-          48
-        ],
-        "layers": [
-          {
-            "draw": "desk:book-pictures",
-            "rect": [
-              0,
-              0,
-              64,
-              48
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 46,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "facing": "front",
-      "desk": {
-        "cols": 2,
-        "rows": 2
-      },
-      "random": false,
-      "shelf": "middle",
-      "notes": "Drawn (art.js): ours."
-    },
-    {
       "id": "chair-cognac-back",
       "name": "Office chair, cognac, from behind",
       "category": "seating",
@@ -8885,6 +8717,90 @@
       ],
       "surface": null,
       "notes": "A back view: the pack's office chair in another colour (its wheels kept as they are)."
+    },
+    {
+      "id": "ours-book",
+      "name": "Open book",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:book",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "middle",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-typewriter",
+      "name": "Typewriter",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:typewriter",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "middle",
+      "notes": "Drawn (art.js): ours."
     }
   ]
 }

@@ -407,9 +407,9 @@ time, so nothing ever stands over anything else.
   a small thing either side. A spot takes what's no wider than it and suits
   the desk's side; a single desk takes only our drawn things.
 - **Each spot has its own things** (27 November): a single desk's middle
-  holds only middle things (shelf `middle`: its screens and laptops, and an
-  open book in navy, teal or coral, or with pictures), its sides only the
-  rest (lamps, plants, small things). A lamp or a mug in front
+  holds only middle things (shelf `middle`: its screens and laptops, an open
+  book and a typewriter), its sides only the rest (lamps, plants, small
+  things). A lamp or a mug in front
   of you read as a desk set up wrong. A desk that had something in its middle
   that no longer fits there shows the floor's own screen again, without
   anything being rewritten: a change that doesn't fit is left out when the
@@ -418,7 +418,8 @@ time, so nothing ever stands over anything else.
   theirs.
 - **The panel** (27 November): its top is the desk in small, each part named
   under it (Left, Middle, Right, Chair, Wood), the one picked marked. Under
-  it, everything that part can be, at once, Nothing first, kinds kept
+  it, everything that part can be, at once (the desk's things drawn at
+  their own size in its top, as they stand on the desk), Nothing first, kinds kept
   together: with each spot holding its own things there's nothing to choose
   a group for, so the tabs it had (Tech, Lamps, Personal) went. Anything
   wider than a tile holds at its own size takes two. Undo, redo, Reset after

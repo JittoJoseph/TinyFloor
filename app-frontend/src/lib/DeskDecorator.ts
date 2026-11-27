@@ -13,15 +13,19 @@ const FOCUS_MS = 460;
  * its margin), over its foot on a phone. The desk is brought into the middle of the floor
  * the panel leaves showing.
  */
-const PANEL_WIDE = 320 + 16;
+const PANEL_WIDE = 376 + 16;
 const PHONE = 640;
-const PANEL_PHONE_SHARE = 0.48;
+const PANEL_PHONE_SHARE = 0.56;
 /** How high an empty spot's outline stands over its line, and how far below. */
 const SPOT_RISE = 36;
 const SPOT_DROP = 4;
 const OUTLINE = 0xffffff;
 const SHADE = 0x1c1c2a;
 const DEPTH = 99980;
+/** How much of the floor left showing the desk and its chair take up, brought close: big enough to see each thing on it. */
+const DESK_SHARE = 0.42;
+/** And no closer than this many screen pixels per floor pixel, where pixel art stops looking crisp and starts looking blown up. */
+const MOST_ZOOM = 5;
 
 type Box = { x: number; y: number; w: number; h: number };
 
@@ -39,6 +43,9 @@ export class DeskDecorator {
   private frame: Phaser.GameObjects.Graphics;
   private desk: string | null = null;
   private hovered: string | null = null;
+  /** The camera's zoom before decorating brought the desk close, given back after. */
+  private zoomBefore: number | null = null;
+  private moving: Phaser.Tweens.Tween | null = null;
   private unsubscribe: () => void;
   private readonly keys = (event: KeyboardEvent) => this.key(event);
 
@@ -47,6 +54,10 @@ export class DeskDecorator {
     private map: MapManager,
     /** Hands the camera and your feet over to decorating (true) and back (false). */
     private hold: (decorating: boolean) => void,
+    /** Where you are, for the camera to come back to. */
+    private player: () => { x: number; y: number } | null,
+    /** The camera's zoom changed: name tags keep their size on screen. */
+    private zoomed: () => void,
   ) {
     this.spots = scene.add.graphics().setDepth(DEPTH);
     this.frame = scene.add.graphics().setDepth(DEPTH + 1);
@@ -73,16 +84,52 @@ export class DeskDecorator {
     this.hold(true);
     const camera = this.scene.cameras.main;
     const spec = FLOOR.desks[desk];
-    // The desk and its chair, in the middle of the floor the panel leaves showing, at the zoom it's at.
-    const x = (spec.spots[0].x[0] + spec.spots[spec.spots.length - 1].x[1]) / 2;
+    // The desk and its chair: left to right across its spots, top to bottom from what stands on it to the chair's foot.
+    const left = spec.spots[0].x[0];
+    const right = spec.spots[spec.spots.length - 1].x[1];
     const top = Math.min(...spec.spots.map((spot) => spot.foot - SPOT_RISE - 12), spec.chair.y);
-    const y = (top + Math.max(...spec.spots.map((spot) => spot.foot), spec.chair.y + 64)) / 2;
+    const bottom = Math.max(...spec.spots.map((spot) => spot.foot), spec.chair.y + 64);
+    const x = (left + right) / 2;
+    const y = (top + bottom) / 2;
     const phone = window.innerWidth < PHONE;
-    const zoom = cssZoom(this.scene);
+    // The floor the panel leaves showing, in CSS pixels, and the zoom that makes the desk a good part of it.
+    const density = 1 / this.scene.scale.zoom;
+    const freeWidth = window.innerWidth - (phone ? 0 : PANEL_WIDE);
+    const freeHeight = this.scene.scale.height / density - (phone ? window.innerHeight * PANEL_PHONE_SHARE : 0);
+    const cssPerFloor = Math.min((freeWidth * DESK_SHARE) / (right - left), (freeHeight * DESK_SHARE) / (bottom - top), MOST_ZOOM);
+    const zoom = Math.max(camera.zoom, cssPerFloor * density);
+    this.zoomBefore = camera.zoom;
+    // Its middle, shifted by half the panel, so it sits in the middle of what's left showing.
+    const cssZoomAt = zoom / density;
+    const goal = { x: x + (phone ? 0 : PANEL_WIDE / 2 / cssZoomAt), y: y + (phone ? (window.innerHeight * PANEL_PHONE_SHARE) / 2 / cssZoomAt : 0) };
     camera.stopFollow();
     // Past the floor's edge if it has to be, to clear the panel: a desk near an edge, a phone's view far out.
     camera.useBounds = false;
-    camera.pan(x + (phone ? 0 : PANEL_WIDE / 2 / zoom), y + (phone ? (window.innerHeight * PANEL_PHONE_SHARE) / 2 / zoom : 0), FOCUS_MS, "Cubic.easeInOut", true);
+    this.glide(zoom, goal, FOCUS_MS);
+  }
+
+  /** The camera to this zoom, looking at this floor point, together, eased. */
+  private glide(zoom: number, at: { x: number; y: number }, ms: number, done?: () => void) {
+    const camera = this.scene.cameras.main;
+    this.moving?.stop();
+    const from = { z: camera.zoom, x: camera.midPoint.x, y: camera.midPoint.y, t: 0 };
+    const start = { ...from };
+    this.moving = this.scene.tweens.add({
+      targets: from,
+      t: 1,
+      duration: ms,
+      ease: "Cubic.easeInOut",
+      onUpdate: () => {
+        const t = from.t;
+        camera.setZoom(start.z + (zoom - start.z) * t);
+        camera.centerOn(start.x + (at.x - start.x) * t, start.y + (at.y - start.y) * t);
+        this.zoomed();
+      },
+      onComplete: () => {
+        this.moving = null;
+        done?.();
+      },
+    });
   }
 
   private leave() {
@@ -91,7 +138,19 @@ export class DeskDecorator {
     this.spots.clear();
     this.frame.clear();
     this.scene.game.canvas.style.cursor = "";
-    this.scene.cameras.main.useBounds = true;
+    const camera = this.scene.cameras.main;
+    const zoom = this.zoomBefore;
+    this.zoomBefore = null;
+    // Back out to the zoom you had, around you, then the camera follows you again.
+    const me = this.player();
+    if (zoom && me) {
+      this.glide(zoom, me, FOCUS_MS * 0.8, () => {
+        camera.useBounds = true;
+        this.hold(false);
+      });
+      return;
+    }
+    camera.useBounds = true;
     this.hold(false);
   }
 
@@ -184,8 +243,15 @@ export class DeskDecorator {
     const { part } = decorateState();
     for (const spot of FLOOR.desks[desk].spots) {
       const key = spotKey(desk, spot.id);
-      if (key === part) continue;
       const { x, y, w, h } = this.spotBox(desk, spot.id);
+      // An empty spot says something can go there: a small plus in its middle, picked or not.
+      if (!this.map.getImage(key)) {
+        const arm = 5 * line;
+        const [cx, cy] = [x + w / 2, y + h / 2];
+        this.spots.lineStyle(1.5 * line, OUTLINE, key === part ? 0.95 : 0.7);
+        this.spots.lineBetween(cx - arm, cy, cx + arm, cy).lineBetween(cx, cy - arm, cx, cy + arm);
+      }
+      if (key === part) continue;
       const pointed = key === this.hovered;
       this.spots.fillStyle(OUTLINE, pointed ? 0.16 : 0.08).fillRoundedRect(x, y, w, h, 3);
       this.spots.lineStyle(1.5 * line, OUTLINE, pointed ? 0.9 : 0.5).strokeRoundedRect(x, y, w, h, 3);
@@ -206,6 +272,7 @@ export class DeskDecorator {
     window.removeEventListener("keydown", this.keys);
     this.scene.input.off("pointerdown", this.down, this);
     this.scene.input.off("pointermove", this.move, this);
+    this.moving?.stop();
     this.spots.destroy();
     this.frame.destroy();
     if (this.desk) this.leave();

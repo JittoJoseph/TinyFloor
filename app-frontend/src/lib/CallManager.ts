@@ -23,6 +23,7 @@ import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
 import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
 import { track } from "web-shared/lib/analytics";
+import { did } from "./settle";
 
 // Error codes, not copy: the call overlay turns them into translated text.
 export type CallError = "connection" | "unsupported" | "media" | "camera";
@@ -461,6 +462,7 @@ class CallManager {
   /** Calls someone, with voice. A call is two people: a third makes it a meeting (startMeeting). */
   invite(id: string, name: string) {
     if (this.busy() || this.peers.size || !this.ws) return;
+    did("hello");
     if (!this.callsWork()) return;
 
     this.error = null;

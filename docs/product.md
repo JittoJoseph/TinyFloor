@@ -535,6 +535,36 @@ who come and go and mostly don't come back (shared-protocol `lobby.ts`):
 - **No pulse on the incoming ask.** The face has a steady green ring; the
   panel already asks for attention.
 
+## Settling in (27 November)
+
+New people were dropped onto the floor and left to find everything. Now the
+few things that make an office feel like yours are pointed at, one at a
+time, where they're done: no tour, no modal, nothing to read first.
+
+- **In order**: walk, your look, a desk of your own, making it yours, saying
+  hi (whenever someone's beside you, ahead of the rest while it lasts), your
+  team (an office of two or fewer), then your calendar, only offered.
+- **One small pointer**: a few words in a dark bubble beside the very
+  button or chip, an arrow to it and a quiet two-tone ring on it (no pulse).
+  It follows you in: the dock's key, then the row inside the open dock, then
+  the Claim chip on the desk. Ignored for 14 seconds it stops talking and
+  rests as a dot on the thing; pressed, the dot talks again. Its × leaves
+  that step alone for good.
+- **Done however it's done**, from the pointer or not, and found counts:
+  opening the character creator or the desk's panel, or the Calendar page,
+  is enough. Having a desk or a decorated desk counts by itself. Done while
+  pointed at, a green check rides on the thing for a moment, then a beat
+  before the next.
+- **Never in the way**: nothing shows while you're busy (a dialog, the
+  character creator, the desk being decorated, the whiteboard, a call); the
+  demo office's "make your own office" prompt now waits the same way
+  instead of landing on top of a desk being decorated (lib/attention).
+- **Only for someone new**: everyone in the demo office, and in an office
+  whoever joined it in the last 14 days; and only for 14 days from the first
+  pointer. Kept in the browser per person (`tf:settle:<id>`): walking, your
+  look and saying hi are yours everywhere, a desk and inviting are per office.
+  A demo guest who signs up keeps their id, so what they did there is done.
+
 ## Small decisions worth remembering
 
 - **The accent is ink, not a hue** (21 October). Emphasis comes from

@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from "react";
+import { did } from "@/lib/settle";
 import { preloadCharacters } from "web-shared/lib/characterSheet";
 import { CHARACTER_CATALOG, PRESETS } from "shared-protocol/character";
 
@@ -30,6 +31,8 @@ export const warmCharacterCreator = () => {
 export const openCharacterCreator = () => {
   warmCharacterCreator();
   setShown(true);
+  // Found: settling in needn't point at it again, saved or not (lib/settle).
+  did("look");
 };
 
 export const closeCharacterCreator = () => setShown(false);

@@ -198,6 +198,8 @@ function RailItem({
         />
       )}
       <span
+        data-settle={`rail-${destination.key}`}
+        data-settle-side="right"
         className={cn(
           "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-active:scale-95",
           "group-focus-visible:ring-2 group-focus-visible:ring-ring",

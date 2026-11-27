@@ -25,6 +25,7 @@ import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { FloorPrompt } from "./FloorPrompt";
 import { FloorHint } from "./FloorHint";
 import { DeskPanel } from "./DecoratePanel";
+import { SettleIn } from "./SettleIn";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested } from "@/lib/floor";
 import { track } from "web-shared/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -187,6 +188,7 @@ export function RoomView({ user, ticketFor, onInvite, inviteChip = false, leaveH
       <MeetingAudio />
       <WhiteboardOverlay />
       <DeskPanel />
+      <SettleIn demo={demo} />
 
       <ControlBar userId={user.id} onInvite={canInvite ? invite : undefined} inviteLabel={t("invite")} inviteShown={inviteChip && canInvite} copied={copied} demo={demo} />
     </div>

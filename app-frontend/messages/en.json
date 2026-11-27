@@ -902,7 +902,9 @@
       "chair": "Chair",
       "wood": "Wood"
     },
-    "remove": "Remove"
+    "remove": "Remove",
+    "surprise": "Surprise me",
+    "nothing": "Nothing"
   },
   "look": {
     "open": "Change how you look",
@@ -946,7 +948,8 @@
     "customizeDesk": "Customize your desk",
     "noDeskTitle": "No desk yet",
     "noDesk": "Sit at a free desk to claim it",
-    "atDesk": "At your desk"
+    "atDesk": "At your desk",
+    "findDesk": "Find a desk"
   },
   "note": {
     "title": "Status note",
@@ -1113,5 +1116,17 @@
     "notLinked": "Not connected",
     "emptyTitle": "Your meetings show up here",
     "readOnly": "Read-only access"
+  },
+  "settle": {
+    "move": "Click anywhere to walk",
+    "moveTouch": "Tap anywhere to walk",
+    "look": "Make your character yours",
+    "desk": "Get a desk of your own",
+    "claim": "Make it yours",
+    "decorate": "Make your desk yours",
+    "hello": "Say hi",
+    "invite": "Bring your team in",
+    "calendar": "Show your meetings on the floor",
+    "notNow": "Not now"
   }
 }

@@ -902,7 +902,9 @@
       "chair": "Sedia",
       "wood": "Legno"
     },
-    "remove": "Rimuovi"
+    "remove": "Rimuovi",
+    "surprise": "Sorprendimi",
+    "nothing": "Niente"
   },
   "look": {
     "open": "Cambia aspetto",
@@ -946,7 +948,8 @@
     "customizeDesk": "Personalizza la tua scrivania",
     "noDeskTitle": "Ancora nessuna scrivania",
     "noDesk": "Siediti a una scrivania libera per prenderla",
-    "atDesk": "Alla tua scrivania"
+    "atDesk": "Alla tua scrivania",
+    "findDesk": "Trova una scrivania"
   },
   "note": {
     "title": "Nota di stato",
@@ -1113,5 +1116,17 @@
     "notLinked": "Non collegato",
     "emptyTitle": "Qui compaiono le tue riunioni",
     "readOnly": "Sola lettura"
+  },
+  "settle": {
+    "move": "Fai clic ovunque per camminare",
+    "moveTouch": "Tocca ovunque per camminare",
+    "look": "Rendi tuo il tuo personaggio",
+    "desk": "Prendi una scrivania tutta tua",
+    "claim": "Rendila tua",
+    "decorate": "Personalizza la tua scrivania",
+    "hello": "Saluta",
+    "invite": "Porta il tuo team",
+    "calendar": "Mostra le tue riunioni sul piano",
+    "notNow": "Non ora"
   }
 }

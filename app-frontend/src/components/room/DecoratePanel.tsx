@@ -3,18 +3,19 @@
 import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Redo, Undo } from "web-shared/components/ui/icons";
+import { Dice, Redo, Undo } from "web-shared/components/ui/icons";
 import { FLOOR, type DeskSpot } from "shared-protocol/map";
 import { fitsIn, officePieces, spotKey, spotsOn } from "shared-protocol/office";
 import atlas from "shared-protocol/catalog/atlas.json";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { usePieceChanges } from "@/lib/pieces";
-import { closeDecorate, pickPart, redo, resetDesk, setPart, undo, useDecorate } from "@/lib/decorate";
+import { closeDecorate, pickPart, redo, resetDesk, setPart, stopTryingPart, surpriseDesk, tryPart, undo, useDecorate } from "@/lib/decorate";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "web-shared/lib/utils";
 
 /** What a spot can hold, in groups, in this order. */
 const SHELVES = ["tech", "lamps", "personal", "setups"] as const;
+type Shelf = (typeof SHELVES)[number];
 /** A desk's woods as swatches: the colour of each one's top (art.js DESK_WOODS). */
 const WOODS = {
   maple: "#d0be9c",
@@ -31,25 +32,38 @@ const SPOT_NAMES = ["left", "middle", "right"] as const;
 const frames = atlas.frames as unknown as Record<string, [number, number, number, number]>;
 
 /** Which group a thing is in: its shelf, and the floor's own desk setups in theirs. */
-const shelfOf = (item: string) => (FLOOR.things[item]?.shelf as (typeof SHELVES)[number] | undefined) ?? "setups";
+const shelfOf = (item: string) => (FLOOR.things[item]?.shelf as Shelf | undefined) ?? "setups";
+
+/** A thing's name for a screen reader, from its key: "ours-lamp-coral" says "Lamp coral". */
+const nameOf = (item: string) => {
+  const words = item.replace(/^ours-/, "").replace(/-/g, " ");
+  return words.charAt(0).toUpperCase() + words.slice(1);
+};
+
+/** A thing's own pixels: where they are in its frame, and how big. */
+function artOf(item: string) {
+  const frame = frames[item];
+  const [left, top, right, bottom] = FLOOR.things[item]?.art ?? [0, 0, frame?.[2] ?? 0, frame?.[3] ?? 0];
+  return { left, top, width: right - left, height: bottom - top };
+}
 
 /**
- * A thing as the floor draws it, from the atlas, cropped to its pixels: twice
- * its size when it's small (and there's room), its own size otherwise.
+ * A thing as the floor draws it, from the atlas, cropped to its pixels, at the
+ * largest whole scale (so the pixels stay square and crisp) that fits the box.
  */
-function Thumb({ item, max = 34 }: { item: string; max?: number }) {
+function Thumb({ item, box }: { item: string; box: [number, number] }) {
   const frame = frames[item];
   if (!frame) return null;
-  const [x, y, w, h] = frame;
-  const [left, top, right, bottom] = FLOOR.things[item]?.art ?? [0, 0, w, h];
-  const scale = Math.max(right - left, bottom - top) <= max ? 2 : 1;
+  const [x, y] = frame;
+  const { left, top, width, height } = artOf(item);
+  const scale = Math.max(1, Math.min(3, Math.floor(Math.min(box[0] / width, box[1] / height))));
   return (
     <span
       aria-hidden="true"
       className="block shrink-0"
       style={{
-        width: (right - left) * scale,
-        height: (bottom - top) * scale,
+        width: width * scale,
+        height: height * scale,
         backgroundImage: `url(${FLOOR_FILES.items})`,
         backgroundPosition: `-${(x + left) * scale}px -${(y + top) * scale}px`,
         backgroundSize: `${atlas.width * scale}px ${atlas.height * scale}px`,
@@ -60,11 +74,13 @@ function Thumb({ item, max = 34 }: { item: string; max?: number }) {
 }
 
 /**
- * Decorating your desk (lib/decorate.ts), in a card at the floor's right
- * (over its foot on a phone). Its top is the desk in small: its three spots, the chair and the
- * wood, the one picked marked, the same part the floor frames. Under it,
- * what that part can be: nothing or a thing that fits, in groups; the chairs
- * for its side; the woods. Undo and redo, putting it back as it came, Done.
+ * Decorating your desk (lib/decorate.ts), in a card at the floor's right (over
+ * its foot on a phone) while the floor brings the desk up close. At its top,
+ * the desk in small, each part named: its three spots, its chair, its wood;
+ * the one picked is the one the floor frames. Under it, everything that part
+ * can be, its groups as tabs with how many each holds, so nothing waits below
+ * a scroll to be found; the pointer resting on one tries it on the desk.
+ * Surprise me makes the whole desk up at once; undo takes any of it back.
  */
 export function DeskPanel() {
   const { desk } = useDecorate();
@@ -74,18 +90,17 @@ export function DeskPanel() {
       {desk && (
         <motion.div
           key={desk}
-          initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={reduce ? { opacity: 0 } : { opacity: 0, x: 16 }}
+          animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, transition: { duration: 0.12 } }}
-          transition={{ duration: 0.2, ease: EASE_OUT }}
+          transition={{ duration: 0.24, ease: EASE_OUT }}
           className={cn(
-            "absolute z-[55] flex flex-col overflow-hidden rounded-[18px] border border-border bg-popover text-foreground shadow-float [--face-ring:var(--ui-popover)]",
+            "absolute z-[55] flex flex-col overflow-hidden rounded-[20px] border border-border bg-popover text-foreground shadow-float [--face-ring:var(--ui-popover)]",
             // A phone: over the floor's foot, the dock included.
-            "inset-x-2 bottom-2 h-[48%]",
-            // Wider: at the right, halfway down.
-            "sm:inset-x-auto sm:bottom-auto sm:right-4 sm:top-1/2 sm:h-auto sm:max-h-[min(38rem,calc(100%-8rem))] sm:w-80 sm:-translate-y-1/2",
+            "inset-x-2 bottom-2 h-[56%]",
+            // Wider: at the right, halfway down, one height whatever's in it, so nothing under the pointer moves as you go between parts and tabs.
+            "sm:inset-x-auto sm:bottom-auto sm:right-4 sm:top-1/2 sm:h-[min(33rem,calc(100%-2rem))] sm:w-[376px] sm:-translate-y-1/2",
           )}
-          style={{ transformOrigin: "right center" }}
         >
           <Panel desk={desk} />
         </motion.div>
@@ -109,8 +124,8 @@ function Panel({ desk }: { desk: string }) {
 
   return (
     <>
-      <div className="flex h-12 shrink-0 items-center gap-1 ps-4 pe-2">
-        <span className="min-w-0 flex-1 truncate text-[14px] font-semibold">{t("title")}</span>
+      <div className="flex h-14 shrink-0 items-center gap-1 ps-4 pe-2.5">
+        <span className="min-w-0 flex-1 truncate text-[15px] font-semibold">{t("title")}</span>
         <IconAction label={t("undo")} onClick={undo} disabled={!canUndo}>
           <Undo className="size-4" />
         </IconAction>
@@ -120,31 +135,31 @@ function Panel({ desk }: { desk: string }) {
         <button
           type="button"
           onClick={closeDecorate}
-          className="ms-1 h-8 cursor-pointer rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-opacity hover:opacity-90"
+          className="ms-1.5 h-8 cursor-pointer rounded-full bg-foreground px-4 text-[13px] font-semibold text-background transition-opacity hover:opacity-90"
         >
           {t("done")}
         </button>
       </div>
 
-      {/* The desk in small: its spots as they stand along it, then its chair and its wood. */}
-      <div className="flex shrink-0 gap-1.5 px-3 pb-3" role="group" aria-label={t("title")}>
-        <div className="flex min-w-0 flex-1 gap-1 rounded-[12px] bg-foreground/[0.05] p-1">
+      {/* The desk in small, each part named: its spots as they stand along it, then its chair and its wood. */}
+      <div className="flex shrink-0 gap-1.5 px-3 pb-3" role="tablist" aria-label={t("title")}>
+        <div className="flex min-w-0 flex-1 gap-1 rounded-[14px] bg-foreground/[0.05] p-1">
           {spec.spots.map((one, n) => {
             const key = spotKey(desk, one.id);
             const item = now[key];
             return (
               <PartButton key={key} label={spotName(n)} picked={part === key} onPick={() => pickPart(key)} grow={one.x[1] - one.x[0]}>
-                {item ? <Thumb item={item} max={0} /> : <span aria-hidden className="size-1.5 rounded-full bg-foreground/25" />}
+                {item ? <Thumb item={item} box={[52, 34]} /> : <EmptyMark />}
               </PartButton>
             );
           })}
         </div>
-        <div className="flex gap-1 rounded-[12px] bg-foreground/[0.05] p-1">
-          <PartButton label={t("part.chair")} picked={part === spec.chair.key} onPick={() => pickPart(spec.chair.key)} width="w-11">
-            <Thumb item={chair} max={0} />
+        <div className="flex gap-1 rounded-[14px] bg-foreground/[0.05] p-1">
+          <PartButton label={t("part.chair")} picked={part === spec.chair.key} onPick={() => pickPart(spec.chair.key)} width="w-[52px]">
+            <Thumb item={chair} box={[34, 34]} />
           </PartButton>
           {spec.body && wood && (
-            <PartButton label={t("part.wood")} picked={part === spec.body.key} onPick={() => pickPart(spec.body!.key)} width="w-11">
+            <PartButton label={t("part.wood")} picked={part === spec.body.key} onPick={() => pickPart(spec.body!.key)} width="w-[52px]">
               <span aria-hidden className="block size-6 rounded-[7px] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.14)]" style={{ background: WOODS[woodOf(wood)] }} />
             </PartButton>
           )}
@@ -153,27 +168,27 @@ function Panel({ desk }: { desk: string }) {
 
       <div className="min-h-0 flex-1 overflow-y-auto border-t border-border px-3 pb-3 pt-3">
         {spot ? (
-          <SpotOptions desk={desk} spot={spot} name={spotName(spec.spots.indexOf(spot))} item={now[spotKey(desk, spot.id)]} />
+          <SpotOptions key={part} desk={desk} spot={spot} item={now[spotKey(desk, spot.id)]} />
         ) : part === spec.chair.key ? (
-          <Options title={t("part.chair")} lead>
+          <Grid>
             {FLOOR.chairs[spec.side].map(({ item }) => (
-              <Card key={item} label={item} picked={chair === item} onPick={() => setPart(spec.chair.key, item)}>
-                <Thumb item={item} />
+              <Card key={item} label={nameOf(item)} picked={chair === item} onPick={() => setPart(spec.chair.key, item)} onTry={() => tryPart(spec.chair.key, item)}>
+                <Thumb item={item} box={[44, 44]} />
               </Card>
             ))}
-          </Options>
+          </Grid>
         ) : spec.body && part === spec.body.key ? (
-          <Options title={t("part.wood")} lead>
+          <Grid>
             {spec.body.options.map((item) => (
-              <Card key={item} label={t(`wood.${woodOf(item)}`)} picked={wood === item} onPick={() => setPart(spec.body!.key, item)} caption>
+              <Card key={item} label={t(`wood.${woodOf(item)}`)} picked={wood === item} onPick={() => setPart(spec.body!.key, item)} onTry={() => tryPart(spec.body!.key, item)} caption>
                 <span aria-hidden className="block size-8 rounded-[9px] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.14)]" style={{ background: WOODS[woodOf(item)] }} />
               </Card>
             ))}
-          </Options>
+          </Grid>
         ) : null}
       </div>
 
-      <div className="flex h-12 shrink-0 items-center gap-1 border-t border-border px-2">
+      <div className="flex h-[52px] shrink-0 items-center gap-1 border-t border-border px-2">
         {confirming ? (
           <>
             <span className="min-w-0 flex-1 truncate px-2 text-[12.5px] text-muted-foreground">{t("resetConfirm")}</span>
@@ -189,93 +204,154 @@ function Panel({ desk }: { desk: string }) {
             </TextAction>
           </>
         ) : (
-          <TextAction onClick={() => setConfirming(true)} className="ms-auto">
-            {t("reset")}
-          </TextAction>
+          <>
+            <button
+              type="button"
+              onClick={surpriseDesk}
+              className="group inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-full bg-foreground/[0.06] ps-2.5 pe-3.5 text-[13px] font-medium text-foreground transition-colors hover:bg-foreground/[0.1]"
+            >
+              <Dice className="size-4 transition-transform duration-300 group-hover:rotate-[24deg] group-active:rotate-[90deg]" />
+              {t("surprise")}
+            </button>
+            <TextAction onClick={() => setConfirming(true)} className="ms-auto">
+              {t("reset")}
+            </TextAction>
+          </>
         )}
       </div>
     </>
   );
 }
 
-/** What a spot can hold: nothing, or a thing that fits it, grouped. */
-function SpotOptions({ desk, spot, name, item }: { desk: string; spot: DeskSpot; name: string; item: string | null }) {
+/**
+ * What a spot can hold: its groups as tabs, each saying how many it has, and
+ * under the one open, nothing (first, always there) and every thing in it.
+ * It opens on the group of what stands there now.
+ */
+function SpotOptions({ desk, spot, item }: { desk: string; spot: DeskSpot; item: string | null }) {
   const t = useTranslations("decorate");
   const key = spotKey(desk, spot.id);
   const fits = Object.keys(FLOOR.things).filter((one) => fitsIn(desk, spot, one));
+  const shelves = SHELVES.map((shelf) => ({ shelf, things: fits.filter((one) => shelfOf(one) === shelf) })).filter((one) => one.things.length);
+  const shelfFor = (thing: string | null): Shelf => (thing && shelves.some((one) => one.shelf === shelfOf(thing)) ? shelfOf(thing) : (shelves[0]?.shelf ?? "tech"));
+  const [open, setOpen] = useState<Shelf>(() => shelfFor(item));
+  // What stands there changed from elsewhere (a surprise, an undo): its group opens, so it's the one shown picked.
+  const [shown, setShown] = useState(item);
+  if (shown !== item) {
+    setShown(item);
+    if (item && shelfOf(item) !== open) setOpen(shelfFor(item));
+  }
+  const things = shelves.find((one) => one.shelf === open)?.things ?? [];
+
   return (
-    <div className="flex flex-col gap-4">
-      <div className="-mb-1.5 flex h-8 items-center gap-2 px-0.5">
-        <h3 className="min-w-0 flex-1 truncate text-[13px] font-semibold">{name}</h3>
-        {item && <TextAction onClick={() => setPart(key, null)}>{t("remove")}</TextAction>}
-      </div>
-      {SHELVES.map((shelf) => {
-        const things = fits.filter((one) => shelfOf(one) === shelf);
-        if (!things.length) return null;
-        return (
-          <Options key={shelf} title={t(`shelf.${shelf}`)}>
-            {things.map((one) => (
-              <Card key={one} label={one} picked={item === one} onPick={() => setPart(key, one)} wide={wideOf(one)}>
-                <Thumb item={one} />
-              </Card>
-            ))}
-          </Options>
-        );
-      })}
+    <div className="flex flex-col gap-3">
+      {shelves.length > 1 && (
+        <div role="tablist" className="flex gap-1 rounded-full bg-foreground/[0.05] p-1">
+          {shelves.map(({ shelf, things: inIt }) => (
+            <button
+              key={shelf}
+              type="button"
+              role="tab"
+              aria-selected={open === shelf}
+              onClick={() => setOpen(shelf)}
+              className={cn(
+                "flex h-8 min-w-0 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full px-2 text-[12.5px] font-medium transition-[background-color,color,box-shadow] duration-150",
+                open === shelf ? "bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.12)]" : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <span className="truncate">{t(`shelf.${shelf}`)}</span>
+              <span className={cn("tabular-nums text-[11.5px]", open === shelf ? "text-muted-foreground" : "text-faint")}>{inIt.length}</span>
+            </button>
+          ))}
+        </div>
+      )}
+      <Grid>
+        <Card label={t("nothing")} picked={!item} onPick={() => setPart(key, null)} onTry={() => tryPart(key, null)} caption>
+          <EmptyMark large />
+        </Card>
+        {things.map((one) => (
+          <Card key={one} label={nameOf(one)} picked={item === one} onPick={() => setPart(key, one)} onTry={() => tryPart(key, one)} wide={wideOf(one)}>
+            <Thumb item={one} box={wideOf(one) ? [112, 44] : [48, 44]} />
+          </Card>
+        ))}
+      </Grid>
     </div>
   );
 }
 
-/** Whether a thing, at the size its card shows it, needs two columns. */
+/** Whether a thing, shown at a crisp scale, needs two columns. */
 const wideOf = (item: string) => {
-  const [left, top, right, bottom] = FLOOR.things[item]?.art ?? [0, 0, 32, 32];
-  const scale = Math.max(right - left, bottom - top) <= 34 ? 2 : 1;
-  return (right - left) * scale > 60;
+  const { width, height } = artOf(item);
+  return width > 40 && width > height * 1.6;
 };
 
-/** A group of options under its title: the part's own name (lead), or a kind of thing in it. */
-function Options({ title, lead = false, children }: { title: string; lead?: boolean; children: ReactNode }) {
+/** An empty spot: a dashed outline with a plus, the way the floor marks it. */
+function EmptyMark({ large = false }: { large?: boolean }) {
   return (
-    <section>
-      <h3 className={cn("mb-1.5 px-0.5", lead ? "flex h-8 items-center text-[13px] font-semibold" : "text-[12px] font-medium text-muted-foreground")}>{title}</h3>
-      <div className="grid grid-flow-row-dense grid-cols-[repeat(auto-fill,minmax(4.25rem,1fr))] gap-1.5">{children}</div>
-    </section>
+    <span aria-hidden className={cn("flex items-center justify-center rounded-[8px] border border-dashed border-foreground/30 text-foreground/45", large ? "size-8" : "size-7")}>
+      <span className="text-[15px] leading-none">+</span>
+    </span>
   );
 }
 
-/** One of the desk's parts, in the desk in small: as wide as it is on the desk, or a set width. */
+function Grid({ children }: { children: ReactNode }) {
+  // Six across on a phone, so every group's things fit the sheet without a scroll to find them; five beside the floor.
+  return <div className="grid grid-flow-row-dense grid-cols-6 gap-1.5 sm:grid-cols-5">{children}</div>;
+}
+
+/** One of the desk's parts, in the desk in small, its name under it: as wide as it is on the desk, or a set width. */
 function PartButton({ label, picked, onPick, grow, width, children }: { label: string; picked: boolean; onPick: () => void; grow?: number; width?: string; children: ReactNode }) {
   return (
     <button
       type="button"
-      title={label}
-      aria-label={label}
-      aria-pressed={picked}
+      role="tab"
+      aria-selected={picked}
       onClick={onPick}
       style={grow ? { flexGrow: grow, flexBasis: 0 } : undefined}
       className={cn(
-        "flex h-14 min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-[9px] transition-[background-color,box-shadow] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "flex h-[72px] min-w-0 cursor-pointer flex-col items-center justify-end gap-1.5 overflow-hidden rounded-[10px] pb-1.5 transition-[background-color,box-shadow] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         width,
-        picked ? "bg-card shadow-[inset_0_0_0_1.5px_var(--ui-foreground)]" : "hover:bg-foreground/[0.06]",
+        picked ? "bg-card shadow-[inset_0_0_0_1.5px_var(--ui-foreground),0_1px_2px_rgb(0_0_0/0.1)]" : "hover:bg-foreground/[0.06]",
       )}
     >
-      {children}
+      <span className="flex min-h-0 flex-1 items-end justify-center">{children}</span>
+      <span className={cn("max-w-full truncate px-1 text-[11px] leading-none", picked ? "font-medium text-foreground" : "text-muted-foreground")}>{label}</span>
     </button>
   );
 }
 
-function Card({ label, picked, onPick, wide = false, caption = false, children }: { label: string; picked: boolean; onPick: () => void; wide?: boolean; caption?: boolean; children: ReactNode }) {
+/** A choice: pressed, it's what the part becomes; pointed at (or reached by keyboard), it's tried on the desk first. */
+function Card({
+  label,
+  picked,
+  onPick,
+  onTry,
+  wide = false,
+  caption = false,
+  children,
+}: {
+  label: string;
+  picked: boolean;
+  onPick: () => void;
+  onTry: () => void;
+  wide?: boolean;
+  caption?: boolean;
+  children: ReactNode;
+}) {
   return (
     <button
       type="button"
-      title={label}
       aria-label={label}
       aria-pressed={picked}
       onClick={onPick}
+      onPointerEnter={(event) => event.pointerType === "mouse" && onTry()}
+      onPointerLeave={stopTryingPart}
+      onFocus={onTry}
+      onBlur={stopTryingPart}
       className={cn(
         wide && "col-span-2",
-        "flex h-[4.5rem] cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl bg-foreground/[0.05] transition-[background-color,box-shadow] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        picked ? "bg-foreground/[0.08] shadow-[inset_0_0_0_2px_var(--ui-foreground)]" : "hover:bg-foreground/[0.09]",
+        "flex h-[3.25rem] cursor-pointer flex-col items-center justify-center gap-1 rounded-[12px] sm:h-16 bg-foreground/[0.04] transition-[background-color,box-shadow,transform] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.96]",
+        picked ? "bg-foreground/[0.07] shadow-[inset_0_0_0_2px_var(--ui-foreground)]" : "hover:bg-foreground/[0.09]",
       )}
     >
       {children}

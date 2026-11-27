@@ -38,3 +38,32 @@ export function applyPieceChange(key: string, change: PieceChange | null) {
   changes = next;
   notify();
 }
+
+/**
+ * A piece tried out without changing it: what the pointer rests on in the
+ * desk's panel, drawn on the floor in its place (MapManager draws
+ * drawnChanges), never sent and never undone. Undefined: nothing tried.
+ */
+let trying: { key: string; change: PieceChange | null } | null = null;
+
+export function tryPieceChange(key: string, change: PieceChange | null) {
+  if (trying && trying.key === key && JSON.stringify(trying.change) === JSON.stringify(change)) return;
+  trying = { key, change };
+  notify();
+}
+
+export function stopTrying() {
+  if (!trying) return;
+  trying = null;
+  notify();
+}
+
+/** The changes as the floor draws them: the room's, with whatever's being tried out on top. */
+export function drawnChanges(): PieceChanges {
+  if (!trying) return changes;
+  const next = { ...changes };
+  if (trying.change) next[trying.key] = trying.change;
+  else delete next[trying.key];
+  return next;
+}
+

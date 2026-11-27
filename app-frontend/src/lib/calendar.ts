@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { CalendarBusy } from "shared-protocol/messages";
 import { api, ApiError, type BusyBlock, type CalendarEvent, type CalendarInfo } from "web-shared/lib/api";
+import { did } from "./settle";
 import { busyAt, holds, isOurs } from "./calendarBusy";
 
 export { isOurs } from "./calendarBusy";
@@ -78,6 +79,7 @@ export async function readCalendar(): Promise<void> {
 export async function connectCalendar(code: string): Promise<void> {
   const { calendar } = await api.connectCalendar(code);
   set({ status: "on", info: calendar });
+  did("calendar");
   await readCalendar();
 }
 

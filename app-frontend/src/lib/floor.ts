@@ -5,6 +5,7 @@ import type { PlayerStatus } from "web-shared/lib/types";
 import type { StatusNote } from "shared-protocol/messages";
 import { api } from "web-shared/lib/api";
 import { track } from "web-shared/lib/analytics";
+import { did } from "./settle";
 
 export interface FloorPerson {
   id: string;
@@ -70,6 +71,7 @@ export const WAVE_EVENT = "waveAt";
 export function waveAt(id: string) {
   window.dispatchEvent(new CustomEvent(WAVE_EVENT, { detail: { id } }));
   track("wave_sent");
+  did("hello");
 }
 
 /** Someone on the floor poked you. */
@@ -80,6 +82,7 @@ export const POKE_EVENT = "pokeAt";
 export function pokeAt(id: string) {
   window.dispatchEvent(new CustomEvent(POKE_EVENT, { detail: { id } }));
   track("poke_sent");
+  did("hello");
 }
 
 /** Asks the floor to walk you over to someone (see GameScene). */

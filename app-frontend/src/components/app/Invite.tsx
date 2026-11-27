@@ -6,6 +6,7 @@ import { ArrowUpRight, Check, Copy, Mail, MessageSquare, Share } from "web-share
 import { Modal } from "@/components/ui/Modal";
 import { useOpenPlans } from "@/components/billing/openPlans";
 import { track, withPostHog } from "web-shared/lib/analytics";
+import { did } from "@/lib/settle";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareUrl } from "@/lib/links";
 import { copyText } from "@/lib/share";
@@ -34,6 +35,7 @@ export function InviteProvider({ children }: { children: ReactNode }) {
   const show = useCallback(() => {
     setOpen(true);
     track("invite_opened");
+    did("invite");
   }, []);
   // Every way to invite (the office menu, People, the chip on an empty floor) goes through here.
   const allowed = !!context && (context.office.invitePolicy !== "admins" || context.office.role === "admin");

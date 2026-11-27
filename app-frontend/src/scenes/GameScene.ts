@@ -32,6 +32,7 @@ import { ChristmasPresents } from "../lib/ChristmasPresents";
 import { Snowfall } from "../lib/Snowfall";
 import { isChristmas } from "../lib/christmas";
 import { onPrefsChange, prefs } from "../lib/prefs";
+import { did } from "../lib/settle";
 
 const CAMERA_LERP = 0.08;
 /** How close the camera sits wherever there is room for it. */
@@ -111,6 +112,8 @@ class GameScene extends Phaser.Scene {
   /** The meeting we are in, and whether we have reached the room since joining it. */
   private trackedMeeting: string | null = null;
   private reachedRoom = false;
+  /** You've walked since the floor opened. */
+  private walked = false;
 
   constructor(
     private name: string,
@@ -191,12 +194,18 @@ class GameScene extends Phaser.Scene {
 
     // Decorating your desk: the camera and your feet are the decorator's until it's done.
     attachDecorate((message) => this.wsManager.send(message), this.playerId);
-    this.deskDecorator = new DeskDecorator(this, this.mapManager, (decorating) => {
-      this.movementManager.setInputEnabled(!decorating);
-      if (decorating) return this.cameraRig?.release();
-      // Back to following you: the camera glides there.
-      this.cameraRig?.follow();
-    });
+    this.deskDecorator = new DeskDecorator(
+      this,
+      this.mapManager,
+      (decorating) => {
+        this.movementManager.setInputEnabled(!decorating);
+        if (decorating) return this.cameraRig?.release();
+        // Back to following you: the camera glides there.
+        this.cameraRig?.follow();
+      },
+      () => (this.player ? { x: this.player.x, y: this.player.y } : null),
+      () => this.fitTags(),
+    );
 
     callManager.attach(this.wsManager);
     whiteboard.attach(this.wsManager);
@@ -458,6 +467,11 @@ class GameScene extends Phaser.Scene {
     if (!this.player) return;
 
     this.movementManager.update(delta);
+    // The first steps you take: walking needs no more showing (lib/settle).
+    if (!this.walked && this.movementManager.isMoving()) {
+      this.walked = true;
+      did("move");
+    }
     this.cameraRig?.update(delta);
     this.walkOverlay?.update();
     this.seatManager?.update();

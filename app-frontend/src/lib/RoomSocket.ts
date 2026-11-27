@@ -9,7 +9,16 @@ const TOO_MANY_MESSAGES_PAUSE_MS = 30_000;
  * media and the call report belong to the connection that dropped (the
  * meeting is joined again and the call reported again on welcome).
  */
-const DROPPED_OFFLINE = new Set<ClientMessage["t"]>(["move", "walk_to", "sfu", "speaking", "call_usage"]);
+const DROPPED_OFFLINE = new Set<ClientMessage["t"]>(["move", "walk_to", "sfu", "speaking", "call_usage", "board_draw"]);
+/**
+ * Held while the connection is down, at most this many (the newest): sent all
+ * at once on reconnecting, a long backlog would run past the room's limits and
+ * get the new connection closed. Strokes drawn meanwhile aren't held at all:
+ * the board is read again from the room on its welcome (whiteboard.sync).
+ */
+const MOST_HELD = 30;
+/** Longer than this for a ticket, and it's tried again: a request stalled by a network change never answers. */
+const TICKET_WITHIN_MS = 10_000;
 
 /** Why the room let go of us for good. The page shows a matching message. */
 export type RoomEnd = "full" | "replaced" | "closed" | "revoked" | "signedOut" | "notFound";
@@ -35,6 +44,8 @@ export class RoomSocket {
   private reconnectTimer?: ReturnType<typeof setTimeout>;
   /** Fetching a ticket for the next socket. */
   private opening = false;
+  /** Counts tickets asked for: a late answer to an earlier one is let go. */
+  private attempt = 0;
   /** Asked to slow down (TooManyMessages): no reconnecting early before this. */
   private pausedUntil = 0;
   private lifeline?: Lifeline;
@@ -67,11 +78,15 @@ export class RoomSocket {
       this.ws.send(JSON.stringify(message));
     } else if (!DROPPED_OFFLINE.has(message.t)) {
       this.queue.push(message);
+      if (this.queue.length > MOST_HELD) this.queue.splice(0, this.queue.length - MOST_HELD);
     }
   }
 
   disconnect() {
     this.stopped = true;
+    // A ticket still being asked for is for this connection, not the next: its answer is let go.
+    this.attempt += 1;
+    this.opening = false;
     clearTimeout(this.reconnectTimer);
     this.stopHints?.();
     this.stopHints = undefined;
@@ -92,16 +107,20 @@ export class RoomSocket {
 
     let ticket: RoomTicket;
     this.opening = true;
+    const attempt = ++this.attempt;
+    const current = () => attempt === this.attempt && !this.stopped;
     try {
-      ticket = await this.ticketFor();
+      ticket = await withTimeout(this.ticketFor(), TICKET_WITHIN_MS);
     } catch (error) {
+      if (attempt === this.attempt) this.opening = false;
+      // Asked for a room we've left since: its answer, whatever it is, isn't the room we're in now.
+      if (!current()) return;
       if (error instanceof ApiError && error.status === 401) return this.end("signedOut");
       if (error instanceof ApiError && (error.status === 403 || error.status === 404)) return this.end("notFound");
       return this.retry();
-    } finally {
-      this.opening = false;
     }
-    if (this.stopped) return;
+    if (attempt === this.attempt) this.opening = false;
+    if (!current()) return;
 
     // Arriving, the room seats you at your desk if you have one (docs/product.md); until
     // a welcome, even a retried connection is still the arrival.
@@ -217,4 +236,21 @@ export class RoomSocket {
 
 function announce(state: "connecting" | "connected" | "reconnecting") {
   window.dispatchEvent(new CustomEvent(ROOM_CONNECTION_EVENT, { detail: { state } }));
+}
+
+/** A promise that gives up after `ms`. */
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("timed out")), ms);
+    promise.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timer);
+        reject(error);
+      },
+    );
+  });
 }

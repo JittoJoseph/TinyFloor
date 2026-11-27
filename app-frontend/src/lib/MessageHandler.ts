@@ -29,6 +29,8 @@ export class MessageHandler {
     private playerId: string,
     private player: Phaser.GameObjects.Sprite,
     private send: (message: ClientMessage) => void,
+    /** The room has put us where it says: any walk of ours under way stops (MovementManager.halt). */
+    private placed: () => void = () => {},
   ) {}
 
   handleMessage(message: ServerMessage) {
@@ -55,6 +57,12 @@ export class MessageHandler {
         break;
       case "player_joined":
         if (message.player.id === this.playerId) return;
+        // Already here (their connection was replaced: another tab, a reconnect): the new one's word replaces the old,
+        // seat and all, rather than leaving them sat on a chair they got up from while away.
+        if (this.playerManager.getPlayers().has(message.player.id)) {
+          this.seats.release(message.player.id);
+          this.playerManager.removePlayer(message.player.id);
+        }
         this.addUser(message.player);
         callManager.backOnFloor(message.player.id);
         this.dispatchPlayerList();
@@ -95,7 +103,7 @@ export class MessageHandler {
         this.playerManager.standPlayer(message.id);
         break;
       case "sit_rejected":
-        this.seats.rejected();
+        this.seats.rejected(message.seat);
         break;
       case "meeting_joined":
       case "meeting_member_joined":
@@ -140,6 +148,7 @@ export class MessageHandler {
       case "board_state":
       case "board_draw":
       case "board_clear":
+      case "board_forget":
         whiteboard.handleMessage(message);
         break;
     }
@@ -172,6 +181,7 @@ export class MessageHandler {
     }
 
     const spawn = tileToPixel(self.x, self.y);
+    this.placed();
     this.player.setPosition(spawn.x, spawn.y);
     this.playerManager.showLocalPlayer();
     this.playerManager.updatePlayerNote(this.playerId, self.guest ? null : myStatusNote(), () => this.dispatchPlayerList());
@@ -183,6 +193,8 @@ export class MessageHandler {
     this.animationManager.play(this.player, "idle", "down");
 
     players.forEach((player) => this.addUser(player));
+    // Calls with whoever's back go on; one with someone who isn't waits a moment for them (CallManager).
+    callManager.onFloorNow(new Set(players.map((player) => player.id)));
     this.dispatchPlayerList();
     // Arriving, the room put you a few steps from your desk: walk in and sit
     // down (docs/product.md). Back after a dropped connection, to the chair you were on.

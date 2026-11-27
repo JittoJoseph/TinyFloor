@@ -58,7 +58,10 @@ export class ProximityManager {
     const settled = this.stillSince !== null && now - this.stillSince >= SETTLE_TIME;
 
     let nearest: { id: string; distance: number } | null = null;
-    this.playerManager.getPlayers().forEach((container, id) => {
+    const players = this.playerManager.getPlayers();
+    // Whoever left while near: forgotten, so someone back with the same id starts their wait afresh.
+    for (const id of this.proximityStartTimes.keys()) if (!players.has(id)) this.proximityStartTimes.delete(id);
+    players.forEach((container, id) => {
       const distance = Phaser.Math.Distance.Between(this.currentPlayer.x, this.currentPlayer.y, container.x, container.y);
       if (distance > PROXIMITY_RADIUS || !this.reachable(id)) {
         this.proximityStartTimes.delete(id);

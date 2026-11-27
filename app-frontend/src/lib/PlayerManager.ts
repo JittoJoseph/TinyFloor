@@ -710,6 +710,7 @@ export class PlayerManager {
     this.written.delete(id);
     this.meetings.delete(id);
     this.looks.delete(id);
+    this.statuses.delete(id);
   }
 
   getPlayers(): Map<string, Phaser.GameObjects.Container> {

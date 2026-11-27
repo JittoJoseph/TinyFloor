@@ -17,9 +17,8 @@ import { busyNow } from "@/lib/attention";
 import { characterCreatorShown } from "@/components/character/creatorOpen";
 import { cheer, getFloorSpot, isDone, isSkipped, settleAs, skip, startSettling, stillSettling, useSettle, type SettleStep } from "@/lib/settle";
 import { touchFirst } from "@/lib/touch";
-import { characterOrDefault, PRESETS } from "shared-protocol/character";
-import { CharacterBust } from "@/components/character/CharacterBust";
 import { PieceThumb } from "./PieceThumb";
+import { cn } from "web-shared/lib/utils";
 
 /** A moment after arriving before the first pointer: the floor first, then what to do on it. */
 const FIRST_AFTER_MS = 2500;
@@ -246,7 +245,6 @@ export function SettleIn({ demo }: { demo: boolean }) {
           <Pointer
             key={`${cue.step}:${cue.target.dataset.settle}`}
             cue={cue}
-            character={characterOrDefault(user?.character)}
             text={t(cue.words)}
             notNow={t("notNow")}
             reduce={reduce}
@@ -352,87 +350,44 @@ function PixelBurst({ target, rect: at }: { target: HTMLElement; rect: DOMRect }
 /** Where the card goes from the thing: above it (caret down), below it (caret up), or to its right (caret left). */
 type Side = "above" | "below" | "right";
 
-/**
- * The caret that joins a coach card to the thing it's about: a triangle in
- * steps of 4px, the floor's own pixels, the one bit of the floor in the page's
- * chrome. Drawn pointing down, in a box a pixel wider each side for its
- * border; turned for the other sides.
- */
-const STEP = 4;
-const CARET_W = 6 * STEP;
-const CARET_H = 3 * STEP;
-const CARET_BOX_W = CARET_W + 2;
-const CARET_BOX_H = CARET_H + 1;
+/** The caret that joins a coach card to the thing it's about: a plain triangle with the card's border. Drawn pointing down; turned for the other sides. */
+const CARET_BOX_W = 20;
+const CARET_BOX_H = 11;
 /** How far its top reaches over the card's edge, to cover the card's border there. */
 const CARET_OVER = 2;
 const CARET_TURN: Record<Side, number> = { above: 0, below: 180, right: 90 };
-/** Its shape, in steps: each row narrower by a step a side. */
-const stepped = (grow: number, from: number) => {
-  const points: Array<[number, number]> = [];
-  for (let row = 0; row < 3; row += 1) {
-    const inset = row * STEP - grow;
-    points.push([inset, (row === 0 ? from : row * STEP + (row > 0 ? grow : 0))], [inset, (row + 1) * STEP + grow]);
-  }
-  const left = points.map(([x, y]) => `${x},${y}`);
-  const right = points.map(([x, y]) => `${CARET_W - x},${y}`).reverse();
-  return `M${[...left, ...right].join(" L")} Z`;
-};
-const CARET_BORDER = stepped(1, CARET_OVER);
-const CARET_FILL = stepped(0, 0);
 
 function Caret({ side }: { side: Side }) {
   return (
-    <svg
-      width={CARET_BOX_W}
-      height={CARET_BOX_H}
-      viewBox={`-1 0 ${CARET_BOX_W} ${CARET_BOX_H}`}
-      shapeRendering="crispEdges"
-      aria-hidden
-      className="block"
-      style={{ transform: `rotate(${CARET_TURN[side]}deg)` }}
-    >
-      <path d={CARET_BORDER} fill="var(--ui-border)" />
-      <path d={CARET_FILL} fill="var(--ui-card)" />
+    <svg width={CARET_BOX_W} height={CARET_BOX_H} viewBox={`0 0 ${CARET_BOX_W} ${CARET_BOX_H}`} aria-hidden className="block" style={{ transform: `rotate(${CARET_TURN[side]}deg)` }}>
+      <path d="M0,0 L20,0 L10,10 Z" fill="var(--ui-card)" />
+      {/* Its two sides only, from the card's edge down: the edge it shares with the card has no line. */}
+      <path d={`M${CARET_OVER},${CARET_OVER} L10,10 L${20 - CARET_OVER},${CARET_OVER}`} fill="none" stroke="var(--ui-border)" strokeWidth={1} strokeLinejoin="round" />
     </svg>
   );
 }
 
-/** What each step is about, as the floor draws it: you, for what you do; a thing off a desk, for your desk. */
+/** The desk steps' picture, as the floor draws it: a thing off a desk. */
 const PICTURE: Partial<Record<Words, string>> = {
   desk: "ours-screen-teal",
   claim: "ours-screen-teal",
   decorate: "ours-bush-desk-clay",
-  calendar: "ours-clock",
 };
 const PICTURE_SIZE = 30;
 
-/** The card's picture: a thing off a desk in a small tile, or your character (with someone else beside you, for your team). */
-function Picture({ words, character }: { words: Words; character: string }) {
-  const thing = PICTURE[words];
-  if (thing) {
-    return (
-      <span
-        className="flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] bg-[color-mix(in_oklab,var(--ui-muted)_70%,var(--ui-foreground)_8%)] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.08)]"
-        style={{ width: PICTURE_SIZE, height: PICTURE_SIZE }}
-      >
-        <PieceThumb item={thing} box={[PICTURE_SIZE - 6, PICTURE_SIZE - 6]} />
-      </span>
-    );
-  }
-  if (words === "invite") {
-    const other = PRESETS.find((preset) => preset !== character) ?? character;
-    return (
-      <span className="flex shrink-0">
-        <CharacterBust character={character} size={PICTURE_SIZE} />
-        <CharacterBust character={other} size={PICTURE_SIZE} className="-ms-2.5 rounded-[8px] ring-2 ring-card" />
-      </span>
-    );
-  }
-  return <CharacterBust character={character} size={PICTURE_SIZE} />;
+function Picture({ thing }: { thing: string }) {
+  return (
+    <span
+      className="flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] bg-[color-mix(in_oklab,var(--ui-muted)_70%,var(--ui-foreground)_8%)] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.08)]"
+      style={{ width: PICTURE_SIZE, height: PICTURE_SIZE }}
+    >
+      <PieceThumb item={thing} box={[PICTURE_SIZE - 6, PICTURE_SIZE - 6]} />
+    </span>
+  );
 }
 
-/** Between the caret's tip and the thing. */
-const GAP = 4;
+/** Between the caret's tip and the thing: clear of its outline (settle-target, 5px out). */
+const GAP = 8;
 /** Kept this far inside the window. */
 const EDGE = 8;
 /** The caret stays this far from the card's ends, clear of its rounded corners. */
@@ -445,7 +400,7 @@ const CARET_INSET = 12;
  * while it folds into a dot on the thing (the app's own "something new"
  * dot); the dot, or the pointer over the thing, opens it again.
  */
-function Pointer({ cue, text, notNow, character, reduce, onSkip }: { cue: Cue; text: string; notNow: string; character: string; reduce: boolean; onSkip: () => void }) {
+function Pointer({ cue, text, notNow, reduce, onSkip }: { cue: Cue; text: string; notNow: string; reduce: boolean; onSkip: () => void }) {
   const box = useRef<HTMLDivElement>(null);
   const card = useRef<HTMLDivElement>(null);
   const caret = useRef<HTMLDivElement>(null);
@@ -454,6 +409,15 @@ function Pointer({ cue, text, notNow, character, reduce, onSkip }: { cue: Cue; t
   const [resting, setResting] = useState(false);
   // The floor's spot has its own marks to rest as; a dot there would only be a second mark.
   const onFloor = cue.target.dataset.settle === "walk";
+  const picture = PICTURE[cue.words];
+
+  // An outline round the thing pointed at while the card talks (not the floor's spot: it has its own marks; not once resting as a dot).
+  useEffect(() => {
+    if (onFloor || resting) return;
+    const target = cue.target;
+    target.classList.add("settle-target");
+    return () => target.classList.remove("settle-target");
+  }, [cue.target, onFloor, resting]);
 
   // Words for a while, then it rests; a new place to point (deeper in) is a new card, and talks again; so does the dot, pressed.
   useEffect(() => {
@@ -543,9 +507,12 @@ function Pointer({ cue, text, notNow, character, reduce, onSkip }: { cue: Cue; t
                 <div
                   ref={card}
                   role="status"
-                  className="pointer-events-auto relative flex max-w-[18rem] items-center gap-2.5 rounded-[12px] border border-border bg-card p-1.5 pe-1 text-[13px] font-medium leading-snug text-foreground shadow-float"
+                  className={cn(
+                    "pointer-events-auto relative flex max-w-[18rem] items-center gap-2.5 rounded-[12px] border border-border bg-card p-1.5 pe-1 text-[13px] font-medium leading-snug text-foreground shadow-float",
+                    !picture && "ps-3",
+                  )}
                 >
-                  <Picture words={cue.words} character={character} />
+                  {picture && <Picture thing={picture} />}
                   <span className="min-w-0">{text}</span>
                   <button
                     type="button"

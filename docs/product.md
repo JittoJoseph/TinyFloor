@@ -547,16 +547,15 @@ time, where they're done: no tour, no modal, nothing to read first.
   of two or fewer), then your calendar, only offered. Being walked somewhere
   you asked for (the dock's desk key) counts as walking.
 - **One small card**: a coach mark in the dock's own style, joined to the
-  very button or chip by a caret drawn in 4px steps (the floor's pixels, the
-  one bit of the floor in the chrome), with a picture from the product (your
-  own character for walking, your look and saying hi; a thing off a desk for
-  the desk steps), a few words and a ×. It nudges toward the thing twice
-  now and then; no ring, no pulse. It follows you in: the dock's key, then
-  the row inside the open dock, then the Claim chip on the desk. Walking
-  points at the floor itself: a clear tile a few steps away (never under a
-  chair) gets the corner marks a click would (lib/WalkSpot), and the card
-  reaches away from you. Ignored for 14 seconds it folds into the app's own
-  small "something new" dot on the thing; the dot, or hovering the thing,
+  very button or chip by a caret, with a few words and a × (the desk steps
+  also show a thing off a desk), and a clear two-tone outline on the thing
+  itself (the page's colour, then ink). It nudges toward the thing twice now
+  and then; no pulse. It follows you in: the dock's key, then the row inside
+  the open dock, then the Claim chip on the desk. Walking points at the floor
+  itself: a clear tile a few steps away (never under a chair) gets the corner
+  marks a click would (lib/WalkSpot), and the card reaches away from you.
+  Ignored for 14 seconds it folds into the app's own small "something new"
+  dot on the thing, without the outline; the dot, or hovering the thing,
   opens it again. The × leaves that step alone for good.
 - **Done however it's done**, from the pointer or not, and found counts:
   opening the character creator or the desk's panel, or the Calendar page,

@@ -83,9 +83,10 @@ interface MessageRow extends Record<string, SqlStorageValue> {
   reply_to: SqlStorageValue;
   meeting: SqlStorageValue;
   nonce: SqlStorageValue;
+  talk: SqlStorageValue;
 }
 
-const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at, reply_to, meeting, nonce";
+const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at, reply_to, meeting, nonce, talk";
 /** Writing that runs words together without spaces, which the search index can't split into words. */
 const UNSPACED = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}\p{Script=Thai}]/u;
 /** A message's id from its sender's app (ChatMessage.nonce): a short random string. */
@@ -100,7 +101,7 @@ const LOBBY_SENDS_PER_TEN_SECONDS = 15;
 /** Everything a socket says, reads and searches included: past this it's closed, as the floor closes one. */
 const MESSAGES_PER_TEN_SECONDS = 300;
 /** What changes the chat for everyone, counted against the sends. */
-const WRITES = new Set(["chat_send", "chat_edit", "chat_delete", "chat_react", "chat_channel", "chat_dm"]);
+const WRITES = new Set(["chat_send", "chat_edit", "chat_delete", "chat_react", "chat_channel", "chat_dm", "chat_talk"]);
 /** Messages between trims. Cheap, and it keeps the object's storage bounded. */
 const TRIM_EVERY = 500;
 const TEN_SECONDS = 10_000;
@@ -169,6 +170,8 @@ export class Chat extends DurableObject<Env> {
       if (!columns.some((column) => column.name === "meeting")) this.sql.exec("ALTER TABLE messages ADD COLUMN meeting TEXT");
       // And the sender's own id for it, so one sent twice (a dropped connection) is posted once.
       if (!columns.some((column) => column.name === "nonce")) this.sql.exec("ALTER TABLE messages ADD COLUMN nonce TEXT");
+      // And asking to talk, as a card in direct messages (ChatMessage.talk).
+      if (!columns.some((column) => column.name === "talk")) this.sql.exec("ALTER TABLE messages ADD COLUMN talk INTEGER");
       this.sql.exec("CREATE INDEX IF NOT EXISTS messages_nonce ON messages (author, nonce) WHERE nonce IS NOT NULL");
       this.searchable();
       this.sql.exec(`CREATE TABLE IF NOT EXISTS reads (
@@ -310,6 +313,8 @@ export class Chat extends DurableObject<Env> {
         return this.makeChannel(socket, me, message.name, now);
       case "chat_dm":
         return this.openDm(socket, me, message.userId, now);
+      case "chat_talk":
+        return this.askedToTalk(me, message.userId, now);
       case "chat_edit":
         return this.edit(me, message.seq, message.body, message.channel, message.mentions, now);
       case "chat_delete":
@@ -572,6 +577,30 @@ export class Chat extends DurableObject<Env> {
   }
 
   /**
+   * Someone asked someone else to talk, from the floor: a card in their direct
+   * messages (ChatMessage.talk), so it's there afterwards, missed or not, to
+   * talk back from. In the lobby it's passed along like any direct message
+   * there, to their open tabs, never stored. Not pushed anywhere: the ask
+   * itself reached them on the floor.
+   */
+  private askedToTalk(me: Attachment, userId: unknown, now: number): void {
+    if (typeof userId !== "string" || !userId || userId === me.userId) return;
+    const channel = dmChannelId(me.userId, userId);
+    if (!this.mayPost(me.userId, channel)) return;
+    if (this.lobby) {
+      const here = this.ctx.getWebSockets().some((one) => this.attachmentOf(one)?.userId === userId);
+      if (!here) return;
+      const message: ChatMessage = { seq: -(now * 1000 + (this.passing++ % 1000)), channel, author: me.userId, authorName: me.name, body: "", at: now, passing: true, talk: true };
+      return this.deliver(channel, { t: "chat_new", message });
+    }
+    this.ensureChannel(channel, me.userId, now);
+    this.sql.exec("INSERT INTO messages (channel, author, author_name, body, at, talk) VALUES (?, ?, ?, '', ?, 1)", channel, me.userId, me.name, now);
+    const seq = Number(this.sql.exec<{ seq: number }>("SELECT last_insert_rowid() AS seq").one().seq);
+    this.markRead(me.userId, channel, seq);
+    this.deliver(channel, { t: "chat_new", message: { seq, channel, author: me.userId, authorName: me.name, body: "", at: now, talk: true } });
+  }
+
+  /**
    * A direct message, or a mention, reaches the devices of whoever it's for
    * that don't have the office open, as a push (push.ts); a tab that's open
    * says it itself (the app's DesktopAlerts). Never in the lobby.
@@ -669,7 +698,7 @@ export class Chat extends DurableObject<Env> {
 
   private ownMessage(me: Attachment, seq: number): { channel: string } | null {
     const row = this.sql
-      .exec<{ channel: string; author: string }>("SELECT channel, author FROM messages WHERE seq = ? AND meeting IS NULL", seq)
+      .exec<{ channel: string; author: string }>("SELECT channel, author FROM messages WHERE seq = ? AND meeting IS NULL AND talk IS NULL", seq)
       .toArray()[0];
     if (!row || row.author !== me.userId || !this.mayPost(me.userId, String(row.channel))) return null;
     return { channel: String(row.channel) };
@@ -1200,6 +1229,7 @@ function toMessage(row: MessageRow, reactions?: Record<string, string[]>): ChatM
     ...(row.edited_at ? { edited: Number(row.edited_at) } : {}),
     ...(typeof row.meeting === "string" ? { meeting: JSON.parse(row.meeting) as ChatMeeting } : {}),
     ...(typeof row.nonce === "string" ? { nonce: row.nonce } : {}),
+    ...(row.talk ? { talk: true as const } : {}),
   };
 }
 

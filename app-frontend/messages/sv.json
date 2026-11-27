@@ -269,7 +269,11 @@
     "meetingUnderMinute": "Mindre än en minut",
     "voiceSendHint": "skicka",
     "voiceDeleteHint": "radera",
-    "meetingStartedAt": "Startade {time}"
+    "meetingStartedAt": "Startade {time}",
+    "talkWants": "{name} vill prata",
+    "talkWanted": "{name} ville prata",
+    "talkAsked": "Du bad om att prata",
+    "talkTalking": "Pratar nu"
   },
   "proximity": {
     "talk": "Prata",

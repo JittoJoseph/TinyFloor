@@ -6,6 +6,7 @@ import { AlertCircle, ArrowDown, Check, Copy, Download, FileText, ImagePlus, Pen
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { isPicture, isVoice, type ChatFile, type ChatMeeting } from "shared-protocol/chat";
 import { MeetingCard } from "./MeetingCard";
+import { TalkCard } from "./TalkCard";
 import { VoiceMessage } from "./VoiceMessage";
 import { fileUrl, sizeOf } from "@/lib/chatFiles";
 import { mentionSpans } from "@/lib/mentions";
@@ -38,6 +39,8 @@ export interface Line {
   reply?: { id: string; author?: string; authorName?: string; body?: string; files?: number; gone?: boolean; held?: boolean };
   /** The main meeting's card, drawn in place of a message. */
   meeting?: ChatMeeting;
+  /** Its author asked to talk, from the floor: a card in place of a message. */
+  talk?: boolean;
 }
 
 const QUICK = ["👍", "❤️", "😂", "🎉", "👀", "✅"];
@@ -242,6 +245,16 @@ export function Conversation({
                 <DayLabel at={day.at} />
                 {day.lines.map((line, index) => {
                   const previous = day.lines[index - 1];
+                  if (line.talk) {
+                    return (
+                      <Fragment key={line.key ?? line.id}>
+                        {line.id === firstUnread && <NewLine label={t("new")} />}
+                        <Arrive fresh={settledAt !== null && line.at > settledAt}>
+                          <TalkCard author={line.author} authorName={line.authorName} at={line.at} me={me} />
+                        </Arrive>
+                      </Fragment>
+                    );
+                  }
                   if (line.meeting) {
                     return (
                       <Fragment key={line.id}>
@@ -252,7 +265,7 @@ export function Conversation({
                     );
                   }
                   // A reply always shows whose it is, under the message it answers.
-                  const grouped = !!previous && !previous.meeting && !line.reply && previous.author === line.author && line.at - previous.at < RUN_MS;
+                  const grouped = !!previous && !previous.meeting && !previous.talk && !line.reply && previous.author === line.author && line.at - previous.at < RUN_MS;
                   const fresh = settledAt !== null && line.at > settledAt;
                   // On its way, there is nothing to do to it yet: no reactions, edits or replies.
                   const settled = !line.sending;

@@ -153,6 +153,12 @@ export interface ChatMessage {
   reply?: ChatReply;
   /** The office's main meeting, shown in #general as a card rather than words. */
   meeting?: ChatMeeting;
+  /**
+   * Its author asked the other person to talk, from the floor: shown in their
+   * direct messages as a card rather than words, so it's still there after the
+   * ask has rung out, to talk back from.
+   */
+  talk?: true;
 }
 
 /**
@@ -184,6 +190,8 @@ export type ChatClientMessage =
   | { t: "chat_react"; seq: number; emoji: string; on: boolean }
   | { t: "chat_channel"; name: string }
   | { t: "chat_dm"; userId: string }
+  /** You've just asked someone to talk, from the floor: its card goes in your direct messages with them (ChatMessage.talk). */
+  | { t: "chat_talk"; userId: string }
   /** The lobby only: change or take back something you said. */
   // `channel` is only needed for a lobby direct message, which isn't stored anywhere to look it up.
   | { t: "chat_edit"; seq: number; body: string; channel?: string; mentions?: string[] }

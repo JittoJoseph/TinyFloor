@@ -9,6 +9,7 @@ import { callManager } from "@/lib/CallManager";
 import { useMeetings } from "@/lib/meetings";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
 import { usePlace } from "../place";
+import { useRouter } from "@/lib/i18n/navigation";
 
 /**
  * The main meeting in #general: a card of its own, set in from the edge
@@ -16,13 +17,15 @@ import { usePlace } from "../place";
  * news in the channel rather than something someone posted. The meeting's
  * mark, its name and when it started (and how long it has run, or ran), and
  * under a hairline who is or was in it. While it's going, Join, the one
- * thing in colour. Whether it's still going is the floor's word
+ * thing in colour, which takes you to the meeting as well as into it (as the
+ * floor's invitation does). Whether it's still going is the floor's word
  * (useMeetings), so a card can't keep offering a meeting that has ended.
  */
 export function MeetingCard({ meeting, latest }: { meeting: ChatMeeting; latest: boolean }) {
   const t = useTranslations("chat");
   const format = useFormatter();
   const place = usePlace();
+  const router = useRouter();
   const nameOf = useMeetingName();
   const { meetings } = useMeetings();
   const mine = useMyMeeting();
@@ -46,9 +49,9 @@ export function MeetingCard({ meeting, latest }: { meeting: ChatMeeting; latest:
 
   return (
     <div className="px-5 pb-2 pt-4 sm:px-6">
-      <div className="ms-12 w-[25rem] max-w-[calc(100%-3rem)] rounded-2xl border border-border bg-card">
+      <div className="ms-12 w-[25rem] max-w-[calc(100%-3rem)] rounded-[22px] border border-border bg-card [corner-shape:squircle]">
         <div className="flex items-center gap-3 p-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-[15px] bg-muted text-foreground [corner-shape:squircle]">
             <Video className="size-[18px]" />
           </span>
           <div className="min-w-0 flex-1">
@@ -80,9 +83,13 @@ export function MeetingCard({ meeting, latest }: { meeting: ChatMeeting; latest:
             ) : (
               <button
                 type="button"
-                onClick={() => callManager.joinMeeting(MAIN_MEETING)}
-                className="h-8 shrink-0 cursor-pointer rounded-full bg-ok px-4 text-[12.5px] font-semibold text-white transition-[filter,transform] hover:brightness-110 active:scale-[0.97]"
+                onClick={() => {
+                  if (place.paths.meetings) router.push(place.paths.meetings);
+                  callManager.joinMeeting(MAIN_MEETING);
+                }}
+                className="inline-flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-[13px] bg-ok px-3.5 text-[12.5px] font-semibold text-white outline-none transition-[background-color,transform] [corner-shape:squircle] hover:bg-ok/90 focus-visible:ring-2 focus-visible:ring-ok/50 active:scale-[0.97] dark:text-[rgb(4_32_16)]"
               >
+                <Video className="size-3.5" strokeWidth={2.25} />
                 {t("meetingJoin")}
               </button>
             ))}

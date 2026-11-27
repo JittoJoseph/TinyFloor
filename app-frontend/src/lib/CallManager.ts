@@ -24,6 +24,7 @@ import { playSound, loopSound, stopSound } from "./sounds";
 import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
 import { track } from "web-shared/lib/analytics";
 import { did } from "./settle";
+import { chat } from "./ChatSocket";
 import { pip } from "./pip";
 
 // Error codes, not copy: the call overlay turns them into translated text.
@@ -488,6 +489,8 @@ class CallManager {
     loopSound("ring");
 
     this.send("invite", id);
+    // And in your direct messages with them, where it stays once this has rung out.
+    chat.askedToTalk(id);
     // The connection while it rings; your microphone opens now too (you're the one calling), but
     // goes on the connection only when they answer.
     this.ringPeer = this.buildPeer(id, name, true);

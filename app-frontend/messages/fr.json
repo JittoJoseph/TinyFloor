@@ -269,7 +269,11 @@
     "meetingUnderMinute": "Moins d'une minute",
     "voiceSendHint": "envoyer",
     "voiceDeleteHint": "supprimer",
-    "meetingStartedAt": "Commencé à {time}"
+    "meetingStartedAt": "Commencé à {time}",
+    "talkWants": "{name} veut parler",
+    "talkWanted": "{name} voulait parler",
+    "talkAsked": "Vous avez demandé à parler",
+    "talkTalking": "En conversation"
   },
   "proximity": {
     "talk": "Parler",

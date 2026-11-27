@@ -269,7 +269,11 @@
     "meetingUnderMinute": "Minder dan een minuut",
     "voiceSendHint": "verzenden",
     "voiceDeleteHint": "verwijderen",
-    "meetingStartedAt": "Gestart om {time}"
+    "meetingStartedAt": "Gestart om {time}",
+    "talkWants": "{name} wil praten",
+    "talkWanted": "{name} wilde praten",
+    "talkAsked": "Je vroeg om te praten",
+    "talkTalking": "In gesprek"
   },
   "proximity": {
     "talk": "Praten",

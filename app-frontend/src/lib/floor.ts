@@ -45,8 +45,14 @@ let steps: Record<string, number> = {};
 export function floorRequested() {
   requestedAt = performance.now();
   steps = {};
+  arrivedAt = null;
   performance.mark("floor:requested");
 }
+
+/** When the floor last arrived (Date.now()), or null while it's still coming: for what mounts after it has. */
+let arrivedAt: number | null = null;
+if (typeof window !== "undefined") window.addEventListener(FLOOR_ARRIVED_EVENT, () => (arrivedAt = Date.now()));
+export const floorArrivedAt = () => arrivedAt;
 export const sinceFloorRequested = () => Math.round(performance.now() - requestedAt);
 
 /**

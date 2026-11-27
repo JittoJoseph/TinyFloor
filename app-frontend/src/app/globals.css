@@ -267,11 +267,6 @@
   cursor: default;
 }
 
-.desk-claim-go[data-done] .desk-claim-dot {
-  background: #22a35a;
-  color: #fff;
-}
-
 .desk-claim-go[data-done] .desk-claim-plus {
   opacity: 0;
   transform: scale(0.5);
@@ -626,16 +621,18 @@ button.cal-event:hover {
   );
 }
 
-/*
- * What settling in points at (SettleIn): a quiet ring around the very thing
- * to try, the same shape as it, no pulse. An outline, never a transform: the
- * floor's chips are placed by their transform.
- */
-.settle-target {
-  /* Two rings, so it shows on anything (a light floor, dark grass, the dock): the page's own colour, then ink. */
-  outline: 2px solid var(--ui-foreground);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px var(--ui-background) !important;
-  transition: outline-offset 0.2s ease-out;
+/* Settling in's coach card (SettleIn): two small nudges toward what it points at, then a rest. */
+@keyframes settle-nudge {
+  0%,
+  30%,
+  100% {
+    transform: translate(0, 0);
+  }
+  7%,
+  21% {
+    transform: translate(var(--nudge-x), var(--nudge-y));
+  }
+  14% {
+    transform: translate(0, 0);
+  }
 }
-

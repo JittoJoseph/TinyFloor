@@ -105,8 +105,12 @@ export const setGoHome = (walk: (() => void) | null) => {
   goHome = walk;
 };
 
-/** Walks you to your desk and sits you down, from anywhere on the floor. */
-export const goToMyDesk = () => goHome?.();
+/** Walks you to your desk and sits you down, from anywhere on the floor. Going somewhere you asked to go is walking (settling in). */
+export const goToMyDesk = () => {
+  if (!goHome) return;
+  did("move");
+  goHome();
+};
 
 let findDesk: (() => boolean) | null = null;
 
@@ -119,4 +123,8 @@ export const setFindDesk = (walk: (() => boolean) | null) => {
  * Walks you to the nearest free desk and sits you down there, where its chip
  * offers it to you: claiming stays yours to press. False when none is free.
  */
-export const findAFreeDesk = (): boolean => findDesk?.() ?? false;
+export const findAFreeDesk = (): boolean => {
+  const found = findDesk?.() ?? false;
+  if (found) did("move");
+  return found;
+};

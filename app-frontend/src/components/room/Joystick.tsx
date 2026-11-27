@@ -19,11 +19,19 @@ const HYSTERESIS = 0.14;
 const SETTLE = "cubic-bezier(0.16, 1, 0.3, 1)";
 /** How big the stick is while it waits, of its size in use. */
 const RESTING_SCALE = 0.7;
+/**
+ * Away from the waiting stick, the corner is still the floor's: a press there
+ * is a tap (walk there, a chair, a chip) until it moves this far (CSS px) or is
+ * held this long, and then it's the stick, from where it landed.
+ */
+const SLIDE = 10;
+const HOLD_MS = 220;
 
 /**
  * The on-screen joystick for phones and tablets. It waits at the bottom left,
- * and wherever a thumb lands in that corner of the floor it moves there, so
- * nobody has to find a small circle. The floor walks in eight headings (that
+ * and wherever a thumb slides or holds in that corner of the floor it moves
+ * there, so nobody has to find a small circle; a quick tap there is still the
+ * floor's (walking there), passed through to whatever is under it. The floor walks in eight headings (that
  * is what the others' copy of you predicts), so the stick snaps to eight, holds
  * a heading until the thumb is clearly past it, and lights the one it chose.
  */
@@ -37,6 +45,8 @@ export function Joystick() {
   const pointer = useRef<number | null>(null);
   const origin = useRef(REST);
   const current = useRef<number | null>(null);
+  /** A press away from the stick, not yet a tap or a steer: where and when it landed, and the timer that makes it a hold. */
+  const pending = useRef<{ x: number; y: number; clientX: number; clientY: number; timer: number } | null>(null);
 
   useEffect(() => {
     const onMode = () => setTouch(isTouchInput());
@@ -85,10 +95,45 @@ export function Joystick() {
     else setJoystick(Math.round(Math.cos(next * EIGHTH) * 1000) / 1000, Math.round(-Math.sin(next * EIGHTH) * 1000) / 1000);
   };
 
+  /** Takes the press: the ring comes to where it landed (kept whole inside the zone) and follows the thumb. */
+  const grab = (at: { x: number; y: number }) => {
+    const box = zone.current!.getBoundingClientRect();
+    origin.current = {
+      x: Math.min(Math.max(at.x, BASE + 4), box.width - BASE - 4),
+      y: Math.min(Math.max(at.y, BASE + 4), box.height - BASE - 4),
+    };
+    setActive(true);
+    navigator.vibrate?.(8);
+  };
+
+  /** A tap that was the floor's: handed to whatever is under the zone there, the floor itself or a chip on it. */
+  const tapThrough = (clientX: number, clientY: number) => {
+    const element = zone.current;
+    if (!element) return;
+    element.style.pointerEvents = "none";
+    const under = document.elementFromPoint(clientX, clientY);
+    element.style.pointerEvents = "";
+    if (under instanceof HTMLCanvasElement) {
+      // The floor reads a mouse's press and release (a finger's are the stick's here): a click where the tap was.
+      for (const type of ["mousedown", "mouseup"] as const) {
+        under.dispatchEvent(new MouseEvent(type, { clientX, clientY, button: 0, buttons: type === "mousedown" ? 1 : 0, bubbles: true, cancelable: true, view: window }));
+      }
+    } else if (under instanceof HTMLElement) {
+      under.click();
+    }
+  };
+
   const release = (event: React.PointerEvent) => {
     if (event.pointerId !== pointer.current) return;
     releasePointer(event.currentTarget, event.pointerId);
     pointer.current = null;
+    const press = pending.current;
+    if (press) {
+      window.clearTimeout(press.timer);
+      pending.current = null;
+      if (event.type === "pointerup") tapThrough(press.clientX, press.clientY);
+      return;
+    }
     current.current = null;
     origin.current = REST;
     setJoystick(0, 0);
@@ -107,18 +152,33 @@ export function Joystick() {
         if (pointer.current !== null) return;
         pointer.current = event.pointerId;
         capturePointer(event.currentTarget, event.pointerId);
-        const box = zone.current!.getBoundingClientRect();
         const at = point(event);
-        // Keep the whole ring inside the zone, however close to its edge the thumb lands.
-        origin.current = {
-          x: Math.min(Math.max(at.x, BASE + 4), box.width - BASE - 4),
-          y: Math.min(Math.max(at.y, BASE + 4), box.height - BASE - 4),
-        };
-        setActive(true);
-        navigator.vibrate?.(8);
+        // On the waiting stick: the stick, at once.
+        if (Math.hypot(at.x - REST.x, at.y - REST.y) <= BASE * RESTING_SCALE + 8) {
+          grab(at);
+          steer(event);
+          return;
+        }
+        // Anywhere else in the corner: a tap, unless it slides or holds.
+        const timer = window.setTimeout(() => {
+          if (!pending.current) return;
+          pending.current = null;
+          grab(at);
+        }, HOLD_MS);
+        pending.current = { ...at, clientX: event.clientX, clientY: event.clientY, timer };
+      }}
+      onPointerMove={(event) => {
+        if (event.pointerId !== pointer.current) return;
+        const press = pending.current;
+        if (press) {
+          const at = point(event);
+          if (Math.hypot(at.x - press.x, at.y - press.y) < SLIDE) return;
+          window.clearTimeout(press.timer);
+          pending.current = null;
+          grab(press);
+        }
         steer(event);
       }}
-      onPointerMove={(event) => event.pointerId === pointer.current && steer(event)}
       onPointerUp={release}
       onPointerCancel={release}
     >

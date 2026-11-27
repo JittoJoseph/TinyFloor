@@ -6,11 +6,10 @@ import { useTranslations } from "next-intl";
 import { Dice, Redo, Undo } from "web-shared/components/ui/icons";
 import { FLOOR, type DeskSpot } from "shared-protocol/map";
 import { fitsIn, officePieces, spotKey, spotsOn } from "shared-protocol/office";
-import atlas from "shared-protocol/catalog/atlas.json";
-import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { usePieceChanges } from "@/lib/pieces";
 import { closeDecorate, pickPart, redo, resetDesk, setPart, stopTryingPart, surpriseDesk, tryPart, undo, useDecorate } from "@/lib/decorate";
 import { EASE_OUT } from "@/lib/ease";
+import { artOf, PieceThumb as Thumb } from "./PieceThumb";
 import { cn } from "web-shared/lib/utils";
 
 /** What a spot can hold, in groups, in this order. */
@@ -29,8 +28,6 @@ const woodOf = (item: string) => (item.match(/^desks-single-([a-z]+)-/)?.[1] ?? 
 /** A desk's three spots, by where they are on it. */
 const SPOT_NAMES = ["left", "middle", "right"] as const;
 
-const frames = atlas.frames as unknown as Record<string, [number, number, number, number]>;
-
 /** Which group a thing is in: its shelf, and the floor's own desk setups in theirs. */
 const shelfOf = (item: string) => (FLOOR.things[item]?.shelf as Shelf | undefined) ?? "setups";
 
@@ -39,39 +36,6 @@ const nameOf = (item: string) => {
   const words = item.replace(/^ours-/, "").replace(/-/g, " ");
   return words.charAt(0).toUpperCase() + words.slice(1);
 };
-
-/** A thing's own pixels: where they are in its frame, and how big. */
-function artOf(item: string) {
-  const frame = frames[item];
-  const [left, top, right, bottom] = FLOOR.things[item]?.art ?? [0, 0, frame?.[2] ?? 0, frame?.[3] ?? 0];
-  return { left, top, width: right - left, height: bottom - top };
-}
-
-/**
- * A thing as the floor draws it, from the atlas, cropped to its pixels, at the
- * largest whole scale (so the pixels stay square and crisp) that fits the box.
- */
-function Thumb({ item, box }: { item: string; box: [number, number] }) {
-  const frame = frames[item];
-  if (!frame) return null;
-  const [x, y] = frame;
-  const { left, top, width, height } = artOf(item);
-  const scale = Math.max(1, Math.min(3, Math.floor(Math.min(box[0] / width, box[1] / height))));
-  return (
-    <span
-      aria-hidden="true"
-      className="block shrink-0"
-      style={{
-        width: width * scale,
-        height: height * scale,
-        backgroundImage: `url(${FLOOR_FILES.items})`,
-        backgroundPosition: `-${(x + left) * scale}px -${(y + top) * scale}px`,
-        backgroundSize: `${atlas.width * scale}px ${atlas.height * scale}px`,
-        imageRendering: "pixelated",
-      }}
-    />
-  );
-}
 
 /**
  * Decorating your desk (lib/decorate.ts), in a card at the floor's right (over

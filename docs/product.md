@@ -542,19 +542,28 @@ few things that make an office feel like yours are pointed at, one at a
 time, where they're done: no tour, no modal, nothing to read first.
 
 - **In order**: walk, your look, a desk of your own, making it yours, saying
-  hi (whenever someone's beside you, ahead of the rest while it lasts), your
-  team (an office of two or fewer), then your calendar, only offered.
-- **One small pointer**: a few words in a dark bubble beside the very
-  button or chip, an arrow to it and a quiet two-tone ring on it (no pulse).
-  It follows you in: the dock's key, then the row inside the open dock, then
-  the Claim chip on the desk. Ignored for 14 seconds it stops talking and
-  rests as a dot on the thing; pressed, the dot talks again. Its × leaves
-  that step alone for good.
+  hi (whenever someone's beside you, ahead of the rest while it lasts, and so
+  is the Claim chip of a free desk you're sitting at), your team (an office
+  of two or fewer), then your calendar, only offered. Being walked somewhere
+  you asked for (the dock's desk key) counts as walking.
+- **One small card**: a coach mark in the dock's own style, joined to the
+  very button or chip by a caret drawn in 4px steps (the floor's pixels, the
+  one bit of the floor in the chrome), with a picture from the product (your
+  own character for walking, your look and saying hi; a thing off a desk for
+  the desk steps), a few words and a ×. It nudges toward the thing twice
+  now and then; no ring, no pulse. It follows you in: the dock's key, then
+  the row inside the open dock, then the Claim chip on the desk. Walking
+  points at the floor itself: a clear tile a few steps away (never under a
+  chair) gets the corner marks a click would (lib/WalkSpot), and the card
+  reaches away from you. Ignored for 14 seconds it folds into the app's own
+  small "something new" dot on the thing; the dot, or hovering the thing,
+  opens it again. The × leaves that step alone for good.
 - **Done however it's done**, from the pointer or not, and found counts:
   opening the character creator or the desk's panel, or the Calendar page,
-  is enough. Having a desk or a decorated desk counts by itself. Done while
-  pointed at, a green check rides on the thing for a moment, then a beat
-  before the next.
+  is enough. Having a desk or a decorated desk counts by itself. Walking
+  counts only when you walk (a click or keys), not the walk in on arrival.
+  Done while pointed at, a few square pixels in the office's colours pop off
+  the thing and your character bobs, then a beat before the next.
 - **Never in the way**: nothing shows while you're busy (a dialog, the
   character creator, the desk being decorated, the whiteboard, a call); the
   demo office's "make your own office" prompt now waits the same way
@@ -572,6 +581,12 @@ time, where they're done: no tour, no modal, nothing to read first.
   destructive) and for the floor itself, which brings plenty. The orange
   that was the accent everywhere read as generic; it stays only as `signal`:
   the logo's square and the plan bar's warning, where it means "look here".
+- **The joystick's corner is still the floor** (27 November). On a phone
+  the stick takes a thumb anywhere in the bottom-left corner, which used to
+  swallow taps there, so you couldn't walk to that part of the floor. Now a
+  press away from the waiting stick is a tap (passed through to the floor or
+  the chip under it) unless it slides 10px or is held 220ms; then it's the
+  stick, from where it landed. A press on the stick itself is the stick at once.
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,
   desks, walking over), "workspace" is Slack's and Notion's abstract word,
   and "virtual office" is what people search for.

@@ -107,3 +107,19 @@ export function useSettle(): number {
     () => 0,
   );
 }
+
+/** The floor's spot to walk to (WalkSpot), while there's a floor: shown while walking is the next thing to try. */
+export interface FloorSpot {
+  show(on: boolean): void;
+  where(): { x: number; y: number; size: number; youLeft: boolean } | null;
+}
+let floorSpot: FloorSpot | null = null;
+export const setFloorSpot = (spot: FloorSpot | null) => {
+  floorSpot = spot;
+};
+export const getFloorSpot = () => floorSpot;
+
+/** Something was just done while it was pointed at: the floor answers (your character bobs, GameScene). */
+export const SETTLE_CHEER_EVENT = "settleCheer";
+export const cheer = () => window.dispatchEvent(new Event(SETTLE_CHEER_EVENT));
+

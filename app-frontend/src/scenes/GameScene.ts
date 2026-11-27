@@ -32,7 +32,8 @@ import { ChristmasPresents } from "../lib/ChristmasPresents";
 import { Snowfall } from "../lib/Snowfall";
 import { isChristmas } from "../lib/christmas";
 import { onPrefsChange, prefs } from "../lib/prefs";
-import { did } from "../lib/settle";
+import { did, SETTLE_CHEER_EVENT, setFloorSpot } from "../lib/settle";
+import { WalkSpot } from "../lib/WalkSpot";
 
 const CAMERA_LERP = 0.08;
 /** How close the camera sits wherever there is room for it. */
@@ -106,14 +107,13 @@ class GameScene extends Phaser.Scene {
   private unsubscribeSnow?: () => void;
   /** Where you can walk, shown for working on the floor (lib/WalkOverlay). */
   private walkOverlay?: WalkOverlay;
+  private walkSpot?: WalkSpot;
   /** The meeting room, and whether we stand in it. */
   private meetingZone?: MapAnchor;
   private insideRoom = false;
   /** The meeting we are in, and whether we have reached the room since joining it. */
   private trackedMeeting: string | null = null;
   private reachedRoom = false;
-  /** You've walked since the floor opened. */
-  private walked = false;
 
   constructor(
     private name: string,
@@ -255,6 +255,18 @@ class GameScene extends Phaser.Scene {
       if (id !== this.playerId && !away) this.walkOver(id);
     });
     this.walkOverlay = new WalkOverlay(this, () => this.mapManager.getNavGrid(), () => this.mapManager.getSolids(), this.player);
+    // A spot to walk to, while walking is the next thing to try (lib/settle); and a bob when something is done.
+    this.walkSpot = new WalkSpot(
+      this,
+      () => this.mapManager.getNavGrid(),
+      () => (this.player ? { x: this.player.x, y: this.player.y } : null),
+      // A tile a chair stands on, or reaches over, would hide the spot's mark.
+      (x, y) => this.mapManager.getChairs().some(({ box: [bx, by, bw, bh] }) => x > bx - 12 && x < bx + bw + 12 && y > by - 12 && y < by + bh + 12),
+    );
+    setFloorSpot(this.walkSpot);
+    this.listen(SETTLE_CHEER_EVENT, () => this.playerManager.react(this.playerId, "bob"));
+    // Walking you did yourself (a click, the keys), not the floor walking you to your desk on arriving: walking needs no more showing.
+    this.listen("playerMoved", () => did("move"));
     if (isChristmas()) {
       this.presents = new ChristmasPresents(this, this.mapManager, this.player, approach);
       this.presents.create();
@@ -467,11 +479,6 @@ class GameScene extends Phaser.Scene {
     if (!this.player) return;
 
     this.movementManager.update(delta);
-    // The first steps you take: walking needs no more showing (lib/settle).
-    if (!this.walked && this.movementManager.isMoving()) {
-      this.walked = true;
-      did("move");
-    }
     this.cameraRig?.update(delta);
     this.walkOverlay?.update();
     this.seatManager?.update();
@@ -510,6 +517,8 @@ class GameScene extends Phaser.Scene {
     this.input.off(Phaser.Input.Events.POINTER_WHEEL);
     this.cameraRig?.destroy();
     this.walkOverlay?.destroy();
+    setFloorSpot(null);
+    this.walkSpot?.destroy();
     this.presents?.destroy();
     this.snow?.destroy();
     this.unsubscribeSnow?.();

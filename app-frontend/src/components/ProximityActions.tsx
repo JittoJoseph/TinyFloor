@@ -41,13 +41,14 @@ const STATUSES = new Set(["available", "busy", "away", "in_call"]);
 
 /**
  * What you can do with someone you've stopped beside, grown out of their name
- * tag in its place (ProximityOverlay): their name and status dot as the tag
- * had them, then a wave and a poke, shown as the very hand and finger they'll
- * see over the floor, a message, and talking. Talking starts with voice, like
- * stopping by a desk; the camera is in the dock once you're talking. Already
- * talking to someone, a third person is offered a meeting instead. Someone on
- * a call with others can only be messaged. Touch gets the bigger sizes, since
- * a fingertip needs more room than a cursor.
+ * tag in its place (ProximityOverlay), a squircle like the talk cards: their
+ * name, and under it how they are when it's worth saying (their note, or
+ * that they're busy, away or on a call); then a wave and a poke, shown as the very hand and finger they'll see
+ * over the floor, a message, and talking, in the colour of talking. Talking
+ * starts with voice, like stopping by a desk; the camera is in the dock once
+ * you're talking. Already talking to someone, a third person is offered a
+ * meeting instead. Someone on a call with others can only be messaged. Touch
+ * gets the bigger sizes, since a fingertip needs more room than a cursor.
  */
 export const ProximityActions = memo(function ProximityActions({
   player,
@@ -71,39 +72,66 @@ export const ProximityActions = memo(function ProximityActions({
   const status = STATUSES.has(player.status) ? tStatus(`${player.status as "available"}.label`) : null;
   // What they're listening to, if they share it: a mark by their name, the rest a press away.
   const spotify = usePerson(player.guest ? null : player.id)?.spotify ?? null;
-  const button = touch ? "size-10" : "size-8";
+  const button = touch ? "size-10 rounded-[15px]" : "size-9 rounded-[14px]";
   const glyph = touch ? "text-[18px]" : "text-[15px]";
+  const go = cn(PILL, "ms-1 bg-ok text-white hover:bg-ok/90 focus-visible:ring-ok/50 dark:text-[rgb(4_32_16)]", touch ? "h-10 rounded-[15px] px-4 text-[14px]" : "h-9 rounded-[14px] px-3.5 text-[13px]");
 
   return (
-    <div className={cn(surface, "flex items-center rounded-full", touch ? "h-12 gap-0.5 pe-1 ps-4" : "h-10 gap-0.5 pe-1 ps-3.5")}>
-      <Tooltip content={player.note ? <NoteText note={player.note} /> : status} side="top" delay={250}>
-        <span className="flex min-w-0 items-center gap-2 pe-1">
-          <span className="size-2 shrink-0 rounded-full" style={{ background: statusColor(player.status) }} />
-          <span className={cn("max-w-[9rem] truncate font-semibold text-foreground", touch ? "text-[15px]" : "text-[13px]")}>{player.name}</span>
-          {player.note && <NoteGlyph icon={player.note.icon} className="size-[13px] shrink-0 text-muted-foreground" />}
-        </span>
-      </Tooltip>
-
-      {spotify && (
-        <Menu
-          side="top"
-          align="start"
-          width={264}
-          trigger={
-            <button type="button" aria-label={tSpotify(spotify.kind === "jam" ? "inJam" : "listening")} className={cn(BUTTON, "size-7")}>
-              <SpotifyMark className="size-[14px] text-[#1ed760]" />
-            </button>
-          }
-        >
-          <SpotifyActivity share={spotify} name={player.name} className="bg-transparent p-1.5" />
-        </Menu>
+    <div
+      className={cn(
+        surface,
+        "flex items-center rounded-[22px] [corner-shape:squircle]",
+        touch ? "h-14 gap-0.5 pe-2 ps-4" : "h-12 gap-0.5 pe-1.5 ps-4",
       )}
+    >
+      {/* Their name; under it, only what's worth saying: their note, or that they're busy, away or on a call. Available goes without saying. */}
+      {(() => {
+        const how = player.note ? (
+          <>
+            <NoteGlyph icon={player.note.icon} className="size-3 shrink-0" />
+            <span className="truncate">{player.note.text}</span>
+          </>
+        ) : player.status !== "available" && status ? (
+          <>
+            <span className="size-[7px] shrink-0 rounded-full" style={{ background: statusColor(player.status) }} />
+            <span className="truncate">{status}</span>
+          </>
+        ) : null;
+        const who = (
+          <span className="flex min-w-0 flex-col justify-center pe-2 leading-tight">
+            <span className="flex min-w-0 items-center gap-1.5">
+              <span className={cn("max-w-[10rem] truncate font-semibold text-foreground", touch ? "text-[15px]" : "text-[13.5px]")}>{player.name}</span>
+              {spotify && (
+                <Menu
+                  side="top"
+                  align="start"
+                  width={264}
+                  trigger={
+                    <button type="button" aria-label={tSpotify(spotify.kind === "jam" ? "inJam" : "listening")} className={cn(BUTTON, "size-5 rounded-full")}>
+                      <SpotifyMark className="size-[13px] text-[#1ed760]" />
+                    </button>
+                  }
+                >
+                  <SpotifyActivity share={spotify} name={player.name} className="bg-transparent p-1.5" />
+                </Menu>
+              )}
+            </span>
+            {how && <span className={cn("mt-0.5 flex min-w-0 max-w-[11rem] items-center gap-1.5 text-muted-foreground", touch ? "text-[12.5px]" : "text-[11.5px]")}>{how}</span>}
+          </span>
+        );
+        // A long note is cut short here: pointed at, it's there in full.
+        return player.note ? (
+          <Tooltip content={<NoteText note={player.note} />} side="top" delay={250}>
+            {who}
+          </Tooltip>
+        ) : (
+          who
+        );
+      })()}
 
-      <span aria-hidden="true" className="mx-1.5 h-4 w-px shrink-0 bg-border" />
+      <span aria-hidden="true" className="mx-1.5 h-6 w-px shrink-0 bg-border" />
 
-      {busy ? (
-        <span className={cn("px-1.5 text-muted-foreground", touch ? "text-[14px]" : "text-[12.5px]")}>{status}</span>
-      ) : (
+      {!busy && (
         <>
           <Gesture className={button} label={t("wave")} onSend={() => waveAt(player.id)} settle="wave">
             <span className={cn(EMOJI, glyph)}>👋</span>
@@ -123,7 +151,7 @@ export const ProximityActions = memo(function ProximityActions({
           }}
           className={cn(BUTTON, button)}
         >
-          <MessageSquare className={touch ? "size-[18px]" : "size-[15px]"} />
+          <MessageSquare className={touch ? "size-[18px]" : "size-[16px]"} />
         </button>
       </Tooltip>
 
@@ -135,17 +163,13 @@ export const ProximityActions = memo(function ProximityActions({
             callManager.startMeeting("", [player.id]);
           }}
           title={tMeetings("makeMeetingHint")}
-          className={cn(PILL, "ms-1 bg-ok text-white hover:bg-ok/90 focus-visible:ring-ok/50", touch ? "h-10 px-4 text-[14px]" : "h-8 px-3.5 text-[12.5px]")}
+          className={go}
         >
           <Users className={touch ? "size-4" : "size-3.5"} strokeWidth={2.25} />
           {tMeetings("makeMeeting")}
         </button>
       ) : (
-        <button
-          type="button"
-          onClick={() => callManager.invite(player.id, player.name)}
-          className={cn(PILL, "ms-1 bg-foreground text-background hover:bg-foreground/85 focus-visible:ring-ring/60", touch ? "h-10 px-4 text-[14px]" : "h-8 px-3.5 text-[12.5px]")}
-        >
+        <button type="button" onClick={() => callManager.invite(player.id, player.name)} className={go}>
           <AudioLines className={touch ? "size-4" : "size-3.5"} strokeWidth={2.25} />
           {t("talk")}
         </button>
@@ -165,9 +189,9 @@ export const ProximityActions = memo(function ProximityActions({
 
 const EMOJI = "font-[Apple_Color_Emoji,Segoe_UI_Emoji,Noto_Color_Emoji,sans-serif] leading-none";
 const BUTTON =
-  "inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full text-foreground outline-none transition-colors duration-150 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/60";
+  "inline-flex shrink-0 cursor-pointer items-center justify-center text-foreground outline-none transition-colors duration-150 hover:bg-foreground/[0.07] focus-visible:ring-2 focus-visible:ring-ring/60 [corner-shape:squircle]";
 const PILL =
-  "inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full font-semibold outline-none transition-[background-color,transform] duration-150 focus-visible:ring-2 active:scale-[0.97]";
+  "inline-flex shrink-0 cursor-pointer items-center gap-1.5 font-semibold outline-none transition-[background-color,transform] duration-150 focus-visible:ring-2 active:scale-[0.97] [corner-shape:squircle]";
 
 /** How long a wave or a poke takes to be ready again: a poke is a nudge, not a drum roll. */
 const GESTURE_REST_MS = 1500;

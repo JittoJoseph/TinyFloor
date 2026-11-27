@@ -18,6 +18,16 @@ const WORKLET = "/noise/gtcrnWorklet.js";
 const MODEL = "/noise/gtcrn.wasm";
 /** Longer than this for the audio to start running, and the microphone stays as it is. */
 const START_TIMEOUT_MS = 4000;
+/**
+ * The filter, checked on: every so often the sound going in and coming out are
+ * read. Sound going in (above a whisper of room noise) with exactly nothing
+ * coming out, this many times running, and the filter has failed: its model
+ * never loaded, or it threw, and a worklet that's gone wrong sends silence for
+ * good. A working filter turns noise down to very little, never to exact zero.
+ */
+const WATCH_EVERY_MS = 1000;
+const WATCH_STRIKES = 3;
+const HEARD = 0.003;
 
 export interface CleanVoice {
   /** The microphone with the noise taken out, to send in its place. */
@@ -59,9 +69,11 @@ export function canRemoveNoise(): boolean {
 /**
  * The microphone through the filter, as a new track; null when it can't run,
  * and then the microphone is sent as it is. The microphone's track keeps
- * running underneath and is stopped with it.
+ * running underneath and is stopped with it. `onFailed` is told if, once
+ * running, the filter goes silent on a voice (its model failed, or it threw):
+ * the caller puts the microphone back.
  */
-export async function removeNoise(microphone: MediaStreamTrack): Promise<CleanVoice | null> {
+export async function removeNoise(microphone: MediaStreamTrack, onFailed: () => void = () => {}): Promise<CleanVoice | null> {
   if (!canRemoveNoise()) return null;
   let context: AudioContext | null = null;
   try {
@@ -85,15 +97,44 @@ export async function removeNoise(microphone: MediaStreamTrack): Promise<CleanVo
 
     const track = output.stream.getAudioTracks()[0];
     const ctx = context;
+    let released = false;
+    // Watching it: what goes in, what comes out.
+    const heardIn = context.createAnalyser();
+    const heardOut = context.createAnalyser();
+    heardIn.fftSize = heardOut.fftSize = 2048;
+    mono.connect(heardIn);
+    filter.connect(heardOut);
+    const samplesIn = new Float32Array(heardIn.fftSize);
+    const samplesOut = new Float32Array(heardOut.fftSize);
+    let strikes = 0;
+    let failed = false;
+    const fail = () => {
+      if (failed || released) return;
+      failed = true;
+      onFailed();
+    };
+    filter.addEventListener("processorerror", fail);
+    const watch = window.setInterval(() => {
+      if (ctx.state !== "running") return;
+      heardIn.getFloatTimeDomainData(samplesIn);
+      heardOut.getFloatTimeDomainData(samplesOut);
+      let energy = 0;
+      for (const sample of samplesIn) energy += sample * sample;
+      const loud = Math.sqrt(energy / samplesIn.length) > HEARD;
+      const silent = samplesOut.every((sample) => sample === 0);
+      strikes = loud && silent ? strikes + 1 : 0;
+      if (strikes >= WATCH_STRIKES) fail();
+    }, WATCH_EVERY_MS);
     // A phone call or another app can suspend the audio: it resumes when it can.
     const wake = () => {
       if (ctx.state !== "running" && ctx.state !== "closed") void ctx.resume().catch(() => {});
     };
     ctx.addEventListener("statechange", wake);
-    let released = false;
     const release = () => {
       if (released) return;
       released = true;
+      window.clearInterval(watch);
+      filter.removeEventListener("processorerror", fail);
       ctx.removeEventListener("statechange", wake);
       filter.destroy();
       input.disconnect();

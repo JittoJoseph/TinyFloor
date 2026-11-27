@@ -305,6 +305,13 @@ export function Composer({
     const taking = new VoiceRecorder(
       (level, seconds) => setVoice((was) => (was && was.phase !== "sending" ? { phase: "recording", seconds, levels: [...was.levels.slice(-(BARS - 1)), level] } : was)),
       () => void sendVoiceRef.current(),
+      // The microphone went mid-recording: it's over, and said so, rather than a frozen recording.
+      () => {
+        if (recorder.current !== taking) return;
+        recorder.current = null;
+        setVoice(null);
+        voiceProblem("no_mic");
+      },
     );
     recorder.current = taking;
     try {

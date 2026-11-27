@@ -224,6 +224,11 @@ export class SfuMeeting {
     switch (message.op) {
       case "published":
       case "offer":
+        // A renegotiation of the SFU's own (a quality change) is answered by itself, never taken for a reply awaited.
+        if (message.op === "offer" && message.renegotiate) {
+          if (message.sdp) this.enqueue(() => this.answer(message.sdp));
+          break;
+        }
         if (this.waiter?.op === message.op) {
           const waiter = this.waiter;
           this.waiter = null;
@@ -442,16 +447,23 @@ export class SfuMeeting {
 
   private publish(slots: { transceiver: RTCRtpTransceiver; kind: MediaKind }[]) {
     this.enqueue(async () => {
-      await this.pc.setLocalDescription(await this.pc.createOffer());
-      const published = this.wait("published");
-      this.send({
-        op: "publish",
-        sdp: this.pc.localDescription!.sdp,
-        // Video layers named a, b, c (simulcastEncodings), so the room asks for them by those names.
-        tracks: slots.map(({ transceiver, kind }) => ({ mid: transceiver.mid!, kind, ...(kind === "mic" ? {} : { ranked: true }) })),
-      });
-      const answer = await published;
-      if (answer.op === "published") await this.pc.setRemoteDescription({ type: "answer", sdp: withOpusDtx(answer.sdp) });
+      try {
+        await this.pc.setLocalDescription(await this.pc.createOffer());
+        const published = this.wait("published");
+        this.send({
+          op: "publish",
+          sdp: this.pc.localDescription!.sdp,
+          // Video layers named a, b, c (simulcastEncodings), so the room asks for them by those names.
+          tracks: slots.map(({ transceiver, kind }) => ({ mid: transceiver.mid!, kind, ...(kind === "mic" ? {} : { ranked: true }) })),
+        });
+        const answer = await published;
+        if (answer.op === "published") await this.pc.setRemoteDescription({ type: "answer", sdp: withOpusDtx(answer.sdp) });
+      } catch (error) {
+        // The first publish failed (refused, or no answer): the connection was never set up and never will be by
+        // itself (it stays "new", which no state change reports). It's lost, and made again (CallManager.recoverMeeting).
+        if (!this.closed && !this.pc.remoteDescription) this.lost();
+        throw error;
+      }
     });
   }
 

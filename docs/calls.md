@@ -8,7 +8,11 @@ How they're built is in `lib/CallManager.ts`, `lib/SfuMeeting.ts` and
 
 - **Walking up to someone** is a one-to-one call through Cloudflare's TURN
   relay. The room passes the WebRTC handshake; the API hands out short-lived
-  TURN credentials.
+  TURN credentials (four hours). Each refresh, before they run out, goes to
+  every call open, which gathers again through them: the relay drops an
+  allocation soon after its credentials expire, and calls once kept the
+  first set for good. A ringing call carries nothing either way, even with
+  the microphone already open for a meeting's preview, until it's answered.
 - **Three or more is a meeting**, through Cloudflare's SFU: everyone sends
   once, the SFU forwards. The room opens SFU sessions server-side, so browsers
   never hold the app credentials. Walking up to a third person while on a call
@@ -111,6 +115,12 @@ that matter:
   loading while the call rings or a meeting is joined.
 - **Muting applies to what's sent**, never to the microphone under the
   filter: a call started muted, then unmuted, was otherwise silent.
+- **A filter that goes silent is taken out** (28 November). Until its model
+  loads, and for good if loading fails or it throws, the worklet sends exact
+  silence while the microphone under it hears you. Once a second the sound
+  going in and coming out are compared; sound in and exact zero out three
+  times running, and the microphone goes back in its place, muted as it was.
+  A working filter turns noise down to very little, never to exact zero.
 - The filter's output must be forced to mono, or the voice arrives 6 dB
   quieter (the worklet leaves the second channel silent).
 - The package must be imported only in the browser: it breaks server
@@ -196,6 +206,20 @@ SFU's API from a laptop; from Cloudflare it is shorter). What changed:
   whose voice was asked for until the tries ran out.
 - **Who has what on isn't queued** behind that person's SFU requests: a
   camera switched on reached the others a second or more late.
+- **Someone's SFU requests go strictly one after another** (28 November). A
+  request that hangs fails by itself after 8 s (`sfu_timeout`) and the next
+  goes after it; the queue used to let the next go after 10 s while the first
+  could still be changing the same session.
+- **Leaving closes everything** at the SFU: what you sent and what you were
+  receiving (a client that kept its connection kept receiving the meeting),
+  and a connection made ready ahead of joining when you go. A subscription the
+  SFU answers after you left, or switched meetings, is closed, not offered.
+- **A meeting left empty is kept 15 s, unlisted**, so its last person coming
+  straight back (a lost media connection is made again by leaving and
+  joining) finds it; joining a meeting that's gone ended it for them.
+- **The SFU's own renegotiations say so** (`renegotiate`): a quality change's
+  offer was taken for a subscription's reply, whose tracks were then never
+  matched to people.
 - **A camera starts on its smallest layer** and steps up once pictures come
   in. Asked for the sharpest straight away, it showed nothing while the
   sender's browser held that layer back for bandwidth, once for 20 s; the

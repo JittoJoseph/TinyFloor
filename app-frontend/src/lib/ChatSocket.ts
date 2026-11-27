@@ -133,6 +133,12 @@ class ChatSocket {
   private incoming = new Set<(message: ChatMessage) => void>();
   /** Conversations whose latest messages are on their way, so they're asked for once. */
   private asked = new Set<string>();
+  /**
+   * Conversations whose latest page has come from the server since connecting.
+   * Holding some messages isn't the same: one that arrived live while it was
+   * closed, or an empty one from before a dropped connection, still needs it.
+   */
+  private loaded = new Set<string>();
   /** Conversations to start over from what the server says (after a dropped connection), not merge into. */
   private fresh = new Set<string>();
   /** Searches waiting for their answer, by what was asked. */
@@ -164,6 +170,8 @@ class ChatSocket {
   disconnect() {
     this.stopped = true;
     this.generation++;
+    // A ticket still being asked for belongs to the connection let go: it mustn't hold up the next one (open).
+    this.opening = false;
     clearTimeout(this.reconnectTimer);
     this.reconnectTimer = undefined;
     this.stopHints?.();
@@ -389,7 +397,7 @@ class ChatSocket {
    * one Chat will open, as soon as the chat connects, so it's there already.
    */
   warm(channel: string) {
-    if (!this.state.ready || this.state.history[channel] || this.asked.has(channel)) return;
+    if (!this.state.ready || this.loaded.has(channel) || this.asked.has(channel)) return;
     this.asked.add(channel);
     this.send({ t: "chat_history", channel });
   }
@@ -443,10 +451,11 @@ class ChatSocket {
       url = minted.url;
       ticket = minted.ticket;
     } catch {
+      if (generation === this.generation) this.opening = false;
       return this.retry(generation);
-    } finally {
-      this.opening = false;
     }
+    // Only this connection's flag: an older one's ticket arriving late leaves the current one's alone.
+    if (generation === this.generation) this.opening = false;
     if (!current()) return;
 
     const socket = new WebSocket(`${url}?ticket=${encodeURIComponent(ticket)}`);
@@ -523,10 +532,14 @@ class ChatSocket {
         // read again from the server, the rest when they're next opened. (A lobby direct
         // message, numbered below zero, was never stored, so it stays as it is.)
         this.asked.clear();
+        this.loaded.clear();
         const history: Record<string, ChatMessage[]> = {};
         for (const [id, messages] of Object.entries(this.state.history)) {
-          if (!messages.some((one) => one.seq > 0)) history[id] = messages;
-          else if (id === this.watching) {
+          // A lobby direct message's (numbered below zero) were never stored: what's here is all there is.
+          if (messages.length && messages.every((one) => one.seq < 0)) {
+            history[id] = messages;
+            this.loaded.add(id);
+          } else if (id === this.watching) {
             // Kept on screen until the server's version replaces it.
             this.fresh.add(id);
             history[id] = messages;
@@ -626,10 +639,13 @@ class ChatSocket {
       }
       case "chat_page": {
         this.asked.delete(message.channel);
+        this.loaded.add(message.channel);
         const known = this.fresh.delete(message.channel) ? [] : (this.state.history[message.channel] ?? []);
         const seqs = new Set(known.map((one) => one.seq));
-        const merged = [...message.messages.filter((one) => !seqs.has(one.seq)), ...known].sort(
-          (a, b) => a.seq - b.seq,
+        // In the order said: by number, stored ones counting up; a lobby direct message's (below zero, counting down
+        // as they come) by when.
+        const merged = [...message.messages.filter((one) => !seqs.has(one.seq)), ...known].sort((a, b) =>
+          a.seq < 0 && b.seq < 0 ? a.at - b.at || b.seq - a.seq : a.seq - b.seq,
         );
         const pending = { ...this.state.pending };
         const left = this.confirmed(message.channel, message.messages);
@@ -642,6 +658,11 @@ class ChatSocket {
           held: { ...this.state.held, [message.channel]: message.held ?? 0 },
           pending,
         });
+        // Read on screen as it came: the newest stored one is marked read, so the unread doesn't come back next time.
+        if (this.watching === message.channel && document.visibilityState === "visible") {
+          const newest = merged.findLast((one) => one.seq > 0)?.seq;
+          if (newest) this.send({ t: "chat_read", channel: message.channel, seq: newest });
+        }
         break;
       }
       case "chat_reacted": {

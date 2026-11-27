@@ -59,6 +59,8 @@ export class DeskDecorator {
   private baked = false;
   private bakedSize = "";
   private moving: Phaser.Tweens.Tween | null = null;
+  /** The floor changed size while decorating: a moment after it settles, the camera aims again and the focus is taken again. */
+  private reaiming: ReturnType<typeof setTimeout> | null = null;
   private unsubscribe: () => void;
   private readonly keys = (event: KeyboardEvent) => this.key(event);
 
@@ -77,6 +79,7 @@ export class DeskDecorator {
     this.unsubscribe = subscribeDecorate(() => this.follow());
     scene.input.on("pointerdown", this.down, this);
     scene.input.on("pointermove", this.move, this);
+    scene.scale.on(Phaser.Scale.Events.RESIZE, this.resized, this);
     window.addEventListener("keydown", this.keys);
   }
 
@@ -96,6 +99,21 @@ export class DeskDecorator {
     this.desk = desk;
     this.hold(true);
     const camera = this.scene.cameras.main;
+    this.zoomBefore = camera.zoom;
+    const { zoom, goal } = this.aim(desk);
+    camera.stopFollow();
+    // Past the floor's edge if it has to be, to clear the panel: a desk near an edge, a phone's view far out.
+    camera.useBounds = false;
+    this.showFocus();
+    this.glide(zoom, goal, FOCUS_MS, () => this.blurBehind(desk));
+  }
+
+  /**
+   * Where the camera goes for a desk: the zoom that makes the desk and its
+   * chair a good part of the floor the panel leaves showing (beside it, or
+   * over a phone's sheet), and the point that puts it in the middle of that.
+   */
+  private aim(desk: string): { zoom: number; goal: { x: number; y: number } } {
     const spec = FLOOR.desks[desk];
     // The desk and its chair: left to right across its spots, top to bottom from what stands on it to the chair's foot.
     const left = spec.spots[0].x[0];
@@ -110,16 +128,24 @@ export class DeskDecorator {
     const freeWidth = window.innerWidth - (phone ? 0 : PANEL_WIDE);
     const freeHeight = this.scene.scale.height / density - (phone ? window.innerHeight * PANEL_PHONE_SHARE : 0);
     const cssPerFloor = Math.min((freeWidth * DESK_SHARE) / (right - left), (freeHeight * DESK_SHARE) / (bottom - top), MOST_ZOOM);
-    const zoom = Math.max(camera.zoom, cssPerFloor * density);
-    this.zoomBefore = camera.zoom;
+    const zoom = Math.max(this.zoomBefore ?? this.scene.cameras.main.zoom, cssPerFloor * density);
     // Its middle, shifted by half the panel, so it sits in the middle of what's left showing.
     const cssZoomAt = zoom / density;
     const goal = { x: x + (phone ? 0 : PANEL_WIDE / 2 / cssZoomAt), y: y + (phone ? (window.innerHeight * PANEL_PHONE_SHARE) / 2 / cssZoomAt : 0) };
-    camera.stopFollow();
-    // Past the floor's edge if it has to be, to clear the panel: a desk near an edge, a phone's view far out.
-    camera.useBounds = false;
-    this.showFocus();
-    this.glide(zoom, goal, FOCUS_MS, () => this.blurBehind(desk));
+    return { zoom, goal };
+  }
+
+  /** The window or the floor changed size while decorating (a phone turned, the panel became a sheet): aim again once it settles, and take the focus again. */
+  private resized() {
+    if (!this.desk) return;
+    if (this.reaiming) clearTimeout(this.reaiming);
+    this.reaiming = setTimeout(() => {
+      this.reaiming = null;
+      const desk = this.desk;
+      if (!desk) return;
+      const { zoom, goal } = this.aim(desk);
+      this.glide(zoom, goal, 260, () => this.blurBehind(desk));
+    }, 250);
   }
 
   /**
@@ -164,6 +190,7 @@ export class DeskDecorator {
     const grab = () => {
       this.scene.game.events.off(Phaser.Core.Events.POST_RENDER, grab);
       if (this.focus !== layer || this.desk !== desk) return;
+      layer.querySelector("canvas")?.remove();
       const snap = document.createElement("canvas");
       snap.width = game.width;
       snap.height = game.height;
@@ -291,6 +318,8 @@ export class DeskDecorator {
   }
 
   private leave() {
+    if (this.reaiming) clearTimeout(this.reaiming);
+    this.reaiming = null;
     this.hideFocus();
     this.desk = null;
     this.hovered = null;
@@ -432,6 +461,7 @@ export class DeskDecorator {
     window.removeEventListener("keydown", this.keys);
     this.scene.input.off("pointerdown", this.down, this);
     this.scene.input.off("pointermove", this.move, this);
+    this.scene.scale.off(Phaser.Scale.Events.RESIZE, this.resized, this);
     this.moving?.stop();
     this.spots.destroy();
     this.frame.destroy();

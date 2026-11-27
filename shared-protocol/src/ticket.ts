@@ -28,6 +28,17 @@ export interface RoomTicket {
 
 export const TICKET_LIFETIME_MS = 60_000;
 
+/**
+ * Whether a ticket was issued before someone's access was taken away (at
+ * `revokedAt`): such a ticket is still unexpired for up to a minute, and must
+ * not let them back in. Issued at = expiry less its lifetime.
+ */
+export const issuedBefore = (ticket: Pick<RoomTicket, "exp">, revokedAt: number | undefined) =>
+  revokedAt !== undefined && ticket.exp - TICKET_LIFETIME_MS <= revokedAt;
+
+/** How long a removal is remembered, for refusing tickets issued before it: longer than any ticket lives. */
+export const REVOKED_FOR_MS = TICKET_LIFETIME_MS * 3;
+
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 

@@ -44,30 +44,41 @@ export class VoiceRecorder {
   private levels: number[] = [];
   private startedAt = 0;
   private done: ((take: VoiceTake | null) => void) | null = null;
+  /** Thrown away (or stopped) before it got going: whatever the browser hands over afterwards is let go at once. */
+  private cancelled = false;
 
   /**
    * @param onLevel how loud it is now, from 0 to 1, with the seconds so far
    * @param onLimit called when it stops on its own at the longest a message can be
+   * @param onLost called when it stops on its own before that: the microphone went (unplugged, taken by the system)
    */
   constructor(
     private readonly onLevel: (level: number, seconds: number) => void,
     private readonly onLimit: () => void,
+    private readonly onLost: () => void = () => {},
   ) {}
 
   async start(): Promise<void> {
     if (!canRecord()) throw new RecorderFailure("unsupported");
+    let stream: MediaStream | null = null;
     try {
-      this.stream = await navigator.mediaDevices.getUserMedia({
+      stream = await navigator.mediaDevices.getUserMedia({
         audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, deviceId: deviceConstraint(savedDevices().audio) },
       });
     } catch (error) {
       const name = (error as DOMException)?.name;
       // A chosen microphone that's gone: try whichever there is.
-      if (name === "OverconstrainedError") {
-        this.stream = await navigator.mediaDevices.getUserMedia({ audio: true }).catch(() => null);
+      if (name === "OverconstrainedError" && !this.cancelled) {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true }).catch(() => null);
       }
-      if (!this.stream) throw new RecorderFailure(name === "NotAllowedError" || name === "SecurityError" ? "denied" : name === "NotFoundError" ? "no_mic" : "failed");
+      if (!stream && !this.cancelled) throw new RecorderFailure(name === "NotAllowedError" || name === "SecurityError" ? "denied" : name === "NotFoundError" ? "no_mic" : "failed");
     }
+    // Thrown away while the browser asked: the microphone it gave goes straight back.
+    if (this.cancelled || !stream) {
+      stream?.getTracks().forEach((track) => track.stop());
+      return;
+    }
+    this.stream = stream;
 
     const mimeType = TYPES.find((type) => MediaRecorder.isTypeSupported(type));
     try {
@@ -104,7 +115,11 @@ export class VoiceRecorder {
   /** Stops and hands back what was said; nothing if it was too short to be a message. */
   stop(): Promise<VoiceTake | null> {
     return new Promise((resolve) => {
-      if (!this.recorder || this.recorder.state === "inactive") return resolve(null);
+      // Not recording yet (the browser still asking): nothing to send, and nothing to start afterwards.
+      if (!this.recorder || this.recorder.state === "inactive") {
+        this.cancelled = true;
+        return resolve(null);
+      }
       this.done = resolve;
       this.recorder.stop();
     });
@@ -112,6 +127,7 @@ export class VoiceRecorder {
 
   /** Throws it away. */
   cancel(): void {
+    this.cancelled = true;
     this.done = null;
     if (this.recorder && this.recorder.state !== "inactive") this.recorder.stop();
     this.release();
@@ -125,7 +141,12 @@ export class VoiceRecorder {
     this.release();
     const done = this.done;
     this.done = null;
-    if (!done) return;
+    // Stopped by itself, not by Send or a discard: the microphone went. Whoever started it is told.
+    if (!done) {
+      if (!this.cancelled) this.onLost();
+      this.cancelled = true;
+      return;
+    }
     if (duration < 0.6 || !blob.size) return done(null);
     done({
       blob,

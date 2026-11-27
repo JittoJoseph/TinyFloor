@@ -132,7 +132,7 @@ class WhiteboardManager {
     this.bump();
   }
 
-  handleMessage(message: Extract<ServerMessage, { t: "board_state" | "board_draw" | "board_clear" }>) {
+  handleMessage(message: Extract<ServerMessage, { t: "board_state" | "board_draw" | "board_clear" | "board_forget" }>) {
     switch (message.t) {
       case "board_state": {
         this.strokes.clear();
@@ -160,6 +160,14 @@ class WhiteboardManager {
       case "board_clear": {
         this.strokes.clear();
         this.grew.clear();
+        this.bump();
+        break;
+      }
+      case "board_forget": {
+        for (const id of message.ids) {
+          this.strokes.delete(id);
+          this.grew.delete(id);
+        }
         this.bump();
         break;
       }

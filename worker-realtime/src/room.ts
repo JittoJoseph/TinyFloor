@@ -37,6 +37,8 @@ import {
   type PresentPerson,
   type RoomRole,
   type RoomTicket,
+  issuedBefore,
+  REVOKED_FOR_MS,
   type MediaFlags,
   type MediaKind,
   type VideoKind,
@@ -45,6 +47,9 @@ import {
   type SfuServerMessage,
   type Whereabouts,
 } from "shared-protocol";
+
+/** Where a membership taken away lately is remembered, by person (issuedBefore). */
+const revokedKey = (userId: string) => `revoked:${userId}`;
 import { Board, parseStroke } from "./board";
 import { Reporter } from "./discord";
 import { readTicket, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
@@ -63,6 +68,17 @@ const SWEEP_EVERY_MS = 10_000;
 const MAX_VIDEO_SUBSCRIPTIONS = 6;
 /** How many people one invitation can ask in. */
 const MAX_INVITES = 20;
+
+/**
+ * Actions a connection may take each second, in its first few, on top of the usual: a reconnect says again at once
+ * where it was (status, note, music, calendar, its chair, its meeting), and rejoining a meeting must never be the one
+ * dropped for it.
+ */
+const RESTORE_ACTIONS = 8;
+const RESTORE_WINDOW_MS = 5_000;
+
+/** How long a meeting someone just left stays, if they were the last, for them to come straight back to. */
+const REJOIN_GRACE_MS = 15_000;
 
 /** Per-socket limits. Kept in the attachment, so they survive hibernation. */
 const LIMITS = {
@@ -143,6 +159,8 @@ export class Room extends DurableObject<Env> {
   private readonly attachments = new WeakMap<WebSocket, Attachment>();
   /** Each person's SFU requests so far, so the next waits for them (sfu). */
   private readonly sfuQueues = new WeakMap<WebSocket, Promise<void>>();
+  /** When each meeting was last left (by anyone): one left empty is kept a moment (REJOIN_GRACE_MS). */
+  private readonly emptiedAt = new Map<string, number>();
   /** When the room last looked for sockets that went quiet, in memory only. */
   private sweptAt = 0;
   private board!: Board;
@@ -236,6 +254,8 @@ export class Room extends DurableObject<Env> {
 
   /** A membership ended: that person leaves the floor, and their desk is free again. */
   async disconnectMember(userId: string): Promise<void> {
+    // A ticket they got just before still has up to a minute to run: it mustn't let them back in (fetch).
+    await this.ctx.storage.put(revokedKey(userId), Date.now());
     const desk = this.desks.of(userId);
     if (this.desks.release(userId)) this.broadcastDesks();
     if (desk !== null) this.resetDesk(desk);
@@ -250,10 +270,23 @@ export class Room extends DurableObject<Env> {
     if (room) await this.headcountChanged(room);
   }
 
+  /** When someone's membership here was taken away, if lately (within REVOKED_FOR_MS); older records are let go. */
+  private async revokedAt(userId: string): Promise<number | undefined> {
+    const at = await this.ctx.storage.get<number>(revokedKey(userId));
+    if (at === undefined) return undefined;
+    if (Date.now() - at > REVOKED_FOR_MS) {
+      await this.ctx.storage.delete(revokedKey(userId));
+      return undefined;
+    }
+    return at;
+  }
+
   async fetch(request: Request): Promise<Response> {
     const ticket = readTicket(request.headers.get(TICKET_HEADER));
     const room = request.headers.get(ROOM_HEADER);
     if (!ticket || !room) return new Response("Unauthorized", { status: 401 });
+    // Taken out of the office after this ticket was issued: it doesn't let them back in.
+    if (issuedBefore(ticket, await this.revokedAt(ticket.sub))) return new Response("Forbidden", { status: 403 });
 
     const now = Date.now();
     this.dropStaleSockets(now);
@@ -295,9 +328,9 @@ export class Room extends DurableObject<Env> {
       joinedAt: now,
       lastSeenAt: now,
       leaving: false,
-      second: 0,
+      second: Math.floor(now / 1000),
       moves: 0,
-      actions: 0,
+      actions: -RESTORE_ACTIONS,
       draws: 0,
       sfuOps: 0,
       messages: 0,
@@ -317,7 +350,8 @@ export class Room extends DurableObject<Env> {
 
     const others = this.present().map((socket) => playerState(this.attachmentOf(socket)));
     this.nameRoom(room);
-    if (typeof ticket.hours === "number" && this.clock()?.setAllowance(ticket.hours)) this.clockChanged(room, now);
+    // The plan's hours as the ticket had them, unless the API has said since (a plan changed after it was issued).
+    if (typeof ticket.hours === "number" && this.ticketNewerThanAllowance(ticket) && this.clock()?.setAllowance(ticket.hours)) this.clockChanged(room, now);
 
     this.ctx.acceptWebSocket(server, [userTag(ticket.sub)]);
     this.remember(server, attachment);
@@ -404,7 +438,8 @@ export class Room extends DurableObject<Env> {
         this.changeLook(socket, me, message.character);
         break;
       case "board_sync":
-        send(socket, { t: "board_state", strokes: this.board.strokes() });
+        // The whole board, read and sent: one of the few actions a second, not one of the sixty messages (it can be a lot).
+        if (this.takeAction(me)) send(socket, { t: "board_state", strokes: this.board.strokes() });
         break;
       case "board_draw":
         this.draw(socket, me, message);
@@ -486,12 +521,14 @@ export class Room extends DurableObject<Env> {
       send(socket, { t: "move_rejected", x: me.x, y: me.y });
       return;
     }
+    const heading = Number.isInteger(d) && (d as number) >= 0 && (d as number) < 8 ? { d: d as number } : {};
     me.moves++;
-    if (me.moves > LIMITS.movesPerSecond) return;
+    // Over the limit a turn is dropped, but never a stop: it's the one that says where they ended up, and the client
+    // doesn't send it again (others would walk them on, off into a wall). Stops are still within the messages limit.
+    if (me.moves > LIMITS.movesPerSecond && "d" in heading) return;
     this.leaveSeat(me);
     me.x = x;
     me.y = y;
-    const heading = Number.isInteger(d) && (d as number) >= 0 && (d as number) < 8 ? { d: d as number } : {};
     // Running only means something while walking a heading.
     const running = "d" in heading && r === 1 ? { r: 1 as const } : {};
     this.broadcast({ t: "moved", id: me.userId, x, y, ...heading, ...running }, socket);
@@ -506,8 +543,12 @@ export class Room extends DurableObject<Env> {
   }
 
   private sit(socket: WebSocket, me: Attachment, message: Extract<ClientMessage, { t: "sit" }>): void {
-    if (!this.takeAction(me)) return;
     const { seat, x, y } = message;
+    // Over the limit, said no to like a taken chair: the client has sat down already, and gets up again.
+    if (!this.takeAction(me)) {
+      if (Number.isInteger(seat)) send(socket, { t: "sit_rejected", seat });
+      return;
+    }
     if (!Number.isInteger(seat) || seat < 0 || seat > 9999 || !isInsideMap(x, y)) return;
 
     const taken = this.present().some((other) => {
@@ -528,7 +569,9 @@ export class Room extends DurableObject<Env> {
   }
 
   private stand(me: Attachment, x: number, y: number): void {
-    if (!this.takeAction(me)) return;
+    // Never dropped for the action limit: a chair kept for someone already up and walking about is a chair nobody can
+    // have. Counted all the same, and still within the messages limit.
+    this.takeAction(me);
     if (isInsideMap(x, y)) {
       me.x = x;
       me.y = y;
@@ -671,8 +714,10 @@ export class Room extends DurableObject<Env> {
     if (me.draws > LIMITS.drawsPerSecond) return;
     const stroke = parseStroke(message);
     if (!stroke) return;
-    this.board.append(stroke);
-    this.broadcast({ t: "board_draw", by: me.userId, ...stroke }, socket);
+    // Only what the board kept goes out: a slice past a stroke's limit would grow everyone's copy and nobody's board.
+    const { kept, forgotten } = this.board.append(stroke);
+    if (forgotten.length) this.broadcast({ t: "board_forget", ids: forgotten });
+    if (kept) this.broadcast({ t: "board_draw", by: me.userId, ...stroke }, socket);
   }
 
   private clearBoard(me: Attachment): void {
@@ -780,6 +825,7 @@ export class Room extends DurableObject<Env> {
     const meeting = me.meeting;
     me.meeting = null;
     me.flags = null;
+    this.emptiedAt.set(meeting, Date.now());
     me.speaking = false;
     this.meetingCounted(me.room, meeting);
     if (me.meetingSince !== null) {
@@ -788,16 +834,7 @@ export class Room extends DurableObject<Env> {
       me.meetingSince = null;
     }
     if (me.media) {
-      const { sessionId, tracks } = me.media;
-      me.media = null;
-      this.ctx.waitUntil(
-        this.sfuApi
-          .closeTracks(
-            sessionId,
-            tracks.map((track) => track.mid),
-          )
-          .catch(() => undefined),
-      );
+      this.closeMedia(me);
       this.broadcastToMeeting(meeting, { t: "sfu", op: "gone", userId: me.userId }, me.userId);
     }
     for (const socket of this.meetingMembers(meeting)) {
@@ -808,6 +845,19 @@ export class Room extends DurableObject<Env> {
     }
     this.broadcastToMeeting(meeting, { t: "meeting_member_left", id: me.userId }, me.userId);
     if (announce) this.announceMeetings(me.room);
+  }
+
+  /**
+   * Everything this person has open at the SFU, closed: what they send and
+   * what they receive. Left open, what they receive kept coming to a client
+   * that kept its connection, out of a meeting the room says they've left.
+   */
+  private closeMedia(me: Attachment): void {
+    if (!me.media) return;
+    const { sessionId, tracks, subs } = me.media;
+    me.media = null;
+    const mids = [...tracks.map((track) => track.mid), ...(subs ?? []).map((sub) => sub.mid)];
+    if (mids.length) this.ctx.waitUntil(this.sfuApi.closeTracks(sessionId, mids).catch(() => undefined));
   }
 
   private meetingRow(id: string): { name: string | null; by_name: string | null } | undefined {
@@ -845,8 +895,14 @@ export class Room extends DurableObject<Env> {
     const started = this.ctx.storage.sql
       .exec<{ id: string; name: string | null; by_name: string | null }>("SELECT id, name, by_name FROM meetings ORDER BY created_at")
       .toArray();
-    const empty = started.filter((row) => !members.has(row.id));
-    for (const row of empty) this.ctx.storage.sql.exec("DELETE FROM meetings WHERE id = ?", row.id);
+    // One left empty a moment ago stays a little, unlisted: its last person may be coming straight back (a lost media
+    // connection is made again by leaving and joining), and joining a meeting that's gone ends it for them.
+    const now = Date.now();
+    const empty = started.filter((row) => !members.has(row.id) && now - (this.emptiedAt.get(row.id) ?? 0) > REJOIN_GRACE_MS);
+    for (const row of empty) {
+      this.ctx.storage.sql.exec("DELETE FROM meetings WHERE id = ?", row.id);
+      this.emptiedAt.delete(row.id);
+    }
     return [
       info(MAIN_MEETING, null, null),
       ...started.filter((row) => members.has(row.id)).map((row) => info(row.id, row.name, row.by_name)),
@@ -888,16 +944,17 @@ export class Room extends DurableObject<Env> {
    * browser sends its answer to an offer and its next request back to back;
    * handled at once, the SFU got a new track while still waiting for that
    * answer, refused it, and could leave the session stuck: someone in the
-   * meeting stayed unheard. A request that hangs holds the next for 10 s at most.
+   * meeting stayed unheard. A request that hangs fails by itself after a few seconds (sfu.ts).
    */
   private sfu(socket: WebSocket, message: Record<string, unknown>): Promise<void> {
     // What someone has on is news for the table, not a request to the SFU: it
     // doesn't wait behind theirs. Queued, a camera switched on was shown to the
     // others only after whatever the SFU was still answering, a second or more.
     if (message.op === "media") return this.sfuStep(socket, message);
+    // Strictly one after another: each SFU request fails by itself if it hangs (sfu.ts), so the next waits for it
+    // rather than going ahead alongside it on the same session.
     const before = this.sfuQueues.get(socket) ?? Promise.resolve();
-    const waited = Promise.race([before, new Promise<void>((resolve) => setTimeout(resolve, SFU_QUEUE_WAIT_MS))]);
-    const step = waited.then(() => this.sfuStep(socket, message));
+    const step = before.then(() => this.sfuStep(socket, message));
     this.sfuQueues.set(socket, step.catch(() => {}));
     return step;
   }
@@ -917,16 +974,16 @@ export class Room extends DurableObject<Env> {
         case "drop": {
           // The connection made ahead failed, perhaps after joining with it: a new one follows.
           if (!me.media) return;
-          const { sessionId, tracks } = me.media;
+          const { sessionId, tracks, subs } = me.media;
           me.media = null;
           this.remember(socket, me);
           if (joined && tracks.length) {
             this.broadcastToMeeting(joined, { t: "sfu", op: "untracks", userId: me.userId, kinds: tracks.map((track) => track.kind) }, me.userId);
           }
-          return await this.sfuApi.closeTracks(
-            sessionId,
-            tracks.map((track) => track.mid),
-          );
+          // What it sent and what it received, all of it: the next connection asks again.
+          const mids = [...tracks.map((track) => track.mid), ...(subs ?? []).map((sub) => sub.mid)];
+          if (!mids.length) return;
+          return await this.sfuApi.closeTracks(sessionId, mids);
         }
         case "unpublish":
           return await this.sfuUnpublish(socket, meeting, message);
@@ -1074,18 +1131,25 @@ export class Room extends DurableObject<Env> {
     const given = placed.filter((item) => !item.code && item.mid);
     const failed = placed.filter((item) => item.code).map((item) => ({ userId: item.userId, kind: item.kind, code: item.code! }));
     const sdp = result.requiresImmediateRenegotiation ? (result.sessionDescription?.sdp ?? "") : "";
-    if (!given.length && !sdp) return sendSfu(socket, { op: "error", code: failed[0]?.code ?? "sfu_error" });
     const subscriber = this.attachmentOf(socket);
-    if (subscriber.media) {
-      subscriber.media.subs = [...(subscriber.media.subs ?? []), ...given.map(({ mid, userId, kind }) => ({ mid, userId, kind }))];
-      this.remember(socket, subscriber);
+    // Out of that meeting (or that connection) while the SFU answered: what it opened is closed again, and nothing is
+    // offered; it mustn't land in a meeting they've left, or in their next connection's books.
+    if (subscriber.meeting !== meeting || subscriber.leaving || subscriber.media?.sessionId !== sessionId) {
+      const opened = given.map((item) => item.mid);
+      if (opened.length) await this.sfuApi.closeTracks(sessionId, opened).catch(() => undefined);
+      return;
     }
+    if (!given.length && !sdp) return sendSfu(socket, { op: "error", code: failed[0]?.code ?? "sfu_error" });
+    subscriber.media.subs = [...(subscriber.media.subs ?? []), ...given.map(({ mid, userId, kind }) => ({ mid, userId, kind }))];
+    this.remember(socket, subscriber);
     sendSfu(socket, {
       op: "offer",
       sdp,
       tracks: given.map(({ userId, kind, mid }) => ({ userId, kind, mid })),
       ...(failed.length ? { failed } : {}),
     });
+    // The hours ran out while the SFU answered: the video just given goes as everyone else's did (pauseVideo).
+    if (this.clock()?.usage(Date.now()).paused) this.pauseVideo();
   }
 
   /** Watching someone's camera or screen in the other quality. */
@@ -1111,7 +1175,8 @@ export class Room extends DurableObject<Env> {
       },
     ]);
     if (result.requiresImmediateRenegotiation && result.sessionDescription) {
-      sendSfu(socket, { op: "offer", sdp: result.sessionDescription.sdp, tracks: [] });
+      // Not the answer to a request of theirs: said so, so it isn't taken for one (a subscription waiting for its offer).
+      sendSfu(socket, { op: "offer", sdp: result.sessionDescription.sdp, tracks: [], renegotiate: true });
     }
   }
 
@@ -1122,6 +1187,8 @@ export class Room extends DurableObject<Env> {
     const sessionId = await this.sfuApi.newSession();
     const me = this.attachmentOf(socket);
     if (me.media) return me.media.sessionId; // Another message made one meanwhile.
+    // Gone while it was made: not kept (the caller sees it isn't theirs, and closes what it opened on it).
+    if (me.leaving) return sessionId;
     me.media = { sessionId, tracks: [] };
     this.remember(socket, me);
     return sessionId;
@@ -1152,7 +1219,8 @@ export class Room extends DurableObject<Env> {
     if (second !== me.second) {
       me.second = second;
       me.moves = 0;
-      me.actions = 0;
+      // A connection's first seconds have room for what a reconnect says again at once (RESTORE_ACTIONS).
+      me.actions = now - me.joinedAt < RESTORE_WINDOW_MS ? -RESTORE_ACTIONS : 0;
       me.draws = 0;
       me.sfuOps = 0;
       me.speakingOps = 0;
@@ -1210,6 +1278,8 @@ export class Room extends DurableObject<Env> {
   /** Tells everyone else this person has gone. Leaving the room also leaves their meeting. */
   private depart(attachment: Attachment): void {
     this.leaveMeeting(attachment);
+    // A connection made ready ahead of joining (no meeting yet) is closed too.
+    this.closeMedia(attachment);
     this.broadcast({ t: "player_left", id: attachment.userId }, undefined, attachment.userId);
     // A desk in the demo office is yours while you're on its floor; what you made of it goes back in its own time.
     if (lobbyCopyNumber(attachment.room) !== null && this.desks.release(attachment.userId)) this.broadcastDesks();
@@ -1322,6 +1392,9 @@ export class Room extends DurableObject<Env> {
     const room = this.roomName();
     if (!room) return;
     const now = Date.now();
+    // Anyone gone quiet without closing is let go first: a meeting of people no longer there mustn't keep counting
+    // its hours, or keep the room waking for it.
+    if (this.dropStaleSockets(now)) await this.headcountChanged(room);
     // The demo office's desks: each change made long enough ago goes back, as if its owner put it back.
     if (lobbyCopyNumber(room) !== null) {
       for (const key of this.pieces.expire(now - LOBBY_PIECE_MS)) this.broadcast({ t: "piece", key, change: null, by: "" });
@@ -1344,8 +1417,20 @@ export class Room extends DurableObject<Env> {
   /** The office's plan changed (from the API): its hours take effect straight away. */
   async setMeetingAllowance(officeId: string, hours: number): Promise<void> {
     this.nameRoom(officeId);
+    const now = Date.now();
+    // Said by the API now: a ticket issued before this, with the old plan's hours, doesn't undo it.
+    this.ctx.storage.sql.exec(
+      "INSERT INTO room_state (key, value) VALUES ('allowance_at', ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+      String(now),
+    );
     const clock = this.clock();
-    if (clock?.setAllowance(hours)) this.clockChanged(officeId, Date.now());
+    if (clock?.setAllowance(hours)) this.clockChanged(officeId, now);
+  }
+
+  /** Whether a ticket was issued after the API last said the office's hours (so its hours are the newer word). */
+  private ticketNewerThanAllowance(ticket: RoomTicket): boolean {
+    const at = Number(this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'allowance_at'").toArray()[0]?.value ?? 0);
+    return !issuedBefore(ticket, at || undefined);
   }
 
   /** After people arrive or leave: usage totals are written when due. */
@@ -1462,7 +1547,6 @@ function sendSfu(socket: WebSocket, message: SfuServerMessage): void {
  * bandwidth went from 720p straight to 180p; a, b, c step down in order.
  */
 const LAYER: Record<VideoQuality, string> = { high: "h", medium: "m", low: "l" };
-const SFU_QUEUE_WAIT_MS = 10_000;
 /** What can be asked of the SFU before joining a meeting: setting up the connection ahead (sfuPublish). */
 const READY_OPS = new Set(["publish", "answer", "drop"]);
 const RANKED: Record<VideoQuality, string> = { high: "a", medium: "b", low: "c" };

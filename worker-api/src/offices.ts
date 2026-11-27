@@ -230,22 +230,40 @@ export function officeRoutes(router: Router): void {
           throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
         }
         const now = Date.now();
+        // The seat is taken in the same statement that counts them: two people accepting at once can't both take
+        // the last one (counted first and inserted after, both saw it free).
+        const free = "(SELECT COUNT(*) FROM memberships WHERE office_id = ?) < ?";
         if (!invite.id) {
           // The office's link: anyone with it can take a free seat, as often as there are seats.
-          await env.DB.prepare("INSERT OR IGNORE INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)")
-            .bind(invite.office_id, user.id, now)
+          const joined = await env.DB.prepare(
+            `INSERT OR IGNORE INTO memberships (office_id, user_id, role, joined_at)
+             SELECT ?, ?, 'member', ? WHERE ${free}`,
+          )
+            .bind(invite.office_id, user.id, now, invite.office_id, invite.seats)
             .run();
+          if (joined.meta.changes !== 1 && !(await isMember(env, invite.office_id, user.id))) {
+            throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
+          }
           return json({ officeId: invite.office_id });
         }
-        // An older, single-use invitation (made before the link): the accepted_at check keeps it single-use.
+        // An older, single-use invitation (made before the link): the accepted_at check keeps it single-use, and
+        // it's only used up when there's a seat for it.
         const [claimed] = await env.DB.batch([
-          env.DB.prepare("UPDATE invites SET accepted_at = ? WHERE id = ? AND accepted_at IS NULL").bind(now, invite.id),
+          env.DB.prepare(`UPDATE invites SET accepted_at = ? WHERE id = ? AND accepted_at IS NULL AND ${free}`).bind(
+            now,
+            invite.id,
+            invite.office_id,
+            invite.seats,
+          ),
           env.DB.prepare(
             `INSERT INTO memberships (office_id, user_id, role, joined_at)
              SELECT ?, ?, ?, ? WHERE changes() = 1`,
           ).bind(invite.office_id, user.id, invite.role, now),
         ]);
-        if (claimed.meta.changes !== 1) throw new HttpError(410, "invite_used", "This invitation has been used");
+        if (claimed.meta.changes !== 1) {
+          if ((await seatsUsed(env, invite.office_id)) >= invite.seats) throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
+          throw new HttpError(410, "invite_used", "This invitation has been used");
+        }
       }
       return json({ officeId: invite.office_id });
     });
@@ -356,4 +374,9 @@ export function officeJson(office: Office, members: number) {
     joinDomain: office.joinDomain,
     domainJoin: office.domainJoin,
   };
+}
+
+/** Whether someone is a member of an office now. */
+async function isMember(env: Env, officeId: string, userId: string): Promise<boolean> {
+  return !!(await env.DB.prepare("SELECT 1 FROM memberships WHERE office_id = ? AND user_id = ?").bind(officeId, userId).first());
 }

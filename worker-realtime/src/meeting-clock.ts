@@ -8,15 +8,15 @@ const TICK_MS = 10 * 60_000;
 type Period = "month" | "day";
 
 /** The period `now` falls in, and when the next one starts. UTC, so everyone agrees. */
-function periodOf(now: number, period: Period): { key: string; endsAt: number } {
+function periodOf(now: number, period: Period): { key: string; startsAt: number; endsAt: number } {
   const date = new Date(now);
   const year = date.getUTCFullYear();
   const month = date.getUTCMonth();
   if (period === "day") {
     const day = date.getUTCDate();
-    return { key: date.toISOString().slice(0, 10), endsAt: Date.UTC(year, month, day + 1) };
+    return { key: date.toISOString().slice(0, 10), startsAt: Date.UTC(year, month, day), endsAt: Date.UTC(year, month, day + 1) };
   }
-  return { key: date.toISOString().slice(0, 7), endsAt: Date.UTC(year, month + 1, 1) };
+  return { key: date.toISOString().slice(0, 7), startsAt: Date.UTC(year, month, 1), endsAt: Date.UTC(year, month + 1, 1) };
 }
 
 /**
@@ -61,6 +61,16 @@ export class MeetingClock {
     return this.sql.exec<{ seconds: number }>("SELECT seconds FROM meeting_used WHERE period = ?", key).toArray()[0]?.seconds ?? 0;
   }
 
+  /** Time counted from `from` to `to`, each part in the period it fell in: a meeting over midnight (or a month's end) isn't all the new one's. */
+  private addSpan(from: number, to: number): void {
+    while (from < to) {
+      const { key, endsAt } = periodOf(from, this.period);
+      const end = Math.min(to, endsAt);
+      this.add(key, (end - from) / 1000);
+      from = end;
+    }
+  }
+
   private add(key: string, seconds: number): void {
     if (seconds <= 0) return;
     this.sql.exec(
@@ -81,7 +91,7 @@ export class MeetingClock {
       return true;
     }
     if (people < 2 && counting) {
-      this.add(periodOf(now, this.period).key, (now - counting.since) / 1000);
+      this.addSpan(counting.since, now);
       this.sql.exec("DELETE FROM meeting_live WHERE meeting = ?", meeting);
       return true;
     }
@@ -90,17 +100,17 @@ export class MeetingClock {
 
   /** Moves the time counted so far into the period's total, so nothing waits in `since` for long. */
   settle(now: number): void {
-    const key = periodOf(now, this.period).key;
     for (const { meeting, since } of this.live()) {
-      this.add(key, (now - since) / 1000);
+      this.addSpan(since, now);
       this.sql.exec("UPDATE meeting_live SET since = ? WHERE meeting = ?", now, meeting);
     }
   }
 
   usage(now: number): MeetingUsage {
-    const { key, endsAt } = periodOf(now, this.period);
+    const { key, startsAt, endsAt } = periodOf(now, this.period);
     const live = this.live();
-    const used = this.settledSeconds(key) + live.reduce((sum, one) => sum + Math.max(0, now - one.since) / 1000, 0);
+    // Only what falls in this period: a meeting counting since before it began was the last period's until then.
+    const used = this.settledSeconds(key) + live.reduce((sum, one) => sum + Math.max(0, now - Math.max(one.since, startsAt)) / 1000, 0);
     const hours = this.allowanceHours();
     const allowance = hours === null ? null : hours * 3600;
     return {

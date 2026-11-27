@@ -53,6 +53,8 @@ export function Joystick() {
     window.addEventListener(INPUT_MODE_EVENT, onMode);
     return () => {
       window.removeEventListener(INPUT_MODE_EVENT, onMode);
+      if (pending.current) window.clearTimeout(pending.current.timer);
+      pending.current = null;
       setJoystick(0, 0);
     };
   }, []);
@@ -97,12 +99,14 @@ export function Joystick() {
 
   /** Takes the press: the ring comes to where it landed (kept whole inside the zone) and follows the thumb. */
   const grab = (at: { x: number; y: number }) => {
-    const box = zone.current!.getBoundingClientRect();
+    if (!zone.current) return;
+    const box = zone.current.getBoundingClientRect();
     origin.current = {
       x: Math.min(Math.max(at.x, BASE + 4), box.width - BASE - 4),
       y: Math.min(Math.max(at.y, BASE + 4), box.height - BASE - 4),
     };
     setActive(true);
+    place(origin.current.x, origin.current.y, 0, 0);
     navigator.vibrate?.(8);
   };
 
@@ -118,8 +122,14 @@ export function Joystick() {
       for (const type of ["mousedown", "mouseup"] as const) {
         under.dispatchEvent(new MouseEvent(type, { clientX, clientY, button: 0, buttons: type === "mousedown" ? 1 : 0, bubbles: true, cancelable: true, view: window }));
       }
-    } else if (under instanceof HTMLElement) {
-      under.click();
+      // Then the mouse off the floor, as a finger lifts: nothing stays pointed at (a chair's outline, the tile mark).
+      under.dispatchEvent(new MouseEvent("mousemove", { clientX: -10000, clientY: -10000, bubbles: true, view: window }));
+      under.dispatchEvent(new MouseEvent("mouseout", { clientX: -10000, clientY: -10000, bubbles: true, view: window }));
+    } else {
+      // An icon's svg isn't an HTML element: the control round it takes the tap.
+      let target: Element | null = under;
+      while (target && !(target instanceof HTMLElement)) target = target.parentElement;
+      target?.click();
     }
   };
 

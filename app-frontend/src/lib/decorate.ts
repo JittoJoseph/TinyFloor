@@ -62,10 +62,13 @@ export function useDecorate(): DecorateState {
 
 /** The floor's socket and who you are, while there's a floor. */
 export function attachDecorate(sender: ((message: ClientMessage) => void) | null, userId: string | null) {
+  // What was waiting to go was for the office being left: never sent through the next one's socket.
+  dropQueue();
   send = sender;
   me = userId;
   if (!sender) {
     stopWaiting();
+    decorateOnClaim = false;
     close();
   }
 }
@@ -95,16 +98,39 @@ export function openDecorate() {
 
 /** Customizing asked for away from your desk, waiting for you to sit down at it. */
 let waiting: { stop: () => void; timer: ReturnType<typeof setTimeout> } | null = null;
+let settling: ReturnType<typeof setTimeout> | null = null;
 /** Long enough to walk across any floor; past it, something else happened on the way and it's let go. */
 const WAIT_MS = 30_000;
 /** A moment for sitting down to show before the camera moves to the desk. */
 const SETTLE_MS = 250;
 
 function stopWaiting() {
+  if (settling) clearTimeout(settling);
+  settling = null;
   if (!waiting) return;
   waiting.stop();
   clearTimeout(waiting.timer);
   waiting = null;
+}
+
+/** Sitting at your desk, a moment ago and still: then it opens. */
+function openOnceSettled() {
+  if (settling) clearTimeout(settling);
+  settling = setTimeout(() => {
+    settling = null;
+    const mine = me ? deskOf(deskState().desks, me) : undefined;
+    if (mine && deskState().seat === mine.seat) openDecorate();
+  }, SETTLE_MS);
+}
+
+/**
+ * You set off somewhere yourself (a click, the keys): whatever the dock asked
+ * for on your way (your desk opening when you sit at it, a desk found opening
+ * once claimed) is let go. GameScene, on playerMoved.
+ */
+export function walkedOff() {
+  stopWaiting();
+  decorateOnClaim = false;
 }
 
 /**
@@ -124,7 +150,7 @@ export function decorateMyDesk(): boolean {
     const now = me ? deskOf(desks, me) : undefined;
     if (!now || seat !== now.seat) return;
     stopWaiting();
-    setTimeout(openDecorate, SETTLE_MS);
+    openOnceSettled();
   });
   waiting = { stop, timer: setTimeout(stopWaiting, WAIT_MS) };
   goToMyDesk();
@@ -146,12 +172,15 @@ export function findDeskToDecorate(): boolean {
 }
 
 subscribeDesks(() => {
-  const { claimed, desks } = deskState();
-  if (!decorateOnClaim || claimed === null || !me) return;
-  const mine = deskOf(desks, me);
-  if (!mine || mine.seat !== claimed) return;
+  if (!decorateOnClaim || !me) return;
+  // Yours once the room says so, however long that takes (not only while the chip says "Claimed").
+  if (!deskOf(deskState().desks, me)) return;
   decorateOnClaim = false;
-  setTimeout(decorateMyDesk, SETTLE_MS);
+  if (settling) clearTimeout(settling);
+  settling = setTimeout(() => {
+    settling = null;
+    decorateMyDesk();
+  }, SETTLE_MS);
 });
 
 export function close() {
@@ -176,6 +205,36 @@ export const pickPart = (key: string) => {
 const SPACING_MS = 280;
 const queue: ClientMessage[] = [];
 let sending = false;
+let flushing: ReturnType<typeof setTimeout> | null = null;
+/** Changes sent and not yet heard back, by piece: the room tells everyone, us too, in order. */
+const inFlight = new Map<string, number>();
+
+function dropQueue() {
+  queue.length = 0;
+  if (flushing) clearTimeout(flushing);
+  flushing = null;
+  sending = false;
+  inFlight.clear();
+}
+
+/**
+ * The room telling us of a change to a piece: false when it's ours and a
+ * newer one of ours to the same piece is already showing (sent after it, or
+ * waiting to be), so this one is old news. MessageHandler, on "piece".
+ */
+export function heardPiece(key: string, by: string | undefined): boolean {
+  if (!by || by !== me) return true;
+  const left = (inFlight.get(key) ?? 0) - 1;
+  if (left > 0) inFlight.set(key, left);
+  else inFlight.delete(key);
+  const waiting = queue.some((one) => one.t === "piece" && one.key === key);
+  return left <= 0 && !waiting;
+}
+
+/** The room sent the office's pieces whole (a change refused, or a reconnect): nothing we sent is still to be heard of. */
+export function heardPieces() {
+  inFlight.clear();
+}
 
 function enqueue(message: ClientMessage) {
   // A later change to the same piece replaces one still waiting: only how it ends up matters.
@@ -195,7 +254,8 @@ function flush() {
   }
   sending = true;
   send?.(next);
-  setTimeout(flush, SPACING_MS);
+  if (next.t === "piece") inFlight.set(next.key, (inFlight.get(next.key) ?? 0) + 1);
+  flushing = setTimeout(flush, SPACING_MS);
 }
 
 // ---------- changing ----------
@@ -214,7 +274,8 @@ function apply(key: string, after: PieceChange | null): Change | null {
   const desk = state.desk;
   const changes = pieceChanges();
   if (!desk || !canChange(key, after, desk, changes)) return null;
-  const before = changes[key] ?? null;
+  const stored = changes[key] ?? null;
+  const before = stored && !canChange(key, stored, desk, changes) ? null : stored;
   if (JSON.stringify(before) === JSON.stringify(after)) return null;
   applyPieceChange(key, after);
   enqueue({ t: "piece", key, change: after });

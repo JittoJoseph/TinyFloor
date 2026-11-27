@@ -559,12 +559,15 @@ time, where they're done: no tour, no modal, nothing to read first.
   opens it again. The × leaves that step alone for good.
 - **Done however it's done**, from the pointer or not, and found counts:
   opening the character creator or the desk's panel, or the Calendar page,
-  is enough. Having a desk or a decorated desk counts by itself. Walking
+  is enough. Having a desk (once the room says it's yours, not when Claim is
+  pressed: someone may have got there first) or a decorated desk counts by
+  itself. Kept per browser, merged across its tabs. Walking
   counts only when you walk (a click or keys), not the walk in on arrival.
   Done while pointed at, a few square pixels in the office's colours pop off
   the thing and your character bobs, then a beat before the next.
 - **Never in the way**: nothing shows while you're busy (a dialog, the
-  character creator, the desk being decorated, the whiteboard, a call); the
+  character creator, the desk being decorated, the whiteboard, a call) or
+  while a view covers the floor (Chat, People); the
   demo office's "make your own office" prompt now waits the same way
   instead of landing on top of a desk being decorated (lib/attention).
 - **Only for someone new**: everyone in the demo office, and in an office

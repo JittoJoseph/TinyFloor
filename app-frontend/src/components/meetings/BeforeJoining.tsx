@@ -8,7 +8,7 @@ import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloor } from "@/lib/floor";
 import { useMeetings } from "@/lib/meetings";
-import { deviceConstraint, savedDevices } from "@/lib/media";
+import { CAMERA_CAPTURE, openPicked, savedDevices } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 import { Link } from "@/lib/i18n/navigation";
 import { Face, faceBackground } from "web-shared/components/ui/Face";
@@ -78,9 +78,9 @@ export function JoinPreview() {
     if (!camera) return;
     let live: MediaStream | null = null;
     let cancelled = false;
-    const devices = savedDevices();
-    navigator.mediaDevices
-      ?.getUserMedia({ video: { deviceId: deviceConstraint(devices.video) } })
+    if (!navigator.mediaDevices?.getUserMedia) return;
+    // The camera picked in settings, or whichever there is when it's gone (unplugged), as calls do.
+    openPicked("video", CAMERA_CAPTURE, savedDevices().video)
       .then((opened) => {
         if (cancelled) return opened.getTracks().forEach((track) => track.stop());
         live = opened;

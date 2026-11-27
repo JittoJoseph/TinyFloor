@@ -34,11 +34,19 @@ class PlateLayer {
     scene.game.canvas.parentElement?.appendChild(this.root);
     const camera = scene.cameras.main;
     camera.on(Phaser.Cameras.Scene2D.Events.POST_RENDER, this.sync, this);
-    scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+    // Gone with the scene: shut down (another scene), or destroyed with the whole game on leaving the floor, which
+    // only says DESTROY. Either way, once: the map of layers mustn't keep a floor that's been left.
+    let disposed = false;
+    const dispose = () => {
+      if (disposed) return;
+      disposed = true;
       camera.off(Phaser.Cameras.Scene2D.Events.POST_RENDER, this.sync, this);
       this.root.remove();
+      this.items.clear();
       layers.delete(scene);
-    });
+    };
+    scene.events.once(Phaser.Scenes.Events.SHUTDOWN, dispose);
+    scene.events.once(Phaser.Scenes.Events.DESTROY, dispose);
   }
 
   add(object: Phaser.GameObjects.Container, element: HTMLElement, anchor: Item["anchor"] = "center") {

@@ -12,10 +12,10 @@ import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { deskOf, useDesks } from "@/lib/desks";
 import { usePieceChanges } from "@/lib/pieces";
 import { calendarAvailable, useCalendar } from "@/lib/calendar";
-import { FLOOR_ARRIVED_EVENT, floorArrivedAt } from "@/lib/floor";
+import { FLOOR_ARRIVED_EVENT, floorArrivedAt, onFloorShown } from "@/lib/floor";
 import { busyNow } from "@/lib/attention";
 import { characterCreatorShown } from "@/components/character/creatorOpen";
-import { cheer, getFloorSpot, isDone, isSkipped, settleAs, skip, startSettling, stillSettling, useSettle, type SettleStep } from "@/lib/settle";
+import { cheer, did, getFloorSpot, isDone, isSkipped, settleAs, skip, startSettling, stillSettling, useSettle, type SettleStep } from "@/lib/settle";
 import { touchFirst } from "@/lib/touch";
 import { PieceThumb } from "./PieceThumb";
 import { cn } from "web-shared/lib/utils";
@@ -170,7 +170,10 @@ export function SettleIn({ demo }: { demo: boolean }) {
     { step: "invite", open: !demo && team <= SMALL_TEAM && !isDone("invite"), at: [["[data-settle=invite]", "invite"]] },
     { step: "calendar", open: wantsCalendar && !isDone("calendar"), at: [["[data-settle=rail-calendar]", "calendar"]] },
   ];
-  const active = ready && newHere && stillSettling();
+  // Not while a view covers the floor (Chat, People…): what it would point at is underneath.
+  const [floorShown, setFloorShownHere] = useState(true);
+  useEffect(() => onFloorShown(setFloorShownHere), []);
+  const active = ready && newHere && floorShown && stillSettling();
 
   // Where to point now: the first step still open whose place is on the page, at its nearest place there.
   const [found, setCue] = useState<Cue | null>(null);
@@ -181,53 +184,63 @@ export function SettleIn({ demo }: { demo: boolean }) {
   });
   const restUntil = useRef(0);
   const lastDone = useRef<SettleStep | null>(null);
+  // The cue as shown, and where its thing last was on the page: it often goes the moment it's used (a chip once claimed, a row as the dock folds).
+  const shown = useRef<{ cue: Cue; rect: DOMRect } | null>(null);
+  // A step done while it was pointed at: the floor answers (your character bobs, a few pixels pop off the
+  // thing you used), then a beat before the next.
+  const [burst, setBurst] = useState<{ target: HTMLElement; rect: DOMRect; key: number } | null>(null);
   useEffect(() => {
     if (!active) return;
+    const show = (next: Cue | null) => {
+      const now = shown.current?.cue ?? null;
+      if (now === next || (now && next && now.step === next.step && now.target === next.target && now.words === next.words)) return;
+      shown.current = next ? { cue: next, rect: next.target.getBoundingClientRect() } : null;
+      setCue(next);
+    };
     const look = () => {
-      if (Date.now() < restUntil.current || busyNow()) return setCue((now) => (now ? null : now));
+      const now = shown.current;
+      // Done while pointed at: answered here, before anything else is pointed at, from where its thing was.
+      if (now && isDone(now.cue.step) && lastDone.current !== now.cue.step) {
+        lastDone.current = now.cue.step;
+        restUntil.current = Date.now() + BETWEEN_MS;
+        cheer();
+        const rect = showing(now.cue.target) ? now.cue.target.getBoundingClientRect() : now.rect;
+        // Not over something opened on top (the character creator, a dialog).
+        const covered = characterCreatorShown() || !!document.querySelector("[aria-modal=true]");
+        if (!covered) setBurst({ target: now.cue.target, rect, key: Date.now() });
+        return show(null);
+      }
+      if (now && showing(now.cue.target)) now.rect = now.cue.target.getBoundingClientRect();
+      // Resting between steps, busy, or settling in over (its fortnight can end while the floor is open).
+      if (Date.now() < restUntil.current || busyNow() || !stillSettling()) return show(null);
       for (const one of stepsRef.current) {
         if (!one.open || isSkipped(one.step)) continue;
         for (const [selector, words] of one.at) {
           const target = [...document.querySelectorAll(selector)].find(showing);
-          if (!target) continue;
-          lastRect.current = target.getBoundingClientRect();
-          return setCue((now) => (now && now.step === one.step && now.target === target && now.words === words ? now : { step: one.step, target, words }));
+          if (target) return show({ step: one.step, target, words });
         }
       }
-      setCue((now) => (now ? null : now));
+      show(null);
     };
     const first = window.setTimeout(look, 0);
     const timer = window.setInterval(look, LOOK_EVERY_MS);
     return () => {
       window.clearTimeout(first);
       window.clearInterval(timer);
+      shown.current = null;
+      setCue(null);
     };
   }, [active]);
-
-  // A step done while it was pointed at: the floor answers (your character bobs, a few pixels pop off the
-  // thing you used), then a beat before the next.
-  const [burst, setBurst] = useState<{ target: HTMLElement; rect: DOMRect; key: number } | null>(null);
-  // Where the thing pointed at last was: it often goes the moment it's used (a chip once claimed, a row as the dock folds).
-  const lastRect = useRef<DOMRect | null>(null);
-  const shownStep = useRef<Cue | null>(null);
-  useEffect(() => {
-    const before = shownStep.current;
-    shownStep.current = cue;
-    if (!before || (cue && cue.step === before.step)) return;
-    if (!isDone(before.step) || lastDone.current === before.step) return;
-    lastDone.current = before.step;
-    restUntil.current = Date.now() + BETWEEN_MS;
-    cheer();
-    // Where it was used, or where it last was if it's gone; not over something that's opened on top (the character creator, a dialog).
-    const rect = showing(before.target) ? before.target.getBoundingClientRect() : lastRect.current;
-    const covered = characterCreatorShown() || !!document.querySelector("[aria-modal=true]");
-    if (rect && !covered) setBurst({ target: before.target, rect, key: Date.now() });
-  }, [cue]);
   useEffect(() => {
     if (!burst) return;
     const timer = window.setTimeout(() => setBurst(null), BURST_MS);
     return () => window.clearTimeout(timer);
   }, [burst]);
+
+  // A desk of your own, once the room says so (not when Claim is pressed: someone else may have got there first).
+  useEffect(() => {
+    if (mine) did("desk");
+  }, [mine]);
 
   useEffect(() => {
     if (cue) startSettling();
@@ -407,6 +420,8 @@ function Pointer({ cue, text, notNow, reduce, onSkip }: { cue: Cue; text: string
   const dot = useRef<HTMLButtonElement>(null);
   const [side, setSide] = useState<Side>("above");
   const [resting, setResting] = useState(false);
+  // Someone on the card with the keyboard: it doesn't fold away from under them.
+  const [focused, setFocused] = useState(false);
   // The floor's spot has its own marks to rest as; a dot there would only be a second mark.
   const onFloor = cue.target.dataset.settle === "walk";
   const picture = PICTURE[cue.words];
@@ -421,10 +436,10 @@ function Pointer({ cue, text, notNow, reduce, onSkip }: { cue: Cue; text: string
 
   // Words for a while, then it rests; a new place to point (deeper in) is a new card, and talks again; so does the dot, pressed.
   useEffect(() => {
-    if (resting) return;
+    if (resting || focused) return;
     const timer = window.setTimeout(() => setResting(true), SPEAKS_FOR_MS);
     return () => window.clearTimeout(timer);
-  }, [resting]);
+  }, [resting, focused]);
 
   // Resting, the pointer over the thing brings the words back too (the dot is small to aim for).
   useEffect(() => {
@@ -498,6 +513,8 @@ function Pointer({ cue, text, notNow, reduce, onSkip }: { cue: Cue; text: string
               <div
                 // A press on it is its own: not "somewhere else", which would fold away the dock it points into.
                 onPointerDown={(event) => event.stopPropagation()}
+                onFocus={() => setFocused(true)}
+                onBlur={(event) => !event.currentTarget.contains(event.relatedTarget as Node | null) && setFocused(false)}
                 style={
                   reduce
                     ? undefined

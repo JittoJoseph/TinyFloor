@@ -26,7 +26,7 @@ export const LOBBY_CHANNELS = ["general", "feedback"] as const;
 /** Who a change was made by when TinyFloor's admin made it, rather than the author. */
 export const MODERATOR = "moderator";
 export const LOBBY_RETENTION_DAYS = 7;
-/** Kept per channel, oldest trimmed as it grows. */
+/** Kept per channel in the demo office's chat, oldest trimmed as it grows; an office's chat keeps all of it. */
 export const CHANNEL_HISTORY_MAX = 5000;
 /** The biggest file chat takes, in bytes. */
 export const FILE_MAX = 10 * 1024 * 1024;

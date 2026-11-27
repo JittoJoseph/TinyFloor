@@ -304,7 +304,9 @@ export class SeatManager {
   }
 
   /** The server gave the chair to whoever asked first. */
-  rejected() {
+  /** The room said no to sitting on this seat: up again, if it's still the one we're on (not one sat on since). */
+  rejected(seat: number) {
+    if (this.seated && this.seated.id !== seat) return;
     this.stand();
   }
 

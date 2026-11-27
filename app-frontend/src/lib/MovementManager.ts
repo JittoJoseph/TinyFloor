@@ -256,8 +256,11 @@ export class MovementManager {
 
     for (const spot of spots) {
       if (spot.near === 0) {
+        // Stopping here, partway along a walk the others are finishing for us by themselves: they're told where we are.
+        const walking = this.path.length > 0;
         this.path.length = 0;
         this.arrive = undefined;
+        if (walking) this.sendPosition(null, false);
         arrive?.();
         return;
       }
@@ -340,6 +343,18 @@ export class MovementManager {
    * Sitting holds the pose, so walking and the idle animation both stop.
    * `release` stands you up when you head somewhere else.
    */
+  /**
+   * The room put us where it says (a reconnect's welcome): a walk under way
+   * stops there, since nobody on the new connection was told of it, and the
+   * next click starts afresh.
+   */
+  halt() {
+    this.path.length = 0;
+    this.arrive = undefined;
+    this.moving = false;
+    this.shown.sent = false;
+  }
+
   setFrozen(frozen: boolean, release?: () => void) {
     this.frozen = frozen;
     this.moving = false;

@@ -32,6 +32,9 @@ const LEFT_BEHIND = 6;
 export class WalkSpot {
   private mark: Phaser.GameObjects.Graphics | null = null;
   private tile: { x: number; y: number } | null = null;
+  /** Asked to show: when no tile could be found (the view too small, you somewhere tight), it keeps looking now and then. */
+  private wanted = false;
+  private triedAt = 0;
 
   constructor(
     private readonly scene: Phaser.Scene,
@@ -42,8 +45,10 @@ export class WalkSpot {
   ) {}
 
   show(on: boolean) {
+    this.wanted = on;
     if (!on) return this.hide();
     if (this.mark) return;
+    this.triedAt = performance.now();
     const tile = this.pick();
     if (!tile) return;
     this.tile = tile;
@@ -87,6 +92,8 @@ export class WalkSpot {
 
   /** Where it is in the window (CSS pixels), how big a tile is there, and which side of it you are: for the page's pointer. */
   where(): { x: number; y: number; size: number; youLeft: boolean } | null {
+    // None found yet: another look every half second or so, as you move and the view changes.
+    if (!this.tile && this.wanted && performance.now() - this.triedAt > 500) this.show(true);
     if (!this.tile) return null;
     if (this.leftBehind()) {
       this.hide();

@@ -90,7 +90,6 @@ export function requestClaim(seat: number, me: string) {
 export function confirmClaim(seat: number) {
   send?.({ t: "desk_claim", seat });
   track("desk_claimed");
-  did("desk");
   set({ asking: null, claimed: seat });
 }
 

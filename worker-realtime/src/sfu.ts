@@ -1,3 +1,5 @@
+/** Longer than this for an answer from the SFU, and the request fails. */
+const REQUEST_TIMEOUT_MS = 8_000;
 const API_BASE = "https://rtc.live.cloudflare.com/v1";
 
 export interface SfuTrack {
@@ -73,10 +75,16 @@ export class SfuApi {
 
   private async request<T>(method: string, path: string, body?: unknown, partial = false): Promise<T> {
     if (!this.appId || !this.secret) throw new SfuError("sfu_unavailable");
+    // A request that hangs fails on its own (sfu_timeout), so the room's queue of someone's requests moves on only
+    // once it has: two at once on one session is what the queue is there to stop (room.ts sfu).
     const response = await fetch(`${API_BASE}/apps/${this.appId}${path}`, {
       method,
       headers: { Authorization: `Bearer ${this.secret}`, "Content-Type": "application/json" },
       body: body === undefined ? undefined : JSON.stringify(body),
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    }).catch((error: unknown) => {
+      if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) throw new SfuError("sfu_timeout");
+      throw error;
     });
     const result = (await response.json().catch(() => ({}))) as T & { errorCode?: string; errorDescription?: string };
     const trackError = (result as TracksResponse).tracks?.find((track) => track.errorCode);

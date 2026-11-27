@@ -281,7 +281,14 @@ export type SfuServerMessage =
    * The SFU wants to send new tracks: set this offer, then reply with `answer`.
    * `failed`: tracks of the same request the SFU couldn't give (yet), to ask for again.
    */
-  | { op: "offer"; sdp: string; tracks: { userId: string; kind: MediaKind; mid: string }[]; failed?: { userId: string; kind: MediaKind; code: string }[] }
+  | {
+      op: "offer";
+      sdp: string;
+      tracks: { userId: string; kind: MediaKind; mid: string }[];
+      failed?: { userId: string; kind: MediaKind; code: string }[];
+      /** The SFU renegotiating by itself (a quality change), not the reply to a subscription. */
+      renegotiate?: true;
+    }
   | { op: "tracks"; userId: string; kinds: MediaKind[] }
   | { op: "untracks"; userId: string; kinds: MediaKind[] }
   | { op: "gone"; userId: string }
@@ -400,6 +407,8 @@ export type ServerMessage =
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }
+  /** Strokes the board let go to make room for new ones (it keeps the newest): off everyone's board too. */
+  | { t: "board_forget"; ids: string[] }
   | { t: "call"; kind: CallKind; from: string; fromName: string; data?: unknown }
   | ({ t: "sfu" } & SfuServerMessage)
   | { t: "error"; code: "slow_down" | "bad_message" };

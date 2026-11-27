@@ -12,8 +12,8 @@ import { EASE_OUT } from "@/lib/ease";
 import { artOf, PieceThumb as Thumb } from "./PieceThumb";
 import { cn } from "web-shared/lib/utils";
 
-/** What a spot can hold, in groups, in this order. */
-const SHELVES = ["tech", "lamps", "personal", "setups"] as const;
+/** The kinds of things a spot holds, in the order they're shown. */
+const SHELVES = ["middle", "lamps", "personal", "tech", "setups"] as const;
 type Shelf = (typeof SHELVES)[number];
 /** A desk's woods as swatches: the colour of each one's top (art.js DESK_WOODS). */
 const WOODS = {
@@ -113,14 +113,15 @@ function Panel({ desk }: { desk: string }) {
             const item = now[key];
             return (
               <PartButton key={key} label={spotName(n)} picked={part === key} onPick={() => pickPart(key)} grow={one.x[1] - one.x[0]}>
-                {item ? <Thumb item={item} box={[52, 34]} /> : <EmptyMark />}
+                {/* The desk as it is: everything at its own size, so a notebook is as small beside a screen as it is on the desk. */}
+                {item ? <Thumb item={item} box={[52, 34]} at={1} /> : <EmptyMark />}
               </PartButton>
             );
           })}
         </div>
         <div className="flex gap-1 rounded-[14px] bg-foreground/[0.05] p-1">
           <PartButton label={t("part.chair")} picked={part === spec.chair.key} onPick={() => pickPart(spec.chair.key)} width="w-[52px]">
-            <Thumb item={chair} box={[34, 34]} />
+            <Thumb item={chair} box={[34, 34]} at={1} />
           </PartButton>
           {spec.body && wood && (
             <PartButton label={t("part.wood")} picked={part === spec.body.key} onPick={() => pickPart(spec.body!.key)} width="w-[52px]">
@@ -137,7 +138,7 @@ function Panel({ desk }: { desk: string }) {
           <Grid>
             {FLOOR.chairs[spec.side].map(({ item }) => (
               <Card key={item} label={nameOf(item)} picked={chair === item} onPick={() => setPart(spec.chair.key, item)} onTry={() => tryPart(spec.chair.key, item)}>
-                <Thumb item={item} box={[44, 44]} />
+                <Thumb item={item} box={[52, 52]} />
               </Card>
             ))}
           </Grid>
@@ -188,65 +189,38 @@ function Panel({ desk }: { desk: string }) {
 }
 
 /**
- * What a spot can hold: its groups as tabs, each saying how many it has, and
- * under the one open, nothing (first, always there) and every thing in it.
- * It opens on the group of what stands there now.
+ * What a spot can hold, all at once: nothing (first, always there), then
+ * every thing that suits it, kinds kept together. Each spot has its own (the
+ * middle what you work at, the sides lamps, plants and small things), so there's
+ * no choosing a group first.
  */
 function SpotOptions({ desk, spot, item }: { desk: string; spot: DeskSpot; item: string | null }) {
   const t = useTranslations("decorate");
   const key = spotKey(desk, spot.id);
-  const fits = Object.keys(FLOOR.things).filter((one) => fitsIn(desk, spot, one));
-  const shelves = SHELVES.map((shelf) => ({ shelf, things: fits.filter((one) => shelfOf(one) === shelf) })).filter((one) => one.things.length);
-  const shelfFor = (thing: string | null): Shelf => (thing && shelves.some((one) => one.shelf === shelfOf(thing)) ? shelfOf(thing) : (shelves[0]?.shelf ?? "tech"));
-  const [open, setOpen] = useState<Shelf>(() => shelfFor(item));
-  // What stands there changed from elsewhere (a surprise, an undo): its group opens, so it's the one shown picked.
-  const [shown, setShown] = useState(item);
-  if (shown !== item) {
-    setShown(item);
-    if (item && shelfOf(item) !== open) setOpen(shelfFor(item));
-  }
-  const things = shelves.find((one) => one.shelf === open)?.things ?? [];
+  const kind = (one: string) => SHELVES.indexOf(shelfOf(one));
+  const things = Object.keys(FLOOR.things)
+    .filter((one) => fitsIn(desk, spot, one))
+    .sort((a, b) => kind(a) - kind(b));
 
   return (
-    <div className="flex flex-col gap-3">
-      {shelves.length > 1 && (
-        <div role="tablist" className="flex gap-1 rounded-full bg-foreground/[0.05] p-1">
-          {shelves.map(({ shelf, things: inIt }) => (
-            <button
-              key={shelf}
-              type="button"
-              role="tab"
-              aria-selected={open === shelf}
-              onClick={() => setOpen(shelf)}
-              className={cn(
-                "flex h-8 min-w-0 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full px-2 text-[12.5px] font-medium transition-[background-color,color,box-shadow] duration-150",
-                open === shelf ? "bg-card text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.12)]" : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              <span className="truncate">{t(`shelf.${shelf}`)}</span>
-              <span className={cn("tabular-nums text-[11.5px]", open === shelf ? "text-muted-foreground" : "text-faint")}>{inIt.length}</span>
-            </button>
-          ))}
-        </div>
-      )}
-      <Grid>
-        <Card label={t("nothing")} picked={!item} onPick={() => setPart(key, null)} onTry={() => tryPart(key, null)} caption>
-          <EmptyMark large />
+    <Grid>
+      <Card label={t("nothing")} picked={!item} onPick={() => setPart(key, null)} onTry={() => tryPart(key, null)} caption>
+        <EmptyMark large />
+      </Card>
+      {things.map((one) => (
+        <Card key={one} label={nameOf(one)} picked={item === one} onPick={() => setPart(key, one)} onTry={() => tryPart(key, one)} wide={wideOf(one)}>
+          <Thumb item={one} box={wideOf(one) ? [112, 44] : [48, 44]} />
         </Card>
-        {things.map((one) => (
-          <Card key={one} label={nameOf(one)} picked={item === one} onPick={() => setPart(key, one)} onTry={() => tryPart(key, one)} wide={wideOf(one)}>
-            <Thumb item={one} box={wideOf(one) ? [112, 44] : [48, 44]} />
-          </Card>
-        ))}
-      </Grid>
-    </div>
+      ))}
+    </Grid>
   );
 }
 
 /** Whether a thing, shown at a crisp scale, needs two columns. */
 const wideOf = (item: string) => {
   const { width, height } = artOf(item);
-  return width > 40 && width > height * 1.6;
+  // Long and low (a pair of screens), or wider than a tile holds at its own size (a typewriter).
+  return width > 48 || (width > 40 && width > height * 1.6);
 };
 
 /** An empty spot: a dashed outline with a plus, the way the floor marks it. */

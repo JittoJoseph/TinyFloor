@@ -340,18 +340,20 @@ export function deskThings(things, side, sitAt, rand) {
  * - a single desk: something tall or small on the left, the screen in front
  *   of them, something small on the right (they sit right of its middle, so
  *   the screen leans a little left of them and the right is the narrower);
+ *   the middle holds its own things (screens, a typewriter…), the sides the rest;
  * - a bank's near desk: a setup on one side, two small things on theirs;
  * - a bank's far desk: screens on its strip in front of them, a small thing either side.
  */
 export function deskSpots(item, bankX, bankY, c, side, sitAt) {
   const dx = bankX + c * deskStep(item);
   const spots = [];
-  const spot = (from, to, foot) => spots.push({ id: `spot-${spots.length}`, x: [dx + from, dx + to], foot: bankY + foot });
+  const spot = (from, to, foot, holds) => spots.push({ id: `spot-${spots.length}`, x: [dx + from, dx + to], foot: bankY + foot, ...(holds ? { holds } : {}) });
   const at = sitAt * 32;
   if (item.cluster.style === "cubicle") {
-    spot(6, 42, 62);
-    spot(42, 102, 62);
-    spot(102, 128, 62);
+    // What you work at in front of you, the small things either side (shared-protocol office.ts fitsIn).
+    spot(6, 42, 62, "side");
+    spot(42, 102, 62, "middle");
+    spot(102, 128, 62, "side");
   } else if (side === "front" && sitAt <= 3) {
     spot(32, 64, 64);
     spot(64, at, 64);

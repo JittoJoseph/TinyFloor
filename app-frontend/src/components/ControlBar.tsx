@@ -70,7 +70,7 @@ function useSize(ref: RefObject<HTMLElement | null>, content?: unknown): { width
  * - in a call: the call's own keys (microphone, camera and screen to switch
  *   on when there's something to see, speaker) and hanging up; you, your
  *   desk and the count step out until it ends;
- * - decorating your desk: your microphone (the desk's panel has the rest).
+ * - decorating your desk: nothing, out of a call (the desk's panel has the rest); in one, the call's keys.
  * Keys come and go with a quick scale and fade while the others slide over.
  *
  * Pressing you or the count opens the dock itself, in two moves, never both
@@ -113,6 +113,7 @@ export default function ControlBar({
   const { desk: decorating } = useDecorate();
   const [panel, setPanel] = useState<Panel | null>(null);
   const shown = inCall || decorating ? null : panel;
+  const away = !!decorating && !inCall;
   // What the panel holds: kept while the dock folds down, let go once it has.
   const [held, setHeld] = useState<Panel | null>(null);
   const [fresh, setFresh] = useState(0);
@@ -222,8 +223,6 @@ export default function ControlBar({
         icon={<PhoneOff />}
       />,
     ]);
-  } else if (decorating) {
-    items.push(["mic", mic]);
   } else {
     items.push(["you", <YouKey key="you" open={shown === "you"} onToggle={() => toggle("you")} />]);
     items.push(["divider-you", <Divider key="divider-you" />]);
@@ -248,7 +247,16 @@ export default function ControlBar({
   }
 
   return (
-    <div ref={box} className="absolute bottom-2 left-1/2 z-50 max-w-[calc(100%-1rem)] -translate-x-1/2 on-floor md:bottom-[7px]">
+    <div
+      ref={box}
+      // Decorating your desk, out of a call, the dock steps out of the picture altogether.
+      aria-hidden={away || undefined}
+      inert={away}
+      className={cn(
+        "absolute bottom-2 left-1/2 z-50 max-w-[calc(100%-1rem)] -translate-x-1/2 on-floor transition-[opacity,translate] duration-200 md:bottom-[7px]",
+        away && "pointer-events-none translate-y-3 opacity-0",
+      )}
+    >
       <AnimatePresence>
         {!shown && (
           <motion.div key="rested" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.08 } }}>

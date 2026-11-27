@@ -2791,14 +2791,6 @@
     62
    ]
   ],
-  "desks-front-maple-2": [
-   [
-    10,
-    4,
-    420,
-    102
-   ]
-  ],
   "desks-single-oak-1-n4": [
    [
     0,
@@ -3756,7 +3748,8 @@
       838,
       874
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -3764,7 +3757,8 @@
       874,
       934
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -3772,7 +3766,8 @@
       934,
       960
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -3806,7 +3801,8 @@
       966,
       1002
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -3814,7 +3810,8 @@
       1002,
       1062
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -3822,7 +3819,8 @@
       1062,
       1088
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -3856,7 +3854,8 @@
       1094,
       1130
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -3864,7 +3863,8 @@
       1130,
       1190
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -3872,7 +3872,8 @@
       1190,
       1216
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -3906,7 +3907,8 @@
       838,
       874
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -3914,7 +3916,8 @@
       874,
       934
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -3922,7 +3925,8 @@
       934,
       960
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -3956,7 +3960,8 @@
       966,
       1002
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -3964,7 +3969,8 @@
       1002,
       1062
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -3972,7 +3978,8 @@
       1062,
       1088
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4006,7 +4013,8 @@
       1094,
       1130
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -4014,7 +4022,8 @@
       1130,
       1190
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -4022,7 +4031,8 @@
       1190,
       1216
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4056,7 +4066,8 @@
       1414,
       1450
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -4064,7 +4075,8 @@
       1450,
       1510
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -4072,7 +4084,8 @@
       1510,
       1536
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4106,7 +4119,8 @@
       1542,
       1578
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -4114,7 +4128,8 @@
       1578,
       1638
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -4122,7 +4137,8 @@
       1638,
       1664
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4156,7 +4172,8 @@
       1670,
       1706
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -4164,7 +4181,8 @@
       1706,
       1766
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -4172,7 +4190,8 @@
       1766,
       1792
      ],
-     "foot": 702
+     "foot": 702,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4206,7 +4225,8 @@
       1414,
       1450
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -4214,7 +4234,8 @@
       1450,
       1510
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -4222,7 +4243,8 @@
       1510,
       1536
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4256,7 +4278,8 @@
       1542,
       1578
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -4264,7 +4287,8 @@
       1578,
       1638
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -4272,7 +4296,8 @@
       1638,
       1664
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4306,7 +4331,8 @@
       1670,
       1706
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     },
     {
      "id": "spot-1",
@@ -4314,7 +4340,8 @@
       1706,
       1766
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "middle"
     },
     {
      "id": "spot-2",
@@ -4322,7 +4349,8 @@
       1766,
       1792
      ],
-     "foot": 862
+     "foot": 862,
+     "holds": "side"
     }
    ],
    "set": "ours",
@@ -4360,7 +4388,7 @@
     54,
     46
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-laptop-ash": {
@@ -4375,7 +4403,7 @@
     54,
     46
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-screens-pair": {
@@ -4390,7 +4418,7 @@
     62,
     44
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-screen-silver": {
@@ -4405,7 +4433,7 @@
     56,
     46
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-screen-ash": {
@@ -4420,7 +4448,7 @@
     56,
     46
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-screen-pale": {
@@ -4435,7 +4463,7 @@
     56,
     46
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-screen-teal": {
@@ -4450,7 +4478,7 @@
     56,
     46
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-monitor-back": {
@@ -4465,7 +4493,7 @@
     56,
     46
    ],
-   "shelf": "tech",
+   "shelf": "middle",
    "set": "ours"
   },
   "ours-lamp-coral": {
@@ -5498,6 +5526,36 @@
     42
    ],
    "shelf": "tech"
+  },
+  "ours-book": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    10,
+    22,
+    54,
+    44
+   ],
+   "shelf": "middle",
+   "set": "ours"
+  },
+  "ours-typewriter": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    10,
+    6,
+    54,
+    44
+   ],
+   "shelf": "middle",
+   "set": "ours"
   }
  },
  "chairs": {
@@ -5506,25 +5564,85 @@
     "item": "chair-black-back",
     "dx": 0,
     "dy": 0,
-    "sortY": 48
+    "sortY": 48,
+    "art": [
+     0,
+     2,
+     32,
+     44
+    ]
    },
    {
     "item": "chair-black-mesh-back",
     "dx": 0,
     "dy": 0,
-    "sortY": 48
+    "sortY": 48,
+    "art": [
+     0,
+     2,
+     32,
+     44
+    ]
    },
    {
     "item": "chair-tan-back",
     "dx": 0,
     "dy": 0,
-    "sortY": 48
+    "sortY": 48,
+    "art": [
+     0,
+     2,
+     32,
+     44
+    ]
    },
    {
     "item": "chair-tan-mesh-back",
     "dx": 0,
     "dy": 0,
-    "sortY": 48
+    "sortY": 48,
+    "art": [
+     0,
+     2,
+     32,
+     44
+    ]
+   },
+   {
+    "item": "chair-cognac-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48,
+    "art": [
+     0,
+     2,
+     32,
+     44
+    ]
+   },
+   {
+    "item": "chair-cream-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48,
+    "art": [
+     0,
+     2,
+     32,
+     44
+    ]
+   },
+   {
+    "item": "chair-teal-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48,
+    "art": [
+     0,
+     2,
+     32,
+     44
+    ]
    }
   ],
   "back": [
@@ -5532,25 +5650,49 @@
     "item": "chair-black-mesh",
     "dx": 0,
     "dy": 0,
-    "sortY": 56
+    "sortY": 56,
+    "art": [
+     0,
+     14,
+     32,
+     60
+    ]
    },
    {
     "item": "chair-black",
     "dx": 0,
     "dy": 0,
-    "sortY": 56
+    "sortY": 56,
+    "art": [
+     0,
+     14,
+     32,
+     60
+    ]
    },
    {
     "item": "chair-tan-mesh",
     "dx": 0,
     "dy": 0,
-    "sortY": 56
+    "sortY": 56,
+    "art": [
+     0,
+     14,
+     32,
+     60
+    ]
    },
    {
     "item": "chair-tan",
     "dx": 0,
     "dy": 0,
-    "sortY": 56
+    "sortY": 56,
+    "art": [
+     0,
+     14,
+     32,
+     60
+    ]
    }
   ]
  }

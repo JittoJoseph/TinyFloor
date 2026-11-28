@@ -19,7 +19,7 @@ export const CHANGELOG_FEED = "/changelog.xml";
 
 /** Releases to production a month, counted from the merges that deploy it (the code is on GitHub). */
 export const RELEASES = [
-  { month: "November 2026", count: 20, partial: true },
+  { month: "November 2026", count: 40, partial: true },
   { month: "October 2026", count: 84 },
   { month: "September 2026", count: 41 },
 ] as const;
@@ -88,6 +88,145 @@ const ENTRIES: ChangelogEntry[] = [
     summary:
       "From 1 December to 6 January, snow falls over the floor and a pile of presents outside the building holds a Christmas hat. Walk over to wear it, and everyone on the floor sees it on you until you take it off.",
     also: ["Snow can be turned off in Settings, for you alone."],
+  },
+  {
+    slug: "asking-to-talk",
+    date: "2026-11-27",
+    kind: "improved",
+    title: "Asking to talk, redesigned",
+    summary:
+      "When someone asks to talk, a card shows their character, \"wants to talk\", Not now and a green Talk, in your own light or dark theme. A line along its foot runs down the half minute it waits, and an ask nobody answered stays in your direct messages, with Talk to ask back.",
+    image: { name: "talk", alt: "John asking to talk on TinyFloor: a card at the top of the floor with his character, \"wants to talk\", Not now and a green Talk" },
+    more: { href: "/proximity-chat", label: "Proximity chat" },
+    body: [
+      {
+        title: "What the person asked sees",
+        paragraphs: [
+          "A card at the top of the screen, on every page of the office, not only the floor: the asker's character from the shoulders up, as the dock shows them, their name and \"wants to talk\". Talk is green, with the talk mark moving like a voice; Not now turns it down, and so does Escape.",
+          "A hairline along the card's foot runs down the half minute the ask waits, so you can see it won't wait forever. Nothing on it pulses or blinks.",
+        ],
+      },
+      {
+        title: "What the one asking sees",
+        paragraphs: [
+          "\"Asking to talk\" with the other person's character and Cancel, and the same hairline running down. If they say Not now, are busy or don't answer, a short note says so and goes.",
+        ],
+      },
+      {
+        title: "An ask that wasn't answered",
+        paragraphs: [
+          "Every ask also goes into your direct messages with that person, as a small card instead of words. If they missed it, it reads \"wanted to talk\" with a Talk button, which asks you back as soon as you're both on the floor; you see \"You asked to talk\".",
+        ],
+        image: { name: "talk-card", alt: "A card in TinyFloor's direct messages: \"John wanted to talk\", 1:49 PM, with a green Talk button" },
+      },
+    ],
+    also: [
+      "The card beside someone on the floor is a rounded square now, with their name first and their status only when they're busy, away, in a call or have left a note.",
+      "Join on the meeting card in #general takes you to the meeting, not only into its sound.",
+    ],
+  },
+  {
+    slug: "decorate-your-desk",
+    date: "2026-11-27",
+    kind: "new",
+    title: "Decorate your desk",
+    summary:
+      "Your desk is yours to set up: a screen, an open book or a typewriter in the middle, plants, lamps and personal things on the sides, and the chair in a new colour. Everyone on the floor sees each change as you make it.",
+    image: { name: "desk", alt: "Decorating a desk on TinyFloor: the desk in focus with its middle spot picked, and the Your desk panel showing screens to choose from" },
+    more: { href: "/lobby", label: "Demo office" },
+    body: [
+      {
+        title: "Where to find it",
+        paragraphs: [
+          "Select your face at the left end of the dock, then Customize your desk. If you're somewhere else on the floor, your character walks to your desk and sits down first, then the floor softens around the desk and the panel opens beside it.",
+        ],
+      },
+      {
+        title: "What goes where",
+        paragraphs: [
+          "Each desk has spots. The middle one, in front of you, holds a screen or two, an open book or a typewriter; the sides hold plants, lamps, personal things and more tech. The chair comes in new colours, and the desk's wood can change too.",
+          "Pick a spot on the desk or in the panel, then pick what goes there. Surprise me fills the desk in one go, Undo and Redo walk back and forth, and Reset puts it back as it came.",
+        ],
+      },
+      {
+        title: "Everyone sees it",
+        paragraphs: [
+          "There's no save: each change shows on the floor for everyone as you make it, and stays. In the [demo office](/lobby), claim a free desk to try it; it goes back after a few minutes.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "a-first-walk-through",
+    date: "2026-11-27",
+    kind: "new",
+    title: "A first walk through the office",
+    summary:
+      "On their first day, new people get a few short pointers: how to walk, where their desk is, how to change their look and how to make the desk their own. Each one points at the button it's about and goes once it's done.",
+    also: ["On a phone, a tap in the joystick's corner walks you there; a slide or a hold steers."],
+  },
+  {
+    slug: "dressing-room-at-once",
+    date: "2026-11-27",
+    kind: "improved",
+    title: "The dressing room opens at once",
+    summary:
+      "The dressing room opens straight away, whole. Hair, hats, glasses and faces are shown on your character's head and shoulders, so a row of hats reads as hats, and outfits are shown without your extras so they're easy to tell apart.",
+  },
+  {
+    slug: "staying-on-the-floor",
+    date: "2026-11-27",
+    kind: "fixed",
+    title: "Sitting still no longer drops you",
+    summary:
+      "In a busy office, someone sitting still could be taken off the floor after a minute and a half and come back with \"Reconnecting\". That's gone, and a reconnect while you decorate your desk leaves the desk in view.",
+  },
+  {
+    slug: "google-calendar",
+    date: "2026-11-21",
+    kind: "new",
+    title: "Google Calendar in your office",
+    summary:
+      "Connect Google Calendar and the office knows when you're in a meeting: teammates see \"In a meeting until 3:30\" on your name tag. A Calendar page shows your week next to your teammates', and a minute before an online meeting, a prompt over the dock offers the way in.",
+    also: [
+      "Add to Google Calendar puts a meeting on your calendar with the office's Meetings page as the place.",
+      "TinyFloor reads when you're busy, never what a private event is called.",
+    ],
+  },
+  {
+    slug: "talk-wave-poke",
+    date: "2026-11-19",
+    kind: "new",
+    title: "Talk, wave and poke",
+    summary:
+      "Stop beside someone and their name tag opens into Wave, Poke, Message and Talk. Talk replaces Call: they see that you want to talk and answer Talk or Not now. A wave puts a hand up over you; a poke makes them jolt.",
+    image: { name: "proximity-card", alt: "Beside Cha on TinyFloor's floor: her name tag opened into Wave, Poke, Message and a green Talk" },
+    more: { href: "/proximity-chat", label: "Proximity chat" },
+    also: [
+      "Characters bob when you click them, wave at them or their status changes, and give a small shake when they're in a meeting you're not in.",
+      "Only the nearest person's card shows, once you've stopped, and name tags it would cover step aside.",
+    ],
+  },
+  {
+    slug: "running",
+    date: "2026-11-18",
+    kind: "improved",
+    title: "Running on long walks",
+    summary:
+      "Long walks run, and everyone sees you at the same pace; Shift runs with the arrow keys. When you stop beside something, a hint at the top right says what you can do with it, and two people asking each other at the same moment simply connect.",
+    also: [
+      "The tile under your mouse is marked, so you can see where a click will take you.",
+      "A talk's small window opens by itself when you leave the tab.",
+      "A Spotify playlist names the song that's actually playing.",
+    ],
+  },
+  {
+    slug: "demo-office-desks",
+    date: "2026-11-16",
+    kind: "improved",
+    title: "Claim a desk in the demo office",
+    summary:
+      "Anyone trying the [demo office](/lobby) can claim a free desk while they're there, and see it with their name. It goes back when they leave, and each change to a demo desk undoes itself after a few minutes.",
   },
   {
     slug: "dressing-room",

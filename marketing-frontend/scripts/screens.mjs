@@ -85,15 +85,8 @@ const SHOTS = {
     tone: "mint",
     radius: 0,
   },
-  // An ask that went unanswered, in your direct messages with them: "wanted to talk", with Talk to ask back.
-  "talk-card": {
-    url: `/office/${OFFICE}/chat`,
-    other: true,
-    steps: [["key", "Escape"], ["dm"], ["wait", 2500], ["move", 5, 5]],
-    crop: [760, 1140, 1040, 650],
-    tone: "blurple",
-    radius: 0,
-  },
+  // (talk-card.webp, an unanswered ask in direct messages, was taken from a conversation staged for it, not here: a
+  // test account's messages fill up with test asks.)
   // Stopped beside someone: their name tag opens into Wave, Poke, Message and Talk.
   "proximity-card": {
     url: `/office/${OFFICE}`,

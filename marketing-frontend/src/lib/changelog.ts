@@ -117,7 +117,7 @@ const ENTRIES: ChangelogEntry[] = [
         paragraphs: [
           "Every ask also goes into your direct messages with that person, as a small card instead of words. If they missed it, it reads \"wanted to talk\" with a Talk button, which asks you back as soon as you're both on the floor; you see \"You asked to talk\".",
         ],
-        image: { name: "talk-card", alt: "A card in TinyFloor's direct messages: \"John wanted to talk\", 1:49 PM, with a green Talk button" },
+        image: { name: "talk-card", alt: "Direct messages between Maya and Cha on TinyFloor: Maya asks for a minute, a card reads \"Maya wanted to talk\" with a green Talk button, and Cha replies that she's coming over" },
       },
     ],
     also: [

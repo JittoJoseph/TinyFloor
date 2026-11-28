@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog: domande sul lavoro da remoto, risposte e numeri",
+    "description": "Cosa chiedono i team da remoto prima di scegliere come lavorare insieme: risposte basate sui numeri e le loro fonti, da chi crea TinyFloor."
+  },
+  "title": "Domande dei team da remoto, <em>risposte con i numeri.</em>",
+  "body": "Cosa chiedono i team da remoto prima di scegliere come lavorare insieme: costi, confronti e ricerche, ognuno con le proprie fonti.",
+  "categories": {
+    "costs": "Costi",
+    "comparisons": "Confronti",
+    "remoteWork": "Lavoro da remoto"
+  },
+  "latest": "Più recenti",
+  "takeaways": "Punti chiave",
+  "sources": "Fonti",
+  "related": "Articoli correlati",
+  "guides": "Guide sullo stesso argomento",
+  "fromBlog": "Dal blog",
+  "all": "Tutti gli articoli"
+}

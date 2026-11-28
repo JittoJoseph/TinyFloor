@@ -1,0 +1,183 @@
+{
+  "label": "Como fazer a equipe usar um escritório virtual",
+  "meta": {
+    "title": "Como fazer sua equipe remota usar de verdade um escritório virtual",
+    "description": "Por que escritórios virtuais ficam vazios depois da primeira semana e um plano de duas semanas para sua equipe remota conversar neles: o que levar para lá, o que combinar e o que nunca fazer."
+  },
+  "coverAlt": "Uma porta creme aberta no batente, com um capacho amarelo e uma plantinha em vaso amarelo, sobre fundo azul.",
+  "title": "Como fazer sua equipe remota <em>usar de verdade</em> um escritório virtual",
+  "intro": "A maioria dos escritórios virtuais não fracassa por falta de recursos. Fracassa na segunda semana, quando o andar está vazio, ninguém tem motivo para abri-lo e a única pessoa que entra se sente vigiada. É uma questão de gestão de mudanças: uma equipe que continua usando o escritório definiu para que ele serve, combinou como usá-lo e se organizou para ocupá-lo nas primeiras duas semanas. Veja como fazer isso. Nós fazemos o TinyFloor, um escritório virtual para equipes remotas, então temos interesse no assunto; as orientações valem para qualquer ferramenta desse tipo.",
+  "takeaways": [
+    "Um escritório virtual fica vazio quando não tem função: dê uma a ele, como tirar dúvidas rápidas e conversar por alguns minutos em vez de usar links de reunião.",
+    "Convide toda a equipe no mesmo dia. Um andar vazio é o motivo mais comum para as pessoas pararem de abri-lo.",
+    "Leve uma reunião recorrente para lá na primeira semana, para que todos tenham um motivo para entrar.",
+    "Combine as regras antes do primeiro dia: o uso é opcional, ninguém monitora horas, as câmeras começam desligadas e qualquer pedido para conversar pode esperar.",
+    "Ver a liderança presente e disponível para conversar importa mais do que qualquer recurso."
+  ],
+  "sections": [
+    {
+      "title": "Por que escritórios virtuais ficam vazios",
+      "items": [
+        {
+          "title": "Não têm uma função",
+          "body": "Se as perguntas continuam no chat e as chamadas continuam por links de reunião, o escritório é só mais uma aba vazia. As pessoas fecham abas vazias."
+        },
+        {
+          "title": "Não há ninguém lá",
+          "body": "A primeira pessoa a abrir encontra um andar vazio, assim como a segunda. Cada uma conclui que ninguém usa e para de entrar. A presença só funciona quando a maior parte da equipe está lá ao mesmo tempo."
+        },
+        {
+          "title": "Dão a sensação de vigilância",
+          "body": "Se só o gestor abre o escritório, ou se ele informa quem ficou online e por quanto tempo, as pessoas entendem que é monitoramento e evitam entrar."
+        },
+        {
+          "title": "São mais difíceis de usar do que a alternativa anterior",
+          "body": "Se começar uma conversa exige mais passos do que um huddle do Slack, as pessoas voltam para o huddle."
+        }
+      ]
+    },
+    {
+      "title": "Antes do primeiro dia: defina uma função",
+      "body": [
+        "Decida para que o escritório serve e diga isso em uma frase. Para a maioria das equipes, é o seguinte: quando precisar de alguém por um minuto, vá até a pessoa e converse, em vez de agendar uma chamada ou esperar por uma mensagem. Todo o resto, como reuniões diárias e encontros sociais, vem depois.",
+        "Depois, combinem como ele funciona e registrem isso onde a equipe vai ler:"
+      ],
+      "items": [
+        {
+          "title": "O uso é opcional",
+          "body": "Estar no andar mostra que você está por perto. Não estar lá não significa nada."
+        },
+        {
+          "title": "Ninguém monitora horas",
+          "body": "Sem relatórios de tempo online, contadores de inatividade ou conferência de quem entrou em qual horário."
+        },
+        {
+          "title": "As câmeras começam desligadas",
+          "body": "Voz basta para uma pergunta rápida. Ligue a câmera quando ajudar."
+        },
+        {
+          "title": "Qualquer pessoa pode dizer agora não",
+          "body": "Um pedido para conversar pode ser recusado ou respondido depois, e uma nota no status indica quando você precisa se concentrar."
+        }
+      ]
+    },
+    {
+      "title": "Primeira semana: organize a presença da equipe",
+      "items": [
+        {
+          "title": "Convide todos no mesmo dia",
+          "detail": "Dia 1",
+          "body": "Envie o link de convite para toda a equipe de uma vez, junto com a frase que explica a função do escritório e as regras. Um andar onde todos aparecem na primeira manhã é o sinal mais claro de que é ali que a equipe está."
+        },
+        {
+          "title": "Leve uma reunião para lá",
+          "detail": "Dias 1–5",
+          "body": "Faça a reunião diária ou a reunião semanal da equipe na sala do escritório, em vez de usar um link. Isso dá a todos um motivo para abrir o escritório ao mesmo tempo e cria o hábito de deixá-lo aberto depois."
+        },
+        {
+          "title": "A liderança entra primeiro e fica disponível",
+          "detail": "Todos os dias",
+          "body": "Quem configurou o escritório deve ficar no andar o dia todo e responder a todos os pedidos para conversar. Em [um estudo com consultores que passaram a trabalhar remotamente](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/), ajudou ter uma gestora que deixou claro que a equipe podia ligar para ela a qualquer momento entre 9h e 17h; o escritório torna essa disponibilidade visível."
+        },
+        {
+          "title": "Responda às perguntas rápidas por lá",
+          "detail": "Todos os dias",
+          "body": "Quando chegar pelo chat uma pergunta que levaria um minuto para resolver falando, responda com \"vem aqui conversar?\" em vez de um parágrafo. Duas ou três conversas assim por dia ensinam à equipe para que o escritório serve."
+        }
+      ]
+    },
+    {
+      "title": "Segunda semana: faça dele o lugar habitual",
+      "items": [
+        {
+          "title": "Substitua os links, não as ferramentas",
+          "body": "Mantenha seu app de chat para o trabalho por escrito. Pare de enviar links de reunião para conversas curtas; o escritório substitui esses links."
+        },
+        {
+          "title": "Abra o escritório ao começar o dia",
+          "body": "Peça às pessoas que o abram ao começar a trabalhar, como fazem com o chat. Fixar a aba ou instalá-lo como app pelo navegador ajuda."
+        },
+        {
+          "title": "Façam uma atividade social por lá",
+          "body": "Uma conversa na sexta-feira, um almoço por vídeo, um jogo: uma vez por semana basta. Isso não deve ser a razão de existir do escritório."
+        }
+      ]
+    },
+    {
+      "title": "Depois de duas semanas: faça três perguntas",
+      "body": [
+        "Pergunte à equipe, não ao painel de métricas. Se as respostas forem sim, continue; se não, mude a função antes de trocar de ferramenta."
+      ],
+      "items": [
+        {
+          "title": "Você conversou com alguém lá nesta semana para quem teria mandado uma mensagem?",
+          "body": "Isso é o escritório cumprindo sua função."
+        },
+        {
+          "title": "Você deixa o escritório aberto enquanto trabalha?",
+          "body": "Se não, pergunte o que faz as pessoas fecharem: barulho, câmera, sensação de vigilância ou falta de gente."
+        },
+        {
+          "title": "Você já se sentiu vigiado lá?",
+          "body": "Se alguém disser sim, resolva isso primeiro, independentemente das outras mudanças."
+        }
+      ]
+    },
+    {
+      "title": "O que nunca fazer",
+      "items": [
+        {
+          "title": "Tornar a presença obrigatória",
+          "body": "Exigir que as pessoas fiquem no andar transforma o escritório em controle de ponto, e elas encontram maneiras de parecer presentes."
+        },
+        {
+          "title": "Usar o escritório para fiscalizar pessoas",
+          "body": "Na primeira vez que um gestor comenta quem não estava online, o escritório deixa de ser um lugar para conversar."
+        },
+        {
+          "title": "Manter o jeito antigo e o novo",
+          "body": "Se chamadas curtas ainda puderem acontecer dos dois jeitos, vão continuar do jeito antigo. Escolha o escritório para conversas curtas e deixe isso claro."
+        }
+      ]
+    },
+    {
+      "title": "Quando um escritório virtual não é a solução",
+      "body": [
+        "Se a equipe raramente trabalha no mesmo horário, por estar em muitos fusos ou por escolher trabalhar principalmente por escrito, não haverá gente suficiente no andar ao mesmo tempo para valer a pena abri-lo. Canais escritos, status claros e atualizações gravadas vão atender melhor. Um escritório virtual vale a pena para uma equipe que trabalha junta, no mesmo horário, todos os dias."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Onde o TinyFloor se encaixa",
+    "body": "O TinyFloor foi feito para esse tipo de adoção: um link de convite para toda a equipe, um andar no navegador sem nada para instalar, uma sala para a reunião diária e o botão Conversar para pedir um minuto de alguém, que pode aceitar ou responder depois. Ele nunca marca as pessoas como ausentes porque a aba está em segundo plano e não monitora horas. O Pro custa US$ 29 por mês para toda a equipe, e todo escritório novo começa com 14 dias de Pro grátis, aproximadamente a duração do plano acima."
+  },
+  "faq": [
+    {
+      "q": "Por que as equipes param de usar o escritório virtual?",
+      "a": "Em geral, porque ele não tem uma função clara, o andar está vazio quando as pessoas entram ou elas se sentem vigiadas. Definir uma função, convidar todos de uma vez e combinar que o uso é opcional e sem monitoramento resolve boa parte disso."
+    },
+    {
+      "q": "O uso do escritório virtual deve ser obrigatório?",
+      "a": "Não. A presença obrigatória transforma o escritório em controle de ponto. Faça dele o lugar mais fácil para conversar, e as pessoas entram porque é útil."
+    },
+    {
+      "q": "Quanto tempo a equipe leva para se acostumar com um escritório virtual?",
+      "a": "Cerca de duas semanas: a primeira para organizar a presença, levando uma reunião para lá e mantendo a liderança no andar, e a segunda para torná-lo o lugar habitual para conversas curtas."
+    },
+    {
+      "q": "Um escritório virtual substitui o Slack?",
+      "a": "Para o trabalho por escrito, não. Ele substitui os links de reunião e os huddles que você abre para conversas curtas; mantenha o chat para o que pode esperar."
+    },
+    {
+      "q": "E se nossa equipe estiver em muitos fusos horários?",
+      "a": "Um escritório virtual ajuda mais quando as pessoas trabalham no mesmo horário por várias horas ao dia. Com pouca sobreposição, canais escritos e status claros vão atender melhor."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/",
+      "note": "Entrevistas com 51 profissionais do conhecimento de uma empresa de serviços profissionais, de abril a junho de 2020, incluindo uma gestora que permitia ligações a qualquer momento entre 9h e 17h."
+    }
+  ]
+}

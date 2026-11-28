@@ -1,0 +1,210 @@
+{
+  "label": "Är Gather värt det?",
+  "meta": {
+    "title": "Är Gather värt det 2026? En genomgång för distansteam",
+    "description": "Gather, det virtuella kontoret på gather.town, efter prisändringen 2025 och avknoppningen 2026: vad det gör bra, vad det kostar och vem som bör välja något annat."
+  },
+  "coverAlt": "En balansvåg i gräddfärgad lera med en gul myntstapel på ena sidan och ett litet gräddfärgat hus på den andra, mot en mintgrön bakgrund.",
+  "title": "Är Gather <em>värt det</em> 2026?",
+  "intro": "Gather, det virtuella kontoret på gather.town, är fortfarande den mest kända produkten i sitt slag, och 2026 ser villkoren annorlunda ut mot när många team började: ingen gratisplan sedan september 2025, 12 till 15 $ per medlem i månaden och ett självständigt företag sedan februari 2026. Om det är värt pengarna beror på vad ert team faktiskt använder. Här är vad det gör bra, vad det kostar, var det brister och vem som bör se sig om efter annat. Vi bygger TinyFloor, som konkurrerar med Gather, så vi är inte neutrala; alla fakta om Gather här är hämtade från Gathers egna sidor i november 2026.",
+  "takeaways": [
+    "Gather kostar 12 $ per medlem i månaden vid årsbetalning, eller 15 $ i månaden. Gratisplanen togs bort den 15 september 2025; det finns en 30-dagars provperiod.",
+    "Det passar bäst för team som vill designa sitt eget kontor, spela in möten med AI-anteckningar och integrera med Google Calendar och GitHub.",
+    "I februari 2026 knoppades Gather av som ett självständigt, lönsamt företag, och dess AI-team gick till Figma. Gather uppger att inget förändrades för kunderna.",
+    "Ett team på 10 personer betalar 1 440 $ om året vid årsbetalning, för varje medlem, oavsett hur ofta de är inne.",
+    "Team som främst behöver se vilka som är inne och kunna prata kan få det till ett lägre pris."
+  ],
+  "sections": [
+    {
+      "title": "Vad Gather är",
+      "body": [
+        "Gather är ett virtuellt kontor: alla i teamet har en avatar på en 2D-karta över kontoret, så att du ser vem som är inne och kan börja prata genom att gå fram, utan någon möteslänk. Det har mötesrum, teamchatt med kanaler och direktmeddelanden, samt statusar som visar vem som är ledig, fokuserar eller sitter i möte.",
+        "Den nuvarande versionen, Gather 2.0, lanserades i september 2025. Det körs i webbläsaren, med [skrivbordsappar för macOS och Windows samt en mobilapp för iOS](https://www.gather.town/download); Android anges som på gång. Gather uppger att mer än 5 000 distansteam använder tjänsten."
+      ]
+    },
+    {
+      "title": "Vad Gather gör bra",
+      "items": [
+        {
+          "title": "Ett kontor du designar själv",
+          "body": "Gather Studio, deras kontorseditor, låter dig välja planlösning, flytta runt rum, teamytor och föremål, dekorera skrivbord och lägga till våningar när teamet växer. Få virtuella kontor låter dig utforma ytan lika fritt."
+        },
+        {
+          "title": "Kontroll över vad du hör",
+          "body": "Du är automatiskt mutad och hör öppna samtal bara om du väljer det. En förenklad vy visar personerna i stället för kartan, och ett miniläge håller dig ansluten medan du arbetar i andra program."
+        },
+        {
+          "title": "Möten med inspelningar och AI-anteckningar",
+          "body": "Gathers plan innehåller inspelningar, transkriberingar och AI-mötesanteckningar, med månatliga kvoter som börjar på 20 timmars inspelning och 30 timmars transkribering."
+        },
+        {
+          "title": "Integrationer för mjukvaruteam",
+          "body": "Google Calendar uppdaterar din status och låter dig boka möten, Spotify visar vad du lyssnar på och GitHub visar sammanfattningar av pull requests direkt på kontoret."
+        },
+        {
+          "title": "Säkerhetsdokumentation",
+          "body": "Gather är SOC 2 Type II-certifierat, erbjuder ett personuppgiftsbiträdesavtal med standardavtalsklausuler för team under GDPR, och har enkel inloggning på sin Custom-plan."
+        }
+      ]
+    },
+    {
+      "title": "Vad Gather kostar",
+      "body": [
+        "Gather säljer en huvudsaklig plan för de flesta team, Essential, som debiteras för varje medlem. Här är vad det kostar; [vår prisguide för Gather](/guides/gather-pricing) innehåller fler teamstorlekar, gästtimmar och vad som ändrades för team på det gamla priset."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Månadsbetalning",
+          "Årsbetalning, per månad",
+          "Per år, vid årsbetalning"
+        ],
+        "rows": [
+          [
+            "5 personer",
+            "75 $",
+            "60 $",
+            "720 $"
+          ],
+          [
+            "10 personer",
+            "150 $",
+            "120 $",
+            "1 440 $"
+          ],
+          [
+            "15 personer",
+            "225 $",
+            "180 $",
+            "2 160 $"
+          ],
+          [
+            "25 personer",
+            "375 $",
+            "300 $",
+            "3 600 $"
+          ]
+        ],
+        "note": "Essential för 15 $ per medlem i månaden, eller 12 $ vid årsbetalning (Gathers prissida, november 2026). Före moms."
+      }
+    },
+    {
+      "title": "Var Gather brister",
+      "items": [
+        {
+          "title": "Ingen gratisplan",
+          "body": "Sedan den 15 september 2025 måste alla kontor betala efter sin 30-dagars provperiod. Små team som använde Gather gratis var tvungna att börja betala eller lämna."
+        },
+        {
+          "title": "Varje medlem kostar",
+          "body": "Gather tar betalt för alla som har ett konto på kontoret, oavsett om de är inne varje dag eller en gång i månaden."
+        },
+        {
+          "title": "Gästtimmarna tar slut",
+          "body": "Gäster betalar inget, men varje kontor får 30 gästtimmar i månaden, eller 3 per medlem utöver 10. Ett team som tar emot kunder dagligen kan växa ur detta."
+        },
+        {
+          "title": "Att flytta från ursprungliga Gather",
+          "body": "Kontor på den ursprungliga versionen fungerar fortfarande, till samma pris per person online samtidigt. Att byta till Gather 2.0 innebär att man måste bygga ett nytt kontor i Gather Studio."
+        },
+        {
+          "title": "Mer än vissa team behöver",
+          "body": "Kontorsdesign, inspelningar och AI-anteckningar utgör en stor del av vad priset betalar för. Ett team som bara vill se vem som är inne och kunna prata betalar för detta ändå."
+        }
+      ]
+    },
+    {
+      "title": "Finns Gather fortfarande kvar?",
+      "body": [
+        "Ja. I [februari 2026 meddelade Gather](https://www.gather.town/blog/new-chapter) att de knoppades av som ett självständigt företag utan riskkapital, och beskrev sin produkt för distansarbete som lönsam och växande, medan teamet som arbetade med AI-projekten gick över till Figma. Gather meddelade kunderna att ingenting förändras för dem."
+      ]
+    },
+    {
+      "title": "Så, är det värt det?",
+      "items": [
+        {
+          "title": "Värt det om ni vill designa ert kontor",
+          "body": "Gather Studio är den starkaste funktionen. Om ert team vill ha en miljö som känns som er egen, med rum och ytor anpassade efter hur ni jobbar, är Gather svårslaget."
+        },
+        {
+          "title": "Värt det om ni annars betalar för inspelningar och AI-anteckningar",
+          "body": "Om ni ändå köper ett separat verktyg för mötesinspelning eller anteckningar gör det priset lättare att motivera när det ingår i kontoret."
+        },
+        {
+          "title": "Värt det om ni behöver SOC 2 eller enkel inloggning",
+          "body": "Gather har certifieringen och enterprise-planen som många mindre produkter saknar."
+        },
+        {
+          "title": "Titta på annat om ni främst behöver närvaro och snabba samtal",
+          "body": "Om ert team vill [se vem som är inne](/team-presence) och prata utan att boka möten, finns det flera [Gather-alternativ](/gather-alternative) som gör det till ett lägre pris, en del med en gratisplan."
+        },
+        {
+          "title": "Titta på annat om delar av teamet sällan är inne",
+          "body": "Prissättning per medlem gör att ni betalar fullt för personer som bara är inne ibland. En produkt som tar betalt per aktiv användare, eller har ett fast pris per team, blir billigare för ett sådant team."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Där TinyFloor passar",
+    "body": "TinyFloor behåller kärnan i det Gather gör: ett kontor i webbläsaren där du ser vem som är här, går fram till en kollega och trycker på Prata, ses i ett mötesrum, chattar och delar skärm. Det kostar $29 i månaden för hela teamet, ett pris oavsett hur många du bjuder in, och varje nytt kontor börjar med 14 dagar Pro gratis. Det har ingen kontorseditor, inga inspelningar, inga AI-anteckningar, ingen mobilapp och ingen enkel inloggning; om det är sådant du söker passar Gather bättre."
+  },
+  "faq": [
+    {
+      "q": "Är Gather värt det?",
+      "a": "För ett team som vill designa sitt eget kontor, vill ha inspelningar och AI-anteckningar, eller behöver SOC 2 och enkel inloggning: ja. För ett team som främst vill se vem som är inne och kunna prata köper 12 till 15 $ per medlem i månaden en hel del som inte används."
+    },
+    {
+      "q": "Är Gather gratis?",
+      "a": "Nej. Gather avslutade sin gratisplan den 15 september 2025. Tjänsten har en 30-dagars gratis provperiod och kostar därefter 12 $ per medlem i månaden vid årsbetalning eller 15 $ i månaden."
+    },
+    {
+      "q": "Vad används Gather till?",
+      "a": "Gather, på gather.town, är ett virtuellt kontor för distansteam: avatarer på en gemensam karta, där man pratar genom att gå fram till varandra, med mötesrum, chatt och statusar. Andra produkter delar namnet, som Gather AI som inventerar lager."
+    },
+    {
+      "q": "Är Gather säkert för företag?",
+      "a": "Gather är SOC 2 Type II-certifierat och erbjuder ett personuppgiftsbiträdesavtal för team under GDPR. Mikrofonen är avstängd som standard, och enkel inloggning finns på Custom-planen."
+    },
+    {
+      "q": "Läggs Gather ner?",
+      "a": "Nej. I februari 2026 blev Gather ett självständigt företag som de beskriver som lönsamt, medan AI-teamet gick över till Figma. Gather meddelade att ingenting förändrades för kunderna."
+    },
+    {
+      "q": "Vilka är bra alternativ till Gather?",
+      "a": "SoWork, Kumospace, Roam, WorkAdventure och TinyFloor är de vanligaste. Vår sida med [Gather-alternativ](/gather-alternative) jämför dem med priser för ert team."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Gather pricing",
+      "url": "https://www.gather.town/pricing",
+      "note": "Essential 12 $ per medlem i månaden vid årsbetalning, 15 $ i månaden; 30 dagars gratis provperiod."
+    },
+    {
+      "title": "Gather help center, Understanding Gather's pricing changes (2025)",
+      "url": "https://support.gather.town/articles/2500085119-understanding-gather-s-pricing-changes-2025",
+      "note": "Slutet för gratisplanen den 15 september 2025 och övergången till prissättning per medlem."
+    },
+    {
+      "title": "Gather features",
+      "url": "https://www.gather.town/features",
+      "note": "Gather Studio, avstängd mikrofon som standard, förenklad vy och miniläge, integrationer."
+    },
+    {
+      "title": "Gather download",
+      "url": "https://www.gather.town/download",
+      "note": "Skrivbordsappar för macOS och Windows, iOS-app, Android på gång."
+    },
+    {
+      "title": "Gather security",
+      "url": "https://www.gather.town/security",
+      "note": "SOC 2 Type II, personuppgiftsbiträdesavtal med standardavtalsklausuler."
+    },
+    {
+      "title": "Gather, A new chapter (February 2026)",
+      "url": "https://www.gather.town/blog/new-chapter",
+      "note": "Avknoppningen som självständigt företag och AI-teamets övergång till Figma."
+    }
+  ]
+}

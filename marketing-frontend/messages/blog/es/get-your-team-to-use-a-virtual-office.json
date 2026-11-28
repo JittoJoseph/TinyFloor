@@ -1,0 +1,183 @@
+{
+  "label": "Conseguir que un equipo use una oficina virtual",
+  "meta": {
+    "title": "Cómo hacer que tu equipo use de verdad una oficina virtual",
+    "description": "Por qué las oficinas virtuales se vacían tras la primera semana y un plan de dos semanas para que tu equipo remoto hable en ella."
+  },
+  "coverAlt": "Una puerta de color crema abierta en su marco, con un felpudo amarillo y una pequeña planta amarilla en una maceta, sobre fondo azul.",
+  "title": "Cómo hacer que tu equipo use <em>de verdad</em> una oficina virtual",
+  "intro": "La mayoría de las oficinas virtuales no fracasan por sus funciones. Fracasan en la segunda semana, cuando la planta está vacía, nadie tiene motivos para abrirla y la única persona que entra se siente vigilada. Un equipo que sigue usándola le ha dado un propósito claro, ha acordado cómo funciona y la ha llenado a propósito durante las dos primeras semanas. Así es como se hace. En TinyFloor creamos una oficina virtual, así que esto nos toca de cerca; el consejo sirve para cualquiera de ellas.",
+  "takeaways": [
+    "Una oficina virtual se vacía cuando no tiene un propósito claro: dale uno, como preguntas rápidas y conversaciones breves en lugar de enlaces de reunión.",
+    "Invita a todo el equipo el mismo día. Encontrarse la planta vacía es el motivo más habitual para dejar de abrirla.",
+    "Mueve una reunión recurrente a la oficina en la primera semana, para que todos tengan un motivo para entrar.",
+    "Acordad las reglas antes del primer día: es opcional, nadie controla las horas, las cámaras están apagadas por defecto y cualquier petición para hablar puede esperar.",
+    "Que los responsables estén visibles y accesibles para hablar importa más que cualquier función."
+  ],
+  "sections": [
+    {
+      "title": "Por qué se vacían las oficinas virtuales",
+      "items": [
+        {
+          "title": "No tiene un propósito claro",
+          "body": "Si las preguntas siguen yendo al chat y las llamadas a enlaces de reunión, la oficina es solo una pestaña más sin nada dentro. La gente cierra las pestañas vacías."
+        },
+        {
+          "title": "No hay nadie",
+          "body": "La primera persona que entra se encuentra la planta vacía, y a la segunda le pasa lo mismo. Cada una deduce que no se usa y deja de entrar. La presencia solo funciona cuando la mayor parte del equipo coincide."
+        },
+        {
+          "title": "Da la sensación de estar vigilado",
+          "body": "Si quien lidera el equipo es la única persona que la abre, o si el programa informa de quién se conectó y durante cuánto tiempo, la gente lo percibe como vigilancia y prefiere no entrar."
+        },
+        {
+          "title": "Es más difícil que lo que sustituye",
+          "body": "Si empezar una conversación requiere más pasos que una reunión rápida de Slack, la gente volverá a Slack."
+        }
+      ]
+    },
+    {
+      "title": "Antes del primer día: dale un propósito claro",
+      "body": [
+        "Decide para qué única cosa sirve la oficina y explícalo en una sola frase. Para la mayoría de los equipos es esto: cuando necesitas a alguien un minuto, te acercas y hablas, en lugar de programar una llamada o esperar un mensaje. Todo lo demás, como las reuniones diarias o los ratos de ocio, viene después.",
+        "Luego acordad cómo funciona y dejadlo por escrito donde el equipo pueda verlo:"
+      ],
+      "items": [
+        {
+          "title": "Es opcional",
+          "body": "Estar en la planta muestra que estás disponible. No estar ahí no significa nada."
+        },
+        {
+          "title": "Nadie controla las horas",
+          "body": "Sin informes de tiempo conectado, sin temporizadores de inactividad y sin mirar quién se conectó a qué hora."
+        },
+        {
+          "title": "Cámaras apagadas por defecto",
+          "body": "La voz basta para una pregunta rápida. La cámara se enciende cuando aporte algo."
+        },
+        {
+          "title": "Cualquiera puede decir «ahora no»",
+          "body": "Una petición para hablar se puede rechazar o responder más tarde, y el estado permite indicar si estás concentrado."
+        }
+      ]
+    },
+    {
+      "title": "Primera semana: llénala a propósito",
+      "items": [
+        {
+          "title": "Invita a todos el mismo día",
+          "detail": "Día 1",
+          "body": "Envía el enlace de invitación a todo el equipo a la vez, junto con la frase que define su propósito y las normas de uso. Ver a todos en la planta la primera mañana es la señal más clara de que ahí es donde está el equipo."
+        },
+        {
+          "title": "Mueve una reunión dentro",
+          "detail": "Días 1–5",
+          "body": "Haz la reunión diaria de sincronización, o la reunión semanal de equipo, en la sala de reuniones de la oficina en vez de usar un enlace. Da a todos un motivo para abrirla a la vez y genera la costumbre de dejarla abierta después."
+        },
+        {
+          "title": "Quien lidera va primero y se mantiene accesible",
+          "detail": "Cada día",
+          "body": "La persona que puso en marcha la oficina debería estar en la planta todo el día y atender cualquier petición para hablar. En [un estudio sobre consultores que pasaron al trabajo remoto](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/), lo que ayudó fue una responsable que dejó claro que su equipo podía llamarla en cualquier momento entre las 9 y las 17; la oficina hace visible esa disponibilidad."
+        },
+        {
+          "title": "Responde ahí a las preguntas rápidas",
+          "detail": "Cada día",
+          "body": "Cuando llegue una pregunta al chat que se explicaría en un minuto hablando, responde «¿te acercas?» en vez de escribir un párrafo. Dos o tres respuestas así al día enseñan al equipo para qué sirve la oficina."
+        }
+      ]
+    },
+    {
+      "title": "Segunda semana: conviértela en la opción por defecto",
+      "items": [
+        {
+          "title": "Sustituye enlaces, no herramientas",
+          "body": "Mantén tu aplicación de chat para el trabajo escrito. Deja de pegar enlaces de reunión para conversaciones cortas; la oficina sustituye a esos enlaces."
+        },
+        {
+          "title": "Ábrela al empezar la jornada",
+          "body": "Pide al equipo que la abra al empezar a trabajar, igual que abren el chat. Fijar la pestaña o instalarla como aplicación desde el navegador ayuda."
+        },
+        {
+          "title": "Organiza una actividad informal",
+          "body": "Un repaso informal el viernes, una comida con vídeo o un juego: una vez por semana es suficiente. No debería ser la razón de ser de la oficina."
+        }
+      ]
+    },
+    {
+      "title": "Tras dos semanas: haz tres preguntas",
+      "body": [
+        "Pregunta al equipo, no a las estadísticas. Si las respuestas son afirmativas, seguid adelante; si no, replantead el propósito antes de cambiar de herramienta."
+      ],
+      "items": [
+        {
+          "title": "¿Hablaste con alguien esta semana a quien de otro modo habrías escrito un mensaje?",
+          "body": "Esa es la oficina cumpliendo con su función."
+        },
+        {
+          "title": "¿La dejas abierta mientras trabajas?",
+          "body": "Si no es así, pregunta qué hace que la gente la cierre: el ruido, la cámara, sentirse vigilado o que no haya nadie."
+        },
+        {
+          "title": "¿Te has sentido vigilado en algún momento?",
+          "body": "Si alguien responde que sí, soluciona eso antes de cambiar cualquier otra cosa."
+        }
+      ]
+    },
+    {
+      "title": "Qué no hacer nunca",
+      "items": [
+        {
+          "title": "Hacer obligatoria la presencia",
+          "body": "Obligar a estar en la planta la convierte en un control horario, y la gente buscará formas de aparentar que está."
+        },
+        {
+          "title": "Usarla para controlar al equipo",
+          "body": "La primera vez que un responsable comente quién no estaba conectado, la oficina dejará de ser un lugar para hablar."
+        },
+        {
+          "title": "Mantener lo viejo y lo nuevo a la vez",
+          "body": "Si las llamadas cortas se pueden hacer por cualquiera de las dos vías, se seguirán haciendo como antes. Elige la oficina para las charlas cortas y déjalo claro."
+        }
+      ]
+    },
+    {
+      "title": "Cuándo una oficina virtual no es la solución",
+      "body": [
+        "Si tu equipo apenas coincide en el tiempo, ya sea porque está repartido en muchas zonas horarias o porque trabaja sobre todo por escrito de forma deliberada, no habrá suficiente gente en la planta a la vez para que compense abrirla. Los canales escritos, los estados claros y las actualizaciones grabadas os funcionarán mejor. Una oficina virtual compensa para un equipo que trabaja junto, al mismo tiempo, todos los días."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Dónde encaja TinyFloor",
+    "body": "TinyFloor está pensada para este tipo de implantación: un único enlace de invitación para todo el equipo, una planta en el navegador sin nada que instalar, una sala de reuniones para la sincronización diaria y el botón Hablar para pedirle a alguien un minuto, que puede aceptar o responder más tarde. Nunca marca a nadie como ausente por tener la pestaña en segundo plano ni registra las horas. Pro cuesta $29 al mes para todo el equipo, y cada oficina nueva empieza con 14 días de Pro gratis, más o menos la duración del plan anterior."
+  },
+  "faq": [
+    {
+      "q": "¿Por qué los equipos dejan de usar su oficina virtual?",
+      "a": "Por lo general, porque no tiene un propósito claro, la planta está vacía cuando la gente entra o da la sensación de estar vigilado. Darle un único propósito, invitar a todos a la vez y acordar que es opcional y no registra nada soluciona la mayor parte de los problemas."
+    },
+    {
+      "q": "¿El uso de la oficina virtual debería ser obligatorio?",
+      "a": "No. Exigir la presencia la convierte en un control horario. Conviértela en el lugar más cómodo para hablar y la gente vendrá porque le resulta útil."
+    },
+    {
+      "q": "¿Cuánto tarda un equipo en acostumbrarse a una oficina virtual?",
+      "a": "Unas dos semanas: una primera semana para llenarla a propósito, pasando una reunión dentro y con los responsables en la planta, y una segunda para convertirla en la opción por defecto para conversaciones breves."
+    },
+    {
+      "q": "¿Una oficina virtual sustituye a Slack?",
+      "a": "No para el trabajo escrito. Sustituye a los enlaces de reunión y las reuniones rápidas que abres para conversaciones cortas; mantén el chat para lo que pueda esperar."
+    },
+    {
+      "q": "¿Qué pasa si nuestro equipo está repartido en muchas zonas horarias?",
+      "a": "Una oficina virtual ayuda sobre todo cuando los compañeros coinciden durante varias horas al día. Si apenas hay coincidencia horaria, los canales escritos y unos estados claros os resultarán más útiles."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/",
+      "note": "Entrevistas a 51 profesionales del conocimiento en una empresa de servicios profesionales, de abril a junio de 2020, incluida una responsable que animaba a llamarla a cualquier hora entre las 9 y las 17."
+    }
+  ]
+}

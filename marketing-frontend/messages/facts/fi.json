@@ -1,0 +1,120 @@
+{
+  "title": "Faktoja TinyFloorista",
+  "description": "Faktat TinyFloorista yhdessä paikassa: mikä se on, kuka sen tekee, mitä se maksaa, missä se toimii, mitä siinä on ja mitä se ei tee. Kaikille, jotka kirjoittavat TinyFloorista.",
+  "intro": "Tämä sivu on lähde faktoille TinyFloorista jokaiselle, joka kirjoittaa siitä tai vertaa sitä. Jos toinen lähde on eri mieltä, tämä sivu on ajan tasalla. Hinnat ovat Yhdysvaltain dollareina ennen veroja.",
+  "sections": [
+    {
+      "id": "what",
+      "title": "Mikä TinyFloor on",
+      "paragraphs": [
+        "TinyFloor on virtuaalitoimisto etätiimeille. Jokaisella on hahmo jaetussa kerroksessa selaimessa, joten näet, kuka on paikalla ja mitä he tekevät, kävelet työkaverin luo juttelemaan ja kokoonnutte kokoushuoneeseen ilman puhelun sopimista etukäteen.",
+        "Se on tehty yhdelle tiimille, joka tekee töitä yhdessä joka päivä: ohjelmistotiimeille, toimistoille, studioille ja startupeille, usein sellaisille, jotka pitävät Discord-äänikanavaa auki koko päivän tai hyppivät Slack huddleiden ja kokouslinkkien välillä."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "title": "Pikafaktat",
+      "items": [
+        "Nimi: TinyFloor. Verkkosivusto: [tinyfloor.com](/).",
+        "Tekijä: TinyFloor, Jitto Josephin perustama pieni yritys, jota on kehitetty avoimesti GitHubissa marraskuusta 2025 lähtien.",
+        "Kategoria: virtuaalitoimisto-ohjelmisto, jota kutsutaan myös virtuaaliseksi työtilaksi tai tilaan perustuvaksi yhteistyötyökaluksi.",
+        "Missä se toimii: selaimessa tietokoneilla ja puhelimilla ilman asennusta. Sen voi asentaa sovelluksena selaimesta.",
+        "Kielet: 18.",
+        "Lähdekoodi: avointa lähdekoodia AGPL-3.0-lisenssillä [GitHubissa](https://github.com/JittoJoseph/TinyFloor).",
+        "Yhteydenotot: support@tinyfloor.com."
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Paketit ja hinnat",
+      "items": [
+        "Free: enintään 3 hengelle, kaikki ominaisuudet ja viimeisen 90 päivän keskusteluhistoria.",
+        "Pro: $29 kuukaudessa koko toimistolle, yksi hinta riippumatta siitä, kuinka monta kutsut, ei henkeä kohden. Toimisto on yhdelle tiimille, enintään 15 hengelle.",
+        "Perustajahinta: toimistot, jotka tilaavat ennen 1. maaliskuuta 2027, pitävät hinnan $29 kuukaudessa niin kauan kuin tilaus jatkuu. Siitä päivästä alkaen Pro maksaa uusille tilauksille $39 kuukaudessa.",
+        "Kokeilu: jokainen uusi toimisto alkaa 14 päivän Prolla koko tiimille ilman maksukorttia.",
+        "Laskutus: vain kuukausittain, peru milloin vain; minkä tahansa maksun palautus 14 päivän kuluessa pyydettäessä. Jälleenmyyjä Creem lisää myynti- tai arvonlisäveron kassalla.",
+        "Kokouksia ja kahden hengen puheluita ei mitata. Lisätiedot ovat [hinnoittelusivulla](/pricing)."
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Mitä jokaisessa toimistossa on",
+      "items": [
+        "Yhteinen kerros, jossa liikutaan, jokaiselle oma työpöytä, jonka voi ottaa omakseen ja sisustaa, sekä hahmot, jotka jokainen pukee itse.",
+        "Puhu: kävele työkaverin luo ja paina Puhu. Hän näkee, että haluat jutella, ja kun hän hyväksyy, alkaa kahdenkeskinen puhelu äänellä, yleensä alle sekunnissa. Vilkutus tai tökkäys kiinnittää huomion ilman puhelua.",
+        "Kokoukset: vähintään kolme henkeä tapaa kokoushuoneessa videolla ja näytön jakamisella.",
+        "Näytön jakaminen puheluissa ja kokouksissa jopa 1080p-tarkkuudella, optimoitu terävälle tekstille.",
+        "Tiimichat kanavilla ja suoraviesteillä sekä haku.",
+        "Läsnäolo: kuka on kerroksessa, heidän tilansa ja lyhyt viesti. Kun Google Calendar on yhdistetty, työkaverit näkevät \"Kokouksessa asti…\", kun olet sellaisessa.",
+        "Valkotaulu, kohinanpoisto ja Spotifyn musiikki, joka näkyy kortissasi."
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "Mitä se ei tee",
+      "items": [
+        "Ei tallenteita tai litterointeja puheluista ja kokouksista eikä tekoälymuistiinpanoja.",
+        "Ei kertakirjautumista (SAML tai SCIM). Kirjautuminen tapahtuu Googlella tai sähköpostiin lähetetyllä kertakoodilla; salasanoja ei ole.",
+        "Ei ladattavaa tietokone- tai puhelinsovellusta; se toimii selaimessa.",
+        "Ei toimistoeditoria: kerros on valmis.",
+        "Ei satojen ihmisten tapahtumiin tai koko yritykselle yhteen toimistoon: isompi yritys antaa jokaiselle tiimille oman toimiston.",
+        "Se ei koskaan merkitse ketään poissaolevaksi siksi, että välilehti on taustalla, eikä se seuraa työaikaa."
+      ]
+    },
+    {
+      "id": "how",
+      "title": "Miten se on rakennettu",
+      "items": [
+        "Toimii Cloudflaren verkossa. Jokaisen toimiston kerros ja chat toimivat erillään, joten yksi vilkas toimisto ei hidasta toista.",
+        "Puhelut kulkevat Cloudflaren välityspalvelimen (TURN) kautta, joten ne yhdistyvät toimistojen palomuurien ja VPN-verkkojen takaa; kokoukset kulkevat Cloudflaren mediapalvelimien kautta.",
+        "Puheluita ja kokouksia ei koskaan tallenneta, eikä ääntä koskaan käsitellä palvelimella.",
+        "Lisää lukuineen: [miten TinyFloor toimii](/how-it-works). Mitä tallennetaan ja miksi: [tietosuojaseloste](/privacy)."
+      ]
+    },
+    {
+      "id": "development",
+      "title": "Miten usein se muuttuu",
+      "paragraphs": [
+        "TinyFloor julkaisee uutta tuotantoon lähes joka päivä: 84 julkaisua lokakuussa 2026, 41 julkaisua syyskuussa 2026. Päivämääräkohtaiset muutokset löytyvät [muutoslokista](/changelog)."
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "title": "TinyFloor muualla",
+      "items": [
+        "[GitHub](https://github.com/JittoJoseph/TinyFloor), [LinkedIn](https://www.linkedin.com/company/tinyfloor), [X](https://x.com/tinyflooroffice).",
+        "[G2](https://www.g2.com/products/tinyfloor/reviews), [AlternativeTo](https://alternativeto.net/software/tinyfloor/about/), [SaaSHub](https://www.saashub.com/tinyfloor), [Crunchbase](https://www.crunchbase.com/organization/tinyfloor), [Wikidata](https://www.wikidata.org/wiki/Q142181160)."
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "Kysymyksiä",
+      "faq": [
+        {
+          "q": "Mikä TinyFloor on?",
+          "a": "Virtuaalitoimisto etätiimeille selaimessa: jokaisella on hahmo jaetussa kerroksessa, joten näet, kuka on paikalla, kävelet jonkun luo juttelemaan ja tapaat ilman puhelun sopimista etukäteen."
+        },
+        {
+          "q": "Paljonko TinyFloor maksaa?",
+          "a": "Ilmainen enintään 3 hengelle. Pro maksaa $29 kuukaudessa koko tiimille, ei henkeä kohden, ja jokainen uusi toimisto alkaa 14 päivän ilmaisella Prolla ilman korttia."
+        },
+        {
+          "q": "Vaatiiko TinyFloor lataamista?",
+          "a": "Ei. Se toimii selaimessa tietokoneella ja puhelimella; voit asentaa sen sovelluksena selaimesta, jos haluat sille oman ikkunan."
+        },
+        {
+          "q": "Tallentaako TinyFloor puheluita tai tekeekö se tekoälymuistiinpanoja?",
+          "a": "Ei. Puheluita ja kokouksia ei koskaan tallenneta, eikä litterointeja tai tekoälymuistiinpanoja ole."
+        },
+        {
+          "q": "Onko TinyFloor avointa lähdekoodia?",
+          "a": "Kyllä. Koko sovellus on GitHubissa AGPL-3.0-lisenssillä."
+        },
+        {
+          "q": "Kuka tekee TinyFloorin?",
+          "a": "TinyFloor, Jitto Josephin perustama pieni yritys. Sitä kehitetään avoimesti GitHubissa, ja uutta julkaistaan tuotantoon lähes joka päivä."
+        }
+      ]
+    }
+  ]
+}

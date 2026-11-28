@@ -1,0 +1,193 @@
+{
+  "label": "Spontaanit keskustelut etätiimeissä",
+  "meta": {
+    "title": "Spontaanit keskustelut etätiimeissä: tutkimukset ja keinot",
+    "description": "Mitä etätiimit menettävät ilman suunnittelemattomia keskusteluja: tutkimukset 61 182 Microsoft-työntekijästä, ohjelmistokehittäjistä ja 51 konsultista sekä 6 ratkaisua."
+  },
+  "coverAlt": "Kaksi kermanväristä puhekuplaa, toinen suuri ja toinen pieni, sekä pieni keltainen muki korallinvärisellä taustalla.",
+  "title": "Miten etätiimit säilyttävät <em>spontaanit keskustelut?</em>",
+  "intro": "Etätiimi harvoin menettää kokouksiaan. Se menettää keskustelut, joita kukaan ei sopinut kalenteriin: nopea kysymys pöydän yli, sivusta kuultu päätös tai pyyntö vilkaista näyttöä minuutin ajan. Tutkimukset osoittavat, että menetys on todellinen, se osuu kovimmin uusiin työntekijöihin ja että etäyritykset palauttavat sen tarkoituksella. Tässä on tutkimusten tulokset, mitä tiimit tekevät asialle ja miten valita sopiva tapa. Teemme TinyFlooria, virtuaalitoimistoa, joten emme ole puolueettomia; olemme pysyneet siinä, mitä lähteet sanovat.",
+  "takeaways": [
+    "Kun Microsoft siirtyi kokonaan etätyöhön vuonna 2020, sen 61 182 yhdysvaltalaisen työntekijän yhteistyöstä tuli aiempaa staattisempaa ja siiloutuneempaa, ja viestintä siirtyi suullisesta kirjalliseen.",
+    "Ohjelmistokehittäjät, jotka istuivat tiimikavereidensa lähellä, saivat 18,3 % enemmän palautetta koodistaan; suurin osa hyödystä meni uusille ja nuoremmille kehittäjille.",
+    "Haastatteluissa 51 etätyöhön siirtyneen asiantuntijan kanssa nopeat kysymykset ja vapaamuotoinen palaute katosivat ensimmäisinä, ja kalenteriin sovitut vapaat hetket tuntuivat keinotekoisilta.",
+    "Täysin etänä työskentelevistä 25 % koki paljon yksinäisyyttä edellisenä päivänä, kun vain lähityötä tekevistä osuus oli 16 %.",
+    "GitLab, täysin ilman toimistoja toimiva yritys, pyytää jokaista uutta työntekijää sopimaan vähintään viisi virtuaalikahvia ja järjestää vapaamuotoista viestintää suunnitelmallisesti."
+  ],
+  "sections": [
+    {
+      "title": "Mitä etätiimit menettävät?",
+      "body": [
+        "Laajin tutkimus on Microsoftin oma. [Tutkijat analysoivat 61 182 yhdysvaltalaisen Microsoft-työntekijän sähköposteja, kalentereita, viestejä ja puheluita](https://www.nature.com/articles/s41562-021-01196-4) vuoden 2020 ensimmäisellä puoliskolla, kun koko yritys siirtyi etätyöhön. Heidän yhteistyöverkostostaan tuli aiempaa staattisempi ja siiloutuneempi, yrityksen eri osien välisiä yhteyksiä oli vähemmän ja viestintä siirtyi suullisista keskusteluista kirjalliseen. Tutkijat arvioivat, että tämä voi vaikeuttaa uuden tiedon liikkumista yrityksen sisällä.",
+        "Tiimikavereiden läheisyys vaikuttaa myös siihen, kuinka paljon ihmiset oppivat toisiltaan. [Fortune 500 -yrityksen ohjelmistokehittäjiä vuosina 2019–2024 seurannut tutkimus](https://www.nber.org/papers/w31880) käytti vuoden 2020 toimistojen sulkemisia ja myöhempiä toimistolle paluita vertaillakseen yhdessä istuneita tiimejä tiimeihin, jotka olivat jo valmiiksi hajallaan. Tiimikavereiden lähellä istuminen lisäsi kehittäjien koodistaan saamaa palautetta 18,3 % ja paransi sen laatua. Hyöty meni enimmäkseen vähemmän aikaa talossa olleille ja nuoremmille kehittäjille. Mukana oli myös hinta: kokeneet kehittäjät kirjoittivat vähemmän koodia istuessaan tiimikavereidensa lähellä.",
+        "Suoraan kysyttäessä ihmiset kuvailevat samaa asiaa. Vuoden 2020 sulkutoimien aikana tehtyjen [51 asiantuntijayrityksen tietotyöläisen haastattelujen](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/) mukaan vapaamuotoiset keskustelut katosivat ensimmäisinä: koko tiimille heitetty nopea kysymys tai kokouksesta poistuttaessa annettu palaute. Kuten yksi haastateltavista sanoi, ei voi vain ottaa kahta ihmistä mukaan ja puhua asiaa läpi, vaan täytyy varata aika. Esihenkilöt huomasivat, että tiimit olivat lakanneet kysymästä kysymyksiä, joita he olisivat kysyneet kasvokkain."
+      ]
+    },
+    {
+      "title": "Onko kyse vain yhteenkuuluvuuden tunteesta?",
+      "body": [
+        "Osittain. [Gallupin State of the Global Workplace 2024 -raportissa](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx) 25 % täysin etänä työskentelevistä sanoi kokeneensa paljon yksinäisyyttä edellisenä päivänä, kun hybridityöntekijöistä osuus oli 21 % ja vain lähityötä tekevistä 16 %. [Bufferin vuoden 2023 kyselyssä 3 000 etätyöntekijälle](https://buffer.com/state-of-remote-work/2023) yksinäisyys oli toiseksi yleisin haaste (23 % vastaajista), vaikka 75 % sanoi tuntevansa yhteyttä kollegoihinsa.",
+        "Edellä mainitut tutkimukset käsittelevät kuitenkin pääosin työtä, eivät mielialaa: kysymyksiä, joita ei kysytä, palautetta, jota ei anneta, ja päätöksiä, joista vain osa tiimistä kuulee. Siksi toimivia ratkaisuja ovat ne, jotka tekevät lyhyestä työhön liittyvästä keskustelusta helppoa, eivätkä vain ne, jotka varaavat aikaa vapaalle seurustelulle."
+      ]
+    },
+    {
+      "title": "Miksi kalenteriin varaaminen ei täysin toimi",
+      "body": [
+        "Ensimmäinen ratkaisu, jota useimmat tiimit kokeilevat, on kalenteriaika: viikoittainen vapaa puhelu, virtuaaliset iltapäiväkahvit tai toistuva vapaamuotoinen tapaaminen. Ne auttavat ihmissuhteissa. Konsulttien haastatteluissa ihmiset kuitenkin huomasivat, että sovittu sosiaalinen aika saattoi tuntua keinotekoiselta ja että vapaamuotoinen työpuhe, jota sen piti korvata, jäi silti puuttumaan – koska 30 sekunnin kysymys ei ole kokouksen arvoinen.",
+        "Puuttuva pala on matalan kynnyksen tapa aloittaa lyhyt keskustelu juuri silloin kun sitä tarvitsee, ilman linkkiä, kutsua tai erillistä syytä. Tiimit, jotka ratkaisivat tämän, antoivat ihmisille pysyvän paikan olla tavoitettavissa sekä luvan keskeyttää. Samassa tutkimuksessa erään työntekijän esihenkilö oli kertonut, että hänelle voi soittaa milloin vain kello 9 ja 17 välillä."
+      ]
+    },
+    {
+      "title": "Kuusi tapaa, joilla etätiimit ratkaisevat asian",
+      "items": [
+        {
+          "title": "Vapaamuotoisen viestinnän järjestäminen suunnitelmallisesti",
+          "body": "[Toimistoton GitLab](https://handbook.gitlab.com/handbook/company/culture/all-remote/informal-communication/) pitää vapaamuotoista viestintää asiana, joka pitää järjestää eikä jättää sattuman varaan: jokainen uusi työntekijä sopii vähintään viisi virtuaalikahvia, ja yritys listaa yli 15 tapaa pitää yhteyttä vapaamuotoisista puheluista johdon kyselytunteihin."
+        },
+        {
+          "title": "Kanava nopeille kysymyksille",
+          "body": "Yksi chat-kanava, johon keskeneräisetkin kysymykset ovat tervetulleita ja niihin vastataan avoimesti, jolloin vastaus auttaa seuraavaakin. Se ei maksa mitään ja toimii aikavyöhykkeiden yli. Se ei kuitenkaan auta kysymyksissä, jotka vaativat minuutin puhumista."
+        },
+        {
+          "title": "Avoimet yhteistyöpuhelut",
+          "body": "Ääni- tai videohuone, joka pysyy auki muutaman tunnin ja jossa ihmiset tekevät töitä hiljaa ja kuka tahansa voi kysyä jotain ääneen. GitLab listaa yhteistyöpuhelut vapaamuotoisiin käytäntöihinsä. Haasteena on, että jonkun on liityttävä huoneeseen jatkuvasti, muuten se jää tyhjäksi."
+        },
+        {
+          "title": "Satunnaiset paritukset",
+          "body": "Botti tai kiertävä lista, joka yhdistää kaksi ihmistä eri tiimeistä lyhyeen keskusteluun viikon tai kahden välein; GitLab käyttää tällaista. Se rakentaa suhteita, jotka tekevät kysymisestä helpompaa, mutta se ei ole apuna juuri silloin, kun kysymys herää."
+        },
+        {
+          "title": "Tieto siitä, kuka on keskeytettävissä",
+          "body": "Selkeä tila, joka kertoo suoraan, milloin saa keskeyttää ja milloin ei, ja joka pidetään ajan tasalla. Useimmissa chat-sovelluksissa on tilat; tärkeintä on, että tiimi sopii kunkin tilan merkityksen ja jokainen asettaa sen itse."
+        },
+        {
+          "title": "Virtuaalitoimisto",
+          "body": "Yhteinen kerros, jossa kaikki tiimiläiset näkyvät työskennellessään, jolloin näet kuka on paikalla ja voit aloittaa keskustelun kävelemällä luo ilman linkkiä. Tämä on lähimpänä yhdessä istumista, ja se toimii vain, jos ihmiset pitävät sen auki eikä kukaan käytä sitä heidän vahtimiseen. [Virtuaalitoimisto-ohjelmistojen vertailumme](/guides/best-virtual-office-software) esittelee vaihtoehdot ja hinnat."
+        }
+      ]
+    },
+    {
+      "title": "Mistä kannattaa aloittaa",
+      "table": {
+        "head": [
+          "Lähestymistapa",
+          "Vaiva",
+          "Parasta mihin",
+          "Mitä varoa"
+        ],
+        "rows": [
+          [
+            "Nopeiden kysymysten kanava",
+            "Minuuttien asennus",
+            "Kysymyksiin, jotka voivat odottaa tunnin",
+            "Kysymyksiin, jotka vaativat läpikäyntiä puhumalla"
+          ],
+          [
+            "Avoimet yhteistyöpuhelut",
+            "Pysyvä linkki",
+            "Tiimeille 1–2 aikavyöhykkeellä",
+            "Huoneet, jotka tyhjenevät viikon jälkeen"
+          ],
+          [
+            "Satunnaiset paritukset",
+            "Chat-sovelluksen botti",
+            "Tiimien välisiin suhteisiin",
+            "Ei apuna heti kysymyksen herätessä"
+          ],
+          [
+            "Selkeät tilat",
+            "Tiimin yhteinen sopimus",
+            "Vähentää epävarmuutta keskeyttämisestä",
+            "Tilat, joita kukaan ei päivitä"
+          ],
+          [
+            "Virtuaalitoimisto",
+            "Uuden työkalun käyttöönotto",
+            "Joka päivä yhdessä työskenteleville tiimeille",
+            "Vahtimisen tunne, jos se tehdään väärin"
+          ]
+        ],
+        "note": "Useimmat tiimit yhdistävät kaksi: kanavan asioille, jotka voivat odottaa, ja yhden reaaliaikaisen tilan asioille, jotka eivät voi."
+      }
+    },
+    {
+      "title": "Miten välttää vahtimisen tunne",
+      "items": [
+        {
+          "title": "Tee siitä paikka, älä vaatimusta",
+          "body": "Kenenkään ei pitäisi joutua olemaan avoimessa huoneessa tai virtuaalitoimistossa vain todistaakseen tekevänsä töitä. Jos tila on hyödyllinen, ihmiset tulevat sinne."
+        },
+        {
+          "title": "Älä seuraa toimintaa",
+          "body": "Ei joutoaikalaskureita eikä raportteja linjoilla olemisesta. Toisessa välilehdessä lukeva työntekijä tekee yhä töitä."
+        },
+        {
+          "title": "Kamerat oletuksena pois päältä",
+          "body": "Ääni riittää nopeaan kysymykseen. Videota käytetään silloin, kun siitä on hyötyä."
+        },
+        {
+          "title": "Anna ihmisten kieltäytyä",
+          "body": "Keskustelupyyntö, jonka voi hylätä tai johon voi vastata myöhemmin, pitää keskeytykset kohteliaina. Puhelu, joka soi kunnes joku vastaa, ei tee niin."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Mihin TinyFloor sopii",
+    "body": "TinyFloor on selaimessa toimiva virtuaalitoimisto yhdelle tiimille, joka tekee töitä yhdessä joka päivä. Kaikki ovat yhdessä kerroksessa työskennellessään, joten näet kuka on paikalla; kävele tiimikaverin luo ja paina Puhu, ja hän voi hyväksyä tai vastata myöhemmin. Se ei koskaan merkitse ihmisiä poissaoleviksi siksi, että välilehti on taustalla, eikä puheluita koskaan tallenneta. Pro maksaa $29 kuukaudessa koko tiimille, ja jokainen uusi toimisto alkaa 14 päivän ilmaisella Prolla."
+  },
+  "faq": [
+    {
+      "q": "Miksi etätiimit menettävät spontaaneja keskusteluja?",
+      "a": "Koska keskustelun aloittaminen etänä vaatii linkin, kutsun tai erillisen syyn, eikä 30 sekunnin kysymys ole minkään näistä arvoinen. Microsoftin työntekijöitä ja konsultteja vuonna 2020 seuranneissa tutkimuksissa havaittiin, että etätyö siirsi viestintää suullisesta kirjalliseen ja että nopeat kysymykset sekä vapaamuotoinen palaute katosivat ensimmäisinä."
+    },
+    {
+      "q": "Heikentääkö etätyö yhteistyötä?",
+      "a": "Se muuttaa sitä. Kun Microsoft siirtyi kokonaan etätyöhön, työntekijöiden yhteistyöstä tuli aiempaa siiloutuneempaa ja ryhmien välisiä yhteyksiä oli vähemmän. Ohjelmistokehittäjiä tutkittaessa havaittiin, että tiimikavereiden lähellä istuminen lisäsi koodipalautetta 18,3 %, enimmäkseen uusilla kehittäjillä, kun taas kokeneet kehittäjät kirjoittivat vähemmän koodia."
+    },
+    {
+      "q": "Miten vapaamuotoiset arkikeskustelut tuodaan etätyöhön?",
+      "a": "Anna ihmisille matalan kynnyksen tapa aloittaa lyhyt keskustelu tarvittaessa: kanava nopeille kysymyksille, avoin yhteistyöpuhelu, satunnaiset kahviparitukset, selkeät tilat tai virtuaalitoimisto, jossa näkee kuka on paikalla ja voi kävellä suoraan juttelemaan. Useimmat tiimit yhdistävät kirjallisen kanavan yhteen reaaliaikaiseen paikkaan."
+    },
+    {
+      "q": "Riittävätkö kalenteriin sovitut vapaat puhelut?",
+      "a": "Ne auttavat ihmissuhteissa, mutta eivät korvaa nopeita työhön liittyviä keskusteluja. Etätyöhön siirtyneiden haastatteluissa kerrottiin, että sovittu sosiaalinen aika saattoi tuntua keinotekoiselta, ja 30 sekunnin kysymykset jäivät yhä kysymättä."
+    },
+    {
+      "q": "Miten estää aina auki olevaa tilaa tuntumasta vahtimiselta?",
+      "a": "Tee siitä vapaaehtoinen, älä seuraa aktiivisuutta tai linjoillaoloaikoja, pidä kamerat oletuksena pois päältä ja anna ihmisten kieltäytyä keskustelupyynnöstä tai lykätä sitä."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Yang et al., The effects of remote work on collaboration among information workers, Nature Human Behaviour (2021)",
+      "url": "https://www.nature.com/articles/s41562-021-01196-4",
+      "note": "61 182 yhdysvaltalaista Microsoft-työntekijää vuoden 2020 alkupuoliskolla: staattisempaa ja siiloutuneempaa yhteistyötä, vähemmän suullista viestintää."
+    },
+    {
+      "title": "Emanuel, Harrington and Pallais, The Power of Proximity to Coworkers, NBER Working Paper 31880 (revised June 2026)",
+      "url": "https://www.nber.org/papers/w31880",
+      "note": "Fortune 500 -yrityksen ohjelmistokehittäjät vuosina 2019–2024: 18,3 % enemmän koodipalautetta istuttaessa tiimikavereiden lähellä."
+    },
+    {
+      "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/",
+      "note": "51 asiantuntijayrityksen tietotyöläisen haastattelut huhti–kesäkuussa 2020."
+    },
+    {
+      "title": "Gallup, 1 in 5 Employees Worldwide Feel Lonely",
+      "url": "https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx",
+      "note": "State of the Global Workplace 2024: yksinäisyys työntekopaikan mukaan."
+    },
+    {
+      "title": "Buffer, 2023 State of Remote Work",
+      "url": "https://buffer.com/state-of-remote-work/2023",
+      "note": "Kysely 3 000 etätyöntekijälle."
+    },
+    {
+      "title": "GitLab Handbook, Informal Communication in an all-remote environment",
+      "url": "https://handbook.gitlab.com/handbook/company/culture/all-remote/informal-communication/",
+      "note": "Virtuaalikahvit, yhteistyöpuhelut, vapaat puhelut ja yli 15 tapaa, joilla GitLab järjestää vapaamuotoista viestintää."
+    }
+  ]
+}

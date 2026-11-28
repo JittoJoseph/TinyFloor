@@ -1,0 +1,120 @@
+{
+  "title": "TinyFloor facts",
+  "description": "The facts about TinyFloor in one place: what it is, who makes it, what it costs, where it runs, what's in it and what it doesn't do. For anyone writing about TinyFloor.",
+  "intro": "This page is the reference for facts about TinyFloor, for anyone writing about it or comparing it. If another source disagrees with it, this page is the current one. Prices are in US dollars, before tax.",
+  "sections": [
+    {
+      "id": "what",
+      "title": "What TinyFloor is",
+      "paragraphs": [
+        "TinyFloor is a virtual office for remote teams. Everyone has a character on a shared floor in the browser, so you can see who's around and what they're doing, walk up to a teammate and talk, and meet in a meeting room, without scheduling a call.",
+        "It's made for one team that works together every day: software teams, agencies, studios and startups, often ones that keep a Discord voice channel open all day or move between Slack huddles and meeting links."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "title": "Quick facts",
+      "items": [
+        "Name: TinyFloor. Website: [tinyfloor.com](/).",
+        "Made by: TinyFloor, a small company founded by Jitto Joseph, built in the open on GitHub since November 2025.",
+        "Category: virtual office software, also called a virtual workspace or spatial collaboration tool.",
+        "Where it runs: in the browser on desktop and phones, with nothing to install. It can be installed as an app from the browser.",
+        "Languages: 18.",
+        "Source code: open source under AGPL-3.0, on [GitHub](https://github.com/JittoJoseph/TinyFloor).",
+        "Contact: support@tinyfloor.com."
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Plans and prices",
+      "items": [
+        "Free: up to 3 people, with every feature, and the last 90 days of chat history.",
+        "Pro: $29 a month for the whole office, one price however many people you invite, not a price per person. An office is for one team, up to 15 people.",
+        "Founding price: offices that subscribe before 1 March 2027 keep $29 a month for as long as they stay subscribed. From that date, Pro is $39 a month for new subscriptions.",
+        "Trial: every new office starts with 14 days of Pro for the whole team, with no card needed.",
+        "Billing: monthly only, cancel any time; a refund of any payment if asked within 14 days. Creem, the reseller, adds sales tax or VAT at checkout.",
+        "Meetings and calls between two people aren't metered. Details are on the [pricing page](/pricing)."
+      ]
+    },
+    {
+      "id": "features",
+      "title": "What's in every office",
+      "items": [
+        "A shared floor you walk around, with a desk for each person that they can claim and decorate, and characters people dress themselves.",
+        "Talk: walk up to a teammate and press Talk. They see that you want to talk, and once they accept it's a one-to-one call that starts with voice, usually in under a second. A wave or a poke gets someone's attention without a call.",
+        "Meetings: three or more people meet in the meeting room, with video and screen sharing.",
+        "Screen sharing in calls and meetings, at up to 1080p, tuned for sharp text.",
+        "Team chat with channels and direct messages, and search.",
+        "Presence: who's on the floor, their status and a short note. With Google Calendar connected, teammates see \"In a meeting until…\" while you're in one.",
+        "A whiteboard, noise removal, and music from Spotify that shows on your card."
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "What it doesn't do",
+      "items": [
+        "No recordings or transcripts of calls and meetings, and no AI meeting notes.",
+        "No single sign-on (SAML or SCIM). People sign in with Google or a one-time code sent by email; there are no passwords.",
+        "No desktop or phone app to download; it runs in the browser.",
+        "No office editor: the floor is ready-made.",
+        "Not for events with hundreds of people, or for a whole company in one office: a bigger company gives each team an office of its own.",
+        "It never marks people away because their tab is in the background, and it doesn't track working hours."
+      ]
+    },
+    {
+      "id": "how",
+      "title": "How it's built",
+      "items": [
+        "Runs on Cloudflare's network. Each office's floor and chat run on their own, so one busy office doesn't slow another.",
+        "Calls go through Cloudflare's relay (TURN), so they connect behind office firewalls and VPNs; meetings go through Cloudflare's media servers.",
+        "Calls and meetings are never recorded, and audio is never processed on a server.",
+        "More, with the numbers: [how TinyFloor works](/how-it-works). What's kept and why: the [privacy policy](/privacy)."
+      ]
+    },
+    {
+      "id": "development",
+      "title": "How often it changes",
+      "paragraphs": [
+        "TinyFloor ships to production almost every day: 84 releases in October 2026, 41 releases in September 2026. What changed, by date, is in the [changelog](/changelog)."
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "title": "TinyFloor elsewhere",
+      "items": [
+        "[GitHub](https://github.com/JittoJoseph/TinyFloor), [LinkedIn](https://www.linkedin.com/company/tinyfloor), [X](https://x.com/tinyflooroffice).",
+        "[G2](https://www.g2.com/products/tinyfloor/reviews), [AlternativeTo](https://alternativeto.net/software/tinyfloor/about/), [SaaSHub](https://www.saashub.com/tinyfloor), [Crunchbase](https://www.crunchbase.com/organization/tinyfloor), [Wikidata](https://www.wikidata.org/wiki/Q142181160)."
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "Questions",
+      "faq": [
+        {
+          "q": "What is TinyFloor?",
+          "a": "A virtual office for remote teams, in the browser: everyone has a character on a shared floor, so you can see who's around, walk up to someone and talk, and meet without scheduling a call."
+        },
+        {
+          "q": "How much does TinyFloor cost?",
+          "a": "Free for up to 3 people. Pro is $29 a month for the whole team, not per person, and every new office starts with 14 days of Pro free, no card needed."
+        },
+        {
+          "q": "Does TinyFloor need a download?",
+          "a": "No. It runs in the browser on desktop and phones; you can install it as an app from the browser if you'd like its own window."
+        },
+        {
+          "q": "Does TinyFloor record calls or have AI notes?",
+          "a": "No. Calls and meetings are never recorded, and there are no transcripts or AI meeting notes."
+        },
+        {
+          "q": "Is TinyFloor open source?",
+          "a": "Yes. The whole app is on GitHub under the AGPL-3.0 license."
+        },
+        {
+          "q": "Who makes TinyFloor?",
+          "a": "TinyFloor, a small company founded by Jitto Joseph. It's built in the open on GitHub and ships to production almost every day."
+        }
+      ]
+    }
+  ]
+}

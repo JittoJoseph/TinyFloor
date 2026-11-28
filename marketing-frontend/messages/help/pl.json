@@ -1,0 +1,113 @@
+{
+  "title": "Pomoc TinyFloor",
+  "description": "Odpowiedzi na częste pytania o TinyFloor: ile kosztuje, jak działa okres próbny, zapraszanie zespołu, rozmowy, prywatność i co dzieje się po rezygnacji.",
+  "intro": "Krótkie odpowiedzi na pytania, które zespoły zadają o TinyFloor, każda na osobnej stronie. Nie możesz znaleźć swojego? Napisz na support@tinyfloor.com.",
+  "topics": {
+    "plans": "Plany i płatności",
+    "start": "Pierwsze kroki",
+    "calls": "Rozmowy i połączenie",
+    "privacy": "Prywatność i bezpieczeństwo"
+  },
+  "details": "Szczegóły",
+  "related": "Powiązane pytania",
+  "all": "Wszystkie pytania",
+  "articles": {
+    "is-tinyfloor-free": {
+      "q": "Czy TinyFloor jest darmowy?",
+      "answer": "Tak, do 3 osób, ze wszystkimi funkcjami. Pro kosztuje $29 miesięcznie za cały zespół, a każde nowe biuro zaczyna od 14 dni Pro za darmo.",
+      "items": [
+        "Plan Free obejmuje piętro, Rozmowę, spotkania, czat, udostępnianie ekranu i wideo HD dla maksymalnie 3 osób na piętrze jednocześnie oraz zachowuje ostatnie 90 dni historii czatu.",
+        "Pro to jedna cena za całe biuro, nie za osobę, z miejscem dla całego zespołu, pełną historią czatu i pierwszeństwem w pomocy.",
+        "Biura, które wykupią subskrypcję przed 1 marca 2027, zachowują 29 $ miesięcznie tak długo, jak trwa subskrypcja. Zobacz [cennik](/pricing)."
+      ]
+    },
+    "how-does-the-free-trial-work": {
+      "q": "Jak działa darmowy okres próbny TinyFloor?",
+      "answer": "Każde nowe biuro zaczyna na Pro przez 14 dni, z miejscem dla całego zespołu i bez konieczności podawania karty. Gdy okres się kończy, wybierasz Pro albo zostajesz na Free.",
+      "items": [
+        "Nie trzeba niczego anulować: jeśli nie wykupisz subskrypcji, biuro przechodzi na Free.",
+        "Po zakończeniu okresu próbnego nikt nie jest usuwany i nic nie znika. Jeśli członków jest więcej niż 3, wszyscy mogą jeszcze wchodzić przez kolejne 14 dni, ale nikt nowy nie może dołączyć; potem na piętrze mogą być jednocześnie 3 osoby, a wszyscy zachowują dostęp do czatu.",
+        "Wykupienie subskrypcji w dowolnym momencie pozwala zachować Pro bez przerw."
+      ]
+    },
+    "how-many-people-can-join-an-office": {
+      "q": "Ile osób może dołączyć do biura w TinyFloor?",
+      "answer": "Do 15 osób na Pro i 3 osoby jednocześnie na Free. Biuro jest przeznaczone dla jednego zespołu, który pracuje razem każdego dnia.",
+      "paragraphs": [
+        "Większa firma daje każdemu zespołowi własne biuro – każde z osobnym piętrem, czatem i salą spotkań. TinyFloor nie jest tworzony z myślą o wydarzeniach na setki osób."
+      ]
+    },
+    "how-do-i-cancel": {
+      "q": "Jak zrezygnować z TinyFloor i czy mogę otrzymać zwrot?",
+      "answer": "Administrator biura może w każdej chwili zrezygnować z Pro na stronie rozliczeń biura. Plan działa do końca opłaconego okresu, potem biuro przechodzi na Free i nic nie jest usuwane.",
+      "items": [
+        "Poproś o zwrot w ciągu 14 dni od dowolnej płatności, a zwrócimy całą kwotę: napisz na support@tinyfloor.com.",
+        "Rozliczenie jest wyłącznie miesięczne, więc nigdy nie pozostaje do opłacenia cały rok.",
+        "Ceny są podane w dolarach amerykańskich; Creem, nasz sprzedawca, dolicza podatek od sprzedaży lub VAT przy płatności. Szczegóły znajdują się w [zasadach zwrotów](/refunds)."
+      ]
+    },
+    "does-tinyfloor-need-a-download": {
+      "q": "Czy TinyFloor wymaga pobierania?",
+      "answer": "Nie. TinyFloor działa w każdej nowoczesnej przeglądarce na komputerze lub telefonie, bez konieczności instalowania czegokolwiek.",
+      "paragraphs": [
+        "Jeśli wolisz korzystać z niego w osobnym oknie, możesz zainstalować go jako aplikację z poziomu przeglądarki. Nie trzeba niczego aktualizować: zawsze masz najnowszą wersję."
+      ]
+    },
+    "does-tinyfloor-work-on-phones": {
+      "q": "Czy TinyFloor działa na telefonach?",
+      "answer": "Tak, w przeglądarce w telefonie: możesz chodzić po piętrze, rozmawiać, dołączać do spotkań i korzystać z czatu. Udostępnianie ekranu wymaga komputera.",
+      "paragraphs": [
+        "Na telefonie możesz oglądać ekran udostępniony przez kogoś innego, ale nie możesz udostępniać własnego. Nie ma żadnej aplikacji do pobrania ze sklepu z aplikacjami."
+      ]
+    },
+    "how-do-i-invite-my-team": {
+      "q": "Jak zaprosić zespół do TinyFloor?",
+      "answer": "Skopiuj link zaproszenia do biura i wyślij go swojemu zespołowi. Współpracownicy otwierają link, logują się przez Google lub kodem e-mail i zajmują miejsce.",
+      "items": [
+        "Jeden link działa dla wszystkich, a administrator może go zresetować.",
+        "W ustawieniach biura administrator wybiera, czy link może udostępniać każdy w biurze, czy tylko administratorzy.",
+        "Każdy w biurze loguje się bez konieczności tworzenia haseł."
+      ]
+    },
+    "does-tinyfloor-record-calls": {
+      "q": "Czy TinyFloor nagrywa rozmowy?",
+      "answer": "Nie. Rozmowy i spotkania nigdy nie są nagrywane, a dźwięk nie jest przetwarzany ani przechowywany na serwerze.",
+      "paragraphs": [
+        "Usuwanie echa i szumów działa bezpośrednio w Twojej przeglądarce. TinyFloor nie ma też transkrypcji ani notatek ze spotkań opartych na AI. Jeśli potrzebujesz nagrań, lepiej sprawdzi się narzędzie, które je oferuje."
+      ]
+    },
+    "where-is-my-data-stored": {
+      "q": "Gdzie TinyFloor przechowuje moje dane?",
+      "answer": "W sieci Cloudflare, która obsługuje stronę, aplikację i jej dane oraz przesyła połączenia. Wszystko przesyłane jest przez szyfrowane połączenia.",
+      "items": [
+        "Piętro i czat każdego biura działają niezależnie, w oddzieleniu od innych biur.",
+        "Jeśli połączysz Google Calendar, TinyFloor przechowuje tylko Twoje godziny zajętości przez kilka minut; same wydarzenia nie są zapisywane. Rozłączenie usuwa te dane i cofa uprawnienia dostępu.",
+        "Aby otrzymać kopię swoich danych lub usunąć konto, napisz na support@tinyfloor.com z adresu e-mail przypisanego do konta; odpowiadamy w ciągu 30 dni.",
+        "Pełna lista tego, co przechowujemy i dlaczego, znajduje się w [polityce prywatności](/privacy)."
+      ]
+    },
+    "does-tinyfloor-have-single-sign-on": {
+      "q": "Czy TinyFloor obsługuje logowanie jednokrotne?",
+      "answer": "Nie. TinyFloor nie obsługuje logowania jednokrotnego przez SAML ani SCIM. Logowanie odbywa się przez Google lub jednorazowy kod przesłany na e-mail – bez haseł.",
+      "paragraphs": [
+        "Jeśli Twoja firma wymaga logowania jednokrotnego za pośrednictwem własnego dostawcy tożsamości, TinyFloor na razie się nie sprawdzi."
+      ]
+    },
+    "does-tinyfloor-work-behind-a-firewall-or-vpn": {
+      "q": "Czy TinyFloor działa za firmowym firewallem lub VPN?",
+      "answer": "Tak, w większości przypadków. Każde połączenie przechodzi przez węzeł pośredniczący Cloudflare i w razie potrzeby przełącza się z UDP na TCP i TLS, więc do działania wystarczy zwykły protokół HTTPS.",
+      "paragraphs": [
+        "Połączenia nie próbują łączyć przeglądarek bezpośrednio ze sobą, co często zawodzi w sieciach biurowych i komórkowych. Więcej szczegółów i liczb znajdziesz na stronie [jak działa TinyFloor](/how-it-works)."
+      ]
+    },
+    "does-tinyfloor-keep-working-in-a-background-tab": {
+      "q": "Czy TinyFloor działa w karcie w tle?",
+      "answer": "Tak. Zostajesz na piętrze i w rozmowach, gdy pracujesz w innych kartach, a TinyFloor nigdy nie oznacza Cię jako nieobecnego tylko dlatego, że karta jest w tle.",
+      "items": [
+        "Współpracownicy nadal widzą Cię na piętrze i mogą poprosić o rozmowę.",
+        "Muzyka ze Spotify gra dalej.",
+        "W razie utraty połączenia piętro automatycznie łączy się ponownie i przywraca Cię do Twojego biurka."
+      ]
+    }
+  }
+}

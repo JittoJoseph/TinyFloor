@@ -1,6 +1,6 @@
 import type { LandingKey } from "web-shared/lib/landings";
 import type { GuideCopy, GuideKey } from "web-shared/lib/guides";
-import type { Locale } from "web-shared/lib/i18n/routing";
+import { localeCodes, type Locale } from "web-shared/lib/i18n/routing";
 
 /**
  * The blog: posts written to answer one question with facts someone can
@@ -35,7 +35,7 @@ export const POSTS: BlogPost[] = [
     category: "comparisons",
     published: "2026-11-28",
     updated: "2026-11-28",
-    locales: ["en"],
+    locales: localeCodes,
     pages: ["gather", "gatherVsKumospace", "virtualOffice"],
     guides: ["gatherPricing", "bestVirtualOffice", "soworkPricing"],
   },
@@ -44,7 +44,7 @@ export const POSTS: BlogPost[] = [
     category: "remoteWork",
     published: "2026-11-28",
     updated: "2026-11-28",
-    locales: ["en"],
+    locales: localeCodes,
     pages: ["virtualOffice", "presence", "standup"],
     guides: ["remoteCulture", "onboardingChecklist", "remoteTools"],
   },
@@ -53,7 +53,7 @@ export const POSTS: BlogPost[] = [
     category: "remoteWork",
     published: "2026-11-28",
     updated: "2026-11-28",
-    locales: ["en"],
+    locales: localeCodes,
     pages: ["presence", "watercooler", "virtualOffice"],
     guides: ["remoteCommunication", "remoteCulture", "manageRemote"],
   },

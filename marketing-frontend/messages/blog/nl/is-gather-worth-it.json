@@ -1,0 +1,210 @@
+{
+  "label": "Is Gather het waard?",
+  "meta": {
+    "title": "Is Gather het waard in 2026? Een eerlijke blik voor remote teams",
+    "description": "Gather, het virtuele kantoor op gather.town, na de prijswijziging in 2025 en de afsplitsing in 2026: wat het goed doet, wat een team betaalt en waar het tekortschiet."
+  },
+  "coverAlt": "Een crème weegschaal van klei met een gele stapel munten aan de ene kant en een klein crème huis aan de andere kant, op een mintgroene achtergrond.",
+  "title": "Is Gather <em>het waard</em> in 2026?",
+  "intro": "Gather, het virtuele kantoor op gather.town, is nog steeds het bekendste product in zijn categorie, maar in 2026 ziet het aanbod er anders uit dan waar veel teams ooit voor tekenden: sinds september 2025 geen gratis abonnement meer, $ 12 tot $ 15 per lid per maand en sinds februari 2026 een zelfstandig bedrijf. Of het het waard is, hangt af van wat je team daadwerkelijk gebruikt. Hier lees je wat het goed doet, wat het kost, waar het tekortschiet en wie beter elders kan kijken. Wij maken TinyFloor, dat concurreert met Gather, dus we zijn niet neutraal; elk feit over Gather hier komt van Gather's eigen pagina's, geraadpleegd in november 2026.",
+  "takeaways": [
+    "Gather kost $ 12 per lid per maand bij jaarbetaling, of $ 15 per maand. Het gratis abonnement stopte op 15 september 2025; er is een proefperiode van 30 dagen.",
+    "Het is het sterkst voor teams die hun eigen kantoor willen ontwerpen, meetings willen opnemen met AI-notities en werken met Google Calendar en GitHub.",
+    "In februari 2026 splitste Gather zich af als een zelfstandig, winstgevend bedrijf en stapte het AI-team over naar Figma. Gather gaf aan dat er voor klanten niets veranderde.",
+    "Een team van 10 betaalt bij jaarbetaling $ 1.440 per jaar, voor elk lid, of ze nu inloggen of niet.",
+    "Teams die vooral willen zien wie er is en even willen praten, kunnen dat elders voor minder krijgen."
+  ],
+  "sections": [
+    {
+      "title": "Wat Gather is",
+      "body": [
+        "Gather is een virtueel kantoor: iedereen in het team heeft een avatar op een 2D-plattegrond van het kantoor, zodat je ziet wie er is en meteen kunt praten door naar iemand toe te lopen, zonder vergaderlink. Het heeft vergaderruimtes, teamchat met kanalen en directe berichten, en statussen die tonen wie er vrij is, geconcentreerd werkt of in meeting is.",
+        "De huidige versie, Gather 2.0, verscheen in september 2025. Het werkt in de browser, met [desktop-apps voor macOS en Windows en een mobiele app voor iOS](https://www.gather.town/download); Android staat als binnenkort beschikbaar. Gather geeft aan dat meer dan 5.000 remote teams het gebruiken."
+      ]
+    },
+    {
+      "title": "Wat Gather goed doet",
+      "items": [
+        {
+          "title": "Een kantoor dat je zelf ontwerpt",
+          "body": "Met Gather Studio, de kantooreditor, kies je een plattegrond, richt je kamers, teamzones en objecten in, decoreer je bureaus en voeg je verdiepingen toe naarmate het team groeit. Weinig virtuele kantoren bieden zoveel vrijheid om de ruimte vorm te geven."
+        },
+        {
+          "title": "Controle over wat je hoort",
+          "body": "Je staat standaard op dempen en hoort openbare gesprekken alleen als je daar zelf voor kiest. Een vereenvoudigde weergave toont mensen in plaats van de plattegrond, en een minimodus houdt je verbonden terwijl je in andere apps werkt."
+        },
+        {
+          "title": "Meetings met opnames en AI-notities",
+          "body": "Het abonnement van Gather bevat opnames, transcripties en samenvattingen via AI-notities, met maandelijkse limieten die beginnen bij 20 uur aan opnames en 30 uur aan transcriptie."
+        },
+        {
+          "title": "Integraties voor softwareteams",
+          "body": "Google Calendar werkt je status bij en laat je meetings inplannen, Spotify toont waar je naar luistert en GitHub brengt overzichten van pull requests het kantoor in."
+        },
+        {
+          "title": "Papierwerk voor beveiliging",
+          "body": "Gather is SOC 2 Type II-gecertificeerd, biedt een verwerkersovereenkomst met standaardcontractbepalingen voor teams onder de AVG/GDPR, en biedt single sign-on op het Custom-abonnement."
+        }
+      ]
+    },
+    {
+      "title": "Wat Gather kost",
+      "body": [
+        "Gather biedt voor de meeste teams één abonnement: Essential, gefactureerd per lid. Hieronder zie je wat dat kost; [onze gids over Gather-prijzen](/guides/gather-pricing) bevat meer teamgroottes, gasturen en uitleg over wat er veranderde voor teams met een oud tarief."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Maandelijks gefactureerd",
+          "Bij jaarbetaling, per maand",
+          "Per jaar, bij jaarbetaling"
+        ],
+        "rows": [
+          [
+            "5 mensen",
+            "$ 75",
+            "$ 60",
+            "$ 720"
+          ],
+          [
+            "10 mensen",
+            "$ 150",
+            "$ 120",
+            "$ 1.440"
+          ],
+          [
+            "15 mensen",
+            "$ 225",
+            "$ 180",
+            "$ 2.160"
+          ],
+          [
+            "25 mensen",
+            "$ 375",
+            "$ 300",
+            "$ 3.600"
+          ]
+        ],
+        "note": "Essential voor $ 15 per lid per maand, of $ 12 bij jaarbetaling (Gather's prijspagina, november 2026). Exclusief btw."
+      }
+    },
+    {
+      "title": "Waar Gather tekortschiet",
+      "items": [
+        {
+          "title": "Geen gratis abonnement",
+          "body": "Sinds 15 september 2025 betaalt elk kantoor na de proefperiode van 30 dagen. Kleine teams die Gather gratis gebruikten, moesten gaan betalen of vertrekken."
+        },
+        {
+          "title": "Elk lid wordt gefactureerd",
+          "body": "Gather brengt kosten in rekening voor iedereen met een account in het kantoor, of ze nu elke dag inloggen of één keer per maand."
+        },
+        {
+          "title": "Gasturen raken op",
+          "body": "Gasten betalen niet, maar elk kantoor krijgt 30 gasturen per maand, plus 3 uur voor elk lid boven de 10. Een team dat dagelijks klanten ontvangt, loopt daar snel tegenaan."
+        },
+        {
+          "title": "Overstappen vanaf het oorspronkelijke Gather",
+          "body": "Kantoren op de oorspronkelijke versie blijven werken, tegen dezelfde prijs per gelijktijdige online gebruiker. Overstappen naar Gather 2.0 betekent een nieuw kantoor bouwen in Gather Studio."
+        },
+        {
+          "title": "Meer dan sommige teams nodig hebben",
+          "body": "Kantoorontwerp, opnames en AI-notities vormen een groot deel van waar je voor betaalt. Een team dat alleen wil zien wie er is en wil praten, betaalt hier toch voor."
+        }
+      ]
+    },
+    {
+      "title": "Bestaat Gather nog?",
+      "body": [
+        "Ja. In [februari 2026 kondigde Gather aan](https://www.gather.town/blog/new-chapter) dat het doorging als zelfstandig bedrijf zonder durfkapitaal. Het omschreef het product voor remote werk als winstgevend en groeiend, terwijl het team achter de AI-projecten overstapte naar Figma. Gather liet klanten weten dat er voor hen niets verandert."
+      ]
+    },
+    {
+      "title": "Dus, is het het waard?",
+      "items": [
+        {
+          "title": "Het waard als je je kantoor zelf wilt ontwerpen",
+          "body": "Gather Studio is het sterkste punt. Wil je team een virtuele ruimte met een eigen uitstraling, met kamers en zones ingericht op jullie manier van werken, dan is Gather moeilijk te verslaan."
+        },
+        {
+          "title": "Het waard als je anders los betaalt voor opnames en AI-notities",
+          "body": "Als je anders een aparte tool voor opnames of transcripties zou aanschaffen, maakt de integratie in het kantoor de prijs eenvoudiger te verantwoorden."
+        },
+        {
+          "title": "Het waard als je SOC 2 of single sign-on nodig hebt",
+          "body": "Gather beschikt over de nodige certificeringen en een Custom-abonnement dat veel kleinere alternatieven niet hebben."
+        },
+        {
+          "title": "Kijk elders als je vooral aanwezigheid en snelle gesprekken zoekt",
+          "body": "Als je team vooral wil [zien wie er is](/team-presence) en wil praten zonder een gesprek te plannen, doen verschillende [Gather-alternatieven](/gather-alternative) dat voor minder, soms met een gratis abonnement."
+        },
+        {
+          "title": "Kijk elders als een deel van het team zelden inlogt",
+          "body": "Facturatie per lid brengt kosten in rekening voor incidentele gebruikers. Een product dat rekent per actieve gebruiker of één vaste prijs per team hanteert, is voor zo'n team een stuk voordeliger."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Waar TinyFloor past",
+    "body": "TinyFloor behoudt de kern van wat Gather doet: een kantoor in de browser waar je ziet wie er is, naar een collega toe loopt en op Praten klikt, overlegt in een vergaderruimte, chat en je scherm deelt. Het kost $29 per maand voor het hele team, één prijs hoeveel mensen je ook uitnodigt, en elk nieuw kantoor begint met 14 dagen Pro gratis. Het heeft geen kantooreditor, opnames, AI-notities, telefoon-app of single sign-on; als dat juist is waarom je Gather overweegt, past Gather beter."
+  },
+  "faq": [
+    {
+      "q": "Is Gather het waard?",
+      "a": "Voor een team dat een eigen kantoor wil ontwerpen, opnames en AI-notities zoekt, of SOC 2 en single sign-on nodig heeft: ja. Voor een team dat vooral wil zien wie er is en even wil praten, betaal je met $ 12 tot $ 15 per lid per maand voor veel functies die je niet gebruikt."
+    },
+    {
+      "q": "Is Gather gratis?",
+      "a": "Nee. Gather stopte op 15 september 2025 met het gratis abonnement. Er is een gratis proefperiode van 30 dagen; daarna kost het $ 12 per lid per maand bij jaarbetaling of $ 15 per maand."
+    },
+    {
+      "q": "Waarvoor wordt Gather gebruikt?",
+      "a": "Gather, op gather.town, is een virtueel kantoor voor remote teams: avatars op een gedeelde plattegrond, waar je praat door naar elkaar toe te lopen, met vergaderruimtes, chat en statussen. Er zijn andere producten met dezelfde naam, zoals Gather AI, dat voorraadbeheer in magazijnen verzorgt."
+    },
+    {
+      "q": "Is Gather veilig voor zakelijk gebruik?",
+      "a": "Gather is SOC 2 Type II-gecertificeerd en biedt een verwerkersovereenkomst voor teams die aan de AVG/GDPR moeten voldoen. Je staat standaard op dempen en single sign-on is beschikbaar op het Custom-abonnement."
+    },
+    {
+      "q": "Stopt Gather ermee?",
+      "a": "Nee. In februari 2026 werd Gather een zelfstandig bedrijf, dat het zelf omschrijft als winstgevend, en stapte het AI-team over naar Figma. Gather liet weten dat er voor klanten niets veranderde."
+    },
+    {
+      "q": "Wat zijn goede alternatieven voor Gather?",
+      "a": "SoWork, Kumospace, Roam, WorkAdventure en TinyFloor worden het vaakst gekozen. Op onze pagina over [Gather-alternatieven](/gather-alternative) vergelijken we ze met de prijzen voor jouw team."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Gather pricing",
+      "url": "https://www.gather.town/pricing",
+      "note": "Essential $ 12 per lid per maand bij jaarbetaling, $ 15 per maand; gratis proefperiode van 30 dagen."
+    },
+    {
+      "title": "Gather help center, Understanding Gather's pricing changes (2025)",
+      "url": "https://support.gather.town/articles/2500085119-understanding-gather-s-pricing-changes-2025",
+      "note": "Het einde van het gratis abonnement op 15 september 2025 en de overstap naar prijzen per lid."
+    },
+    {
+      "title": "Gather features",
+      "url": "https://www.gather.town/features",
+      "note": "Gather Studio, standaard gedempt, vereenvoudigde weergave en minimodus, integraties."
+    },
+    {
+      "title": "Gather download",
+      "url": "https://www.gather.town/download",
+      "note": "Desktop-apps voor macOS en Windows, iOS-app, Android binnenkort beschikbaar."
+    },
+    {
+      "title": "Gather security",
+      "url": "https://www.gather.town/security",
+      "note": "SOC 2 Type II, verwerkersovereenkomst met standaardcontractbepalingen."
+    },
+    {
+      "title": "Gather, A new chapter (February 2026)",
+      "url": "https://www.gather.town/blog/new-chapter",
+      "note": "De afsplitsing als zelfstandig bedrijf en de overstap van het AI-team naar Figma."
+    }
+  ]
+}

@@ -1,34 +1,33 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "web-shared/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { Linked } from "@/components/legal/Linked";
 import { Link } from "@/lib/i18n/navigation";
 import { JsonLd } from "web-shared/components/JsonLd";
-import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
 import { faqNode, pageGraph } from "web-shared/lib/structured-data";
-import { HELP, HELP_PATH, HELP_UPDATED, helpBySlug, helpPath } from "@/lib/help";
+import { HELP_PAGES } from "@/lib/help-pages";
+import { HELP_LOCALES, HELP_PATH, HELP_UPDATED, helpBySlug, helpCopy, helpIn, helpPath } from "@/lib/help";
+import { translatedMetadata, translatedPage } from "@/lib/translatedPage";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return HELP.map(({ slug }) => ({ slug }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const article = helpBySlug(slug);
-  if (!article) return {};
-  return englishOnlyMetadata({ path: helpPath(article), title: article.q, description: unlinked(article.answer) });
+  return HELP_PAGES.map(({ slug }) => ({ slug }));
 }
 
 /** A `[words](/path)` link's words alone, for markup that holds plain text. */
 const unlinked = (text: string) => text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
 
-const updated = new Date(`${HELP_UPDATED}T00:00:00Z`).toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (!helpBySlug(slug)) return {};
+  const answer = (await helpCopy(locale)).articles[slug];
+  return translatedMetadata({ locale, locales: HELP_LOCALES, path: `${HELP_PATH}/${slug}`, title: answer.q, description: unlinked(answer.answer) });
+}
 
 /**
  * One question about TinyFloor (lib/help.ts), set like How it works: the
@@ -37,39 +36,45 @@ const updated = new Date(`${HELP_UPDATED}T00:00:00Z`).toLocaleDateString("en", {
  */
 export default async function HelpArticlePage({ params }: Props) {
   const { locale, slug } = await params;
-  const article = helpBySlug(slug);
-  if (!article) notFound();
+  if (!helpBySlug(slug)) notFound();
   setRequestLocale(locale as Locale);
-  const t = await getTranslations("legal");
-  const related = article.related.map(helpBySlug).filter((one) => !!one);
-  const details = [...(article.paragraphs ?? []), ...(article.items ?? [])].length > 0;
+  const copy = await helpCopy(locale);
+  const articles = await helpIn(locale);
+  const article = articles.find((one) => one.slug === slug);
+  if (!article) notFound();
+  const related = article.related.map((one) => articles.find((other) => other.slug === one)).filter((one) => !!one);
+  const page = await translatedPage(locale, HELP_LOCALES, HELP_UPDATED);
+  const details = [...(article.paragraphs ?? []), ...(article.items ?? [])];
   return (
     <>
       <JsonLd
         schema={pageGraph({
-          locale: "en",
+          locale: page.language,
           path: helpPath(article),
           name: article.q,
           description: unlinked(article.answer),
-          nodes: [faqNode("en", helpPath(article), [{ q: article.q, a: unlinked([article.answer, ...(article.paragraphs ?? []), ...(article.items ?? [])].join(" ")) }])],
+          nodes: [faqNode(page.language, helpPath(article), [{ q: article.q, a: unlinked([article.answer, ...details].join(" ")) }])],
         })}
       />
       <LegalPage
         path={helpPath(article)}
         title={article.q}
-        updated={updated}
+        updated={page.updated}
+        updatedLine={page.updatedLine}
+        lang={page.language}
+        dir={page.dir}
         intro={
           <p>
             <Linked text={article.answer} />
           </p>
         }
-        note={locale === "en" ? undefined : t("englishOnly")}
+        note={page.note}
         sections={[
-          ...(details
+          ...(details.length
             ? [
                 {
                   id: "details",
-                  title: "Details",
+                  title: copy.details,
                   body: (
                     <>
                       {article.paragraphs?.map((paragraph) => (
@@ -93,7 +98,7 @@ export default async function HelpArticlePage({ params }: Props) {
             : []),
           {
             id: "related",
-            title: "Related questions",
+            title: copy.related,
             body: (
               <ul>
                 {related.map((one) => (
@@ -102,7 +107,7 @@ export default async function HelpArticlePage({ params }: Props) {
                   </li>
                 ))}
                 <li>
-                  <Link href={HELP_PATH}>All questions</Link>
+                  <Link href={HELP_PATH}>{copy.all}</Link>
                 </li>
               </ul>
             ),

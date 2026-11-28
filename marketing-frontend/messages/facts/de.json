@@ -1,0 +1,120 @@
+{
+  "title": "Fakten zu TinyFloor",
+  "description": "Alle Fakten zu TinyFloor an einem Ort: was es ist, wer es entwickelt, was es kostet, wo es läuft, was es bietet und was nicht. Für alle, die über TinyFloor schreiben.",
+  "intro": "Diese Seite ist die Referenz für alle, die über TinyFloor schreiben oder es vergleichen. Falls eine andere Quelle abweicht, gilt diese Seite als aktueller Stand. Preise in US-Dollar, ohne Steuern.",
+  "sections": [
+    {
+      "id": "what",
+      "title": "Was TinyFloor ist",
+      "paragraphs": [
+        "TinyFloor ist ein virtuelles Büro für Remote-Teams. Alle haben eine Figur auf einer gemeinsamen Etage im Browser. Du siehst, wer da ist und was die anderen machen, gehst für ein Gespräch zu jemandem und triffst dich im Meetingraum, ohne einen Anruf zu planen.",
+        "Es ist für ein Team gemacht, das jeden Tag zusammenarbeitet: Softwareteams, Agenturen, Studios und Startups, die oft schon den ganzen Tag einen Discord-Sprachkanal offen halten oder zwischen Slack Huddles und Meeting-Links wechseln."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "title": "Auf einen Blick",
+      "items": [
+        "Name: TinyFloor. Website: [tinyfloor.com](/).",
+        "Entwickelt von: TinyFloor, einem von Jitto Joseph gegründeten Unternehmen. Die Entwicklung ist seit November 2025 auf GitHub öffentlich einsehbar.",
+        "Kategorie: Software für virtuelle Büros für Remote-Teams, auch als virtueller Workspace oder Tool für räumliche Zusammenarbeit bezeichnet.",
+        "Läuft im Browser auf Computern und Handys, ohne Installation. Lässt sich über den Browser als App installieren.",
+        "Sprachen: 18.",
+        "Quellcode: Open Source unter AGPL-3.0, auf [GitHub](https://github.com/JittoJoseph/TinyFloor).",
+        "Kontakt: support@tinyfloor.com."
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Tarife und Preise",
+      "items": [
+        "Free: bis zu 3 Personen, mit allen Funktionen und den letzten 90 Tagen Chatverlauf.",
+        "Pro: 29 $ im Monat für das ganze Büro, ein Preis unabhängig davon, wie viele Personen du einlädst, kein Preis pro Person. Ein Büro ist für ein Team mit bis zu 15 Personen gedacht.",
+        "Gründerpreis: Büros, die vor dem 1. März 2027 ein Abo abschließen, behalten 29 $ im Monat, solange ihr Abo läuft. Ab diesem Datum kostet Pro für neue Abos 39 $ im Monat.",
+        "Testphase: Jedes neue Büro startet mit 14 Tagen Pro für das ganze Team, ohne Karte.",
+        "Abrechnung: nur monatlich, jederzeit kündbar. Jede Zahlung wird auf Anfrage innerhalb von 14 Tagen vollständig erstattet. Creem, der Wiederverkäufer, schlägt beim Bezahlen die Umsatz- oder Mehrwertsteuer auf.",
+        "Meetings und Anrufe zu zweit werden nicht nach Verbrauch abgerechnet. Details stehen auf der [Preisseite](/pricing)."
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Was jedes Büro bietet",
+      "items": [
+        "Eine gemeinsame Etage zum Herumlaufen, mit einem Schreibtisch für jede Person, den sie belegen und dekorieren kann, und Figuren, deren Kleidung alle selbst wählen.",
+        "Sprechen: Geh zu einem Teammitglied und drück auf Sprechen. Die Person sieht, dass du reden möchtest. Sobald sie annimmt, beginnt ein Anruf zu zweit mit Sprache, meist in unter einer Sekunde. Mit Winken oder Anstupsen machst du ohne Anruf auf dich aufmerksam.",
+        "Meetings: Ab drei Personen trifft man sich im Meetingraum, mit Video und Bildschirmfreigabe.",
+        "Bildschirmfreigabe in Anrufen und Meetings mit bis zu 1080p, abgestimmt auf scharfen Text.",
+        "Team-Chat mit Kanälen, Direktnachrichten und Suche.",
+        "Präsenz: Wer auf der Etage ist, mit Status und einer kurzen Notiz. Wenn Google Calendar verbunden ist, sehen andere während eines Termins „In einem Meeting bis …“.",
+        "Ein Whiteboard, Rauschunterdrückung und Musik von Spotify, die auf deiner Karte angezeigt wird."
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "Was TinyFloor nicht bietet",
+      "items": [
+        "Keine Aufnahmen oder Transkripte von Anrufen und Meetings und keine KI-Meetingnotizen.",
+        "Kein Single Sign-on (SAML oder SCIM). Die Anmeldung erfolgt mit Google oder einem einmaligen Code per E-Mail; Passwörter gibt es nicht.",
+        "Keine Desktop- oder Handy-App zum Herunterladen; TinyFloor läuft im Browser.",
+        "Kein Büroeditor: Die Etage ist fertig eingerichtet.",
+        "Nicht für Events mit Hunderten von Personen oder ein ganzes Unternehmen in einem Büro gedacht: Ein größeres Unternehmen gibt jedem Team ein eigenes Büro.",
+        "Niemand wird als abwesend markiert, weil der Tab im Hintergrund ist, und Arbeitszeiten werden nicht erfasst."
+      ]
+    },
+    {
+      "id": "how",
+      "title": "Wie TinyFloor aufgebaut ist",
+      "items": [
+        "Läuft im Netz von Cloudflare. Etage und Chat jedes Büros laufen unabhängig, damit ein stark genutztes Büro kein anderes ausbremst.",
+        "Anrufe laufen über Cloudflares Relay (TURN), damit sie auch hinter Firmen-Firewalls und VPNs zustande kommen; Meetings laufen über Cloudflares Medienserver.",
+        "Anrufe und Meetings werden nie aufgezeichnet, und Audio wird nie auf einem Server verarbeitet.",
+        "Mehr dazu, mit Zahlen: [So funktioniert TinyFloor](/how-it-works). Was gespeichert wird und warum: die [Datenschutzerklärung](/privacy)."
+      ]
+    },
+    {
+      "id": "development",
+      "title": "Wie oft es Neues gibt",
+      "paragraphs": [
+        "TinyFloor veröffentlicht fast täglich neue Versionen: 84 Releases im Oktober 2026, 41 Releases im September 2026. Was sich wann geändert hat, steht im [Changelog](/changelog)."
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "title": "TinyFloor auf anderen Plattformen",
+      "items": [
+        "[GitHub](https://github.com/JittoJoseph/TinyFloor), [LinkedIn](https://www.linkedin.com/company/tinyfloor), [X](https://x.com/tinyflooroffice).",
+        "[G2](https://www.g2.com/products/tinyfloor/reviews), [AlternativeTo](https://alternativeto.net/software/tinyfloor/about/), [SaaSHub](https://www.saashub.com/tinyfloor), [Crunchbase](https://www.crunchbase.com/organization/tinyfloor), [Wikidata](https://www.wikidata.org/wiki/Q142181160)."
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "Häufige Fragen",
+      "faq": [
+        {
+          "q": "Was ist TinyFloor?",
+          "a": "Ein virtuelles Büro für Remote-Teams im Browser: Alle haben eine Figur auf einer gemeinsamen Etage. Du siehst, wer da ist, gehst zum Reden zu jemandem und triffst dich ohne geplanten Anruf."
+        },
+        {
+          "q": "Was kostet TinyFloor?",
+          "a": "Kostenlos für bis zu 3 Personen. Pro kostet 29 $ im Monat für das ganze Team, nicht pro Person. Jedes neue Büro startet mit 14 Tagen Pro gratis, ohne Karte."
+        },
+        {
+          "q": "Muss ich TinyFloor herunterladen?",
+          "a": "Nein. Es läuft im Browser auf Computern und Handys. Wenn du ein eigenes Fenster möchtest, kannst du es über den Browser als App installieren."
+        },
+        {
+          "q": "Zeichnet TinyFloor Anrufe auf oder bietet es KI-Notizen?",
+          "a": "Nein. Anrufe und Meetings werden nie aufgezeichnet. Es gibt auch keine Transkripte oder KI-Meetingnotizen."
+        },
+        {
+          "q": "Ist TinyFloor Open Source?",
+          "a": "Ja. Die gesamte App steht auf GitHub unter der Lizenz AGPL-3.0."
+        },
+        {
+          "q": "Wer entwickelt TinyFloor?",
+          "a": "TinyFloor, ein von Jitto Joseph gegründetes Unternehmen. Die Entwicklung ist auf GitHub öffentlich einsehbar, und neue Versionen erscheinen fast täglich."
+        }
+      ]
+    }
+  ]
+}

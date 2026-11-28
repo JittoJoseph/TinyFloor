@@ -5284,5 +5284,813 @@
         "a": "Vragen met twee opties, zoals 'this or that' en 'zou je liever', werken goed als poll. Open vragen leveren betere antwoorden op in de chat."
       }
     ]
+  },
+  "roamPricing": {
+    "label": "Prijs van Roam",
+    "meta": {
+      "title": "Roam-prijzen 2026: $ 19,50 per actief lid, wat teams betalen",
+      "description": "Roam kost $ 19,50 per actief lid per maand in 2026, maandelijks betaald, en $ 20,88 vanaf 2027, zonder gratis abonnement. Wat dat betekent voor teams van 4 tot 50, wie telt als actief en wat hetzelfde team elders betaalt."
+    },
+    "title": "Wat kost <em>Roam?</em>",
+    "intro": "Roam verkoopt één abonnement: alles wat het maakt, voor één prijs per actief lid, maandelijks betaald. Deze gids rekent uit wat dat betekent voor je team, wie er meetelt op de rekening, wat er verandert in 2027 en wat hetzelfde team betaalt bij andere virtuele kantoren. Alle cijfers van Roam komen van de eigen prijspagina van Roam, gecontroleerd in november 2026; prijzen in Amerikaanse dollars, exclusief belasting.",
+    "sections": [
+      {
+        "title": "Het abonnement van Roam",
+        "body": [
+          "Roam heeft geen verschillende niveaus. Eén pakket bevat alle tien producten en elk team betaalt hetzelfde tarief voor elk actief lid."
+        ],
+        "items": [
+          {
+            "title": "De prijs",
+            "body": "$ 19,50 per actief lid per maand in 2026, maandelijks betaald. Er is geen jaarabonnement, geen jaarlijkse verplichting en geen korting bij vooruitbetaling."
+          },
+          {
+            "title": "Wat er in het pakket zit",
+            "body": "Het virtuele kantoor met spontane vergaderingen, Theater voor all-hands-presentaties, AInbox voor berichten, Lobby om afspraken te plannen met mensen buiten het bedrijf, Magicast-schermopnames, Magic Minutes-vergadernotities met AI, On-It als AI-assistent, On-Air voor evenementen, W!N voor erkenning en beloningen, en de mobiele app."
+          },
+          {
+            "title": "Gratis proefperiode",
+            "body": "14 dagen, zonder creditcard. Iedereen die later wordt toegevoegd, krijgt ook 14 dagen gratis voordat die meetelt op de rekening."
+          },
+          {
+            "title": "Prijzen per land",
+            "body": "Roam bepaalt prijzen per land. Bedrijven in India die in roepies betalen, zien bijvoorbeeld ₹ 888 per actief lid per maand. Kijk op de pagina vanaf de locatie waar je wordt gefactureerd."
+          }
+        ]
+      },
+      {
+        "title": "Wat Roam kost per teamgrootte",
+        "body": [
+          "Roam telt actieve leden: de mensen die Roam die maand gebruiken. Dit is de rekening wanneer iedereen in het team het gebruikt."
+        ],
+        "table": {
+          "head": [
+            "Actieve leden",
+            "2026, per maand",
+            "2027, per maand",
+            "Per jaar tegen het tarief van 2026"
+          ],
+          "rows": [
+            [
+              "4",
+              "$ 78",
+              "$ 83,52",
+              "$ 936"
+            ],
+            [
+              "6",
+              "$ 117",
+              "$ 125,28",
+              "$ 1.404"
+            ],
+            [
+              "8",
+              "$ 156",
+              "$ 167,04",
+              "$ 1.872"
+            ],
+            [
+              "10",
+              "$ 195",
+              "$ 208,80",
+              "$ 2.340"
+            ],
+            [
+              "12",
+              "$ 234",
+              "$ 250,56",
+              "$ 2.808"
+            ],
+            [
+              "15",
+              "$ 292,50",
+              "$ 313,20",
+              "$ 3.510"
+            ],
+            [
+              "25",
+              "$ 487,50",
+              "$ 522",
+              "$ 5.850"
+            ],
+            [
+              "50",
+              "$ 975",
+              "$ 1.044",
+              "$ 11.700"
+            ]
+          ],
+          "note": "$ 19,50 per actief lid per maand in 2026 en $ 20,88 in 2027, maandelijks betaald (prijspagina van Roam, november 2026). Exclusief belasting."
+        }
+      },
+      {
+        "title": "Wie telt als een actief lid",
+        "items": [
+          {
+            "title": "Mensen die Roam die maand gebruiken",
+            "body": "Roam rekent af voor de leden die het gedurende de maand gebruiken. Iemand die de hele maand met verlof is, wordt niet gefactureerd; iemand die het één keer opent wel."
+          },
+          {
+            "title": "Gasten zijn gratis",
+            "body": "Klanten, prospects en partners die binnenkomen met een gastenbadge tellen niet mee als actieve leden."
+          },
+          {
+            "title": "Nieuwe mensen starten met een proefperiode",
+            "body": "Iedereen die aan het team wordt toegevoegd, krijgt 14 dagen gratis voordat die op de rekening verschijnt."
+          }
+        ]
+      },
+      {
+        "title": "Wat er verandert in 2027",
+        "body": [
+          "Roam vermeldt het tarief voor volgend jaar op zijn prijspagina: $ 20,88 per actief lid per maand vanaf 2027, zo'n 7% meer dan in 2026.",
+          "Voor een team van 10 is dat $ 208,80 per maand in plaats van $ 195, oftewel $ 165,60 meer over het hele jaar. Omdat Roam maandelijks factureert, is er geen jaarabonnement om het tarief van 2026 vast te leggen."
+        ]
+      },
+      {
+        "title": "Rekenvoorbeelden",
+        "items": [
+          {
+            "title": "Een team van 8 dat elke dag binnenkomt",
+            "detail": "$ 156 per maand",
+            "body": "Acht actieve leden betalen $ 156 per maand, $ 1.872 per jaar. Vanaf 2027 is dat $ 167,04 per maand."
+          },
+          {
+            "title": "Een team van 12 met twee parttimers",
+            "detail": "$ 195 tot $ 234 per maand",
+            "body": "In een maand waarin de twee parttimers Roam niet openen, betaalt het team voor 10: $ 195. In een maand waarin iedereen het opent, $ 234."
+          },
+          {
+            "title": "Een team van 20 dat klanten ontmoet",
+            "detail": "$ 390 per maand, gasten gratis",
+            "body": "Twintig actieve leden betalen $ 390 per maand. Klanten die als gast aanschuiven, kosten niets extra."
+          }
+        ]
+      },
+      {
+        "title": "Hetzelfde team elders",
+        "body": [
+          "Wat dezelfde teams per maand betalen bij andere [virtuele kantoren](/guides/best-virtual-office-software), op het goedkoopste passende abonnement."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Roam",
+            "TinyFloor",
+            "Gather, jaarlijks betaald",
+            "SoWork Basic, jaarlijks betaald",
+            "Kumospace Business, jaarlijks betaald"
+          ],
+          "rows": [
+            [
+              "4 mensen",
+              "$ 78",
+              "$ 29",
+              "$ 48",
+              "$ 21,60",
+              "Gratis (tot 5 leden)"
+            ],
+            [
+              "8 mensen",
+              "$ 156",
+              "$ 29",
+              "$ 96",
+              "$ 43,20",
+              "$ 128"
+            ],
+            [
+              "12 mensen",
+              "$ 234",
+              "$ 29",
+              "$ 144",
+              "$ 64,80",
+              "$ 192"
+            ]
+          ],
+          "note": "Van de prijspagina van elk product in november 2026, exclusief belasting. Roam factureert alleen maandelijks; de andere worden getoond bij jaarbetaling, hun laagste tarief. Het gratis abonnement van SoWork dekt tot 10 leden met audiogesprekken van maximaal 30 minuten. TinyFloor is gratis voor maximaal 3 mensen."
+        }
+      },
+      {
+        "title": "Wanneer Roam de moeite waard is",
+        "items": [
+          {
+            "title": "Je zou anders meerdere tools kopen",
+            "body": "De kracht van Roam zit in de bundel. Zou je apart betalen voor AI-vergadernotities, een schermrecorder, een planningspagina en zakelijke chat, dan kan één prijs voor alles voordeliger uitvallen."
+          },
+          {
+            "title": "Aanwezigheid verschilt van maand tot maand",
+            "body": "Alleen betalen voor mensen die het hebben gebruikt, past goed bij teams met freelancers, seizoenskrachten of langdurig verlof."
+          },
+          {
+            "title": "Je wilt een app die altijd openstaat",
+            "body": "Roam wordt op de computer geïnstalleerd, met apps voor macOS, Windows en Linux, en voor smartphones."
+          },
+          {
+            "title": "Je hebt SOC 2 nodig",
+            "body": "Op de prijspagina van Roam staat naleving van SOC 2 Type II en AVG/GDPR vermeld."
+          },
+          {
+            "title": "Wanneer niet",
+            "body": "Als je team vooral wil [zien wie er is](/team-presence), wil praten en vergaderen, blijft het grootste deel van het pakket ongebruikt en betaal je alsnog voor iedereen die de app opent."
+          }
+        ]
+      },
+      {
+        "title": "Hoe we het controleerden",
+        "body": [
+          "De prijzen van Roam, het tarief voor 2027, de proefperiode en wie telt als actief komen van ro.am/pricing, en de apps van ro.am/download, gelezen in november 2026. De prijzen van de andere producten komen van hun eigen prijspagina's in dezelfde maand. Als een pagina iets niet vermeldde, lieten we het weg in plaats van te gokken. Prijzen veranderen: kijk op de pagina van de aanbieder voordat je koopt."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor doet het kantoordeel van wat Roam doet: je ziet wie er is, loopt naar iemand toe om te praten, vergadert in een vergaderruimte, chat en deelt je scherm, gewoon in de browser zonder iets te installeren. Het kost $ 29 per maand voor het hele team, één prijs hoeveel mensen je ook uitnodigt, en elk nieuw kantoor begint met 14 dagen Pro gratis. Het heeft geen AI-notities, opnames, planningstools of evenementen; zou je team het volledige pakket van Roam gebruiken, dan past Roam beter."
+    },
+    "faq": [
+      {
+        "q": "Wat kost Roam?",
+        "a": "$ 19,50 per actief lid per maand in 2026, maandelijks betaald, voor alle producten van Roam. Roam heeft $ 20,88 aangekondigd voor 2027."
+      },
+      {
+        "q": "Heeft Roam een gratis abonnement?",
+        "a": "Nee. Roam heeft een gratis proefperiode van 14 dagen zonder creditcard, en iedereen die later wordt toegevoegd krijgt 14 dagen gratis voordat die meetelt."
+      },
+      {
+        "q": "Wat kost Roam voor 10 mensen?",
+        "a": "$ 195 per maand wanneer alle tien het die maand gebruiken, $ 2.340 per jaar. Vanaf 2027 is dat $ 208,80 per maand."
+      },
+      {
+        "q": "Wat is een actief lid in Roam?",
+        "a": "Een lid dat Roam gedurende de maand gebruikt. Leden die het die maand niet openen, en gasten, worden niet gefactureerd."
+      },
+      {
+        "q": "Biedt Roam jaarlijkse betaling of korting?",
+        "a": "Nee. Roam factureert alleen maandelijks en geeft aan geen kortingen te bieden."
+      },
+      {
+        "q": "Rekent Roam voor gasten?",
+        "a": "Nee. Externe personen met een gastenbadge tellen niet mee als actieve leden."
+      },
+      {
+        "q": "Draait Roam in de browser?",
+        "a": "Roam is een app die je installeert, voor macOS, Windows en Linux, met een mobiele app. TinyFloor draait in de browser zonder iets te installeren."
+      },
+      {
+        "q": "Wat kosten andere virtuele kantoren?",
+        "a": "Voor 10 mensen: Gather kost $ 120 per maand bij jaarbetaling, SoWork Basic $ 54, Kumospace Business $ 160 en TinyFloor $ 29 voor het hele team. Onze [vergelijking van tien virtuele kantoren](/guides/best-virtual-office-software) toont de rest."
+      }
+    ]
+  },
+  "kumospacePricing": {
+    "label": "Prijs van Kumospace",
+    "meta": {
+      "title": "Kumospace-prijzen 2026: gratis voor 5, daarna $ 16 per lid",
+      "description": "Kumospace is gratis tot 5 leden, daarna $ 16 per lid per maand bij jaarbetaling of $ 20 per maand, met minimaal 5 leden. Wat teams van 5 tot 50 betalen en wat anderen kosten."
+    },
+    "title": "Wat kost <em>Kumospace?</em>",
+    "intro": "Kumospace heeft een gratis abonnement voor kleine teams en één betaald abonnement, Business, gerekend per lid. Deze gids rekent uit wat Business kost voor jouw team, wat het gratis abonnement inhoudt, hoe het toevoegen en verwijderen van mensen wordt verrekend, en wat hetzelfde team betaalt bij andere virtuele kantoren. Alle cijfers van Kumospace komen van de eigen prijspagina van Kumospace, gecontroleerd in november 2026; prijzen in Amerikaanse dollars, exclusief belasting.",
+    "sections": [
+      {
+        "title": "De abonnementen van Kumospace",
+        "items": [
+          {
+            "title": "Free",
+            "body": "$ 0 voor maximaal 5 geregistreerde leden. Eén verdieping, een openbare ruimte, basischat, de desktop- en mobiele apps en meubilair dat je zelf inricht. Maximaal 50 gasten, die elk tot 4 uur per week in de ruimte kunnen zijn."
+          },
+          {
+            "title": "Business",
+            "body": "$ 16 per lid per maand bij jaarbetaling, of $ 20 bij maandelijkse betaling, voor minimaal 5 leden. Voegt chatkanalen en groepsberichten toe, onbeperkte chatgeschiedenis, opnames, gebruikersstatistieken, meer verdiepingen en toegangsbeheer zoals een wachtwoord of een lijst met toegestane e-mailadressen. Gratis proefperiode van 14 dagen."
+          },
+          {
+            "title": "Enterprise",
+            "body": "Prijs bepaald door het salesteam van Kumospace. Voegt single sign-on, een eigen domein, een uptime-SLA, HIPAA-compliance, een onbeperkt aantal gasten en een vaste contactpersoon voor customer success toe."
+          }
+        ]
+      },
+      {
+        "title": "Wat Kumospace kost per teamgrootte",
+        "body": [
+          "Kumospace rekent voor elk lid: de mensen die de ruimte regelmatig gebruiken. Hier het Business-abonnement voor gangbare teamgroottes; een team van maximaal 5 kan op het gratis abonnement blijven."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Maandelijks betaald",
+            "Jaarlijks betaald, per maand",
+            "Per jaar, jaarlijks betaald"
+          ],
+          "rows": [
+            [
+              "5 mensen",
+              "$ 100",
+              "$ 80",
+              "$ 960"
+            ],
+            [
+              "6 mensen",
+              "$ 120",
+              "$ 96",
+              "$ 1.152"
+            ],
+            [
+              "8 mensen",
+              "$ 160",
+              "$ 128",
+              "$ 1.536"
+            ],
+            [
+              "10 mensen",
+              "$ 200",
+              "$ 160",
+              "$ 1.920"
+            ],
+            [
+              "12 mensen",
+              "$ 240",
+              "$ 192",
+              "$ 2.304"
+            ],
+            [
+              "15 mensen",
+              "$ 300",
+              "$ 240",
+              "$ 2.880"
+            ],
+            [
+              "25 mensen",
+              "$ 500",
+              "$ 400",
+              "$ 4.800"
+            ],
+            [
+              "50 mensen",
+              "$ 1.000",
+              "$ 800",
+              "$ 9.600"
+            ]
+          ],
+          "note": "Business voor $ 20 per lid per maand, of $ 16 bij jaarbetaling, met een minimum van 5 leden (prijspagina van Kumospace, november 2026). Exclusief belasting."
+        }
+      },
+      {
+        "title": "Wat er ontbreekt in het gratis abonnement",
+        "items": [
+          {
+            "title": "Een besloten ruimte",
+            "body": "Gratis ruimtes zijn openbaar. De ruimte beveiligen met een wachtwoord of beperken tot een lijst met e-mailadressen is een Business-functie."
+          },
+          {
+            "title": "Opnames",
+            "body": "Het opnemen van vergaderingen en presentaties zit in Business en hoger."
+          },
+          {
+            "title": "Chatkanalen en volledige geschiedenis",
+            "body": "Free heeft basischat. Kanalen, groepsberichten en onbeperkte chatgeschiedenis zitten in Business."
+          },
+          {
+            "title": "Meer dan één verdieping",
+            "body": "Free geeft je één verdieping; Business biedt een onbeperkt aantal verdiepingen."
+          },
+          {
+            "title": "Statistieken",
+            "body": "Wie de ruimte bezocht, waar ze naartoe gingen en voor hoelang zit in Business."
+          }
+        ]
+      },
+      {
+        "title": "Hoe de facturatie werkt",
+        "items": [
+          {
+            "title": "Iedereen is een plek",
+            "body": "Kumospace rekent per lid, met minimaal 5 op Business. Gasten tellen niet als leden, maar mogen elk tot 4 uur per week blijven, en Free en Business staan er maximaal 50 toe."
+          },
+          {
+            "title": "Jaarlijks is 20% goedkoper, vooraf betaald",
+            "body": "Een jaarabonnement is één betaling voor het jaar tegen $ 16 per lid per maand. Maandelijks kent geen verplichting."
+          },
+          {
+            "title": "Mensen toevoegen wordt direct gefactureerd",
+            "body": "Een nieuw lid wordt direct in rekening gebracht, pro rata voor de rest van de factuurperiode."
+          },
+          {
+            "title": "Mensen verwijderen wordt niet gecrediteerd",
+            "body": "Een verwijderd lid blijft tot het einde van de factuurperiode op de rekening staan, zonder tegoed. Bij een jaarabonnement is die periode het hele jaar."
+          },
+          {
+            "title": "Geen restituties",
+            "body": "Kumospace geeft geen geld terug. De proefperiode van 14 dagen is bedoeld om het te testen."
+          }
+        ]
+      },
+      {
+        "title": "Rekenvoorbeelden",
+        "items": [
+          {
+            "title": "Een team van 5",
+            "detail": "Gratis, of $ 80 per maand",
+            "body": "Vijf mensen passen op het gratis abonnement. Als ze opnames of een besloten ruimte nodig hebben, kost Business $ 80 per maand bij jaarbetaling ($ 960 vooraf) of $ 100 per maand bij maandelijkse betaling."
+          },
+          {
+            "title": "Een team van 8 dat groeit naar 12",
+            "detail": "$ 128, daarna $ 192 per maand",
+            "body": "Bij een jaarabonnement worden de vier nieuwe leden direct in rekening gebracht voor de rest van het jaar, en stijgt het bedrag van $ 128 naar $ 192 per maand."
+          },
+          {
+            "title": "Een team van 12 met maandbetaling",
+            "detail": "$ 240 per maand",
+            "body": "Twaalf leden die maandelijks betalen, betalen $ 240 per maand, $ 2.880 per jaar. Bij jaarbetaling is dat $ 192 per maand, vooraf voldaan als $ 2.304."
+          }
+        ]
+      },
+      {
+        "title": "Hetzelfde team elders",
+        "body": [
+          "Wat dezelfde teams per maand betalen bij andere [virtuele kantoren](/guides/best-virtual-office-software), op het goedkoopste passende abonnement."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Kumospace, jaarlijks betaald",
+            "TinyFloor",
+            "Gather, jaarlijks betaald",
+            "SoWork Basic, jaarlijks betaald",
+            "Roam"
+          ],
+          "rows": [
+            [
+              "4 mensen",
+              "Gratis (tot 5 leden)",
+              "$ 29",
+              "$ 48",
+              "$ 21,60",
+              "$ 78"
+            ],
+            [
+              "8 mensen",
+              "$ 128",
+              "$ 29",
+              "$ 96",
+              "$ 43,20",
+              "$ 156"
+            ],
+            [
+              "12 mensen",
+              "$ 192",
+              "$ 29",
+              "$ 144",
+              "$ 64,80",
+              "$ 234"
+            ]
+          ],
+          "note": "Van de prijspagina van elk product in november 2026, exclusief belasting. Roam rekent alleen maandelijks, per actief lid. Het gratis abonnement van SoWork dekt tot 10 leden met audiovergaderingen van maximaal 30 minuten. TinyFloor is gratis voor maximaal 3 mensen."
+        }
+      },
+      {
+        "title": "Wanneer Kumospace de moeite waard is",
+        "items": [
+          {
+            "title": "Je team bestaat uit 5 of minder mensen",
+            "body": "Het gratis abonnement past, met desktop- en mobiele apps, zolang een openbare ruimte en basischat voldoende zijn."
+          },
+          {
+            "title": "Je wilt de ruimte inrichten",
+            "body": "In Kumospace kun je vloeren, meubels, decoratie en activiteiten kiezen, zoals games, whiteboards en YouTube-schermen."
+          },
+          {
+            "title": "Je hebt apps op elk apparaat nodig",
+            "body": "Kumospace heeft desktop-apps voor Windows en macOS en mobiele apps voor iOS en Android."
+          },
+          {
+            "title": "Je hebt HIPAA of een uptime-SLA nodig",
+            "body": "Beide zitten in het Enterprise-abonnement."
+          },
+          {
+            "title": "Wanneer niet",
+            "body": "Boven de vijf mensen betaal je elke maand voor elk lid, met een minimum van vijf. Als je team vooral wil [zien wie er is](/team-presence), wil praten en vergaderen, telt dat op voor functies die je misschien niet gebruikt."
+          }
+        ]
+      },
+      {
+        "title": "Hoe we het controleerden",
+        "body": [
+          "De prijzen, abonnementsdetails en facturatieregels van Kumospace komen van kumospace.com/pricing en de antwoorden daarop, gelezen in november 2026. De prijzen van de andere producten komen van hun eigen prijspagina's in dezelfde maand. Als een pagina iets niet vermeldde, lieten we het weg in plaats van te gokken. Prijzen veranderen: kijk op de pagina van de aanbieder voordat je koopt."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "Net als Kumospace is TinyFloor een kantoor waar je rondloopt en praat door naar iemand toe te lopen, met een vergaderruimte, chat en schermdelen. Het werkt gewoon in de browser zonder installatie. Het kost $ 29 per maand voor het hele team, één prijs hoeveel mensen je ook uitnodigt, en elk nieuw kantoor begint met 14 dagen Pro gratis. Het heeft geen opnames, mobiele app of kantooreditor; ben je daarvan afhankelijk, dan past Kumospace beter."
+    },
+    "faq": [
+      {
+        "q": "Wat kost Kumospace?",
+        "a": "Business kost $ 16 per lid per maand bij jaarbetaling, of $ 20 bij maandelijkse betaling, voor minimaal 5 leden. De prijs van Enterprise wordt bepaald door het salesteam van Kumospace."
+      },
+      {
+        "q": "Is Kumospace gratis?",
+        "a": "Ja, voor maximaal 5 geregistreerde leden, met één verdieping, een openbare ruimte en basischat. Voor opnames, besloten ruimtes en meer verdiepingen is Business nodig."
+      },
+      {
+        "q": "Wat kost Kumospace voor 10 mensen?",
+        "a": "$ 160 per maand bij jaarbetaling ($ 1.920 per jaar), of $ 200 per maand bij maandelijkse betaling."
+      },
+      {
+        "q": "Geldt er een minimum aantal leden?",
+        "a": "Ja. Business wordt gerekend voor minimaal 5 leden."
+      },
+      {
+        "q": "Rekent Kumospace kosten voor gasten?",
+        "a": "Nee. Gasten tellen niet als leden, maar mogen elk tot 4 uur per week in de ruimte zijn, en Free en Business staan er maximaal 50 toe."
+      },
+      {
+        "q": "Geeft Kumospace geld terug?",
+        "a": "Nee. In plaats daarvan is er een gratis proefperiode van 14 dagen. Leden die je verwijdert, blijven tot het einde van de factuurperiode op de rekening staan."
+      },
+      {
+        "q": "Werkt Kumospace in de browser?",
+        "a": "Ja, en er zijn ook desktop-apps voor Windows en macOS en mobiele apps. TinyFloor werkt uitsluitend in de browser."
+      },
+      {
+        "q": "Wat kosten andere virtuele kantoren?",
+        "a": "Voor 10 mensen: Gather kost $ 120 per maand bij jaarbetaling, SoWork Basic $ 54, Roam $ 195 en TinyFloor $ 29 voor het hele team. Onze [vergelijking van tien virtuele kantoren](/guides/best-virtual-office-software) toont de rest."
+      }
+    ]
+  },
+  "soworkPricing": {
+    "label": "Prijs van SoWork",
+    "meta": {
+      "title": "SoWork-prijzen 2026: gratis voor 10, Basic $ 5,40, Premium $ 12",
+      "description": "SoWork is gratis voor maximaal 10 leden met audiomeetings van 30 minuten, daarna $ 5,40 of $ 12 per lid per maand bij jaarbetaling ($ 6 of $ 15 maandelijks). Wat elk abonnement bevat en wat teams elders betalen."
+    },
+    "title": "Wat kost <em>SoWork?</em>",
+    "intro": "SoWork heeft een gratis abonnement en twee betaalde abonnementen, Basic en Premium, elk per plek gerekend. Deze gids zet op een rij wat elk abonnement bevat, wat het kost voor jouw team, wat het gratis abonnement weglaat en wat hetzelfde team betaalt bij andere virtuele kantoren. Alle cijfers van SoWork komen van de prijspagina en feitenpagina van SoWork, gecontroleerd in november 2026; prijzen in Amerikaanse dollars, exclusief belasting.",
+    "sections": [
+      {
+        "title": "De abonnementen van SoWork",
+        "items": [
+          {
+            "title": "Free",
+            "body": "$ 0 voor maximaal 10 leden. Meetings zijn alleen met audio en stoppen na 30 minuten, chat en het aanpassen van het kantoor zijn beperkt, en er zijn geen opnames, analytics, AI of gastenpassen."
+          },
+          {
+            "title": "Basic",
+            "body": "$ 5,40 per lid per maand bij jaarbetaling, of $ 6 bij maandelijkse betaling. Video en meetings zonder tijdslimiet, volledige teamchat met onbeperkte geschiedenis, Google- en Outlook-agenda's, 2 meetingopnames met AI-notities per week en 2 gastenpassen per plek per maand."
+          },
+          {
+            "title": "Premium",
+            "body": "$ 12 per lid per maand bij jaarbetaling, of $ 15 bij maandelijkse betaling. Onbeperkte opnames met AI-samenvattingen, transcripties en actiepunten, teamanalytics, meerdere mensen die tegelijk hun scherm delen, tekenen op gedeelde schermen, ruisonderdrukking, koppelingen zoals GitHub en Zapier, een koppeling voor je eigen AI-tools en 5 gastenpassen per plek per maand."
+          },
+          {
+            "title": "Enterprise",
+            "body": "Prijs op maat, voor teams van meer dan 100 mensen of met een formeel inkoopproces: single sign-on en SCIM, een uptime-garantie van 99,99% en hulp bij de uitrol."
+          },
+          {
+            "title": "Gratis proefperiode",
+            "body": "7 dagen met alle Premium-functies, voor zoveel plekken als je wilt."
+          }
+        ]
+      },
+      {
+        "title": "Wat SoWork kost per teamgrootte",
+        "body": [
+          "SoWork rekent voor elke plek. Hier zijn Basic en Premium voor gangbare teamgroottes; een team van maximaal 10 mensen kan het gratis abonnement gebruiken, binnen de limieten."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Basic, jaarlijks betaald",
+            "Basic, maandelijks",
+            "Premium, jaarlijks betaald",
+            "Premium, maandelijks"
+          ],
+          "rows": [
+            [
+              "4 mensen",
+              "$ 21,60",
+              "$ 24",
+              "$ 48",
+              "$ 60"
+            ],
+            [
+              "8 mensen",
+              "$ 43,20",
+              "$ 48",
+              "$ 96",
+              "$ 120"
+            ],
+            [
+              "10 mensen",
+              "$ 54",
+              "$ 60",
+              "$ 120",
+              "$ 150"
+            ],
+            [
+              "12 mensen",
+              "$ 64,80",
+              "$ 72",
+              "$ 144",
+              "$ 180"
+            ],
+            [
+              "15 mensen",
+              "$ 81",
+              "$ 90",
+              "$ 180",
+              "$ 225"
+            ],
+            [
+              "25 mensen",
+              "$ 135",
+              "$ 150",
+              "$ 300",
+              "$ 375"
+            ],
+            [
+              "50 mensen",
+              "$ 270",
+              "$ 300",
+              "$ 600",
+              "$ 750"
+            ]
+          ],
+          "note": "Per maand, per team. Basic is $ 5,40 per lid bij jaarbetaling of $ 6 maandelijks; Premium $ 12 of $ 15 (prijspagina van SoWork, november 2026). Exclusief belasting."
+        }
+      },
+      {
+        "title": "Wat het gratis abonnement weglaat",
+        "items": [
+          {
+            "title": "Meetings langer dan 30 minuten",
+            "body": "Elke meeting op Free stopt na 30 minuten."
+          },
+          {
+            "title": "Video",
+            "body": "Meetings op Free zijn alleen met audio. Video begint bij Basic."
+          },
+          {
+            "title": "Opnames en AI-notities",
+            "body": "Geen op Free. Basic heeft er 2 per week; Premium heeft geen limiet."
+          },
+          {
+            "title": "Gasten",
+            "body": "Free heeft geen gastenpassen, dus klanten en sollicitanten kunnen niet aanschuiven in het kantoor."
+          },
+          {
+            "title": "Volledige chat",
+            "body": "De chat van Free is beperkt. Basic heeft volledige teamchat met onbeperkte geschiedenis."
+          }
+        ]
+      },
+      {
+        "title": "Hoe de factuur werkt",
+        "items": [
+          {
+            "title": "Elke plek telt",
+            "body": "SoWork rekent per plek, maandelijks of jaarlijks. Beheerders en teamleden nemen elk een plek in."
+          },
+          {
+            "title": "Gasten nemen geen plekken in",
+            "body": "Gasten komen binnen via gastenpassen: 2 per plek per maand op Basic, 5 op Premium."
+          },
+          {
+            "title": "Jaarbetaling bespaart 10 tot 20%",
+            "body": "Basic zakt van $ 6 naar $ 5,40 per plek bij jaarbetaling, en Premium van $ 15 naar $ 12."
+          }
+        ]
+      },
+      {
+        "title": "Rekenvoorbeelden",
+        "items": [
+          {
+            "title": "Een team van 6 waarvan de meetings uitlopen",
+            "detail": "$ 32,40 per maand",
+            "body": "Free past voor zes mensen, maar meetings stoppen na 30 minuten en zijn alleen met audio. Basic voor zes is $ 32,40 per maand bij jaarbetaling, of $ 36 bij maandelijkse betaling."
+          },
+          {
+            "title": "Een team van 12 dat AI-notities wil",
+            "detail": "$ 144 per maand",
+            "body": "Premium voor 12 is $ 144 per maand bij jaarbetaling ($ 1.728 per jaar), of $ 180 bij maandelijkse betaling. Basic zou $ 64,80 zijn, met 2 opnames per week."
+          },
+          {
+            "title": "Een team van 15 dat klanten ontmoet",
+            "detail": "30 of 75 gastenpassen",
+            "body": "Vijftien plekken zijn inclusief 30 gastenpassen per maand op Basic ($ 81 per maand bij jaarbetaling) en 75 op Premium ($ 180)."
+          }
+        ]
+      },
+      {
+        "title": "Hetzelfde team elders",
+        "body": [
+          "Wat dezelfde teams per maand betalen bij andere [virtuele kantoren](/guides/best-virtual-office-software), op het goedkoopste passende betaalde abonnement."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "SoWork Basic, jaarlijks betaald",
+            "TinyFloor",
+            "Gather, jaarlijks betaald",
+            "Kumospace Business, jaarlijks betaald",
+            "Roam"
+          ],
+          "rows": [
+            [
+              "4 mensen",
+              "$ 21,60",
+              "$ 29",
+              "$ 48",
+              "Gratis (tot 5 leden)",
+              "$ 78"
+            ],
+            [
+              "8 mensen",
+              "$ 43,20",
+              "$ 29",
+              "$ 96",
+              "$ 128",
+              "$ 156"
+            ],
+            [
+              "12 mensen",
+              "$ 64,80",
+              "$ 29",
+              "$ 144",
+              "$ 192",
+              "$ 234"
+            ]
+          ],
+          "note": "Van de prijspagina van elk product in november 2026, exclusief belasting. Roam rekent alleen maandelijks, per actief lid. Het gratis abonnement van SoWork dekt tot 10 leden met audiomeetings van maximaal 30 minuten. TinyFloor is gratis voor maximaal 3 mensen."
+        }
+      },
+      {
+        "title": "Wanneer SoWork de moeite waard is",
+        "items": [
+          {
+            "title": "Je meetings zijn kort en audio is genoeg",
+            "body": "Maximaal 10 mensen kunnen het gratis abonnement zo lang gebruiken als ze willen."
+          },
+          {
+            "title": "Je wilt opnames en AI-notities in het kantoor",
+            "body": "Premium neemt elke meeting op met samenvattingen, transcripties en actiepunten, en laat je eigen AI-tools erin zoeken."
+          },
+          {
+            "title": "Managers willen teamanalytics",
+            "body": "Premium rapporteert over werktijden, meetings en onboarding, met een wekelijks rapport."
+          },
+          {
+            "title": "Je wilt de keuze tussen app of browser",
+            "body": "SoWork draait in een desktop-app of in de browser, met een mobiele app voor chat en meetings."
+          },
+          {
+            "title": "Wanneer niet",
+            "body": "Als je team vooral wil [zien wie er is](/team-presence), wil praten en vergaderen, zijn de audiomeetings van 30 minuten van het gratis abonnement wellicht te beperkt, en de opnames en analytics van Premium meer dan je nodig hebt."
+          }
+        ]
+      },
+      {
+        "title": "Hoe we het controleerden",
+        "body": [
+          "De prijzen van SoWork komen van sowork.com/pricing, met de maandprijzen van de maandelijkse schakelaar, en de abonnementslimieten van de feitenpagina van SoWork (sowork.com/facts, bijgewerkt op 24 november 2026), beide gelezen in november 2026. De prijzen van de andere producten komen van hun eigen prijspagina's in dezelfde maand. Als een pagina iets niet vermeldde, lieten we het weg in plaats van te gokken. Prijzen veranderen: kijk op de pagina van de aanbieder voordat je koopt."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is een kantoor waar je in rondloopt, net als SoWork: je ziet wie er is, loopt naar iemand toe en praat, vergadert in een vergaderruimte, chat en deelt je scherm, gewoon in de browser zonder iets te installeren. Het kost $ 29 per maand voor het hele team, één prijs hoeveel mensen je ook uitnodigt, en elk nieuw kantoor begint met 14 dagen Pro gratis. Het heeft geen opnames, AI-notities, teamanalytics of kantooreditor; ben je daarvan afhankelijk, dan past SoWork Premium beter."
+    },
+    "faq": [
+      {
+        "q": "Wat kost SoWork?",
+        "a": "Basic is $ 5,40 per lid per maand bij jaarbetaling, of $ 6 maandelijks; Premium is $ 12 bij jaarbetaling, of $ 15 maandelijks. Enterprise is op maat."
+      },
+      {
+        "q": "Is SoWork gratis?",
+        "a": "Ja, voor maximaal 10 leden, met meetings die alleen audio hebben en na 30 minuten stoppen, beperkte chat en zonder opnames, AI of gasten."
+      },
+      {
+        "q": "Wat kost SoWork voor 10 mensen?",
+        "a": "Basic is $ 54 per maand bij jaarbetaling of $ 60 maandelijks; Premium $ 120 of $ 150. Tien mensen kunnen ook het gratis abonnement gebruiken, binnen de limieten."
+      },
+      {
+        "q": "Wat is het verschil tussen SoWork Basic en Premium?",
+        "a": "Basic voegt video, onbeperkte meetingduur en volledige chat toe, met 2 opnames per week. Premium voegt onbeperkte opnames met AI-notities toe, teamanalytics, meerdere schermdelingen tegelijk, ruisonderdrukking en koppelingen."
+      },
+      {
+        "q": "Rekent SoWork voor gasten?",
+        "a": "Gasten nemen geen betaalde plekken in. Ze komen binnen via gastenpassen: 2 per plek per maand op Basic, 5 op Premium, geen op Free."
+      },
+      {
+        "q": "Heeft SoWork een gratis proefperiode?",
+        "a": "Ja, 7 dagen met alle functies van Premium, voor een onbeperkt aantal plekken."
+      },
+      {
+        "q": "Draait SoWork in de browser?",
+        "a": "Ja, of in de desktop-app, met een mobiele app voor chat en meetings. TinyFloor draait in de browser."
+      },
+      {
+        "q": "Wat kosten andere virtuele kantoren?",
+        "a": "Voor 10 mensen: Gather kost $ 120 per maand bij jaarbetaling, Kumospace Business $ 160, Roam $ 195 en TinyFloor $ 29 voor het hele team. Onze [vergelijking van tien virtuele kantoren](/guides/best-virtual-office-software) toont de rest."
+      }
+    ]
   }
 }

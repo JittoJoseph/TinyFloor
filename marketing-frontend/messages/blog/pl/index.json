@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog: pytania zespołów zdalnych, odpowiedzi w liczbach",
+    "description": "O co pytają zespoły zdalne przed wyborem sposobu wspólnej pracy: odpowiedzi z liczbami i ich źródłami, od twórców TinyFloor."
+  },
+  "title": "Pytania zespołów zdalnych, <em>odpowiedzi w liczbach.</em>",
+  "body": "O co pytają zespoły zdalne przed wyborem sposobu wspólnej pracy: koszty, porównania i badania, każde z podanymi źródłami.",
+  "categories": {
+    "costs": "Koszty",
+    "comparisons": "Porównania",
+    "remoteWork": "Praca zdalna"
+  },
+  "latest": "Najnowsze",
+  "takeaways": "Najważniejsze wnioski",
+  "sources": "Źródła",
+  "related": "Powiązane artykuły",
+  "guides": "Przewodniki na ten sam temat",
+  "fromBlog": "Z bloga",
+  "all": "Wszystkie artykuły"
+}

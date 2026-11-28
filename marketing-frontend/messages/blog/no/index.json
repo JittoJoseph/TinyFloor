@@ -1,0 +1,21 @@
+{
+  "label": "Blogg",
+  "meta": {
+    "title": "Blogg: Spørsmål fra fjernteam, besvart med tall",
+    "description": "Hva fjernteam spør om før de velger hvordan de skal jobbe sammen, besvart med tall og kilder, fra folkene som lager TinyFloor."
+  },
+  "title": "Spørsmål fjernteam stiller, <em>besvart med tall.</em>",
+  "body": "Hva fjernteam spør om før de velger hvordan de skal jobbe sammen: kostnader, sammenligninger og undersøkelser, alle med oppgitte kilder.",
+  "categories": {
+    "costs": "Kostnader",
+    "comparisons": "Sammenligninger",
+    "remoteWork": "Fjernarbeid"
+  },
+  "latest": "Siste",
+  "takeaways": "Hovedpunkter",
+  "sources": "Kilder",
+  "related": "Relaterte artikler",
+  "guides": "Guider om samme tema",
+  "fromBlog": "Fra bloggen",
+  "all": "Alle artikler"
+}

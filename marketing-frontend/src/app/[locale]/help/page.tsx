@@ -1,55 +1,62 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "web-shared/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { Link } from "@/lib/i18n/navigation";
 import { JsonLd } from "web-shared/components/JsonLd";
-import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
 import { faqNode, pageGraph } from "web-shared/lib/structured-data";
-import { HELP, HELP_DESCRIPTION, HELP_INTRO, HELP_PATH, HELP_TITLE, HELP_TOPICS, HELP_UPDATED, helpPath, type HelpTopic } from "@/lib/help";
+import { HELP_LOCALES, HELP_PATH, HELP_TOPIC_ORDER, HELP_UPDATED, helpCopy, helpIn, helpPath } from "@/lib/help";
+import { translatedMetadata, translatedPage } from "@/lib/translatedPage";
 
 type Props = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata(): Promise<Metadata> {
-  return englishOnlyMetadata({ path: HELP_PATH, title: HELP_TITLE, description: HELP_DESCRIPTION });
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const copy = await helpCopy(locale);
+  return translatedMetadata({ locale, locales: HELP_LOCALES, path: HELP_PATH, title: copy.title, description: copy.description });
 }
 
 const unlinked = (text: string) => text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
-
-const updated = new Date(`${HELP_UPDATED}T00:00:00Z`).toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 /** Every question in the help center (lib/help.ts), by topic, each linking to its own page. */
 export default async function HelpPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale as Locale);
-  const t = await getTranslations("legal");
+  const copy = await helpCopy(locale);
+  const articles = await helpIn(locale);
+  const page = await translatedPage(locale, HELP_LOCALES, HELP_UPDATED);
   return (
     <>
       <JsonLd
         schema={pageGraph({
-          locale: "en",
+          locale: page.language,
           path: HELP_PATH,
-          name: HELP_TITLE,
-          description: HELP_DESCRIPTION,
-          nodes: [faqNode("en", HELP_PATH, HELP.map(({ q, answer }) => ({ q, a: unlinked(answer) })))],
+          name: copy.title,
+          description: copy.description,
+          nodes: [faqNode(page.language, HELP_PATH, articles.map(({ q, answer }) => ({ q, a: unlinked(answer) })))],
         })}
       />
       <LegalPage
         path={HELP_PATH}
-        title={HELP_TITLE}
-        updated={updated}
-        intro={<p>{HELP_INTRO}</p>}
-        note={locale === "en" ? undefined : t("englishOnly")}
-        sections={(Object.keys(HELP_TOPICS) as HelpTopic[]).map((topic) => ({
+        title={copy.title}
+        updated={page.updated}
+        updatedLine={page.updatedLine}
+        lang={page.language}
+        dir={page.dir}
+        intro={<p>{copy.intro}</p>}
+        note={page.note}
+        sections={HELP_TOPIC_ORDER.map((topic) => ({
           id: topic,
-          title: HELP_TOPICS[topic],
+          title: copy.topics[topic],
           body: (
             <ul>
-              {HELP.filter((article) => article.topic === topic).map((article) => (
-                <li key={article.slug}>
-                  <Link href={helpPath(article)}>{article.q}</Link>
-                </li>
-              ))}
+              {articles
+                .filter((article) => article.topic === topic)
+                .map((article) => (
+                  <li key={article.slug}>
+                    <Link href={helpPath(article)}>{article.q}</Link>
+                  </li>
+                ))}
             </ul>
           ),
         }))}

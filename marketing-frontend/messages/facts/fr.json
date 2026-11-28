@@ -1,0 +1,120 @@
+{
+  "title": "Faits sur TinyFloor",
+  "description": "L'essentiel sur TinyFloor en un seul endroit : ce que c'est, qui le développe, ce que ça coûte, où il fonctionne, ce qu'il contient et ce qu'il ne fait pas. Pour quiconque écrit sur TinyFloor.",
+  "intro": "Cette page rassemble les faits de référence sur TinyFloor, pour toute personne qui écrit à son sujet ou qui le compare. Si une autre source est en désaccord, c'est cette page qui fait foi. Les prix sont en dollars américains, hors taxes.",
+  "sections": [
+    {
+      "id": "what",
+      "title": "Ce qu'est TinyFloor",
+      "paragraphs": [
+        "TinyFloor est un bureau virtuel pour les équipes à distance. Chacun dispose d'un personnage sur un étage partagé dans le navigateur, ce qui permet de voir qui est là et ce que chacun fait, d'aller voir un collègue pour lui parler et de se réunir dans une salle de réunion, sans planifier d'appel.",
+        "Il est conçu pour une équipe qui travaille ensemble au quotidien : équipes de développement, agences, studios et startups, souvent celles qui gardent un salon vocal Discord ouvert toute la journée ou alternent entre huddles Slack et liens de réunion."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "title": "En bref",
+      "items": [
+        "Nom : TinyFloor. Site web : [tinyfloor.com](/).",
+        "Créé par : TinyFloor, une petite entreprise fondée par Jitto Joseph, développée de manière ouverte sur GitHub depuis novembre 2025.",
+        "Catégorie : logiciel de bureau virtuel, aussi appelé espace de travail virtuel ou outil de collaboration spatiale.",
+        "Où il fonctionne : dans le navigateur sur ordinateur et smartphone, sans rien à installer. Il peut être installé comme une application depuis le navigateur.",
+        "Langues : 18.",
+        "Code source : open source sous licence AGPL-3.0, sur [GitHub](https://github.com/JittoJoseph/TinyFloor).",
+        "Contact : support@tinyfloor.com."
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Offres et tarifs",
+      "items": [
+        "Free : jusqu'à 3 personnes, avec toutes les fonctionnalités et les 90 derniers jours d'historique de chat.",
+        "Pro : 29 $ par mois pour tout le bureau, un seul prix quel que soit le nombre de personnes invitées, pas un prix par personne. Un bureau est conçu pour une équipe, jusqu'à 15 personnes.",
+        "Prix fondateur : les bureaux qui s'abonnent avant le 1er mars 2027 conservent 29 $ par mois tant que leur abonnement continue. À partir de cette date, Pro coûte 39 $ par mois pour les nouveaux abonnements.",
+        "Essai : chaque nouveau bureau commence avec 14 jours de Pro pour toute l'équipe, sans carte requise.",
+        "Facturation : mensuelle uniquement, résiliable à tout moment ; remboursement de tout paiement sur simple demande sous 14 jours. Creem, le revendeur, ajoute la TVA ou la taxe sur les ventes lors du paiement.",
+        "Les réunions et les appels à deux ne sont jamais décomptés. Tous les détails figurent sur la [page des tarifs](/pricing)."
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Ce que contient chaque bureau",
+      "items": [
+        "Un étage partagé où se déplacer, avec un bureau pour chaque personne à s'approprier et à décorer, et des personnages personnalisables.",
+        "Parler : approchez-vous d'un collègue et appuyez sur Parler. Il voit que vous souhaitez discuter et, dès qu'il accepte, un appel à deux démarre à la voix, généralement en moins d'une seconde. Saluer ou pousser du coude permet d'attirer l'attention sans lancer d'appel.",
+        "Réunions : à trois personnes ou plus dans la salle de réunion, avec vidéo et partage d'écran.",
+        "Partage d'écran lors des appels et des réunions, jusqu'en 1080p, optimisé pour un texte net.",
+        "Chat d'équipe avec canaux, messages directs et recherche.",
+        "Présence : qui est sur l'étage, son statut et une courte note. Avec Google Calendar connecté, vos collègues voient « En réunion jusqu'à… » quand vous êtes occupé.",
+        "Un tableau blanc, la suppression du bruit et la musique Spotify affichée sur votre profil."
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "Ce qu'il ne fait pas",
+      "items": [
+        "Aucun enregistrement ni transcription des appels et réunions, et aucune note de réunion par IA.",
+        "Pas d'authentification unique (SAML ou SCIM). La connexion se fait avec Google ou un code à usage unique envoyé par e-mail ; il n'y a pas de mot de passe.",
+        "Pas d'application pour ordinateur ou mobile à télécharger ; tout fonctionne dans le navigateur.",
+        "Pas d'éditeur de bureau : l'étage est prêt à l'emploi.",
+        "Pas fait pour des événements de plusieurs centaines de personnes, ni pour rassembler toute une grande entreprise dans un seul bureau : une entreprise plus grande donne à chaque équipe son propre bureau.",
+        "Il ne marque jamais les personnes comme absentes parce que leur onglet est en arrière-plan, et ne suit pas les heures de travail."
+      ]
+    },
+    {
+      "id": "how",
+      "title": "Comment il est conçu",
+      "items": [
+        "Fonctionne sur le réseau de Cloudflare. L'étage et le chat de chaque bureau tournent de manière isolée, de sorte qu'un bureau très actif n'en ralentit pas un autre.",
+        "Les appels passent par le relais de Cloudflare (TURN) pour traverser les pare-feu d'entreprise et les VPN ; les réunions passent par les serveurs multimédias de Cloudflare.",
+        "Les appels et réunions ne sont jamais enregistrés, et l'audio n'est jamais traité sur un serveur.",
+        "En savoir plus, avec les chiffres : [comment fonctionne TinyFloor](/how-it-works). Données conservées et finalités : la [politique de confidentialité](/privacy)."
+      ]
+    },
+    {
+      "id": "development",
+      "title": "Fréquence des mises à jour",
+      "paragraphs": [
+        "TinyFloor est déployé en production presque chaque jour : 84 versions en octobre 2026, 41 versions en septembre 2026. L'historique des changements par date est disponible dans le [journal des modifications](/changelog)."
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "title": "TinyFloor ailleurs",
+      "items": [
+        "[GitHub](https://github.com/JittoJoseph/TinyFloor), [LinkedIn](https://www.linkedin.com/company/tinyfloor), [X](https://x.com/tinyflooroffice).",
+        "[G2](https://www.g2.com/products/tinyfloor/reviews), [AlternativeTo](https://alternativeto.net/software/tinyfloor/about/), [SaaSHub](https://www.saashub.com/tinyfloor), [Crunchbase](https://www.crunchbase.com/organization/tinyfloor), [Wikidata](https://www.wikidata.org/wiki/Q142181160)."
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "Questions",
+      "faq": [
+        {
+          "q": "Qu'est-ce que TinyFloor ?",
+          "a": "Un bureau virtuel pour les équipes à distance, dans le navigateur : chacun a un personnage sur un étage partagé, pour voir qui est là, aller voir quelqu'un pour lui parler et se réunir sans planifier d'appel."
+        },
+        {
+          "q": "Combien coûte TinyFloor ?",
+          "a": "Gratuit jusqu'à 3 personnes. Pro coûte 29 $ par mois pour toute l'équipe, pas par personne, et chaque nouveau bureau commence avec 14 jours de Pro offerts, sans carte requise."
+        },
+        {
+          "q": "TinyFloor nécessite-t-il un téléchargement ?",
+          "a": "Non. Il fonctionne dans le navigateur sur ordinateur et mobile ; vous pouvez l'installer comme une application depuis votre navigateur si vous préférez une fenêtre dédiée."
+        },
+        {
+          "q": "TinyFloor enregistre-t-il les appels ou propose-t-il des notes par IA ?",
+          "a": "Non. Les appels et les réunions ne sont jamais enregistrés, et il n'y a ni transcription ni notes de réunion par IA."
+        },
+        {
+          "q": "TinyFloor est-il open source ?",
+          "a": "Oui. L'ensemble de l'application est disponible sur GitHub sous licence AGPL-3.0."
+        },
+        {
+          "q": "Qui développe TinyFloor ?",
+          "a": "TinyFloor, une petite entreprise fondée par Jitto Joseph. Elle est développée de manière ouverte sur GitHub et déployée en production presque chaque jour."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "label": "Kannattaako Gather?",
+  "meta": {
+    "title": "Kannattaako Gather vuonna 2026? Arvio etätiimeille",
+    "description": "Gather (gather.town) hintamuutoksen ja itsenäistymisen jälkeen: toiminnot, hinta 5–25 hengen tiimille, puutteet ja kenelle sopii jokin muu."
+  },
+  "coverAlt": "Vaalea savivaaka, jonka toisella puolella on keltainen kolikkopino ja toisella pieni vaalea talo, mintunvihreällä taustalla.",
+  "title": "Onko Gather <em>hintansa väärti</em> vuonna 2026?",
+  "intro": "Gather (gather.town) on edelleen lajinsa tunnetuin virtuaalitoimisto, mutta vuonna 2026 se on erilainen kuin mihin monet tiimit aikoinaan liittyivät: ei ilmaispakettia syyskuun 2025 jälkeen, 12–15 $ jäseneltä kuukaudessa ja itsenäinen yritys helmikuusta 2026 alkaen. Sen kannattavuus riippuu siitä, mitä tiimisi käyttää. Tässä käydään läpi sen vahvuudet, hinta, puutteet ja kenelle jokin muu sopii paremmin. Teemme TinyFlooria, joka kilpailee Gatherin kanssa, joten emme ole puolueettomia; jokainen Gatheria koskeva tieto perustuu Gatherin omiin sivuihin marraskuussa 2026.",
+  "takeaways": [
+    "Gather maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausilaskutuksella. Ilmainen paketti poistui 15. syyskuuta 2025; tarjolla on 30 päivän kokeilu.",
+    "Se sopii parhaiten tiimeille, jotka haluavat suunnitella oman toimistonsa, tallentaa kokouksia tekoälymuistiinpanoilla ja käyttää Google Calendar- ja GitHub-integraatioita.",
+    "Helmikuussa 2026 Gather eriytyi itsenäiseksi, kannattavaksi yritykseksi, ja sen tekoälytiimi siirtyi Figmalle. Gather ilmoitti, ettei mikään muuttunut asiakkaille.",
+    "10 hengen tiimi maksaa 1 440 $ vuodessa vuosilaskutuksella jokaisesta jäsenestä riippumatta siitä, käyvätkö he toimistossa.",
+    "Tiimit, jotka haluavat lähinnä nähdä kuka on paikalla ja jutella, saavat sen edullisemmin muualta."
+  ],
+  "sections": [
+    {
+      "title": "Mikä Gather on",
+      "body": [
+        "Gather on virtuaalitoimisto: jokaisella tiimiläisellä on hahmo 2D-toimistokartalla, joten näet kuka on paikalla ja voit aloittaa keskustelun kävelemällä luo ilman kokouslinkkiä. Siinä on kokoushuoneet, tiimichat kanavineen ja suoraviesteineen sekä tilatiedot, jotka näyttävät kuka on vapaa, keskittymässä tai kokouksessa.",
+        "Nykyinen versio, Gather 2.0, julkaistiin syyskuussa 2025. Se toimii selaimessa sekä [työpöytäsovelluksilla macOS:lle ja Windowsille ja mobiilisovelluksella iOS:lle](https://www.gather.town/download); Android-sovelluksen kerrotaan olevan tulossa. Gatherin mukaan sitä käyttää yli 5 000 etätiimiä."
+      ]
+    },
+    {
+      "title": "Mitä Gather tekee hyvin",
+      "items": [
+        {
+          "title": "Toimisto, jonka suunnittelet itse",
+          "body": "Gather Studio, palvelun toimistoeditori, antaa valita pohjapiirroksen, järjestää huoneita, tiimialueita ja esineitä, sisustaa työpöytiä ja lisätä kerroksia tiimin kasvaessa. Harva virtuaalitoimisto antaa muokata tilaa yhtä paljon."
+        },
+        {
+          "title": "Hallitse sitä, mitä kuulet",
+          "body": "Mikrofoni on oletuksena mykistetty, ja kuulet avoimia keskusteluja vain, jos haluat. Yksinkertaistettu näkymä näyttää kartan sijaan ihmiset, ja minitila pitää yhteyden auki muiden sovellusten rinnalla."
+        },
+        {
+          "title": "Kokoukset tallenteilla ja tekoälymuistiinpanoilla",
+          "body": "Gatherin paketti sisältää tallenteet, litteroinnin ja tekoälyn tekemät kokousmuistiinpanot. Kuukausikiintiöt alkavat 20 tunnista tallennusta ja 30 tunnista litterointia."
+        },
+        {
+          "title": "Ohjelmistotiimien tarvitsemat integraatiot",
+          "body": "Google Calendar päivittää tilasi ja antaa varata kokouksia, Spotify näyttää mitä kuuntelet, ja GitHub tuo pull request -yhteenvedot suoraan toimistoon."
+        },
+        {
+          "title": "Tietoturvadokumentaatio",
+          "body": "Gatherilla on SOC 2 Type II -sertifiointi, tietojenkäsittelysopimus vakiolausekkeilla GDPR-tiimeille sekä kertakirjautuminen Custom-paketissa."
+        }
+      ]
+    },
+    {
+      "title": "Paljonko Gather maksaa",
+      "body": [
+        "Gather myy useimmille tiimeille yhtä pakettia, Essentialia, josta laskutetaan jokaisen jäsenen mukaan. Tässä kokonaiskustannukset; [Gatherin hinta -oppaassamme](/guides/gather-pricing) on lisää tiimikokoja, vierastunteja ja tietoa vanhan hinnan tiimeistä."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Kuukausilaskutus",
+          "Vuosilaskutus, kk",
+          "Vuosi, vuosilaskutuksella"
+        ],
+        "rows": [
+          [
+            "5 henkeä",
+            "$75",
+            "$60",
+            "$720"
+          ],
+          [
+            "10 henkeä",
+            "$150",
+            "$120",
+            "$1 440"
+          ],
+          [
+            "15 henkeä",
+            "$225",
+            "$180",
+            "$2 160"
+          ],
+          [
+            "25 henkeä",
+            "$375",
+            "$300",
+            "$3 600"
+          ]
+        ],
+        "note": "Essential-paketti 15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella (Gatherin hinnoittelusivu, marraskuu 2026). Ennen veroja."
+      }
+    },
+    {
+      "title": "Missä Gather jää vajaaksi",
+      "items": [
+        {
+          "title": "Ei ilmaispakettia",
+          "body": "15. syyskuuta 2025 alkaen jokainen toimisto maksaa 30 päivän kokeilujakson jälkeen. Gatheria ilmaiseksi käyttäneiden pienten tiimien oli alettava maksaa tai vaihdettava muualle."
+        },
+        {
+          "title": "Jokaisesta jäsenestä laskutetaan",
+          "body": "Gather veloittaa jokaisesta toimiston tilistä riippumatta siitä, käykö henkilö paikalla joka päivä vai kerran kuussa."
+        },
+        {
+          "title": "Vierastunnit voivat loppua kesken",
+          "body": "Vieraat eivät maksa, mutta jokainen toimisto saa 30 vierastuntia kuukaudessa tai 3 tuntia jokaisesta jäsenestä 10 hengen jälkeen. Tiimille, joka ottaa asiakkaita vastaan päivittäin, tämä voi olla liian vähän."
+        },
+        {
+          "title": "Siirtyminen alkuperäisestä Gatherista",
+          "body": "Alkuperäisen version toimistot toimivat edelleen samalla yhtäaikaisten käyttäjien hinnalla. Gather 2.0:aan siirtyminen vaatii uuden toimiston rakentamisen Gather Studiossa."
+        },
+        {
+          "title": "Enemmän kuin osa tiimeistä tarvitsee",
+          "body": "Toimiston suunnittelu, tallenteet ja tekoälymuistiinpanot muodostavat suuren osan hinnasta. Tiimi, joka haluaa vain nähdä kuka on paikalla ja jutella, maksaa niistä silti."
+        }
+      ]
+    },
+    {
+      "title": "Onko Gather vielä olemassa?",
+      "body": [
+        "Kyllä. [Helmikuussa 2026 Gather ilmoitti](https://www.gather.town/blog/new-chapter) eriytyvänsä itsenäiseksi yritykseksi ilman pääomasijoittajia ja kuvaili etätyötuotettaan kannattavaksi ja kasvavaksi samalla, kun sen tekoälytiimi siirtyi Figmalle. Gather kertoi asiakkaille, ettei mikään muutu heille."
+      ]
+    },
+    {
+      "title": "Kannattaako se siis?",
+      "items": [
+        {
+          "title": "Kannattaa, jos haluat suunnitella toimistosi",
+          "body": "Gather Studio on sen vahvin ominaisuus. Jos tiimisi haluaa tilaratkaisun, joka tuntuu omalta ja jossa huoneet on järjestetty työtapojenne mukaan, Gatherille on vaikea löytää voittajaa."
+        },
+        {
+          "title": "Kannattaa, jos maksaisit muuten tallenteista ja tekoälymuistiinpanoista",
+          "body": "Jos hankkisit erillisen työkalun kokousten tallentamiseen tai muistiinpanoihin, niiden saaminen suoraan toimistoon tekee hinnasta helpommin perusteltavan."
+        },
+        {
+          "title": "Kannattaa, jos tarvitset SOC 2 -sertifikaatin tai kertakirjautumisen",
+          "body": "Gatherilla on sertifiointi ja suuryrityspaketti, jota monilla pienemmillä tuotteilla ei ole."
+        },
+        {
+          "title": "Etsi muualta, jos tarvitset lähinnä läsnäolon ja nopeat keskustelut",
+          "body": "Jos tiimisi haluaa [nähdä kuka on paikalla](/team-presence) ja jutella ilman palaverin varaamista, useat [vaihtoehdot Gatherille](/gather-alternative) tekevät saman edullisemmin, osa ilmaisella paketilla."
+        },
+        {
+          "title": "Etsi muualta, jos osa tiimistä käy paikalla harvoin",
+          "body": "Jäsenkohtainen laskutus veloittaa satunnaisistakin käyttäjistä. Tuote, joka laskuttaa aktiivisten jäsenten mukaan tai yhdellä kiinteällä tiimihinnalla, tulee edullisemmaksi tällaiselle tiimille."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Mihin TinyFloor sopii",
+    "body": "TinyFloor säilyttää ytimen siitä, mitä Gather tekee: toimiston selaimessa, jossa näet kuka on paikalla, kävelet työkaverin luo ja painat Puhu, kokoonnutte kokoushuoneeseen, chattaatte ja jaatte näytön. Se maksaa $29 kuukaudessa koko tiimille, yksi hinta riippumatta siitä, kuinka monta kutsut, ja jokainen uusi toimisto saa 14 päivää Prota ilmaiseksi. Siinä ei ole toimistoeditoria, tallenteita, tekoälymuistiinpanoja, mobiilisovellusta eikä kertakirjautumista, joten jos valitsisit Gatherin niiden vuoksi, Gather sopii paremmin."
+  },
+  "faq": [
+    {
+      "q": "Kannattaako Gather?",
+      "a": "Tiimille, joka haluaa suunnitella oman toimistonsa, tarvitsee tallenteita ja tekoälymuistiinpanoja tai vaatii SOC 2 -sertifioinnin ja kertakirjautumisen, kyllä. Tiimille, joka haluaa pääasiassa nähdä kuka on paikalla ja jutella, 12–15 $ jäseneltä kuukaudessa sisältää paljon tarpeetonta."
+    },
+    {
+      "q": "Onko Gather ilmainen?",
+      "a": "Ei. Gather lopetti ilmaispaketin 15. syyskuuta 2025. Tarjolla on 30 päivän ilmainen kokeilu, minkä jälkeen se maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausilaskutuksella."
+    },
+    {
+      "q": "Mihin Gatheria käytetään?",
+      "a": "Gather (gather.town) on virtuaalitoimisto etätiimeille: hahmot yhteisellä kartalla, keskustelut kävelemällä ihmisten luo sekä kokoushuoneet, chat ja tilatiedot. Nimellä on myös muita tuotteita, kuten varastonhallintaa tekevä Gather AI."
+    },
+    {
+      "q": "Onko Gather turvallinen työkäyttöön?",
+      "a": "Gatherilla on SOC 2 Type II -sertifiointi ja se tarjoaa tietojenkäsittelysopimuksen GDPR-tiimeille. Mikrofoni on oletuksena mykistetty, ja kertakirjautuminen sisältyy Custom-pakettiin."
+    },
+    {
+      "q": "Onko Gather lopettamassa toimintaansa?",
+      "a": "Ei. Helmikuussa 2026 Gather eriytyi itsenäiseksi yritykseksi, jota se kuvailee kannattavaksi, ja sen tekoälytiimi siirtyi Figmalle. Gather ilmoitti, ettei asiakkaille muuttunut mikään."
+    },
+    {
+      "q": "Mitä hyviä vaihtoehtoja Gatherille on?",
+      "a": "Yleisimpiä ovat SoWork, Kumospace, Roam, WorkAdventure ja TinyFloor. [Vaihtoehdot Gatherille](/gather-alternative) -sivumme vertailee niitä tiimisi hintojen kera."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Gather pricing",
+      "url": "https://www.gather.town/pricing",
+      "note": "Essential 12 $ jäseneltä kuukaudessa vuosilaskutuksella, 15 $ kuukausilaskutuksella; 30 päivän ilmainen kokeilu."
+    },
+    {
+      "title": "Gather help center, Understanding Gather's pricing changes (2025)",
+      "url": "https://support.gather.town/articles/2500085119-understanding-gather-s-pricing-changes-2025",
+      "note": "Ilmaispaketin poistuminen 15. syyskuuta 2025 ja siirtyminen jäsenkohtaiseen hinnoitteluun."
+    },
+    {
+      "title": "Gather features",
+      "url": "https://www.gather.town/features",
+      "note": "Gather Studio, oletuksena mykistetty, yksinkertaistettu näkymä ja minitila, integraatiot."
+    },
+    {
+      "title": "Gather download",
+      "url": "https://www.gather.town/download",
+      "note": "Työpöytäsovellukset macOS:lle ja Windowsille, iOS-sovellus, Android tulossa pian."
+    },
+    {
+      "title": "Gather security",
+      "url": "https://www.gather.town/security",
+      "note": "SOC 2 Type II, tietojenkäsittelysopimus vakiolausekkeilla."
+    },
+    {
+      "title": "Gather, A new chapter (February 2026)",
+      "url": "https://www.gather.town/blog/new-chapter",
+      "note": "Eriytyminen itsenäiseksi yritykseksi ja tekoälytiimin siirtyminen Figmalle."
+    }
+  ]
+}

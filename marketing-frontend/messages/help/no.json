@@ -1,0 +1,113 @@
+{
+  "title": "Hjelp for TinyFloor",
+  "description": "Svar på vanlige spørsmål om TinyFloor: hva det koster, hvordan prøveperioden fungerer, invitere teamet, samtaler, personvern og hva som skjer hvis du sier opp.",
+  "intro": "Korte svar på spørsmålene team stiller om TinyFloor, hver på sin egen side. Finner du ikke det du lurer på? Skriv til support@tinyfloor.com.",
+  "topics": {
+    "plans": "Planer og betaling",
+    "start": "Kom i gang",
+    "calls": "Samtaler og tilkobling",
+    "privacy": "Personvern og sikkerhet"
+  },
+  "details": "Detaljer",
+  "related": "Relaterte spørsmål",
+  "all": "Alle spørsmål",
+  "articles": {
+    "is-tinyfloor-free": {
+      "q": "Er TinyFloor gratis?",
+      "answer": "Ja, for opptil 3 personer, med alle funksjoner. Pro koster $29 i måneden for hele teamet, og hvert nytt kontor starter med 14 dager Pro gratis.",
+      "items": [
+        "Free har etasjen, Snakk, møter, chat, skjermdeling og HD-video, for opptil 3 personer på etasjen samtidig, og lagrer de siste 90 dagene med chathistorikk.",
+        "Pro er én pris for hele kontoret, ikke en pris per person, med plass til hele teamet, all chathistorikk og prioritert hjelp.",
+        "Kontorer som abonnerer før 1. mars 2027, beholder $29 i måneden så lenge de forblir abonnenter. Se [priser](/pricing)."
+      ]
+    },
+    "how-does-the-free-trial-work": {
+      "q": "Hvordan fungerer prøveperioden i TinyFloor?",
+      "answer": "Hvert nytt kontor starter på Pro i 14 dager, med plass til hele teamet og uten behov for kort. Når den er over, velger du Pro eller fortsetter på Free.",
+      "items": [
+        "Det er ingenting å si opp: Hvis du ikke abonnerer, går kontoret over til Free.",
+        "Ingen fjernes og ingenting slettes når prøveperioden er over. Hvis flere enn 3 personer er medlemmer, kan alle fortsatt komme inn i 14 dager til, mens ingen nye kan bli med. Deretter kan 3 være på etasjen samtidig, og alle beholder chatten.",
+        "Hvis du abonnerer når som helst, fortsetter Pro uten avbrudd."
+      ]
+    },
+    "how-many-people-can-join-an-office": {
+      "q": "Hvor mange kan være med i et TinyFloor-kontor?",
+      "answer": "Opptil 15 på Pro og 3 samtidig på Free. Et kontor er for ett team som jobber sammen hver dag.",
+      "paragraphs": [
+        "Et større selskap gir hvert team sitt eget kontor, hver med sin egen etasje, chat og møterom. TinyFloor er ikke laget for arrangementer med hundrevis av mennesker."
+      ]
+    },
+    "how-do-i-cancel": {
+      "q": "Hvordan sier jeg opp TinyFloor, og kan jeg få refusjon?",
+      "answer": "En kontoradministrator kan si opp Pro når som helst fra kontorets faktureringsside. Planen løper ut perioden du har betalt for, deretter går kontoret over til Free, og ingenting slettes.",
+      "items": [
+        "Spør innen 14 dager etter en betaling, så får du alt tilbake: skriv til support@tinyfloor.com.",
+        "Fakturering skjer kun månedlig, så det gjenstår aldri et helt år å betale for.",
+        "Prisene er i amerikanske dollar; Creem, vår forhandler, legger til eventuell mva. eller salgsskatt ved betaling. Detaljer finnes i [refusjonsvilkårene](/refunds)."
+      ]
+    },
+    "does-tinyfloor-need-a-download": {
+      "q": "Må TinyFloor lastes ned?",
+      "answer": "Nei. TinyFloor kjører i alle moderne nettlesere på datamaskin og mobil, uten at du må installere noe.",
+      "paragraphs": [
+        "Hvis du vil ha det i et eget vindu, kan du installere det som en app fra nettleseren. Det er ingenting å oppdatere: du har alltid den nyeste versjonen."
+      ]
+    },
+    "does-tinyfloor-work-on-phones": {
+      "q": "Fungerer TinyFloor på mobil?",
+      "answer": "Ja, i mobilens nettleser: du kan gå rundt på etasjen, snakke, bli med i møter og chatte. Skjermdeling krever en datamaskin.",
+      "paragraphs": [
+        "På mobil kan du se andres delte skjerm, men ikke dele din egen. Det finnes ingen app du må laste ned fra en appbutikk."
+      ]
+    },
+    "how-do-i-invite-my-team": {
+      "q": "Hvordan inviterer jeg teamet mitt til TinyFloor?",
+      "answer": "Kopier kontorets invitasjonslenke og send den til teamet ditt. De åpner den, logger inn med Google eller en e-postkode, og finner seg en plass.",
+      "items": [
+        "Én lenke fungerer for alle, og en administrator kan tilbakestille den.",
+        "I kontorets innstillinger velger en administrator om alle på kontoret kan dele lenken, eller bare administratorer.",
+        "Alle på et kontor logger inn; det er ingen passord å opprette."
+      ]
+    },
+    "does-tinyfloor-record-calls": {
+      "q": "Tar TinyFloor opp samtaler?",
+      "answer": "Nei. Samtaler og møter tas aldri opp, og lyd blir aldri behandlet eller lagret på en server.",
+      "paragraphs": [
+        "Ekkomotvirkning og støyfjerning kjører direkte i nettleseren din. TinyFloor har heller ingen transkripsjoner eller AI-møtenotater. Trenger du opptak, passer et verktøy som har det bedre."
+      ]
+    },
+    "where-is-my-data-stored": {
+      "q": "Hvor lagrer TinyFloor dataene mine?",
+      "answer": "På Cloudflares nettverk, som drifter nettstedet, appen og dataene, og formidler samtaler. Alt sendes over krypterte tilkoblinger.",
+      "items": [
+        "Hvert kontors etasje og chat kjører for seg selv, atskilt fra andre kontorer.",
+        "Hvis du kobler til Google Calendar, beholder TinyFloor bare opptatte tidsrom i noen minutter; hendelsene dine lagres ikke. Hvis du kobler fra, slettes disse og tilgangen oppheves.",
+        "For å få en kopi av opplysningene dine eller slette kontoen din, skriv til support@tinyfloor.com fra kontoens e-postadresse; vi svarer innen 30 dager.",
+        "Den fullstendige listen over hva vi lagrer og hvorfor, finnes i [personvernerklæringen](/privacy)."
+      ]
+    },
+    "does-tinyfloor-have-single-sign-on": {
+      "q": "Har TinyFloor enkel pålogging?",
+      "answer": "Nei. TinyFloor har ikke SAML- eller SCIM-basert enkel pålogging. Brukere logger inn med Google eller med en engangskode sendt på e-post, og det finnes ingen passord.",
+      "paragraphs": [
+        "Hvis selskapet ditt krever enkel pålogging gjennom sin identitetsleverandør, passer ikke TinyFloor ennå."
+      ]
+    },
+    "does-tinyfloor-work-behind-a-firewall-or-vpn": {
+      "q": "Fungerer TinyFloor bak en bedriftsbrannmur eller VPN?",
+      "answer": "Ja, i de fleste tilfeller. Hver samtale går gjennom Cloudflares relé og faller tilbake fra UDP til TCP og TLS, så den trenger bare vanlig HTTPS for å komme gjennom.",
+      "paragraphs": [
+        "Samtaler prøver ikke å koble nettlesere direkte sammen, noe som ofte mislykkes på kontor- og mobilnettverk. Mer, med alle tall, finnes i [hvordan TinyFloor fungerer](/how-it-works)."
+      ]
+    },
+    "does-tinyfloor-keep-working-in-a-background-tab": {
+      "q": "Fortsetter TinyFloor å fungere i en fane i bakgrunnen?",
+      "answer": "Ja. Du forblir på etasjen og i samtalene dine mens du jobber i andre faner, og TinyFloor markerer deg aldri som borte bare fordi fanen ligger i bakgrunnen.",
+      "items": [
+        "Kolleger kan fortsatt se deg på etasjen og be om å snakke.",
+        "Musikk fra Spotify fortsetter å spille.",
+        "Hvis tilkoblingen din blir brutt, kobler etasjen seg til igjen automatisk og plasserer deg tilbake ved pulten din."
+      ]
+    }
+  }
+}

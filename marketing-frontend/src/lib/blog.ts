@@ -31,6 +31,33 @@ export interface BlogPost {
 /** Newest first. */
 export const POSTS: BlogPost[] = [
   {
+    slug: "is-gather-worth-it",
+    category: "comparisons",
+    published: "2026-11-28",
+    updated: "2026-11-28",
+    locales: ["en"],
+    pages: ["gather", "gatherVsKumospace", "virtualOffice"],
+    guides: ["gatherPricing", "bestVirtualOffice", "soworkPricing"],
+  },
+  {
+    slug: "get-your-team-to-use-a-virtual-office",
+    category: "remoteWork",
+    published: "2026-11-28",
+    updated: "2026-11-28",
+    locales: ["en"],
+    pages: ["virtualOffice", "presence", "standup"],
+    guides: ["remoteCulture", "onboardingChecklist", "remoteTools"],
+  },
+  {
+    slug: "spontaneous-conversations-remote-teams",
+    category: "remoteWork",
+    published: "2026-11-28",
+    updated: "2026-11-28",
+    locales: ["en"],
+    pages: ["presence", "watercooler", "virtualOffice"],
+    guides: ["remoteCommunication", "remoteCulture", "manageRemote"],
+  },
+  {
     slug: "hybrid-work-schedule",
     category: "remoteWork",
     published: "2026-11-07",

@@ -8,6 +8,7 @@ import { LANDINGS } from "web-shared/lib/landings";
 import { TOOLS, hasPage } from "@/lib/tools/catalog";
 import { APP_PATH, APP_URL, SITE_URL } from "web-shared/lib/site";
 import { readerLocale, relay, screen, unprefixed, withCountry } from "web-shared/lib/edge";
+import { HELP } from "@/lib/help";
 
 const handleI18nRouting = createMiddleware(routing);
 const SITE = new URL(SITE_URL);
@@ -23,7 +24,9 @@ const PAGES = [
   `blog(/(${POSTS.map((post) => post.slug).join("|")}))?`,
   // The changelog, its older pages (/changelog/page/2 on) and each change with a page of its own.
   `changelog(/(${CHANGELOG_PAGES().map((entry) => entry.slug).join("|")}|page/[0-9]+))?`,
-  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render|how-it-works",
+  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render|how-it-works|facts",
+  // The help center and its questions (lib/help).
+  `help(/(${HELP.map((article) => article.slug).join("|")}))?`,
   // The free tools and their index (lib/tools/catalog).
   `tools(/(${TOOLS.map((tool) => tool.path.slice("/tools/".length)).join("|")}))?`,
 ];

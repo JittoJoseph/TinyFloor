@@ -732,7 +732,7 @@
     ],
     "fit": {
       "title": "Hvor TinyFloor passer ind",
-      "body": "TinyFloor bruger varianten gå hen og ring: gå med din figur hen til en kollega, så dukker en opkaldsknap op ved siden af vedkommende, så ingen bliver hørt ved et uheld. Grupper mødes i mødelokalet. Det kører i browseren, og hvert nyt kontor starter med 14 dages Pro, intet kort nødvendigt."
+      "body": "TinyFloor bruger gå-hen-stilen: gå hen til en kollega med din figur og tryk på Snak, og intet høres, før vedkommende siger ja. Grupper mødes i mødelokalet. Det kører i browseren, og hvert nyt kontor starter med 14 dage Pro, uden kort."
     },
     "faq": [
       {

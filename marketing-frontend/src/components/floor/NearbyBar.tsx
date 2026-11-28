@@ -1,18 +1,27 @@
-import { MessageSquare, Phone } from "web-shared/components/ui/icons";
-import { Face } from "web-shared/components/ui/Face";
+import { AudioLines, MessageSquare } from "web-shared/components/ui/icons";
 
-/** The app's card beside someone you've walked up to, as the site draws it: who, a message, and the call. */
-export function NearbyBar({ name, seed, labels }: { name: string; seed: string; labels: { call: string; message: string } }) {
+/**
+ * The card beside someone you've stopped next to on the floor, as the app
+ * draws it: their name, a wave and a poke as the hand and finger they'll see,
+ * a message, and Talk in the colour of talking, in a soft squircle.
+ */
+export function NearbyBar({ name, labels }: { name: string; labels: { talk: string; message: string } }) {
   return (
-    <div className="flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card p-1.5 font-(family-name:--font-app) shadow-float [--face-ring:var(--ui-card)]">
-      <Face seed={seed} size={30} presence="available" />
-      <span className="pe-1 text-[13px] font-semibold text-foreground">{name}</span>
-      <span title={labels.message} className="flex size-8 items-center justify-center rounded-full border border-border bg-card text-foreground">
-        <MessageSquare className="size-3.5" />
+    <div className="flex h-11 items-center gap-0.5 whitespace-nowrap rounded-[20px] border border-border bg-card pe-1.5 ps-4 font-(family-name:--font-app) shadow-float [corner-shape:squircle]">
+      <span className="pe-2 text-[13.5px] font-semibold text-foreground">{name}</span>
+      <span aria-hidden className="mx-1 h-5 w-px bg-border" />
+      <span aria-hidden className="flex size-8 items-center justify-center text-[15px] leading-none">
+        👋
       </span>
-      <span className="flex h-8 items-center gap-1.5 rounded-full bg-foreground px-3.5 text-[12.5px] font-semibold text-background">
-        <Phone className="size-3.5" strokeWidth={2.25} />
-        {labels.call}
+      <span aria-hidden className="flex size-8 items-center justify-center text-[15px] leading-none">
+        👉
+      </span>
+      <span title={labels.message} className="flex size-8 items-center justify-center text-foreground">
+        <MessageSquare className="size-4" />
+      </span>
+      <span className="ms-1 flex h-8 items-center gap-1.5 rounded-[13px] bg-ok px-3 text-[12.5px] font-semibold text-white [corner-shape:squircle] dark:text-[rgb(4_32_16)]">
+        <AudioLines className="size-3.5" strokeWidth={2.25} />
+        {labels.talk}
       </span>
     </div>
   );

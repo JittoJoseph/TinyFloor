@@ -732,7 +732,7 @@
     ],
     "fit": {
       "title": "Dove si inserisce TinyFloor",
-      "body": "TinyFloor usa lo stile «avvicinati e chiama»: porta il tuo personaggio vicino a un collega e accanto a lui compare un pulsante di chiamata, così nessuno viene sentito per sbaglio. I gruppi si incontrano nella sala riunioni. Funziona nel browser, e ogni nuovo ufficio inizia con 14 giorni di Pro, nessuna carta richiesta."
+      "body": "TinyFloor usa lo stile dell'avvicinarsi: porta il tuo personaggio vicino a un collega e premi Parla, e non si sente nulla finché non dice sì. I gruppi si ritrovano nella sala riunioni. Funziona nel browser, e ogni nuovo ufficio parte con 14 giorni di Pro, senza carta."
     },
     "faq": [
       {

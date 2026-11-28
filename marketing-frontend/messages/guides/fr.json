@@ -732,7 +732,7 @@
     ],
     "fit": {
       "title": "La place de TinyFloor",
-      "body": "TinyFloor utilise le style « s'approcher et appeler » : approchez votre personnage d'un collègue et un bouton d'appel apparaît à côté de lui, pour que personne ne soit entendu par accident. Les groupes se retrouvent dans la salle de réunion. Il fonctionne dans le navigateur, et chaque nouveau bureau commence avec 14 jours de Pro, sans carte bancaire."
+      "body": "TinyFloor utilise le style « s'approcher » : approchez votre personnage d'un collègue et appuyez sur Parler, et rien ne s'entend tant qu'il n'a pas accepté. Les groupes se retrouvent dans la salle de réunion. Il fonctionne dans le navigateur, et chaque nouveau bureau commence avec 14 jours de Pro, sans carte."
     },
     "faq": [
       {

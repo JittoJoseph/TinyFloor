@@ -19,7 +19,7 @@
       },
       {
         "q": "Hur fungerar närhetsbaserad videochatt?",
-        "a": "Gå fram till någon så dyker en samtalsknapp upp bredvid dem. Ett tryck startar samtalet, och när ni pratar kan du slå på kameran eller dela skärmen. Samtal går över WebRTC genom Cloudflares nätverk, så de fungerar på alla kontors- och hemnätverk och håller tills någon lägger på. För en grupp går du med i ett möte, och din figur går in i mötesrummet."
+        "a": "Gå fram till en kollega och stanna: namnskylten öppnas till Vinka, Peta, Meddelande och Prata. Tryck på Prata så ser kollegan att du vill prata; när hen säger ja börjar det med röst på under en sekund, och du kan slå på kameran eller dela skärmen. Samtalen går via WebRTC i Cloudflares nät, så de kopplas upp i alla kontors- och hemnätverk och fortsätter tills någon av er går. För en grupp går du med i ett möte, och din figur går in i mötesrummet."
       },
       {
         "q": "Är TinyFloor gratis?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Gå fram för att prata",
-            "body": "Som att kliva in i en cirkel på Wonder startar du ett samtal genom att ställa dig bredvid någon. Att byta grupp är bara att gå."
+            "body": "Som att kliva in i en cirkel i Wonder pratar du med någon genom att gå fram till hen. Att byta grupp är bara att gå."
           },
           {
             "title": "Fortfarande i webbläsaren",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Närhetschatt",
         "meta": {
-          "title": "Videochatt på nära håll för distansteam",
-          "description": "Närhetschatt för distansteam: gå med din figur fram till en kollega för att starta ett samtal. Gratis för små team, i webbläsaren, utan nedladdning."
+          "title": "Närhetschatt för distansteam",
+          "description": "Närhetschatt för distansteam: gå fram till en kollega och tryck på Prata. Röst på under en sekund, inga öppna mikrofoner, i webbläsaren utan installation."
         },
         "title": "<em>Närhetschatt</em> som börjar när du går fram.",
-        "subtitle": "I TinyFloor avgör var du står vem du pratar med. Gå fram till någon för att ringa, gå med i ett möte för att prata som grupp och gå vidare när ni är klara.",
+        "subtitle": "I TinyFloor avgör var du står vem du pratar med. Gå fram till någon och fråga om att prata, träffas som grupp i ett mötesrum och gå vidare när ni är klara.",
         "faq": [
           {
             "q": "Vad är närhetschatt?",
-            "a": "Närhetschatt kopplar ihop dig med människor utifrån var din figur står. Du pratar med dem som är nära dig, som i ett riktigt rum."
+            "a": "Närhetschatt kopplar ihop dig med människor utifrån var din figur står. I TinyFloor går du fram till en kollega och frågar om att prata, som när du tittar förbi någons skrivbord."
           },
           {
-            "q": "Avslutas samtalet om jag går därifrån?",
-            "a": "Nej. Ett uppkopplat samtal fortsätter tills någon lägger på, så att gå runt bryter det inte."
+            "q": "Tar det slut om jag går därifrån?",
+            "a": "Nej. När ni väl pratar fortsätter samtalet tills någon av er går, så att röra dig över våningen bryter det inte."
           },
           {
             "q": "Kan fler än två prata?",
-            "a": "Ett samtal är två personer. Gå fram till en tredje och gör det till ett möte, eller gå med i kontorets möte för att prata som grupp."
+            "a": "Två pratar, tre eller fler har möte. Gå fram till en tredje person och gör det till ett möte, eller gå med i kontorets huvudmöte för att prata som grupp."
           },
           {
-            "q": "Är det gratis?",
-            "a": "Ja, för ett kontor för upp till 3 personer, i webbläsaren på dator och mobil."
+            "q": "Och om ingen svarar?",
+            "a": "Efter en halv minut får du veta det, och frågan väntar i era direktmeddelanden som ”ville prata”, med en Prata-knapp för att fråga igen."
+          },
+          {
+            "q": "Vad kostar det?",
+            "a": "Varje nytt kontor får 14 dagar Pro. Sedan är Pro ett pris för hela kontoret, och ett kontor med upp till 3 personer kan stanna på Free."
           }
         ],
         "line": "Gå fram och prata, ingen länk"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Passar det för parprogrammering?",
-            "a": "Ja. Gå fram till en kollega, starta ett samtal och dela skärmen. Lägg till en tredje så blir det ett möte."
+            "a": "Ja. Gå fram till en kollega, tryck på Prata och dela skärmen. Lägg till en tredje person så blir det ett möte."
           },
           {
             "q": "Hur stort kan ett utvecklingsteam vara?",

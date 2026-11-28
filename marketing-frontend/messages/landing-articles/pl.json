@@ -2215,28 +2215,25 @@
   "pairProgramming": [
     {
       "title": "Jak zaczyna się sesja programowania w parze",
+      "numbered": true,
       "body": [
         "W biurze programowanie w parze często zaczyna się od „masz chwilę?” przy czyimś biurku. Zdalnie zwykle potrzebne jest zaproszenie w kalendarzu, więc zdarza się rzadziej. W TinyFloor zaczyna się tak jak w biurze."
       ],
       "items": [
         {
           "title": "Zobacz, kto jest wolny",
-          "detail": "1",
           "body": "Biurka i [statusy](/team-presence) pokazują, kto pracuje w skupieniu, kto jest nieobecny, a kto już rozmawia. Zajęty znaczy czekaj; dostępny znaczy podejdź."
         },
         {
           "title": "Podejdź i porozmawiaj",
-          "detail": "2",
           "body": "Stań obok i dotknij, żeby zadzwonić. Zaczyna się od głosu; włącz kamerę, jeśli chcesz."
         },
         {
           "title": "Udostępnij i pracuj",
-          "detail": "3",
           "body": "Udostępnij okno, kartę albo cały ekran: edytor, terminal, test, który nie przechodzi."
         },
         {
           "title": "Wróć",
-          "detail": "4",
           "body": "Rozłącz się i wracasz do swojej pracy. Połączenie trwa, gdy się przemieszczasz, więc nic nie zrywa się, gdy chodzisz."
         }
       ]
@@ -2688,28 +2685,25 @@
   "meetingRoom": [
     {
       "title": "Jak działa spotkanie w TinyFloor",
+      "numbered": true,
       "body": [
         "Większość narzędzi wideo zaczyna od linku. TinyFloor zaczyna od pokoju: każde biuro ma główne spotkanie, które jest zawsze otwarte, a każdy może obok założyć kolejne."
       ],
       "items": [
         {
           "title": "Dołącz",
-          "detail": "1",
           "body": "Naciśnij Dołącz przy spotkaniu biura. Szybki podgląd pokazuje kamerę i mikrofon, a potem twoja postać wchodzi do sali spotkań."
         },
         {
           "title": "Rozmawiaj",
-          "detail": "2",
           "body": "Najpierw głos; włącz kamerę, jeśli chcesz. Kto mówi, ten zajmuje dużą kartę, a obok są trzy kolejne."
         },
         {
           "title": "Udostępnij",
-          "detail": "3",
           "body": "Udostępnij okno, kartę albo ekran. Pojawia się na scenie obok ludzi."
         },
         {
           "title": "Wyjdź",
-          "detail": "4",
           "body": "Wyjdź i wracasz na piętro. Wyszedłeś przez pomyłkę? Powrót to jedno kliknięcie."
         }
       ],
@@ -3029,7 +3023,7 @@
     {
       "title": "Czego nie robi",
       "body": [
-        "Obecność nie synchronizuje się z kalendarzem, Slackiem ani systemem operacyjnym, a statusy nie zmieniają się według harmonogramu. Własnych opisów statusu jeszcze nie ma. Jeśli potrzebujesz obecności we wszystkich narzędziach, właściwym miejscem jest status w twojej aplikacji do czatu; ten w TinyFloor mówi, kto jest teraz na piętrze."
+        "Obecność nie synchronizuje się ze Slackiem ani z systemem operacyjnym, a statusy nie zmieniają się według harmonogramu. Jedynym wyjątkiem jest Kalendarz Google: połącz go, a gdy jesteś na spotkaniu, inni widzą na twojej plakietce „Na spotkaniu do 15:30”, chyba że zostawiłeś(-aś) własną notatkę. Jeśli potrzebujesz obecności we wszystkich narzędziach, właściwym miejscem jest status w twojej aplikacji do czatu; ten w TinyFloor mówi, kto jest teraz na piętrze."
       ]
     }
   ],
@@ -3529,28 +3523,28 @@
         "head": [
           "",
           "Otwarty dźwięk przestrzenny",
-          "Bliskość do rozmowy (TinyFloor)"
+          "Podejdź i zapytaj (TinyFloor)"
         ],
         "rows": [
           [
             "Jak zaczyna się rozmowa",
             "Podchodzisz do kogoś i słyszycie się",
-            "Stajesz obok kogoś i dotykasz Zadzwoń"
+            "Podejdź do kogoś i naciśnij Rozmowa"
           ],
           [
             "Mikrofony",
             "Otwarte, gdy jesteś obok kogoś",
-            "Wyłączone do rozpoczęcia rozmowy"
+            "Wyłączone, dopóki druga osoba się nie zgodzi"
           ],
           [
             "Kto cię słyszy",
             "Każdy, kto podejdzie blisko",
-            "Tylko osoba, do której dzwonisz"
+            "Tylko osoba, z którą rozmawiasz"
           ],
           [
             "Hałas w tle",
             "Wspólny z tymi, którzy są obok",
-            "Zostaje u ciebie, dopóki nie zadzwonisz"
+            "Zostaje u ciebie, dopóki nie zaczniecie rozmawiać"
           ],
           [
             "Dobre do",
@@ -3562,56 +3556,72 @@
     },
     {
       "title": "Jak to działa w TinyFloor",
+      "numbered": true,
       "items": [
         {
           "title": "Podejdź",
-          "detail": "1",
-          "body": "Ustaw postać obok współpracownika. Pojawi się mała karta z przyciskiem Zadzwoń."
+          "body": "Podejdź postacią do kogoś z zespołu i się zatrzymaj. Jego plakietka z imieniem rozwinie się w Pomachaj, Zaczep, Wiadomość i Rozmowa."
         },
         {
-          "title": "Zadzwoń",
-          "detail": "2",
-          "body": "Widzi „Dzwoni do ciebie” i może odebrać albo odrzucić. Jeśli jest [zajęty](/team-presence) albo nie odbiera, dowiesz się o tym i nic więcej się nie dzieje."
+          "title": "Zapytaj",
+          "body": "Naciśnij Rozmowa. Ta osoba zobaczy twoją postać i to, że chcesz porozmawiać, i wybierze Rozmowa albo Nie teraz. Jeśli jest [zajęta](/team-presence) albo nie odpowie w ciągu pół minuty, dowiesz się o tym i nic więcej się nie stanie."
         },
         {
           "title": "Rozmawiaj",
-          "detail": "3",
-          "body": "Rozmowa zaczyna się od głosu. Włącz kamerę albo udostępnij ekran, jeśli to pomoże."
+          "body": "Zaczyna się od głosu, zwykle w niecałą sekundę. Włącz kamerę albo udostępnij ekran, jeśli to pomoże."
         },
         {
           "title": "Chodź",
-          "detail": "4",
-          "body": "Po połączeniu rozmowa trwa, dopóki ktoś się nie rozłączy, więc przejście przez piętro jej nie przerywa."
+          "body": "Kiedy już rozmawiacie, rozmowa trwa, aż jedno z was wyjdzie, więc chodzenie po piętrze jej nie przerywa."
         },
         {
           "title": "Dołącz trzecią osobę",
-          "detail": "5",
-          "body": "Rozmowa to dwie osoby. Podejdź do trzeciej, a TinyFloor zaproponuje [spotkanie](/virtual-meeting-room) dla was trojga."
+          "body": "We dwoje się rozmawia, od trzech osób robi się spotkanie. Podejdź do trzeciej osoby w trakcie rozmowy, a TinyFloor zaproponuje zamianę w [spotkanie](/virtual-meeting-room)."
         }
       ],
       "image": {
-        "src": "/screens/calls.webp",
-        "alt": "Rozmowa na piętrze TinyFloor: dwie osoby stoją razem między biurkami, a na dole przyciski rozmowy"
+        "src": "/screens/talk.webp",
+        "alt": "Prośba o rozmowę w TinyFloor: na górze piętra karta z postacią Ryana, „chce porozmawiać” oraz przyciskami Nie teraz i Rozmowa"
       }
     },
     {
-      "title": "Dlaczego rozmowy, a nie otwarty dźwięk",
+      "title": "Zaczepić, nie przeszkadzając",
+      "body": [
+        "Nie wszystko wymaga rozmowy. Obok Rozmowy są dwa lżejsze sposoby, żeby do kogoś dotrzeć, a prośba bez odpowiedzi nie przepada."
+      ],
+      "items": [
+        {
+          "title": "Pomachanie mówi cześć",
+          "body": "Nad twoją postacią unosi się ręka, którą widzą wszyscy w pobliżu. Nie wymaga odpowiedzi."
+        },
+        {
+          "title": "Zaczepka prosi o chwilę",
+          "body": "Postać tej osoby się wzdryga, a ona dostaje powiadomienie z przyciskiem Zaczep też: sygnał, żeby spojrzeć, kiedy będzie mogła."
+        },
+        {
+          "title": "Przegapiona prośba poczeka",
+          "body": "Jeśli nie było jej przy biurku, prośba zostaje w waszych [wiadomościach prywatnych](/team-chat) jako „chciał(a) porozmawiać”, z przyciskiem Rozmowa, żeby zapytać ponownie, gdy oboje będziecie na miejscu."
+        }
+      ]
+    },
+    {
+      "title": "Dlaczego najpierw zapytać zamiast otwartego dźwięku",
       "items": [
         {
           "title": "Nikt nie podsłuchuje przypadkiem",
-          "body": "Mikrofon działa tylko w rozmowie albo na spotkaniu. Przejście obok biurka nigdy nie pozwala nikogo usłyszeć."
+          "body": "Mikrofon działa tylko wtedy, gdy rozmawiasz albo jesteś na spotkaniu. Przejście obok biurka nigdy nie pozwala nikogo usłyszeć."
         },
         {
           "title": "Da się skupić",
-          "body": "Piętro pełne otwartych mikrofonów to głośny pokój. Rozmowy zostawiają resztę piętra w ciszy."
+          "body": "Piętro pełne otwartych mikrofonów to głośny pokój. Pytanie najpierw zostawia resztę piętra w ciszy, a Nie teraz to zawsze odpowiedź."
         },
         {
           "title": "Wciąż jest spontanicznie",
-          "body": "Podejście i dotknięcie Zadzwoń trwa kilka sekund, mniej więcej tyle, co nachylenie się do sąsiedniego biurka."
+          "body": "Podejście i naciśnięcie Rozmowa zajmuje parę sekund, mniej więcej tyle, co nachylenie się do kogoś z zespołu."
         },
         {
           "title": "Działa w każdej sieci",
-          "body": "Rozmowy idą przez sieć przekaźników Cloudflare, więc łączą się za firmowymi firewallami i w sieciach komórkowych, bez instalowania czegokolwiek."
+          "body": "Rozmowy idą przez przekaźniki Cloudflare, więc łączą się za firmowymi zaporami i w sieciach komórkowych, bez instalowania czegokolwiek."
         }
       ]
     },
@@ -3625,11 +3635,19 @@
         "rows": [
           [
             "Zadać jednej osobie szybkie pytanie",
-            "Podejdź i zadzwoń"
+            "Podejdź i naciśnij Rozmowa"
+          ],
+          [
+            "Przywitać się bez przeszkadzania",
+            "Pomachaj"
+          ],
+          [
+            "Zwrócić czyjąś uwagę na później",
+            "Zaczep albo wyślij wiadomość"
           ],
           [
             "Włączyć trzecią osobę",
-            "Podejdź do niej w trakcie rozmowy; zrobi się spotkanie"
+            "Podejdź do tej osoby w trakcie rozmowy; robi się spotkanie"
           ],
           [
             "Porozmawiać z całym zespołem",
@@ -3645,7 +3663,7 @@
     {
       "title": "Czego nie robi",
       "body": [
-        "TinyFloor nie ma otwartego dźwięku przestrzennego, więc grupa nie porozmawia, po prostu stojąc razem; od trzech osób idzie się na spotkanie. Nie jest zrobiony na wydarzenia czy gry z setkami ludzi i nie ma dostępu telefonicznego. Jeśli chcesz żywej przestrzeni, w której głosy narastają i cichną, gdy chodzisz, lepiej sprawdzi się produkt oparty na dźwięku przestrzennym; jeśli chcesz spokojnego biura, w którym rozmowa jest na jedno dotknięcie, to jest to."
+        "TinyFloor nie ma otwartego dźwięku przestrzennego, więc grupa nie porozmawia tylko dlatego, że stoi razem; od trzech osób spotykacie się na spotkaniu. Nie jest zrobiony z myślą o wydarzeniach ani grach dla setek osób i nie ma połączeń telefonicznych. Jeśli chcesz żywej przestrzeni, w której głosy przybliżają się i oddalają, gdy chodzisz, lepiej sprawdzi się produkt zbudowany wokół dźwięku przestrzennego; jeśli chcesz cichego biura, w którym rozmowa jest kilka sekund stąd, to właśnie to."
       ]
     }
   ],

@@ -19,7 +19,7 @@
       },
       {
         "q": "Como funciona o vídeo chat por proximidade?",
-        "a": "Chegue perto de alguém e um botão de chamada aparece ao lado da pessoa. Um toque inicia a chamada e, enquanto conversam, você pode ligar a câmera ou compartilhar a tela. As chamadas usam WebRTC pela rede da Cloudflare, então conectam em qualquer rede, no escritório ou em casa, e continuam até alguém desligar. Para um grupo, entre numa reunião e seu personagem vai até a sala de reuniões."
+        "a": "Chegue perto de um colega e pare: a etiqueta com o nome dele se abre em Acenar, Cutucar, Mensagem e Conversar. Toque em Conversar e ele vê que você quer conversar; assim que ele aceita, começa com voz em menos de um segundo, e você pode ligar a câmera ou compartilhar a tela. As conversas passam por WebRTC na rede da Cloudflare, então conectam em qualquer rede de escritório ou de casa, e duram até um de vocês sair. Para um grupo, entre numa reunião e seu personagem vai até a sala de reunião."
       },
       {
         "q": "O TinyFloor é gratuito?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Chegue perto para conversar",
-            "body": "Como entrar em um círculo no Wonder, você começa uma chamada ficando ao lado de alguém. Trocar de grupo é só andar."
+            "body": "Como entrar num círculo no Wonder, você conversa com alguém chegando perto da pessoa. Passar de um grupo para outro é só andar."
           },
           {
             "title": "Continua no navegador",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Chat por proximidade",
         "meta": {
-          "title": "Chat de vídeo por proximidade para equipes remotas",
-          "description": "Chat por proximidade para equipes remotas: leve seu personagem até um colega para começar uma chamada. Grátis para equipes pequenas, no navegador, sem download."
+          "title": "Chat por proximidade para equipes remotas",
+          "description": "Chat por proximidade para equipes remotas: chegue perto de um colega e toque em Conversar. Voz em menos de um segundo, sem microfones abertos, no navegador sem instalar nada."
         },
         "title": "<em>Chat por proximidade</em> que começa quando você chega perto.",
-        "subtitle": "No TinyFloor, onde você está decide com quem você fala. Chegue perto de alguém para ligar, entre numa reunião para conversar em grupo e siga em frente quando terminar.",
+        "subtitle": "No TinyFloor, onde você está decide com quem você fala. Chegue perto de alguém e peça para conversar, reúnam-se em grupo numa sala de reunião e siga em frente quando terminarem.",
         "faq": [
           {
             "q": "O que é chat por proximidade?",
-            "a": "Chat por proximidade conecta você a pessoas de acordo com onde seu personagem está. Você conversa com quem está perto, como em uma sala de verdade."
+            "a": "O chat por proximidade conecta você às pessoas de acordo com onde está o seu personagem. No TinyFloor, você chega perto de um colega e pede para conversar, como passaria na mesa dele."
           },
           {
-            "q": "A chamada termina quando eu me afasto?",
-            "a": "Não. Depois de conectada, a chamada continua até alguém desligar, então andar por aí não derruba a ligação."
+            "q": "A conversa acaba se eu me afastar?",
+            "a": "Não. Depois que vocês começam a conversar, a conversa continua até um de vocês sair, então andar pelo andar não corta."
           },
           {
             "q": "Mais de duas pessoas podem conversar?",
-            "a": "Uma chamada é a dois. Chegue perto de uma terceira pessoa e transforme em reunião, ou entre na reunião do escritório para conversar em grupo."
+            "a": "Duas pessoas conversam; três ou mais fazem uma reunião. Chegue perto de uma terceira pessoa e transforme em reunião, ou entre na reunião principal do escritório para conversar em grupo."
           },
           {
-            "q": "É grátis?",
-            "a": "Sim, para um escritório de até 3 pessoas, no navegador do computador e do celular."
+            "q": "E se a pessoa não responder?",
+            "a": "Você fica sabendo depois de meio minuto, e o pedido espera nas suas mensagens diretas como \"queria conversar\", com um botão Conversar para pedir de novo."
+          },
+          {
+            "q": "Quanto custa?",
+            "a": "Todo escritório novo ganha 14 dias de Pro. Depois disso, o Pro é um preço único para o escritório inteiro, e um escritório de até 3 pessoas pode ficar no Free."
           }
         ],
         "line": "Chegue perto para falar, sem link"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Serve para programação em par?",
-            "a": "Sim. Vá até um colega, comece uma chamada e compartilhe sua tela. Chame uma terceira pessoa e vira uma reunião."
+            "a": "Sim. Chegue perto de um colega, toque em Conversar e compartilhe a tela. Junte uma terceira pessoa e vira uma reunião."
           },
           {
             "q": "Qual o tamanho máximo de uma equipe de engenharia?",

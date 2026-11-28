@@ -2215,28 +2215,25 @@
   "pairProgramming": [
     {
       "title": "Slik starter en parprogrammeringsøkt",
+      "numbered": true,
       "body": [
         "På kontoret starter parprogrammering ofte med «har du et minutt?» ved noens pult. På fjernarbeid krever det som regel en kalenderinvitasjon, så det skjer sjeldnere. I TinyFloor starter det slik det gjorde på kontoret."
       ],
       "items": [
         {
           "title": "Se hvem som er ledig",
-          "detail": "1",
           "body": "Pulter og [statuser](/team-presence) viser hvem som jobber konsentrert, hvem som er borte og hvem som allerede er i en samtale. Opptatt betyr vent; tilgjengelig betyr gå bort."
         },
         {
           "title": "Gå bort og snakk",
-          "detail": "2",
           "body": "Still deg ved siden av og trykk for å ringe. Det starter med stemme; slå på et kamera om du vil."
         },
         {
           "title": "Del og jobb",
-          "detail": "3",
           "body": "Del et vindu, en fane eller hele skjermen: editoren, terminalen, testen som feiler."
         },
         {
           "title": "Gå tilbake",
-          "detail": "4",
           "body": "Legg på, så er du tilbake ved ditt eget arbeid. Samtalen holder seg tilkoblet mens du beveger deg, så ingenting faller ut om du går rundt."
         }
       ]
@@ -2688,28 +2685,25 @@
   "meetingRoom": [
     {
       "title": "Slik fungerer et møte i TinyFloor",
+      "numbered": true,
       "body": [
         "De fleste videoverktøy starter med en lenke. TinyFloor starter med et rom: Hvert kontor har et hovedmøte som alltid er åpent, og alle kan starte et annet ved siden av."
       ],
       "items": [
         {
           "title": "Bli med",
-          "detail": "1",
           "body": "Trykk Bli med i kontorets møte. En rask sjekk viser kamera og mikrofon, så går figuren din inn i møterommet."
         },
         {
           "title": "Snakk",
-          "detail": "2",
           "body": "Stemme først; slå på kameraet om du vil. Den som snakker får det store kortet, med tre andre ved siden av."
         },
         {
           "title": "Del",
-          "detail": "3",
           "body": "Del et vindu, en fane eller skjermen din. Det vises på scenen ved siden av personene."
         },
         {
           "title": "Gå ut",
-          "detail": "4",
           "body": "Forlat møtet, så er du tilbake i etasjen. Gikk du ut ved en feil? Å bli med igjen er ett klikk."
         }
       ],
@@ -3029,7 +3023,7 @@
     {
       "title": "Hva det ikke gjør",
       "body": [
-        "Tilstedeværelse synkroniseres ikke med kalenderen din, Slack eller operativsystemet, og statuser endres ikke etter en tidsplan. Egne statusmeldinger finnes ikke ennå. Trenger du tilstedeværelse på tvers av alle verktøyene dine, er statusen i chatteappen stedet; TinyFloors sier hvem som er i etasjen akkurat nå."
+        "Tilstedeværelse synkroniseres ikke med Slack eller operativsystemet ditt, og statuser endrer seg ikke etter en timeplan. Google Kalender er det ene unntaket: koble den til, så ser kollegaene «I et møte til 15:30» på navneskiltet ditt mens du er i et møte, med mindre du har lagt igjen et eget notat. Trenger du tilstedeværelse på tvers av alle verktøyene dine, er statusen i chatteappen stedet; TinyFloors handler om hvem som er på etasjen akkurat nå."
       ]
     }
   ],
@@ -3529,28 +3523,28 @@
         "head": [
           "",
           "Åpen romlig lyd",
-          "Nærhet for å ringe (TinyFloor)"
+          "Gå bort og spør (TinyFloor)"
         ],
         "rows": [
           [
             "Hvordan en samtale starter",
             "Gå nær noen, så hører dere hverandre",
-            "Still deg ved siden av noen og trykk Ring"
+            "Gå bort til noen og trykk på Snakk"
           ],
           [
             "Mikrofoner",
             "Åpne så lenge du er nær noen",
-            "Av til en samtale starter"
+            "Av til den andre sier ja"
           ],
           [
             "Hvem som hører deg",
             "Alle som kommer nær",
-            "Bare den du ringte"
+            "Bare den du snakker med"
           ],
           [
             "Bakgrunnsstøy",
             "Delt med dem i nærheten",
-            "Blir hos deg til du ringer"
+            "Blir hos deg til dere snakker"
           ],
           [
             "Bra for",
@@ -3562,56 +3556,72 @@
     },
     {
       "title": "Slik fungerer det i TinyFloor",
+      "numbered": true,
       "items": [
         {
           "title": "Gå bort",
-          "detail": "1",
-          "body": "Flytt figuren din ved siden av en kollega. Et lite kort med knappen Ring dukker opp."
+          "body": "Gå bort til en kollega med figuren din og stopp. Navneskiltet åpner seg til Vink, Prikk, Melding og Snakk."
         },
         {
-          "title": "Ring",
-          "detail": "2",
-          "body": "De ser «Ringer deg» og kan svare eller avvise. Er de [opptatt](/team-presence) eller svarer ikke, får du beskjed, og ingenting mer skjer."
+          "title": "Spør",
+          "body": "Trykk på Snakk. Kollegaen ser figuren din og at du vil snakke, og velger Snakk eller Ikke nå. Er kollegaen [opptatt](/team-presence) eller svarer ikke innen et halvt minutt, får du beskjed, og ingenting annet skjer."
         },
         {
           "title": "Snakk",
-          "detail": "3",
-          "body": "Samtalen starter med stemme. Slå på et kamera eller del en skjerm om det hjelper."
+          "body": "Det starter med stemme, som regel på under ett sekund. Slå på et kamera eller del skjermen hvis det hjelper."
         },
         {
           "title": "Gå rundt",
-          "detail": "4",
-          "body": "Når den er tilkoblet, holder samtalen til noen legger på, så den brytes ikke om du går over etasjen."
+          "body": "Når dere først snakker, varer samtalen til en av dere går, så det bryter den ikke at du beveger deg rundt på etasjen."
         },
         {
           "title": "Legg til en tredje",
-          "detail": "5",
-          "body": "En samtale er to personer. Gå bort til en tredje, så tilbyr TinyFloor å gjøre det til et [møte](/virtual-meeting-room) for dere tre."
+          "body": "To snakker, tre eller flere har møte. Gå bort til en tredje person mens dere snakker, så tilbyr TinyFloor å gjøre det til et [møte](/virtual-meeting-room)."
         }
       ],
       "image": {
-        "src": "/screens/calls.webp",
-        "alt": "En samtale på TinyFloors etasje: to personer står sammen mellom pultene, med samtalens knapper nederst"
+        "src": "/screens/talk.webp",
+        "alt": "En forespørsel om å snakke i TinyFloor: øverst på etasjen et kort med Ryans figur, «vil snakke» og knappene Ikke nå og Snakk"
       }
     },
     {
-      "title": "Hvorfor samtaler i stedet for åpen lyd",
+      "title": "Nå noen uten å forstyrre",
+      "body": [
+        "Ikke alt trenger en samtale. Ved siden av Snakk finnes to mindre måter å nå noen på, og en forespørsel uten svar forsvinner ikke."
+      ],
+      "items": [
+        {
+          "title": "Et vink sier hei",
+          "body": "En hånd løftes over figuren din, så alle i nærheten ser den. Den ber ikke om noe tilbake."
+        },
+        {
+          "title": "Et prikk ber om et øyeblikk",
+          "body": "Kollegaens figur rykker til, og hen får et varsel med Prikk tilbake: et lite dytt om å se opp når det passer."
+        },
+        {
+          "title": "En tapt forespørsel venter",
+          "body": "Var kollegaen ikke ved pulten, blir forespørselen liggende i de [direkte meldingene](/team-chat) deres som «ville snakke», med en Snakk-knapp for å spørre igjen når dere begge er der."
+        }
+      ]
+    },
+    {
+      "title": "Hvorfor spørre først i stedet for åpen lyd",
       "items": [
         {
           "title": "Ingen hører med ved et uhell",
-          "body": "Mikrofonen din er bare på i en samtale eller et møte. Å gå forbi en pult lar deg aldri høre noen."
+          "body": "Mikrofonen din er bare på mens du snakker eller er i et møte. Å gå forbi en pult lar deg aldri høre noen."
         },
         {
           "title": "Det går an å konsentrere seg",
-          "body": "En etasje full av åpne mikrofoner er et bråkete rom. Samtaler holder resten av etasjen stille."
+          "body": "En etasje full av åpne mikrofoner er et bråkete rom. Å spørre først holder resten av etasjen stille, og Ikke nå er alltid et svar."
         },
         {
           "title": "Det føles fortsatt spontant",
-          "body": "Å gå bort og trykke Ring tar et par sekunder, omtrent som å lene seg over til nabopulten."
+          "body": "Å gå bort og trykke på Snakk tar et par sekunder, omtrent som å lene seg over til en kollega."
         },
         {
           "title": "Det fungerer på alle nettverk",
-          "body": "Samtaler går gjennom Cloudflares relénettverk, så de kobles opp bak bedriftsbrannmurer og på mobilnett, uten installasjon."
+          "body": "Samtaler går gjennom Cloudflares reléer, så de kobles opp bak brannmurer på kontoret og på mobilnett, uten noe å installere."
         }
       ]
     },
@@ -3625,11 +3635,19 @@
         "rows": [
           [
             "Stille én person et raskt spørsmål",
-            "Gå bort og ring"
+            "Gå bort og trykk på Snakk"
+          ],
+          [
+            "Si hei uten å forstyrre",
+            "Vink"
+          ],
+          [
+            "Få noens oppmerksomhet til senere",
+            "Prikk, eller send en melding"
           ],
           [
             "Ta med en tredje",
-            "Gå til personen under samtalen; det blir et møte"
+            "Gå bort til personen mens dere snakker; det blir et møte"
           ],
           [
             "Snakke med hele teamet",
@@ -3645,7 +3663,7 @@
     {
       "title": "Hva det ikke gjør",
       "body": [
-        "TinyFloor har ikke åpen romlig lyd, så en gruppe kan ikke prate bare ved å stå sammen; fra tre personer går man til et møte. Det er ikke laget for arrangementer eller spill med hundrevis av mennesker, og det finnes ingen innringing per telefon. Vil du ha et livlig sted der stemmer kommer og går mens du beveger deg, passer et produkt bygget rundt romlig lyd bedre; vil du ha et rolig kontor der samtalen er ett trykk unna, er det dette."
+        "TinyFloor har ikke åpen romlig lyd, så en gruppe kan ikke snakke bare ved å stå sammen; fra tre personer møtes dere i et møte. Det er ikke laget for arrangementer eller spill med hundrevis av mennesker, og det går ikke an å ringe inn. Vil du ha et livlig rom der stemmer kommer og går mens du beveger deg, passer et produkt bygget rundt romlig lyd bedre; vil du ha et rolig kontor der en samtale er noen sekunder unna, er det dette."
       ]
     }
   ],

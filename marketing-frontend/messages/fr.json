@@ -19,7 +19,7 @@
       },
       {
         "q": "Comment fonctionne le chat vidéo de proximité ?",
-        "a": "Approchez-vous de quelqu’un et un bouton d’appel apparaît à côté de lui. Un clic lance l’appel, et une fois que vous parlez, vous pouvez allumer votre caméra ou partager votre écran. Les appels passent par WebRTC sur le réseau de Cloudflare : ils se connectent sur n’importe quel réseau, au bureau ou à la maison, et durent jusqu’à ce que quelqu’un raccroche. Pour un groupe, rejoignez une réunion et votre personnage entre dans la salle de réunion."
+        "a": "Approchez-vous d'un collègue et arrêtez-vous : son étiquette de nom s'ouvre sur Saluer, Pousser du coude, Message et Parler. Appuyez sur Parler et il voit que vous voulez lui parler ; dès qu'il accepte, la conversation commence par la voix en moins d'une seconde, et vous pouvez allumer votre caméra ou partager votre écran. Les conversations passent par WebRTC sur le réseau de Cloudflare, elles se connectent donc sur n'importe quel réseau de bureau ou domestique, et durent jusqu'à ce que l'un de vous parte. En groupe, rejoignez une réunion et votre personnage entre dans la salle de réunion."
       },
       {
         "q": "TinyFloor est-il gratuit ?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Approchez-vous pour parler",
-            "body": "Comme en entrant dans un cercle sur Wonder, vous lancez un appel en vous plaçant à côté de quelqu’un. Passer d’un groupe à l’autre, c’est juste marcher."
+            "body": "Comme en entrant dans un cercle sur Wonder, vous parlez à quelqu'un en vous approchant de lui. Passer d'un groupe à l'autre, c'est simplement marcher."
           },
           {
             "title": "Toujours dans le navigateur",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Chat de proximité",
         "meta": {
-          "title": "Chat vidéo de proximité pour les équipes à distance",
-          "description": "Le chat de proximité pour les équipes à distance : approchez votre personnage d'un collègue pour lancer un appel. Gratuit pour les petites équipes, dans le navigateur, sans téléchargement."
+          "title": "Chat de proximité pour équipes à distance",
+          "description": "Chat de proximité pour équipes à distance : approchez-vous d'un collègue et appuyez sur Parler. La voix en moins d'une seconde, aucun micro ouvert, dans le navigateur sans rien installer."
         },
         "title": "Un <em>chat de proximité</em> qui démarre quand vous vous approchez.",
-        "subtitle": "Dans TinyFloor, l’endroit où vous êtes décide avec qui vous parlez. Approchez-vous de quelqu’un pour l’appeler, rejoignez une réunion pour parler en groupe, et repartez quand vous avez fini.",
+        "subtitle": "Dans TinyFloor, l'endroit où vous êtes décide avec qui vous parlez. Approchez-vous de quelqu'un pour lui demander de parler, réunissez-vous en groupe dans une salle de réunion, et repartez quand vous avez fini.",
         "faq": [
           {
             "q": "Qu’est-ce que le chat de proximité ?",
-            "a": "Le chat de proximité vous met en relation selon l’endroit où se trouve votre personnage. Vous parlez aux personnes proches de vous, comme dans une vraie pièce."
+            "a": "Le chat de proximité vous met en contact avec les gens selon l'endroit où se trouve votre personnage. Dans TinyFloor, vous vous approchez d'un collègue et lui demandez de parler, comme vous passeriez à son bureau."
           },
           {
-            "q": "L’appel s’arrête-t-il quand je m’éloigne ?",
-            "a": "Non. Une fois connecté, un appel le reste jusqu’à ce que quelqu’un raccroche, se déplacer ne le coupe donc pas."
+            "q": "Est-ce que ça s'arrête si je m'éloigne ?",
+            "a": "Non. Une fois que vous parlez, la conversation dure jusqu'à ce que l'un de vous parte, donc vous déplacer sur l'étage ne la coupe pas."
           },
           {
             "q": "Peut-on parler à plus de deux ?",
-            "a": "Un appel, c’est à deux. Approchez-vous d’une troisième personne et faites-en une réunion, ou rejoignez la réunion du bureau pour parler en groupe."
+            "a": "À deux, on parle ; à trois ou plus, on se réunit. Approchez-vous d'une troisième personne pour en faire une réunion, ou rejoignez la réunion principale du bureau pour parler en groupe."
           },
           {
-            "q": "Est-ce gratuit ?",
-            "a": "Oui, pour un bureau jusqu'à 3 personnes, dans le navigateur sur ordinateur et mobile."
+            "q": "Et s'il ne répond pas ?",
+            "a": "Vous le savez au bout d'une demi-minute, et la demande attend dans vos messages privés sous la forme « voulait parler », avec un bouton Parler pour redemander."
+          },
+          {
+            "q": "Combien ça coûte ?",
+            "a": "Chaque nouveau bureau a 14 jours de Pro. Ensuite, Pro est un seul prix pour tout le bureau, et un bureau de 3 personnes maximum peut rester sur Free."
           }
         ],
         "line": "Approchez-vous pour parler, sans lien"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Est-ce adapté à la programmation en binôme ?",
-            "a": "Oui. Allez voir un collègue, lancez un appel et partagez votre écran. Ajoutez une troisième personne et cela devient une réunion."
+            "a": "Oui. Approchez-vous d'un collègue, appuyez sur Parler et partagez votre écran. Ajoutez une troisième personne et cela devient une réunion."
           },
           {
             "q": "Quelle taille peut avoir une équipe d'ingénierie ?",

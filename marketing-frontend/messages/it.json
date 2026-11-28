@@ -19,7 +19,7 @@
       },
       {
         "q": "Come funziona la videochat di prossimità?",
-        "a": "Avvicinati a qualcuno e accanto a lui compare un pulsante di chiamata. Un tocco avvia la chiamata e, mentre parlate, puoi accendere la fotocamera o condividere lo schermo. Le chiamate passano per WebRTC sulla rete di Cloudflare, quindi si collegano da qualsiasi rete, in ufficio o a casa, e restano attive finché qualcuno non riattacca. Per un gruppo, entra in una riunione e il tuo personaggio va nella sala riunioni."
+        "a": "Avvicinati a un collega e fermati: la sua targhetta col nome si apre in Saluta, Colpetto, Messaggio e Parla. Premi Parla e vede che vuoi parlare; appena dice sì, si comincia con la voce in meno di un secondo, e puoi accendere la videocamera o condividere lo schermo. Le conversazioni passano via WebRTC sulla rete di Cloudflare, quindi si collegano su qualsiasi rete d'ufficio o di casa, e durano finché uno dei due non se ne va. Per un gruppo, entra in una riunione e il tuo personaggio va nella sala riunioni."
       },
       {
         "q": "TinyFloor è gratuito?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Avvicinati per parlare",
-            "body": "Come entrare in un cerchio su Wonder, avvii una chiamata mettendoti accanto a qualcuno. Passare da un gruppo all’altro è solo camminare."
+            "body": "Come entrare in un cerchio su Wonder, parli con qualcuno avvicinandoti a lui. Passare da un gruppo all'altro è solo camminare."
           },
           {
             "title": "Sempre nel browser",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Chat di prossimità",
         "meta": {
-          "title": "Videochat di prossimità per team da remoto",
-          "description": "Chat di prossimità per team da remoto: avvicina il tuo personaggio a un collega per avviare una chiamata. Gratis per piccoli team, nel browser, senza download."
+          "title": "Chat di prossimità per team da remoto",
+          "description": "Chat di prossimità per team da remoto: avvicinati a un collega e premi Parla. Voce in meno di un secondo, niente microfoni aperti, nel browser senza installare nulla."
         },
         "title": "Una <em>chat di prossimità</em> che parte quando ti avvicini.",
-        "subtitle": "In TinyFloor, dove ti trovi decide con chi parli. Avvicinati a qualcuno per chiamarlo, entra in una riunione per parlare in gruppo e prosegui quando hai finito.",
+        "subtitle": "In TinyFloor, dove ti trovi decide con chi parli. Avvicinati a qualcuno e chiedi di parlare, riunitevi in gruppo in una sala riunioni, e vai avanti quando avete finito.",
         "faq": [
           {
             "q": "Cos’è la chat di prossimità?",
-            "a": "La chat di prossimità ti mette in contatto con le persone in base a dove si trova il tuo personaggio. Parli con chi ti è vicino, come in una stanza vera."
+            "a": "La chat di prossimità ti mette in contatto con le persone in base a dove si trova il tuo personaggio. Su TinyFloor ti avvicini a un collega e chiedi di parlare, come passeresti alla sua scrivania."
           },
           {
-            "q": "La chiamata finisce se mi allontano?",
-            "a": "No. Una volta connessa, la chiamata resta attiva finché qualcuno non riattacca, quindi muoverti non la interrompe."
+            "q": "Finisce se mi allontano?",
+            "a": "No. Una volta che parlate, la conversazione dura finché uno dei due non se ne va, quindi muoverti per il piano non la interrompe."
           },
           {
             "q": "Possono parlare più di due persone?",
-            "a": "Una chiamata è in due. Avvicinati a una terza persona e trasformala in una riunione, oppure entra nella riunione dell’ufficio per parlare in gruppo."
+            "a": "In due si parla, da tre in su ci si riunisce. Avvicinati a una terza persona e falla diventare una riunione, oppure entra nella riunione principale dell'ufficio per parlare in gruppo."
           },
           {
-            "q": "È gratis?",
-            "a": "Sì, per un ufficio fino a 3 persone, nel browser su desktop e mobile."
+            "q": "E se non risponde?",
+            "a": "Lo sai dopo mezzo minuto, e la richiesta resta nei vostri messaggi diretti come \"voleva parlare\", con un pulsante Parla per chiedere di nuovo."
+          },
+          {
+            "q": "Quanto costa?",
+            "a": "Ogni nuovo ufficio ha 14 giorni di Pro. Dopo, Pro ha un unico prezzo per tutto l'ufficio, e un ufficio fino a 3 persone può restare su Free."
           }
         ],
         "line": "Avvicinati per parlare, senza link"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Va bene per il pair programming?",
-            "a": "Sì. Avvicinati a un collega, avvia una chiamata e condividi lo schermo. Aggiungi una terza persona e diventa una riunione."
+            "a": "Sì. Avvicinati a un collega, premi Parla e condividi lo schermo. Aggiungi una terza persona e diventa una riunione."
           },
           {
             "q": "Quanto può essere grande un team di engineering?",

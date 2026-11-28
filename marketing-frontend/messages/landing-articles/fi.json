@@ -2215,28 +2215,25 @@
   "pairProgramming": [
     {
       "title": "Näin pariohjelmointi alkaa",
+      "numbered": true,
       "body": [
         "Toimistolla pariohjelmointi alkaa usein kysymyksellä ”onko sinulla hetki?” jonkun työpisteellä. Etänä siihen tarvitaan yleensä kalenterikutsu, joten sitä tehdään harvemmin. TinyFloorissa se alkaa kuten toimistolla."
       ],
       "items": [
         {
           "title": "Katso, kuka on vapaana",
-          "detail": "1",
           "body": "Työpisteet ja [tilat](/team-presence) näyttävät, kuka keskittyy, kuka on poissa ja kuka on jo puhelussa. Varattu tarkoittaa odota; tavoitettavissa tarkoittaa mene."
         },
         {
           "title": "Mene ja puhu",
-          "detail": "2",
           "body": "Seiso vieressä ja napauta soittaaksesi. Se alkaa äänellä; laita kamera päälle, jos haluat."
         },
         {
           "title": "Jaa ja tee töitä",
-          "detail": "3",
           "body": "Jaa ikkuna, välilehti tai koko näyttö: editori, pääte, kaatuva testi."
         },
         {
           "title": "Palaa",
-          "detail": "4",
           "body": "Lopeta puhelu, niin olet taas omien töidesi ääressä. Puhelu pysyy yhdistettynä, kun liikut, joten mikään ei katkea, jos kävelet ympäriinsä."
         }
       ]
@@ -2688,28 +2685,25 @@
   "meetingRoom": [
     {
       "title": "Näin kokous toimii TinyFloorissa",
+      "numbered": true,
       "body": [
         "Useimmat videotyökalut alkavat linkistä. TinyFloor alkaa huoneesta: jokaisessa toimistossa on pääkokous, joka on aina auki, ja kuka tahansa voi aloittaa toisen sen viereen."
       ],
       "items": [
         {
           "title": "Liity",
-          "detail": "1",
           "body": "Paina toimiston kokouksessa Liity. Nopea tarkistus näyttää kamerasi ja mikrofonisi, ja sitten hahmosi kävelee kokoushuoneeseen."
         },
         {
           "title": "Puhu",
-          "detail": "2",
           "body": "Ensin ääni; laita kamera päälle, jos haluat. Puhuja saa ison kortin, ja vieressä on kolme muuta."
         },
         {
           "title": "Jaa",
-          "detail": "3",
           "body": "Jaa ikkuna, välilehti tai näyttösi. Se näkyy lavalla ihmisten vieressä."
         },
         {
           "title": "Kävele ulos",
-          "detail": "4",
           "body": "Poistu, niin olet taas kerroksessa. Lähditkö vahingossa? Takaisin pääsee yhdellä klikkauksella."
         }
       ],
@@ -3029,7 +3023,7 @@
     {
       "title": "Mitä se ei tee",
       "body": [
-        "Läsnäolo ei synkronoidu kalenterisi, Slackin tai käyttöjärjestelmäsi kanssa, eivätkä tilat vaihdu aikataulun mukaan. Omia tilaviestejä ei vielä ole. Jos tarvitset läsnäoloa kaikkiin työkaluihisi, chat-sovelluksesi tila on oikea paikka; TinyFloorin tila kertoo, kuka on kerroksessa juuri nyt."
+        "Läsnäolo ei synkronoidu Slackin tai käyttöjärjestelmäsi kanssa, eivätkä tilat vaihdu aikataulun mukaan. Google Kalenteri on ainoa poikkeus: yhdistä se, niin kokouksen aikana kollegat näkevät nimilapussasi ”Kokouksessa klo 15.30 asti”, ellet ole jättänyt omaa muistiinpanoa. Jos tarvitset läsnäolon kaikkiin työkaluihisi, chat-sovelluksesi tila on oikea paikka; TinyFloorin tila kertoo, kuka on kerroksessa juuri nyt."
       ]
     }
   ],
@@ -3529,28 +3523,28 @@
         "head": [
           "",
           "Avoin tilaääni",
-          "Läheisyys soittamiseen (TinyFloor)"
+          "Mene luo ja kysy (TinyFloor)"
         ],
         "rows": [
           [
             "Miten keskustelu alkaa",
             "Mene jonkun lähelle, niin kuulette toisenne",
-            "Asetu jonkun viereen ja napauta Soita"
+            "Mene jonkun luo ja paina Puhu"
           ],
           [
             "Mikrofonit",
             "Auki niin kauan kuin olet jonkun lähellä",
-            "Pois, kunnes puhelu alkaa"
+            "Pois päältä, kunnes toinen suostuu"
           ],
           [
             "Kuka kuulee sinut",
             "Kuka tahansa, joka tulee lähelle",
-            "Vain se, jolle soitit"
+            "Vain se, jonka kanssa puhut"
           ],
           [
             "Taustamelu",
             "Jaettu lähellä olevien kanssa",
-            "Pysyy luonasi, kunnes soitat"
+            "Pysyy luonasi, kunnes alatte puhua"
           ],
           [
             "Sopii",
@@ -3562,56 +3556,72 @@
     },
     {
       "title": "Näin se toimii TinyFloorissa",
+      "numbered": true,
       "items": [
         {
           "title": "Mene luo",
-          "detail": "1",
-          "body": "Siirrä hahmosi kollegan viereen. Esiin tulee pieni kortti, jossa on Soita-painike."
+          "body": "Kävele hahmollasi kollegan viereen ja pysähdy. Hänen nimilappunsa avautuu valinnoiksi Vilkuta, Tökkää, Viesti ja Puhu."
         },
         {
-          "title": "Soita",
-          "detail": "2",
-          "body": "Hän näkee ”Soittaa sinulle” ja voi vastata tai hylätä. Jos hän on [varattu](/team-presence) tai ei vastaa, saat tiedon, eikä muuta tapahdu."
+          "title": "Kysy",
+          "body": "Paina Puhu. Kollega näkee hahmosi ja sen, että haluat puhua, ja valitsee Puhu tai Ei nyt. Jos hän on [kiireinen](/team-presence) tai ei vastaa puolessa minuutissa, saat siitä tiedon, eikä muuta tapahdu."
         },
         {
           "title": "Puhu",
-          "detail": "3",
-          "body": "Puhelu alkaa äänellä. Laita kamera päälle tai jaa näyttö, jos siitä on apua."
+          "body": "Puhe alkaa äänellä, yleensä alle sekunnissa. Laita kamera päälle tai jaa näyttö, jos siitä on apua."
         },
         {
           "title": "Liiku",
-          "detail": "4",
-          "body": "Kun yhteys on muodostettu, puhelu jatkuu, kunnes joku lopettaa sen, joten kerroksen poikki kävely ei katkaise sitä."
+          "body": "Kun puhutte, keskustelu jatkuu, kunnes toinen teistä lähtee, joten kerroksessa liikkuminen ei katkaise sitä."
         },
         {
           "title": "Lisää kolmas",
-          "detail": "5",
-          "body": "Puhelu on kahden ihmisen. Kävele kolmannen luo, niin TinyFloor tarjoaa tehdä siitä [kokouksen](/virtual-meeting-room) teille kolmelle."
+          "body": "Kaksi puhuu, kolme tai useampi pitää kokouksen. Mene puhuessanne kolmannen henkilön luo, niin TinyFloor tarjoaa tehdä siitä [kokouksen](/virtual-meeting-room)."
         }
       ],
       "image": {
-        "src": "/screens/calls.webp",
-        "alt": "Puhelu TinyFloorin kerroksessa: kaksi ihmistä seisoo yhdessä työpisteiden välissä, puhelun painikkeet alhaalla"
+        "src": "/screens/talk.webp",
+        "alt": "Puhepyyntö TinyFloorissa: kerroksen yläreunassa kortti, jossa on Ryanin hahmo, ”haluaa puhua” sekä painikkeet Ei nyt ja Puhu"
       }
     },
     {
-      "title": "Miksi puhelut eikä avoin ääni",
+      "title": "Tavoita häiritsemättä",
+      "body": [
+        "Kaikki ei vaadi keskustelua. Puhu-painikkeen vieressä on kaksi kevyempää tapaa tavoittaa joku, eikä vastaamaton pyyntö katoa."
+      ],
+      "items": [
+        {
+          "title": "Vilkutus sanoo hei",
+          "body": "Hahmosi yläpuolelle nousee käsi, jonka kaikki lähellä olevat näkevät. Se ei pyydä mitään takaisin."
+        },
+        {
+          "title": "Tökkäys pyytää hetkeä",
+          "body": "Hänen hahmonsa hätkähtää, ja hän saa ilmoituksen, jossa on Tökkää takaisin: muistutus katsoa ylös, kun ehtii."
+        },
+        {
+          "title": "Ohi mennyt pyyntö odottaa",
+          "body": "Jos hän ei ollut paikallaan, pyyntö jää teidän [yksityisviesteihinne](/team-chat) muodossa ”halusi puhua”, ja Puhu-painikkeella voit kysyä uudelleen, kun olette molemmat paikalla."
+        }
+      ]
+    },
+    {
+      "title": "Miksi kysyä ensin avoimen äänen sijaan",
       "items": [
         {
           "title": "Kukaan ei kuule vahingossa",
-          "body": "Mikrofonisi on päällä vain puhelussa tai kokouksessa. Työpisteen ohi kulkiessa et koskaan kuule ketään."
+          "body": "Mikrofonisi on päällä vain, kun puhut tai olet kokouksessa. Työpisteen ohi kulkiessa et koskaan kuule ketään."
         },
         {
           "title": "Keskittyminen onnistuu",
-          "body": "Avoimia mikrofoneja täynnä oleva kerros on meluisa huone. Puhelut pitävät muun kerroksen hiljaisena."
+          "body": "Kerros täynnä avoimia mikrofoneja on meluisa huone. Kun kysytään ensin, muu kerros pysyy hiljaisena, ja Ei nyt on aina vastaus."
         },
         {
           "title": "Silti spontaania",
-          "body": "Luo käveleminen ja Soita-napautus vievät pari sekuntia, suunnilleen saman kuin viereiselle pöydälle kumartuminen."
+          "body": "Luo meneminen ja Puhu-painikkeen painaminen vie pari sekuntia, suunnilleen saman verran kuin kollegan puoleen kumartuminen."
         },
         {
           "title": "Toimii kaikissa verkoissa",
-          "body": "Puhelut kulkevat Cloudflaren välitysverkon kautta, joten ne yhdistyvät yritysten palomuurien takana ja mobiiliverkoissa, ilman asennuksia."
+          "body": "Keskustelut kulkevat Cloudflaren välityspalvelimien kautta, joten ne yhdistyvät yritysten palomuurien takaa ja mobiiliverkoissa ilman asennuksia."
         }
       ]
     },
@@ -3625,11 +3635,19 @@
         "rows": [
           [
             "Kysyä yhdeltä ihmiseltä nopean kysymyksen",
-            "Mene luo ja soita"
+            "Mene luo ja paina Puhu"
+          ],
+          [
+            "Sanoa hei häiritsemättä",
+            "Vilkuta"
+          ],
+          [
+            "Saada jonkun huomio myöhemmäksi",
+            "Tökkää tai lähetä viesti"
           ],
           [
             "Ottaa mukaan kolmannen",
-            "Mene hänen luokseen puhelun aikana; siitä tulee kokous"
+            "Mene hänen luokseen puhuessanne; siitä tulee kokous"
           ],
           [
             "Puhua koko tiimin kanssa",
@@ -3645,7 +3663,7 @@
     {
       "title": "Mitä se ei tee",
       "body": [
-        "TinyFloorissa ei ole avointa tilaääntä, joten ryhmä ei voi jutella vain seisomalla yhdessä; kolmesta ihmisestä alkaen mennään kokoukseen. Sitä ei ole tehty sadan hengen tapahtumiin tai peleihin, eikä puhelinsoitolla voi liittyä. Jos haluat eloisan tilan, jossa äänet kuuluvat ja hiipuvat liikkuessasi, tilaääneen perustuva tuote sopii paremmin; jos haluat rauhallisen toimiston, jossa puhuminen on yhden napautuksen päässä, tämä on se."
+        "TinyFloorissa ei ole avointa tilaääntä, joten ryhmä ei voi puhua pelkästään seisomalla yhdessä; kolmesta hengestä alkaen tavataan kokouksessa. Sitä ei ole tehty satojen ihmisten tapahtumiin tai peleihin, eikä puhelimella voi soittaa sisään. Jos haluat eloisan tilan, jossa äänet lähenevät ja loittonevat liikkuessasi, tilaääneen rakennettu tuote sopii paremmin; jos haluat rauhallisen toimiston, jossa keskustelu on muutaman sekunnin päässä, se on tämä."
       ]
     }
   ],

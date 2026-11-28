@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog: Spørgsmål fra remote teams, besvaret med tal",
+    "description": "Hvad remote teams spørger om, før de vælger, hvordan de vil arbejde sammen, besvaret med tal og kilder af folkene bag TinyFloor."
+  },
+  "title": "Spørgsmål fra remote teams, <em>besvaret med tal.</em>",
+  "body": "Hvad remote teams spørger om, før de vælger, hvordan de vil arbejde sammen: priser, sammenligninger og undersøgelser, hver med sine kilder.",
+  "categories": {
+    "costs": "Priser",
+    "comparisons": "Sammenligninger",
+    "remoteWork": "Fjernarbejde"
+  },
+  "latest": "Seneste",
+  "takeaways": "Vigtigste pointer",
+  "sources": "Kilder",
+  "related": "Relaterede artikler",
+  "guides": "Guides om samme emne",
+  "fromBlog": "Fra bloggen",
+  "all": "Alle artikler"
+}

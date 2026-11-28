@@ -1,0 +1,210 @@
+{
+  "label": "Gather conviene?",
+  "meta": {
+    "title": "Gather conviene nel 2026? Analisi per team da remoto",
+    "description": "Gather, l'ufficio virtuale su gather.town, dopo i prezzi 2025 e lo spin-off 2026: punti di forza, costi per team da 5 a 25 persone e quando scegliere altro."
+  },
+  "coverAlt": "Una bilancia in argilla color crema con una pila di monete gialle da un lato e una piccola casa color crema dall'altro, su sfondo color menta.",
+  "title": "Gather <em>conviene</em> nel 2026?",
+  "intro": "Gather, l'ufficio virtuale su gather.town, rimane il prodotto più noto della sua categoria, ma nel 2026 si presenta in modo diverso da quello che molti team avevano scelto: niente piano gratuito da settembre 2025, da 12 $ a 15 $ per membro al mese e un'azienda indipendente da febbraio 2026. Se conviene o no dipende da ciò che userà il tuo team. Ecco cosa fa bene, quanto costa, dove mostra dei limiti e chi dovrebbe cercare altrove. Sviluppiamo TinyFloor, che compete con Gather, quindi non siamo neutrali; ogni dato su Gather riportato qui proviene direttamente dalle pagine di Gather, consultate a novembre 2026.",
+  "takeaways": [
+    "Gather costa 12 $ per membro al mese con fatturazione annuale o 15 $ mensile. Il piano gratuito è terminato il 15 settembre 2025; è disponibile una prova di 30 giorni.",
+    "È la scelta ideale per i team che vogliono progettare il proprio ufficio, registrare le riunioni con note IA e integrarsi con Google Calendar e GitHub.",
+    "A febbraio 2026 Gather si è separata diventando un'azienda indipendente e redditizia, mentre il suo team di IA si è unito a Figma. Gather ha dichiarato che per i clienti non è cambiato nulla.",
+    "Un team di 10 persone paga 1.440 $ all'anno con fatturazione annuale, per ogni membro, indipendentemente da quanto entri.",
+    "I team che hanno solo bisogno di vedere chi c'è e parlare possono farlo spendendo meno."
+  ],
+  "sections": [
+    {
+      "title": "Cos'è Gather",
+      "body": [
+        "Gather è un ufficio virtuale: ogni persona del team ha un avatar su una mappa 2D dell'ufficio, per vedere chi c'è e iniziare a parlare avvicinandosi, senza link di riunione. Include sale riunioni, chat di team con canali e messaggi diretti, e stati che mostrano chi è libero, concentrato o in riunione.",
+        "La versione attuale, Gather 2.0, è stata lanciata a settembre 2025. Funziona nel browser, con [app desktop per macOS e Windows e un'app mobile per iOS](https://www.gather.town/download); la versione per Android è indicata come in arrivo. Gather dichiara che oltre 5.000 team da remoto lo utilizzano."
+      ]
+    },
+    {
+      "title": "Cosa fa bene Gather",
+      "items": [
+        {
+          "title": "Un ufficio che progetti tu",
+          "body": "Gather Studio, il suo editor per l'ufficio, ti consente di scegliere una piantina, riorganizzare stanze, aree di team e oggetti, decorare le scrivanie e aggiungere piani man mano che il team cresce. Pochi uffici virtuali permettono di personalizzare lo spazio così a fondo."
+        },
+        {
+          "title": "Controllo su ciò che ascolti",
+          "body": "Il microfono è disattivato per impostazione predefinita e ascolti le conversazioni pubbliche solo se lo decidi tu. Una vista semplificata mostra le persone anziché la mappa, e la modalità mini ti tiene in contatto mentre lavori su altre app."
+        },
+        {
+          "title": "Riunioni con registrazioni e note IA",
+          "body": "Il piano di Gather include registrazioni, trascrizioni e note di riunione generate dall'IA, con quote mensili a partire da 20 ore di registrazione e 30 di trascrizione."
+        },
+        {
+          "title": "Integrazioni utili per i team software",
+          "body": "Google Calendar aggiorna il tuo stato e permette di programmare riunioni, Spotify mostra cosa stai ascoltando e GitHub porta i riepiloghi delle pull request dentro l'ufficio."
+        },
+        {
+          "title": "Conformità e sicurezza",
+          "body": "Gather ha la certificazione SOC 2 Type II, offre un accordo sul trattamento dei dati con clausole contrattuali standard per i team soggetti al GDPR e include il single sign-on sul piano Custom."
+        }
+      ]
+    },
+    {
+      "title": "Quanto costa Gather",
+      "body": [
+        "Gather propone un solo piano per la maggior parte dei team, Essential, con fatturazione per ogni membro. Ecco a quanto ammonta la spesa; la [nostra guida ai prezzi di Gather](/guides/gather-pricing) include altre dimensioni del team, ore per gli ospiti e le variazioni per chi era sul vecchio listino."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Fatturazione mensile",
+          "Fatturazione annuale, al mese",
+          "Un anno, fatturazione annuale"
+        ],
+        "rows": [
+          [
+            "5 persone",
+            "75 $",
+            "60 $",
+            "720 $"
+          ],
+          [
+            "10 persone",
+            "150 $",
+            "120 $",
+            "1.440 $"
+          ],
+          [
+            "15 persone",
+            "225 $",
+            "180 $",
+            "2.160 $"
+          ],
+          [
+            "25 persone",
+            "375 $",
+            "300 $",
+            "3.600 $"
+          ]
+        ],
+        "note": "Essential a 15 $ per membro al mese, o 12 $ con fatturazione annuale (pagina prezzi di Gather, novembre 2026). Imposte escluse."
+      }
+    },
+    {
+      "title": "Dove Gather mostra dei limiti",
+      "items": [
+        {
+          "title": "Nessun piano gratuito",
+          "body": "Dal 15 settembre 2025 ogni ufficio paga dopo i 30 giorni di prova. I piccoli team che usavano Gather gratis hanno dovuto iniziare a pagare o cambiare strumento."
+        },
+        {
+          "title": "Ogni membro viene conteggiato",
+          "body": "Gather fa pagare per chiunque abbia un account nell'ufficio, che entri ogni giorno o una volta al mese."
+        },
+        {
+          "title": "Le ore per gli ospiti si esauriscono",
+          "body": "Gli ospiti non pagano, ma ogni ufficio ha 30 ore ospite al mese, o 3 per ogni membro oltre i 10. Un team che accoglie clienti ogni giorno può superare facilmente il limite."
+        },
+        {
+          "title": "Migrazione dalla versione originale di Gather",
+          "body": "Gli uffici sulla versione originale continuano a funzionare, allo stesso prezzo per persona online contemporaneamente. Passare a Gather 2.0 richiede di creare un nuovo ufficio in Gather Studio."
+        },
+        {
+          "title": "Più di quanto serva a molti team",
+          "body": "La personalizzazione dell'ufficio, le registrazioni e le note IA costituiscono gran parte del costo del piano. Un team che desidera solo vedere chi c'è e parlare finisce per pagarli comunque."
+        }
+      ]
+    },
+    {
+      "title": "Gather esiste ancora?",
+      "body": [
+        "Sì. A [febbraio 2026 Gather ha annunciato](https://www.gather.town/blog/new-chapter) la trasformazione in un'azienda indipendente senza fondi di venture capital, definendo il prodotto per il lavoro da remoto redditizio e in crescita, mentre il team al lavoro sui progetti di IA si è unito a Figma. Gather ha confermato ai clienti che per loro non cambia nulla."
+      ]
+    },
+    {
+      "title": "Quindi, conviene?",
+      "items": [
+        {
+          "title": "Conviene se vuoi progettare il tuo ufficio",
+          "body": "Gather Studio è il suo punto di forza. Se il tuo team desidera uno spazio su misura, con stanze e aree disposte secondo i vostri ritmi di lavoro, Gather è difficile da battere."
+        },
+        {
+          "title": "Conviene se pagheresti a parte registrazioni e note IA",
+          "body": "Se acquisteresti comunque un software per registrare riunioni o prendere note, averlo integrato nell'ufficio rende il prezzo più facile da giustificare."
+        },
+        {
+          "title": "Conviene se hai bisogno di SOC 2 o single sign-on",
+          "body": "Gather offre la certificazione e il piano enterprise che molti prodotti più piccoli non hanno."
+        },
+        {
+          "title": "Cerca altrove se ti servono soprattutto presenza e conversazioni veloci",
+          "body": "Se il tuo team vuole [vedere chi c'è](/team-presence) e parlare senza fissare una chiamata, diverse [alternative a Gather](/gather-alternative) offrono questo a un costo inferiore, alcune con un piano gratuito."
+        },
+        {
+          "title": "Cerca altrove se parte del team entra di rado",
+          "body": "La tariffazione per membro fa pagare anche gli utenti occasionali. Un prodotto che fattura per membro attivo, o a prezzo unico per team, costa meno per un team di questo tipo."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Dove si colloca TinyFloor",
+    "body": "TinyFloor mantiene il cuore di ciò che fa Gather: un ufficio nel browser dove vedi chi c'è, ti avvicini a un collega e premi Parla, ti ritrovi in una sala riunioni, scambi messaggi in chat e condividi lo schermo. Costa $29 al mese per tutto il team, un solo prezzo indipendentemente da quante persone inviti, e ogni nuovo ufficio inizia con 14 giorni di Pro gratis. Non ha editor dell'ufficio, registrazioni, note IA, app per telefono né single sign-on: se questi sono i motivi per cui sceglieresti Gather, Gather fa più al caso tuo."
+  },
+  "faq": [
+    {
+      "q": "Gather conviene?",
+      "a": "Per un team che vuole progettare il proprio ufficio, desidera registrazioni e note IA o richiede SOC 2 e single sign-on, sì. Per un team che vuole soprattutto vedere chi c'è e parlare, da 12 $ a 15 $ per membro al mese coprono molte funzioni che non utilizzerà."
+    },
+    {
+      "q": "Gather è gratis?",
+      "a": "No. Gather ha chiuso il piano gratuito il 15 settembre 2025. Offre una prova gratuita di 30 giorni, poi costa 12 $ per membro al mese con fatturazione annuale o 15 $ mensile."
+    },
+    {
+      "q": "A cosa serve Gather?",
+      "a": "Gather, su gather.town, è un ufficio virtuale per team da remoto: avatar su una mappa condivisa in cui parli avvicinandoti alle persone, con sale riunioni, chat e stati. Altri prodotti condividono il nome, come Gather AI, che monitora l'inventario nei magazzini."
+    },
+    {
+      "q": "Gather è sicuro per il lavoro?",
+      "a": "Gather ha la certificazione SOC 2 Type II e offre un accordo sul trattamento dei dati per i team soggetti al GDPR. Il microfono è disattivato per impostazione predefinita e il single sign-on è disponibile sul piano Custom."
+    },
+    {
+      "q": "Gather sta per chiudere?",
+      "a": "No. A febbraio 2026 Gather è diventata un'azienda indipendente che definisce redditizia, e il suo team di IA si è unito a Figma. Gather ha dichiarato che per i clienti non è cambiato nulla."
+    },
+    {
+      "q": "Quali sono le migliori alternative a Gather?",
+      "a": "SoWork, Kumospace, Roam, WorkAdventure e TinyFloor sono le più diffuse. La nostra pagina sulle [alternative a Gather](/gather-alternative) le confronta con i prezzi per il tuo team."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Gather pricing",
+      "url": "https://www.gather.town/pricing",
+      "note": "Essential a 12 $ per membro al mese con fatturazione annuale, 15 $ mensile; prova gratuita di 30 giorni."
+    },
+    {
+      "title": "Gather help center, Understanding Gather's pricing changes (2025)",
+      "url": "https://support.gather.town/articles/2500085119-understanding-gather-s-pricing-changes-2025",
+      "note": "La fine del piano gratuito il 15 settembre 2025 e il passaggio al prezzo per membro."
+    },
+    {
+      "title": "Gather features",
+      "url": "https://www.gather.town/features",
+      "note": "Gather Studio, microfono disattivato per impostazione predefinita, vista semplificata e modalità mini, integrazioni."
+    },
+    {
+      "title": "Gather download",
+      "url": "https://www.gather.town/download",
+      "note": "App desktop per macOS e Windows, app iOS, Android presto disponibile."
+    },
+    {
+      "title": "Gather security",
+      "url": "https://www.gather.town/security",
+      "note": "SOC 2 Type II, accordo sul trattamento dei dati con clausole contrattuali standard."
+    },
+    {
+      "title": "Gather, A new chapter (February 2026)",
+      "url": "https://www.gather.town/blog/new-chapter",
+      "note": "Lo spin-off come azienda indipendente e il team di IA che si unisce a Figma."
+    }
+  ]
+}

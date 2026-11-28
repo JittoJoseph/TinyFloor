@@ -1,0 +1,21 @@
+{
+  "label": "博客",
+  "meta": {
+    "title": "博客：用数据解答远程团队的常见问题",
+    "description": "远程团队在选择协作方式前的常见疑问。TinyFloor 团队用具体数据与清晰来源为您解答。"
+  },
+  "title": "远程团队关心的那些问题，<em>用数据解答。</em>",
+  "body": "远程团队在选择协作方式时关心的成本、对比与研究，每篇均附有明确来源。",
+  "categories": {
+    "costs": "成本",
+    "comparisons": "对比",
+    "remoteWork": "远程办公"
+  },
+  "latest": "最新",
+  "takeaways": "核心要点",
+  "sources": "数据来源",
+  "related": "相关文章",
+  "guides": "同主题指南",
+  "fromBlog": "来自博客",
+  "all": "全部文章"
+}

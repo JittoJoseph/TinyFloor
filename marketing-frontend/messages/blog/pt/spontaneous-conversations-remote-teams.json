@@ -1,0 +1,193 @@
+{
+  "label": "Conversas informais em equipes remotas",
+  "meta": {
+    "title": "Conversas informais no home office: pesquisas e práticas",
+    "description": "O que equipes remotas perdem quando as conversas espontâneas param, segundo estudos com 61.182 funcionários da Microsoft, engenheiros de software e 51 consultores, e seis formas de lidar com isso."
+  },
+  "coverAlt": "Dois balões de conversa creme, um grande e um pequeno, ao lado de uma caneca amarela, sobre fundo coral.",
+  "title": "Como manter as <em>conversas informais no home office?</em>",
+  "intro": "Uma equipe remota raramente perde suas reuniões. Perde as conversas que ninguém agendou: uma pergunta rápida para quem está na outra mesa, uma decisão que alguém ouviu, um pedido para olhar sua tela por um minuto. As pesquisas mostram que essa perda existe, afeta mais quem acabou de chegar e leva empresas remotas a criar essas oportunidades de propósito. Veja o que os estudos encontraram, o que as equipes fazem e como escolher. Nós fazemos o TinyFloor, um escritório virtual para equipes remotas, então não somos neutros; nos limitamos ao que as fontes dizem.",
+  "takeaways": [
+    "Quando a Microsoft passou ao trabalho totalmente remoto em 2020, a colaboração entre seus 61.182 funcionários nos EUA ficou mais estática e isolada entre grupos, e a comunicação passou de conversas ao vivo para a escrita.",
+    "Engenheiros de software que se sentavam perto dos colegas recebiam 18,3% mais feedback sobre o código; a maior parte do ganho ficou com os engenheiros mais novos na empresa e mais jovens.",
+    "Em entrevistas com 51 consultores que passaram ao trabalho remoto, as perguntas rápidas e o feedback informal foram os primeiros a desaparecer, e os encontros sociais agendados pareciam artificiais.",
+    "25% dos funcionários totalmente remotos se sentiram solitários durante boa parte do dia anterior, contra 16% dos que trabalhavam apenas presencialmente.",
+    "O GitLab, uma empresa totalmente remota, pede que cada pessoa contratada agende pelo menos cinco conversas para um café e organiza a comunicação informal de propósito."
+  ],
+  "sections": [
+    {
+      "title": "O que as equipes remotas perdem?",
+      "body": [
+        "O maior estudo é da própria Microsoft. [Pesquisadores usaram e-mails, calendários, mensagens e chamadas de 61.182 funcionários da Microsoft nos EUA](https://www.nature.com/articles/s41562-021-01196-4) nos primeiros seis meses de 2020, quando toda a empresa passou ao trabalho remoto. A rede de colaboração ficou mais estática e isolada entre grupos, com menos conexões entre áreas da empresa, e a comunicação passou da conversa ao vivo para a escrita. Os autores sugerem que isso pode dificultar a circulação de informações novas pela empresa.",
+        "Estar perto dos colegas também muda o quanto as pessoas aprendem umas com as outras. [Um estudo com engenheiros de software de uma empresa da Fortune 500, de 2019 a 2024](https://www.nber.org/papers/w31880), usou o fechamento dos escritórios em 2020 e as exigências posteriores de retorno presencial para comparar equipes que se sentavam juntas com equipes que já trabalhavam separadas. Sentar perto dos colegas aumentou em 18,3% o feedback que os engenheiros recebiam sobre o código e melhorou sua qualidade. O ganho ficou principalmente com os engenheiros com menos tempo de empresa e mais jovens. Também houve um custo: os engenheiros experientes escreveram menos código quando se sentavam perto dos colegas.",
+        "Quando perguntadas diretamente, as pessoas descrevem a mesma coisa. Em [entrevistas com 51 profissionais do conhecimento de uma empresa de serviços profissionais](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/) durante o isolamento de 2020, as trocas informais foram as primeiras a desaparecer: a pergunta rápida feita diante da equipe, o feedback dado ao sair de uma reunião. Como uma pessoa explicou, não dá para simplesmente chamar duas pessoas e discutir algo; é preciso marcar um horário. Gestores perceberam que suas equipes tinham parado de fazer perguntas que fariam pessoalmente."
+      ]
+    },
+    {
+      "title": "É só uma questão de se sentir conectado?",
+      "body": [
+        "Em parte. No [State of the Global Workplace 2024, da Gallup](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx), 25% dos funcionários totalmente remotos disseram ter sentido solidão durante boa parte do dia anterior, contra 21% dos híbridos e 16% dos que trabalhavam apenas presencialmente. Na [pesquisa de 2023 da Buffer com 3.000 profissionais remotos](https://buffer.com/state-of-remote-work/2023), a solidão foi a segunda dificuldade mais comum, citada por 23%; ainda assim, 75% disseram se sentir conectados aos colegas.",
+        "Mas os estudos acima tratam principalmente do trabalho, não do estado de ânimo: perguntas que não são feitas, feedback que não é dado, decisões que só parte da equipe fica sabendo. Por isso, as soluções que duram são as que facilitam uma conversa curta de trabalho, além de reservar tempo para socializar."
+      ]
+    },
+    {
+      "title": "Por que agendar não resolve tudo",
+      "body": [
+        "A primeira solução de muitas equipes é reservar um horário: uma chamada social semanal, um happy hour virtual, um café recorrente. Isso ajuda os relacionamentos. Mas, nas entrevistas com consultores, as pessoas disseram que os encontros sociais agendados podiam parecer artificiais e que as conversas informais de trabalho continuavam sem acontecer, porque uma pergunta de 30 segundos não justifica uma reunião.",
+        "O que falta é um jeito simples de começar uma conversa curta na hora em que ela é necessária, sem link, convite ou justificativa. As equipes que resolveram isso deram às pessoas um lugar fixo onde podiam ser encontradas e permissão para interromper. No mesmo estudo, a gestora de uma das pessoas havia dito que ela podia ligar a qualquer momento entre 9h e 17h."
+      ]
+    },
+    {
+      "title": "Seis formas de manter conversas informais no home office",
+      "items": [
+        {
+          "title": "Organizar a comunicação informal de propósito",
+          "body": "[O GitLab, que não tem escritórios](https://handbook.gitlab.com/handbook/company/culture/all-remote/informal-communication/), trata a comunicação informal como algo a organizar, em vez de deixar ao acaso: cada nova pessoa contratada agenda pelo menos cinco conversas para um café, e a empresa lista mais de 15 formas de conexão, de chamadas sociais a sessões de perguntas abertas com líderes."
+        },
+        {
+          "title": "Um canal para perguntas rápidas",
+          "body": "Um canal de chat onde perguntas ainda pouco elaboradas são bem-vindas e respondidas abertamente, para que a resposta ajude a próxima pessoa também. Não custa nada e funciona entre fusos horários. Não resolve as dúvidas que precisam de um minuto de conversa."
+        },
+        {
+          "title": "Chamadas abertas para trabalhar juntos",
+          "body": "Uma sala de voz ou vídeo que fica aberta por algumas horas, onde as pessoas trabalham em silêncio e qualquer uma pode perguntar algo em voz alta. O GitLab inclui essas chamadas entre suas práticas informais. A dificuldade é que as pessoas precisam continuar entrando, ou a sala esvazia."
+        },
+        {
+          "title": "Duplas sorteadas",
+          "body": "Um bot ou uma escala que reúne duas pessoas de equipes diferentes para uma conversa curta a cada uma ou duas semanas; o GitLab usa esse recurso. Isso cria os relacionamentos que facilitam perguntar, mas não está disponível na hora em que surge uma dúvida."
+        },
+        {
+          "title": "Mostrar quem pode ser interrompido",
+          "body": "Um status atualizado que diga claramente quando pode ou não interromper. A maioria dos apps de chat tem esse recurso; o que importa é a equipe combinar o significado de cada status e cada pessoa definir o seu."
+        },
+        {
+          "title": "Um escritório virtual para equipes remotas",
+          "body": "Um andar compartilhado onde todos da equipe aparecem enquanto trabalham, para você ver quem está por perto e começar uma conversa chegando perto, sem link. É o mais próximo de se sentar junto, e só funciona se as pessoas deixarem o escritório aberto e ninguém o usar para vigiá-las. Nossa [comparação de softwares de escritório virtual](/guides/best-virtual-office-software) apresenta as opções e os preços."
+        }
+      ]
+    },
+    {
+      "title": "Por onde começar",
+      "table": {
+        "head": [
+          "Abordagem",
+          "Esforço",
+          "Melhor para",
+          "Atenção a"
+        ],
+        "rows": [
+          [
+            "Canal para perguntas rápidas",
+            "Minutos para configurar",
+            "Perguntas que podem esperar uma hora",
+            "Dúvidas que precisam de uma conversa"
+          ],
+          [
+            "Chamadas abertas para trabalhar juntos",
+            "Um link fixo",
+            "Equipes em um ou dois fusos horários",
+            "Salas que esvaziam depois de uma semana"
+          ],
+          [
+            "Duplas sorteadas",
+            "Um bot no app de chat",
+            "Relacionamentos entre equipes",
+            "Não estar disponível quando surge uma dúvida"
+          ],
+          [
+            "Status claros",
+            "Um acordo da equipe",
+            "Menos receio de interromper",
+            "Status que ninguém atualiza"
+          ],
+          [
+            "Escritório virtual",
+            "Uma nova ferramenta para adotar",
+            "Equipes que trabalham juntas todos os dias",
+            "Sensação de vigilância, se for mal usado"
+          ]
+        ],
+        "note": "A maioria das equipes combina duas opções: um canal para o que pode esperar e um lugar para conversar ao vivo sobre o que não pode."
+      }
+    },
+    {
+      "title": "Como evitar a sensação de vigilância",
+      "items": [
+        {
+          "title": "Ofereça um lugar sem exigir presença",
+          "body": "Ninguém deve precisar estar na sala aberta ou no escritório virtual para provar que está trabalhando. Se for útil, as pessoas entram."
+        },
+        {
+          "title": "Não monitore atividade",
+          "body": "Sem contadores de inatividade nem relatórios de horas online. Quem lê em outra aba continua trabalhando."
+        },
+        {
+          "title": "Câmeras desligadas por padrão",
+          "body": "Voz basta para uma pergunta rápida. Use vídeo quando ajudar."
+        },
+        {
+          "title": "Deixe as pessoas recusarem",
+          "body": "Um pedido para conversar que pode ser recusado ou respondido depois mantém a educação nas interrupções. Uma chamada que toca até alguém atender não faz isso."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Onde o TinyFloor se encaixa",
+    "body": "O TinyFloor é um escritório virtual no navegador para uma equipe que trabalha junta todos os dias. Todos ficam no mesmo andar enquanto trabalham, para você ver quem está por perto; chegue perto de um colega e pressione Conversar, e ele pode aceitar ou responder depois. O TinyFloor nunca marca as pessoas como ausentes porque a aba está em segundo plano, e as chamadas nunca são gravadas. O Pro custa US$ 29 por mês para toda a equipe, e todo escritório novo começa com 14 dias de Pro grátis."
+  },
+  "faq": [
+    {
+      "q": "Por que as equipes remotas perdem as conversas informais?",
+      "a": "Porque começar uma conversa remotamente exige um link, um convite ou uma justificativa, e uma pergunta de 30 segundos não justifica nada disso. Estudos com funcionários da Microsoft e consultores em 2020 mostraram que o trabalho remoto deslocou a comunicação ao vivo para a escrita, e que as perguntas rápidas e o feedback informal foram os primeiros a desaparecer."
+    },
+    {
+      "q": "O trabalho remoto prejudica a colaboração?",
+      "a": "Ele muda a colaboração. Quando a Microsoft passou ao trabalho totalmente remoto, a colaboração ficou mais isolada entre grupos, com menos conexões entre eles. Um estudo com engenheiros de software mostrou que sentar perto dos colegas aumentou em 18,3% o feedback sobre o código, principalmente para engenheiros com menos tempo de empresa, enquanto os experientes escreveram menos código."
+    },
+    {
+      "q": "Como recriar as conversas do cafezinho no home office?",
+      "a": "Dê às pessoas um jeito simples de começar uma conversa curta quando precisarem: um canal para perguntas rápidas, uma chamada aberta para trabalhar juntos, duplas sorteadas para um café, status claros ou um escritório virtual onde seja possível ver quem está por perto e chegar para conversar. A maioria das equipes combina um canal escrito com um lugar para conversar ao vivo."
+    },
+    {
+      "q": "Chamadas sociais agendadas são suficientes?",
+      "a": "Elas ajudam os relacionamentos, mas não substituem as conversas rápidas de trabalho. Pessoas entrevistadas após a mudança para o trabalho remoto disseram que os encontros sociais agendados podiam parecer artificiais, e as perguntas de 30 segundos continuavam sem ser feitas."
+    },
+    {
+      "q": "Como evitar que uma sala sempre aberta pareça vigilância?",
+      "a": "Torne o uso opcional, não monitore atividade nem horas online, deixe as câmeras desligadas por padrão e permita recusar ou adiar um pedido para conversar."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Yang et al., The effects of remote work on collaboration among information workers, Nature Human Behaviour (2021)",
+      "url": "https://www.nature.com/articles/s41562-021-01196-4",
+      "note": "61.182 funcionários da Microsoft nos EUA, primeiro semestre de 2020: colaboração mais estática e isolada entre grupos, menos comunicação ao vivo."
+    },
+    {
+      "title": "Emanuel, Harrington and Pallais, The Power of Proximity to Coworkers, NBER Working Paper 31880 (revised June 2026)",
+      "url": "https://www.nber.org/papers/w31880",
+      "note": "Engenheiros de software de uma empresa da Fortune 500, de 2019 a 2024: 18,3% mais feedback sobre o código ao sentar perto dos colegas."
+    },
+    {
+      "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/",
+      "note": "Entrevistas com 51 profissionais do conhecimento de uma empresa de serviços profissionais, de abril a junho de 2020."
+    },
+    {
+      "title": "Gallup, 1 in 5 Employees Worldwide Feel Lonely",
+      "url": "https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx",
+      "note": "State of the Global Workplace 2024: solidão por modalidade de trabalho."
+    },
+    {
+      "title": "Buffer, 2023 State of Remote Work",
+      "url": "https://buffer.com/state-of-remote-work/2023",
+      "note": "Pesquisa com 3.000 profissionais remotos."
+    },
+    {
+      "title": "GitLab Handbook, Informal Communication in an all-remote environment",
+      "url": "https://handbook.gitlab.com/handbook/company/culture/all-remote/informal-communication/",
+      "note": "Conversas para um café, chamadas para trabalhar juntos, chamadas sociais e mais de 15 formas de organizar a comunicação informal no GitLab."
+    }
+  ]
+}

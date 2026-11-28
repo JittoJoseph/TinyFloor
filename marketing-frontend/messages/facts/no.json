@@ -1,0 +1,120 @@
+{
+  "title": "Fakta om TinyFloor",
+  "description": "Fakta om TinyFloor samlet på ett sted: hva det er, hvem som lager det, hva det koster, hvor det kjører, hva det inneholder og hva det ikke gjør. For alle som skriver om TinyFloor.",
+  "intro": "Denne siden er referansen for fakta om TinyFloor, for alle som skriver om eller sammenligner det. Hvis en annen kilde er uenig, er det denne siden som gjelder. Prisene er i amerikanske dollar, før mva.",
+  "sections": [
+    {
+      "id": "what",
+      "title": "Hva TinyFloor er",
+      "paragraphs": [
+        "TinyFloor er et virtuelt kontor for team som jobber eksternt. Alle har en figur på en felles etasje i nettleseren, så du kan se hvem som er her og hva de gjør, gå bort til en kollega og prate, og møtes i et møterom, uten å planlegge en samtale.",
+        "Det er laget for ett team som jobber sammen hver dag: programvareteam, byråer, studioer og oppstartsbedrifter, ofte de som har en Discord-talekanal åpen hele dagen eller veksler mellom Slack-huddles og møtelenker."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "title": "Kjappe fakta",
+      "items": [
+        "Navn: TinyFloor. Nettsted: [tinyfloor.com](/).",
+        "Laget av: TinyFloor, et lite selskap grunnlagt av Jitto Joseph, bygget åpent på GitHub siden november 2025.",
+        "Kategori: programvare for virtuelt kontor, også kalt et virtuelt arbeidsområde eller verktøy for romlig samarbeid.",
+        "Hvor det kjører: i nettleseren på datamaskin og mobil, uten noe å installere. Det kan installeres som en app fra nettleseren.",
+        "Språk: 18.",
+        "Kildekode: åpen kildekode under AGPL-3.0, på [GitHub](https://github.com/JittoJoseph/TinyFloor).",
+        "Kontakt: support@tinyfloor.com."
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Planer og priser",
+      "items": [
+        "Free: opptil 3 personer, med alle funksjoner og de siste 90 dagene med chathistorikk.",
+        "Pro: $29 i måneden for hele kontoret, én pris uansett hvor mange du inviterer, ikke en pris per person. Et kontor er for ett team, opptil 15 personer.",
+        "Grunnleggerpris: kontorer som abonnerer før 1. mars 2027 beholder $29 i måneden så lenge abonnementet løper. Fra den datoen koster Pro $39 i måneden for nye abonnementer.",
+        "Prøveperiode: hvert nytt kontor starter med 14 dager Pro for hele teamet, uten behov for kort.",
+        "Fakturering: kun månedlig, si opp når som helst; full refusjon av enhver betaling innen 14 dager. Creem, forhandleren vår, legger til mva. eller salgsskatt ved betaling.",
+        "Gruppemøter og samtaler mellom to personer telles ikke. Detaljene finner du på [prissiden](/pricing)."
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Hva som finnes i hvert kontor",
+      "items": [
+        "En felles etasje dere går rundt på, med en pult for hver person som de kan ta og pynte, og figurer folk kler opp selv.",
+        "Snakk: gå bort til en kollega og trykk Snakk. De ser at du vil prate, og når de godtar, starter en samtale mellom to personer med lyd, vanligvis på under et sekund. Et vink eller et prikk fanger oppmerksomheten til noen uten en samtale.",
+        "Møter: tre eller flere møtes i møterommet, med video og skjermdeling.",
+        "Skjermdeling i samtaler og møter i opptil 1080p, tilpasset for skarp tekst.",
+        "Teamchat med kanaler, direktemeldinger og søk.",
+        "Tilstedeværelse: hvem som er på etasjen, statusen deres og et kort notat. Med Google Calendar tilkoblet ser kollegene «I et møte til…» mens du er opptatt.",
+        "En tavle, støyfjerning og musikk fra Spotify som vises på kortet ditt."
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "Hva det ikke gjør",
+      "items": [
+        "Ingen opptak eller transkripsjoner av samtaler og møter, og ingen AI-møtenotater.",
+        "Ingen enkel pålogging (SAML eller SCIM). Folk logger inn med Google eller en engangskode sendt på e-post; det finnes ingen passord.",
+        "Ingen skrivebords- eller mobilapp å laste ned; det kjører i nettleseren.",
+        "Ingen kontoreditor: etasjen er ferdiglaget.",
+        "Ikke for arrangementer med hundrevis av mennesker, eller for et helt selskap i ett kontor: et større selskap gir hvert team sitt eget kontor.",
+        "Det markerer aldri folk som borte fordi fanen er i bakgrunnen, og det sporer ikke arbeidstid."
+      ]
+    },
+    {
+      "id": "how",
+      "title": "Hvordan det er bygget",
+      "items": [
+        "Kjører på Cloudflares nettverk. Hvert kontors etasje og chat kjører for seg selv, så et travelt kontor gjør ikke et annet tregere.",
+        "Samtaler går gjennom Cloudflares relé (TURN), så de kobler til bak brannmurer og VPN på kontoret; møter går gjennom Cloudflares medieservere.",
+        "Samtaler og møter tas aldri opp, og lyd behandles aldri på en server.",
+        "Mer, med tallene: [hvordan TinyFloor fungerer](/how-it-works). Hva som lagres og hvorfor: [personvernerklæringen](/privacy)."
+      ]
+    },
+    {
+      "id": "development",
+      "title": "Hvor ofte det endrer seg",
+      "paragraphs": [
+        "TinyFloor lanserer oppdateringer til produksjon nesten hver dag: 84 lanseringer i oktober 2026, 41 lanseringer i september 2026. Hva som er endret, sortert etter dato, finner du i [endringsloggen](/changelog)."
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "title": "TinyFloor andre steder",
+      "items": [
+        "[GitHub](https://github.com/JittoJoseph/TinyFloor), [LinkedIn](https://www.linkedin.com/company/tinyfloor), [X](https://x.com/tinyflooroffice).",
+        "[G2](https://www.g2.com/products/tinyfloor/reviews), [AlternativeTo](https://alternativeto.net/software/tinyfloor/about/), [SaaSHub](https://www.saashub.com/tinyfloor), [Crunchbase](https://www.crunchbase.com/organization/tinyfloor), [Wikidata](https://www.wikidata.org/wiki/Q142181160)."
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "Spørsmål",
+      "faq": [
+        {
+          "q": "Hva er TinyFloor?",
+          "a": "Et virtuelt kontor for team som jobber eksternt, i nettleseren: alle har en figur på en felles etasje, så du kan se hvem som er her, gå bort til noen og prate, og møtes uten å planlegge en samtale."
+        },
+        {
+          "q": "Hva koster TinyFloor?",
+          "a": "Gratis for opptil 3 personer. Pro koster $29 i måneden for hele teamet, ikke per person, og hvert nytt kontor starter med 14 dager Pro gratis, uten behov for kort."
+        },
+        {
+          "q": "Må TinyFloor lastes ned?",
+          "a": "Nei. Det kjører i nettleseren på datamaskin og mobil; du kan installere det som en app fra nettleseren hvis du vil ha et eget vindu."
+        },
+        {
+          "q": "Tar TinyFloor opp samtaler eller har AI-notater?",
+          "a": "Nei. Samtaler og møter tas aldri opp, og det finnes ingen transkripsjoner eller AI-møtenotater."
+        },
+        {
+          "q": "Er TinyFloor åpen kildekode?",
+          "a": "Ja. Hele appen ligger på GitHub under AGPL-3.0-lisensen."
+        },
+        {
+          "q": "Hvem lager TinyFloor?",
+          "a": "TinyFloor, et lite selskap grunnlagt av Jitto Joseph. Det bygges åpent på GitHub og lanserer oppdateringer til produksjon nesten hver dag."
+        }
+      ]
+    }
+  ]
+}

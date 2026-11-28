@@ -5284,5 +5284,813 @@
         "a": "Kaksivaihtoehtoiset kysymykset, kuten ”kumpi vai kampi” ja ”kumman valitsisit”, toimivat hyvin kyselyinä. Avoimet kysymykset saavat parempia vastauksia chatissa."
       }
     ]
+  },
+  "roamPricing": {
+    "label": "Roamin hinta",
+    "meta": {
+      "title": "Roamin hinta 2026: 19,50 $ aktiiviselta jäseneltä, tiimien hinnat",
+      "description": "Roam maksaa 19,50 $ aktiiviselta jäseneltä kuukaudessa vuonna 2026 kuukausilaskutuksella ja 20,88 $ vuodesta 2027 ilman ilmaispakettia. Mitä se tekee 4–50 hengen tiimeille ja mitä sama tiimi maksaa muualla."
+    },
+    "title": "Paljonko <em>Roam maksaa?</em>",
+    "intro": "Roam myy yhtä pakettia: kaikki ominaisuudet yhteen hintaan aktiiviselta jäseneltä kuukausilaskutuksella. Tämä opas laskee, mitä se tekee sinun tiimisi koolla, ketkä lasketaan mukaan laskuun, mikä muuttuu vuonna 2027 ja mitä sama tiimi maksaa muissa virtuaalitoimistoissa. Kaikki Roamin luvut ovat Roamin omalta hintasivulta marraskuulta 2026; hinnat Yhdysvaltain dollareina ilman veroja.",
+    "sections": [
+      {
+        "title": "Roamin paketti",
+        "body": [
+          "Roamilla ei ole useita pakettitasoja. Yksi kokonaisuus sisältää kaikki kymmenen tuotetta, ja jokainen tiimi maksaa saman hinnan aktiiviselta jäseneltä."
+        ],
+        "items": [
+          {
+            "title": "Hinta",
+            "body": "19,50 $ aktiiviselta jäseneltä kuukaudessa vuonna 2026 kuukausilaskutuksella. Vuosipakettia, vuosittaista sitoutumista tai ennakkomaksun alennusta ei ole."
+          },
+          {
+            "title": "Mitä paketti sisältää",
+            "body": "Virtuaalitoimiston pikakokouksineen, Theater-tilan yhteisesityksiin, AInbox-viestit, Lobbyn tapaamisten varaamiseen yrityksen ulkopuolisten kanssa, Magicast-näytöntallennuksen, tekoälypohjaiset Magic Minutes -kokousmuistiinpanot, On-It-tekoälyavustajan, On-Air-tapahtumat, W!N-tunnustukset ja -palkinnot sekä mobiilisovelluksen."
+          },
+          {
+            "title": "Ilmainen kokeilu",
+            "body": "14 päivää ilman luottokorttia. Jokainen myöhemmin lisätty henkilö saa myös 14 päivää ilmaiseksi ennen kuin hänet lasketaan mukaan laskuun."
+          },
+          {
+            "title": "Maakohtaiset hinnat",
+            "body": "Roam määrittää hinnat maittain. Esimerkiksi Intiassa rupioilla maksavat yritykset näkevät hinnaksi ₹888 aktiiviselta jäseneltä kuukaudessa. Tarkista sivu siitä maasta, josta sinua laskutetaan."
+          }
+        ]
+      },
+      {
+        "title": "Mitä Roam maksaa tiimin koon mukaan",
+        "body": [
+          "Roam laskee aktiivisia jäseniä: ihmisiä, jotka käyttävät Roamia kyseisen kuukauden aikana. Tässä on lasku, kun kaikki tiimissä käyttävät sitä."
+        ],
+        "table": {
+          "head": [
+            "Aktiiviset jäsenet",
+            "2026, kuukaudessa",
+            "2027, kuukaudessa",
+            "Vuodessa vuoden 2026 hinnalla"
+          ],
+          "rows": [
+            [
+              "4",
+              "78 $",
+              "83,52 $",
+              "936 $"
+            ],
+            [
+              "6",
+              "117 $",
+              "125,28 $",
+              "1 404 $"
+            ],
+            [
+              "8",
+              "156 $",
+              "167,04 $",
+              "1 872 $"
+            ],
+            [
+              "10",
+              "195 $",
+              "208,80 $",
+              "2 340 $"
+            ],
+            [
+              "12",
+              "234 $",
+              "250,56 $",
+              "2 808 $"
+            ],
+            [
+              "15",
+              "292,50 $",
+              "313,20 $",
+              "3 510 $"
+            ],
+            [
+              "25",
+              "487,50 $",
+              "522 $",
+              "5 850 $"
+            ],
+            [
+              "50",
+              "975 $",
+              "1 044 $",
+              "11 700 $"
+            ]
+          ],
+          "note": "19,50 $ aktiiviselta jäseneltä kuukaudessa vuonna 2026 ja 20,88 $ vuonna 2027, kuukausilaskutuksella (Roamin hintasivu, marraskuu 2026). Ilman veroja."
+        }
+      },
+      {
+        "title": "Kuka lasketaan aktiiviseksi jäseneksi",
+        "items": [
+          {
+            "title": "Ihmiset, jotka käyttävät Roamia kyseisenä kuukautena",
+            "body": "Roam veloittaa niistä jäsenistä, jotka käyttävät palvelua kuukauden aikana. Koko kuukauden lomalla ollutta henkilöä ei laskuteta; kerran palvelun avaava laskutetaan."
+          },
+          {
+            "title": "Vieraat ovat ilmaisia",
+            "body": "Asiakkaat, potentiaaliset asiakkaat ja kumppanit, jotka liittyvät vierastunnuksella, eivät kerrytä aktiivisten jäsenten määrää."
+          },
+          {
+            "title": "Uudet ihmiset aloittavat kokeilulla",
+            "body": "Jokainen tiimiin lisätty henkilö saa 14 päivää ilmaiseksi ennen kuin hän näkyy laskussa."
+          }
+        ]
+      },
+      {
+        "title": "Mikä muuttuu vuonna 2027",
+        "body": [
+          "Roam ilmoittaa ensi vuoden hinnan hintasivullaan: 20,88 $ aktiiviselta jäseneltä kuukaudessa vuodesta 2027 alkaen, mikä on noin 7 % enemmän kuin vuonna 2026.",
+          "10 hengen tiimille se tarkoittaa 208,80 $ kuukaudessa 195 $:n sijaan, eli 165,60 $ enemmän vuodessa. Koska Roam laskuttaa vain kuukausittain, vuoden 2026 hintaa ei voi lukita vuosipaketilla."
+        ]
+      },
+      {
+        "title": "Laskuesimerkit",
+        "items": [
+          {
+            "title": "8 hengen tiimi, jonka kaikki jäsenet ovat paikalla joka päivä",
+            "detail": "156 $ kuukaudessa",
+            "body": "Kahdeksan aktiivista jäsentä maksaa 156 $ kuukaudessa, 1 872 $ vuodessa. Vuodesta 2027 alkaen 167,04 $ kuukaudessa."
+          },
+          {
+            "title": "12 hengen tiimi, jossa on kaksi osa-aikaista",
+            "detail": "195–234 $ kuukaudessa",
+            "body": "Kuukautena, jolloin kaksi osa-aikaista eivät avaa Roamia, tiimi maksaa 10 hengestä: 195 $. Kuukautena, jolloin kaikki avaavat sen, hinta on 234 $."
+          },
+          {
+            "title": "20 hengen tiimi, joka tapaa asiakkaita",
+            "detail": "390 $ kuukaudessa, vieraat ilmaiseksi",
+            "body": "Kaksikymmentä aktiivista jäsentä maksaa 390 $ kuukaudessa. Vieraina liittyvät asiakkaat eivät maksa mitään."
+          }
+        ]
+      },
+      {
+        "title": "Sama tiimi muualla",
+        "body": [
+          "Mitä samat tiimit maksavat kuukaudessa muissa [virtuaalitoimistoissa](/guides/best-virtual-office-software) halvimmalla sopivalla paketilla."
+        ],
+        "table": {
+          "head": [
+            "Tiimi",
+            "Roam",
+            "TinyFloor",
+            "Gather, vuosilaskutus",
+            "SoWork Basic, vuosilaskutus",
+            "Kumospace Business, vuosilaskutus"
+          ],
+          "rows": [
+            [
+              "4 henkeä",
+              "78 $",
+              "29 $",
+              "48 $",
+              "21,60 $",
+              "Ilmainen (enintään 5 jäsentä)"
+            ],
+            [
+              "8 henkeä",
+              "156 $",
+              "29 $",
+              "96 $",
+              "43,20 $",
+              "128 $"
+            ],
+            [
+              "12 henkeä",
+              "234 $",
+              "29 $",
+              "144 $",
+              "64,80 $",
+              "192 $"
+            ]
+          ],
+          "note": "Kunkin tuotteen omalta hintasivulta marraskuussa 2026, ilman veroja. Roam laskuttaa vain kuukausittain; muut näytetään vuosilaskutuksella, joka on niiden edullisin hinta. SoWorkin ilmaispaketti kattaa enintään 10 jäsentä enintään 30 minuutin äänikokouksilla. TinyFloor on ilmainen enintään 3 hengelle."
+        }
+      },
+      {
+        "title": "Milloin Roam kannattaa",
+        "items": [
+          {
+            "title": "Ostaisit muuten useita eri työkaluja",
+            "body": "Roamin vahvuus on kokonaispaketti. Jos maksaisit erikseen tekoälyn kokousmuistiinpanoista, näytöntallentimesta, tapaamisten varauskalenterista ja tiimiviestinnästä, yksi yhteishinta niistä kaikista voi tulla halvemmaksi."
+          },
+          {
+            "title": "Läsnäolo vaihtelee kuukaudesta toiseen",
+            "body": "Vain palvelua käyttäneistä maksaminen sopii tiimeille, joilla on freelancereita, kausityöntekijöitä tai pitkiä vapaita."
+          },
+          {
+            "title": "Haluat sovelluksen, joka on aina auki",
+            "body": "Roam asennetaan tietokoneelle, ja sovellukset löytyvät macOS:lle, Windowsille ja Linuxille sekä puhelimille."
+          },
+          {
+            "title": "Tarvitset SOC 2 -sertifioinnin",
+            "body": "Roamin hintasivulla mainitaan SOC 2 Type II- ja GDPR-vaatimustenmukaisuus."
+          },
+          {
+            "title": "Milloin ei",
+            "body": "Jos tiimisi tarvitsee lähinnä [nähdä, kuka on paikalla](/team-presence), jutella ja pitää kokouksia, suurin osa paketista jää käyttämättä ja maksat silti jokaisesta sovelluksen avaavasta henkilöstä."
+          }
+        ]
+      },
+      {
+        "title": "Näin tarkistimme",
+        "body": [
+          "Roamin hinnat, vuoden 2027 hinta, kokeilujakso ja aktiivisen jäsenen määrittely ovat sivulta ro.am/pricing ja sovellukset sivulta ro.am/download, luettu marraskuussa 2026. Muiden tuotteiden hinnat ovat niiden omilta hintasivuilta samassa kuussa. Kun sivulla ei mainittu jotain, jätimme sen pois arvaamisen sijaan. Hinnat muuttuvat: tarkista toimittajan sivu ennen ostamista."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor hoitaa sen toimisto-osuuden, mitä Roam tekee: näet kuka on paikalla, menet jonkun luo ja puhut, kokoonnutte kokoushuoneessa, chattailette ja jaatte näyttöä – suoraan selaimessa ilman asennettavia sovelluksia. Se maksaa 29 $ kuukaudessa koko tiimille, yksi hinta riippumatta siitä, kuinka monta kutsut, ja jokainen uusi toimisto saa 14 päivää Prota ilmaiseksi. Siinä ei ole tekoälymuistiinpanoja, tallennusta, varauskalenteria eikä tapahtumia, joten jos tiimisi käyttäisi koko Roamin pakettia, Roam sopii teille paremmin."
+    },
+    "faq": [
+      {
+        "q": "Paljonko Roam maksaa?",
+        "a": "19,50 $ aktiiviselta jäseneltä kuukaudessa vuonna 2026 kuukausilaskutuksella kaikista Roamin tuotteista. Roam on ilmoittanut hinnaksi 20,88 $ vuodelle 2027."
+      },
+      {
+        "q": "Onko Roamilla ilmaista pakettia?",
+        "a": "Ei. Roamilla on 14 päivän ilmainen kokeilu ilman luottokorttia, ja jokainen myöhemmin lisätty henkilö saa 14 päivää ilmaiseksi ennen kuin hänet lasketaan mukaan."
+      },
+      {
+        "q": "Paljonko Roam maksaa 10 hengelle?",
+        "a": "195 $ kuukaudessa, kun kaikki kymmenen käyttävät sitä kyseisenä kuukautena, eli 2 340 $ vuodessa. Vuodesta 2027 alkaen 208,80 $ kuukaudessa."
+      },
+      {
+        "q": "Mikä on aktiivinen jäsen Roamissa?",
+        "a": "Jäsen, joka käyttää Roamia kuukauden aikana. Jäsenistä, jotka eivät avaa sitä kyseisenä kuukautena, sekä vieraista ei laskuteta."
+      },
+      {
+        "q": "Onko Roamilla vuosilaskutusta tai alennuksia?",
+        "a": "Ei. Roam laskuttaa vain kuukausittain ja ilmoittaa, ettei se myönnä alennuksia."
+      },
+      {
+        "q": "Laskuttaako Roam vieraista?",
+        "a": "Ei. Ulkopuoliset henkilöt vierastunnuksilla eivät kerrytä aktiivisten jäsenten määrää."
+      },
+      {
+        "q": "Toimiiko Roam selaimessa?",
+        "a": "Roam on asennettava sovellus macOS:lle, Windowsille ja Linuxille, ja siitä on mobiilisovellus. TinyFloor toimii selaimessa ilman mitään asennettavaa."
+      },
+      {
+        "q": "Mitä muut virtuaalitoimistot maksavat?",
+        "a": "10 hengelle: Gather on 120 $ kuukaudessa vuosilaskutuksella, SoWork Basic 54 $, Kumospace Business 160 $ ja TinyFloor 29 $ koko tiimille. [Kymmenen virtuaalitoimiston vertailustamme](/guides/best-virtual-office-software) löydät loput."
+      }
+    ]
+  },
+  "kumospacePricing": {
+    "label": "Kumospacen hinta",
+    "meta": {
+      "title": "Kumospacen hinta 2026: Ilmainen 5:lle, sitten 16 $ jäseneltä",
+      "description": "Kumospace on ilmainen enintään 5 jäsenelle, sen jälkeen 16 $ jäseneltä kuukaudessa vuosilaskutuksella tai 20 $ kuukausilaskutuksella (vähintään 5 jäsentä). Mitä se maksaa 5–50 hengen tiimeille ja muualla."
+    },
+    "title": "Paljonko <em>Kumospace maksaa?</em>",
+    "intro": "Kumospacella on ilmainen paketti pienille tiimeille ja yksi maksullinen paketti, Business, joka laskutetaan jokaisesta jäsenestä. Tämä opas laskee, mitä Business tekee tiimisi koolla, mitä ilmaispaketti sisältää, miten henkilöiden lisääminen ja poistaminen laskutetaan ja mitä sama tiimi maksaa muissa virtuaalitoimistoissa. Kaikki Kumospacen luvut ovat Kumospacen omalta hintasivulta marraskuulta 2026; hinnat Yhdysvaltain dollareina ilman veroja.",
+    "sections": [
+      {
+        "title": "Kumospacen paketit",
+        "items": [
+          {
+            "title": "Free",
+            "body": "0 $ enintään 5 rekisteröidylle jäsenelle. Yksi kerros, julkinen tila, peruschat, työpöytä- ja mobiilisovellukset sekä järjesteltävät kalusteet. Enintään 50 vierasta, joista kukin voi olla tilassa enintään 4 tuntia viikossa."
+          },
+          {
+            "title": "Business",
+            "body": "16 $ jäseneltä kuukaudessa vuosilaskutuksella tai 20 $ kuukausilaskutuksella, vähintään 5 jäsenelle. Tuo chat-kanavat ja ryhmäviestit, rajattoman chathistorian, tallennuksen, käyttäjäanalytiikan, lisää kerroksia ja pääsynhallinnan, kuten salasanan tai sallittujen sähköpostien listan. 14 päivän ilmainen kokeilu."
+          },
+          {
+            "title": "Enterprise",
+            "body": "Hinnan päättää Kumospacen myyntitiimi. Tuo kertakirjautumisen, mukautetun verkkotunnuksen, käytettävyyden SLA-sopimuksen, HIPAA-yhteensopivuuden, rajattomat vieraat ja nimetyn asiakasvastaavan."
+          }
+        ]
+      },
+      {
+        "title": "Mitä Kumospace maksaa tiimin koon mukaan",
+        "body": [
+          "Kumospace laskuttaa jokaisesta jäsenestä: ihmisistä, jotka käyttävät tilaa säännöllisesti. Tässä Business tavallisille tiimikoille; enintään 5 hengen tiimi voi pysyä ilmaispaketissa."
+        ],
+        "table": {
+          "head": [
+            "Tiimi",
+            "Kuukausilaskutus",
+            "Vuosilaskutus, kuukaudessa",
+            "Vuodessa, vuosilaskutus"
+          ],
+          "rows": [
+            [
+              "5 henkeä",
+              "100 $",
+              "80 $",
+              "960 $"
+            ],
+            [
+              "6 henkeä",
+              "120 $",
+              "96 $",
+              "1 152 $"
+            ],
+            [
+              "8 henkeä",
+              "160 $",
+              "128 $",
+              "1 536 $"
+            ],
+            [
+              "10 henkeä",
+              "200 $",
+              "160 $",
+              "1 920 $"
+            ],
+            [
+              "12 henkeä",
+              "240 $",
+              "192 $",
+              "2 304 $"
+            ],
+            [
+              "15 henkeä",
+              "300 $",
+              "240 $",
+              "2 880 $"
+            ],
+            [
+              "25 henkeä",
+              "500 $",
+              "400 $",
+              "4 800 $"
+            ],
+            [
+              "50 henkeä",
+              "1 000 $",
+              "800 $",
+              "9 600 $"
+            ]
+          ],
+          "note": "Business 20 $ jäseneltä kuukaudessa tai 16 $ vuosilaskutuksella, vähintään 5 jäsentä (Kumospacen hintasivu, marraskuu 2026). Ilman veroja."
+        }
+      },
+      {
+        "title": "Mitä ilmaispaketti jättää pois",
+        "items": [
+          {
+            "title": "Yksityinen tila",
+            "body": "Ilmaiset tilat ovat julkisia. Tilan lukitseminen salasanalla tai sähköpostilistalla on Business-ominaisuus."
+          },
+          {
+            "title": "Tallennus",
+            "body": "Kokousten ja esitysten tallentaminen vaatii vähintään Business-paketin."
+          },
+          {
+            "title": "Chat-kanavat ja täysi historia",
+            "body": "Ilmaisversiossa on peruschat. Kanavat, ryhmäviestit ja rajaton chathistoria kuuluvat Businessiin."
+          },
+          {
+            "title": "Useampi kuin yksi kerros",
+            "body": "Ilmaispaketti antaa yhden kerroksen; Businessissa kerroksia on rajattomasti."
+          },
+          {
+            "title": "Analytiikka",
+            "body": "Tieto siitä, kuka tilassa kävi, missä he liikkuivat ja kuinka kauan, kuuluu Businessiin."
+          }
+        ]
+      },
+      {
+        "title": "Miten laskutus toimii",
+        "items": [
+          {
+            "title": "Jokainen jäsen on paikka",
+            "body": "Kumospace laskuttaa jäsentä kohden, Businessissa vähintään 5 jäsenestä. Vieraat eivät kerrytä jäsenmäärää, mutta kukin voi viipyä enintään 4 tuntia viikossa, ja Free- sekä Business-paketit sallivat enintään 50 vierasta."
+          },
+          {
+            "title": "Vuosilaskutus on 20 % edullisempi, maksetaan etukäteen",
+            "body": "Vuosipaketti on yksi maksu vuodeksi hintaan 16 $ jäseneltä kuukaudessa. Kuukausilaskutuksessa ei ole sitoutumisaikaa."
+          },
+          {
+            "title": "Ihmisten lisääminen laskutetaan heti",
+            "body": "Uusi jäsen veloitetaan heti suhteutettuna jäljellä olevaan laskutuskauteen."
+          },
+          {
+            "title": "Ihmisten poistamista ei hyvitetä",
+            "body": "Poistettu jäsen pysyy laskulla laskutuskauden loppuun ilman hyvitystä. Vuosipaketissa tuo kausi on koko vuosi."
+          },
+          {
+            "title": "Ei palautuksia",
+            "body": "Kumospace ei anna rahoja takaisin. 14 päivän kokeilujakso on tarkoitettu testaamiseen."
+          }
+        ]
+      },
+      {
+        "title": "Laskuesimerkit",
+        "items": [
+          {
+            "title": "5 hengen tiimi",
+            "detail": "Ilmainen, tai 80 $ kuukaudessa",
+            "body": "Viisi henkeä mahtuu ilmaispakettiin. Jos he tarvitsevat tallennusta tai yksityisen tilan, Business maksaa 80 $ kuukaudessa vuosilaskutuksella (960 $ etukäteen) tai 100 $ kuukaudessa kuukausilaskutuksella."
+          },
+          {
+            "title": "8 hengen tiimi, joka kasvaa 12 henkeen",
+            "detail": "128 $, sitten 192 $ kuukaudessa",
+            "body": "Vuosipaketissa neljä uutta jäsentä veloitetaan heti loppuvuoden ajalta, ja hinta nousee 128 $:sta 192 $:iin kuukaudessa."
+          },
+          {
+            "title": "12 hengen tiimi kuukausilaskutuksella",
+            "detail": "240 $ kuukaudessa",
+            "body": "Kaksitoista jäsentä kuukausilaskutuksella maksaa 240 $ kuukaudessa, 2 880 $ vuodessa. Vuosilaskutuksella se on 192 $ kuukaudessa, maksettuna 2 304 $ etukäteen."
+          }
+        ]
+      },
+      {
+        "title": "Sama tiimi muualla",
+        "body": [
+          "Mitä samat tiimit maksavat kuukaudessa muissa [virtuaalitoimistoissa](/guides/best-virtual-office-software) halvimmalla sopivalla paketilla."
+        ],
+        "table": {
+          "head": [
+            "Tiimi",
+            "Kumospace, vuosilaskutus",
+            "TinyFloor",
+            "Gather, vuosilaskutus",
+            "SoWork Basic, vuosilaskutus",
+            "Roam"
+          ],
+          "rows": [
+            [
+              "4 henkeä",
+              "Ilmainen (enintään 5 jäsentä)",
+              "29 $",
+              "48 $",
+              "21,60 $",
+              "78 $"
+            ],
+            [
+              "8 henkeä",
+              "128 $",
+              "29 $",
+              "96 $",
+              "43,20 $",
+              "156 $"
+            ],
+            [
+              "12 henkeä",
+              "192 $",
+              "29 $",
+              "144 $",
+              "64,80 $",
+              "234 $"
+            ]
+          ],
+          "note": "Kunkin tuotteen omalta hintasivulta marraskuussa 2026, ilman veroja. Roam laskuttaa vain kuukausittain aktiivista jäsentä kohden. SoWorkin ilmaispaketti kattaa enintään 10 jäsentä ja enintään 30 minuutin äänikokoukset. TinyFloor on ilmainen enintään 3 hengelle."
+        }
+      },
+      {
+        "title": "Milloin Kumospace kannattaa",
+        "items": [
+          {
+            "title": "Tiimisi on enintään 5 henkeä",
+            "body": "Ilmaispaketti riittää työpöytä- ja puhelinsovelluksineen, kunhan julkinen tila ja peruschat riittävät."
+          },
+          {
+            "title": "Haluat sisustaa tilan",
+            "body": "Kumospacessa voit valita lattiat, istuimet, sisustuksen ja aktiviteetteja, kuten pelejä, valkotauluja ja YouTube-näyttöjä."
+          },
+          {
+            "title": "Tarvitset sovellukset jokaiselle laitteelle",
+            "body": "Kumospacella on työpöytäsovellukset Windowsille ja macOS:lle sekä puhelinsovellukset iOS:lle ja Androidille."
+          },
+          {
+            "title": "Tarvitset HIPAA-yhteensopivuuden tai käytettävyyden SLA-sopimuksen",
+            "body": "Molemmat kuuluvat Enterprise-pakettiin."
+          },
+          {
+            "title": "Milloin ei",
+            "body": "Viiden hengen jälkeen jokainen jäsen laskutetaan joka kuukausi, vähintään viidestä hengestä. Jos tiimisi tarvitsee lähinnä [nähdä, kuka on paikalla](/team-presence), jutella ja pitää kokouksia, summa kasvaa ominaisuuksista, joita et ehkä käytä."
+          }
+        ]
+      },
+      {
+        "title": "Näin tarkistimme",
+        "body": [
+          "Kumospacen hinnat, pakettien sisällöt ja laskutussäännöt ovat sivulta kumospace.com/pricing ja sen usein kysytyistä kysymyksistä marraskuussa 2026. Muiden tuotteiden hinnat ovat niiden omilta hintasivuilta samassa kuussa. Kun sivusto ei kertonut jotain, jätimme sen pois arvaamisen sijaan. Hinnat muuttuvat: tarkista toimittajan sivu ennen ostamista."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on Kumospacen tavoin toimisto, jossa liikut ja juttelet menemällä jonkun luo, ja jossa on kokoushuone, chat ja näytön jakaminen. Se toimii selaimessa ilman asennuksia. Se maksaa $29 kuukaudessa koko tiimille, yksi hinta riippumatta siitä, kuinka monta kutsut, ja jokainen uusi toimisto saa 14 päivää Prota ilmaiseksi. Siinä ei ole tallennusta, puhelinsovellusta eikä toimistoeditoria, joten jos tarvitset niitä, Kumospace sopii paremmin."
+    },
+    "faq": [
+      {
+        "q": "Paljonko Kumospace maksaa?",
+        "a": "Business maksaa 16 $ jäseneltä kuukaudessa vuosilaskutuksella tai 20 $ kuukausilaskutuksella, vähintään 5 jäsenelle. Enterprisen hinnan päättää Kumospacen myyntitiimi."
+      },
+      {
+        "q": "Onko Kumospace ilmainen?",
+        "a": "On, enintään 5 rekisteröidylle jäsenelle, yhdellä kerroksella, julkisella tilalla ja peruschatilla. Tallennus, yksityiset tilat ja useammat kerrokset vaativat Business-paketin."
+      },
+      {
+        "q": "Paljonko Kumospace maksaa 10 hengelle?",
+        "a": "160 $ kuukaudessa vuosilaskutuksella (1 920 $ vuodessa) tai 200 $ kuukaudessa kuukausilaskutuksella."
+      },
+      {
+        "q": "Onko jäsenmäärällä alarajaa?",
+        "a": "On. Business laskutetaan vähintään 5 jäsenestä."
+      },
+      {
+        "q": "Laskuttaako Kumospace vieraista?",
+        "a": "Ei. Vieraat eivät kerrytä jäsenmäärää, mutta kukin voi olla tilassa enintään 4 tuntia viikossa, ja Free sekä Business sallivat enintään 50 vierasta."
+      },
+      {
+        "q": "Antaako Kumospace hyvityksiä?",
+        "a": "Ei. Sen sijaan se tarjoaa 14 päivän ilmaisen kokeilun. Poistetut jäsenet pysyvät laskulla laskutuskauden loppuun asti."
+      },
+      {
+        "q": "Toimiiko Kumospace selaimessa?",
+        "a": "Kyllä, ja sillä on myös työpöytäsovellukset Windowsille ja macOS:lle sekä puhelinsovellukset. TinyFloor toimii vain selaimessa."
+      },
+      {
+        "q": "Mitä muut virtuaalitoimistot maksavat?",
+        "a": "10 hengelle: Gather maksaa 120 $ kuukaudessa vuosilaskutuksella, SoWork Basic 54 $, Roam 195 $ ja TinyFloor 29 $ koko tiimille. [Kymmenen virtuaalitoimiston vertailussamme](/guides/best-virtual-office-software) ovat loput."
+      }
+    ]
+  },
+  "soworkPricing": {
+    "label": "SoWorkin hinta",
+    "meta": {
+      "title": "SoWorkin hinta 2026: ilmainen 10:lle, Basic 5,40 $, Premium 12 $",
+      "description": "SoWork on ilmainen enintään 10 jäsenelle 30 minuutin äänikokouksilla, sitten 5,40 $ tai 12 $ jäseneltä kuukaudessa vuosilaskutuksella (6 $ tai 15 $ kuukausittain). Mitä paketit sisältävät ja mitä sama tiimi maksaa muualla."
+    },
+    "title": "Paljonko <em>SoWork maksaa?</em>",
+    "intro": "SoWorkilla on ilmainen paketti ja kaksi maksullista pakettia, Basic ja Premium, joita kumpaakin laskutetaan käyttäjäpaikoittain. Tämä opas käy läpi, mitä kukin paketti sisältää, mitä se tekee sinun tiimillesi, mitä ilmaisesta paketista puuttuu ja mitä sama tiimi maksaa muissa virtuaalitoimistoissa. Kaikki SoWorkin luvut ovat SoWorkin hintasivulta ja faktasivulta marraskuulta 2026; hinnat Yhdysvaltain dollareina ilman veroja.",
+    "sections": [
+      {
+        "title": "SoWorkin paketit",
+        "items": [
+          {
+            "title": "Free",
+            "body": "0 $ enintään 10 jäsenelle. Kokoukset ovat vain ääntä ja päättyvät 30 minuutin jälkeen, chat ja toimiston muokkaus ovat rajallisia, eikä mukana ole tallenteita, analytiikkaa, tekoälyä tai vieraspasseja."
+          },
+          {
+            "title": "Basic",
+            "body": "5,40 $ jäseneltä kuukaudessa vuosilaskutuksella tai 6 $ kuukausilaskutuksella. Video ja kokoukset ilman aikarajaa, täysi tiimichat rajattomalla historialla, Google- ja Outlook-kalenterit, 2 kokoustallennetta tekoälymuistiinpanoilla viikossa ja 2 vieraspassia käyttäjäpaikkaa kohden kuukaudessa."
+          },
+          {
+            "title": "Premium",
+            "body": "12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausilaskutuksella. Rajattomat tallenteet tekoälytiivistelmillä, litteroinneilla ja toimintakohdilla, tiimianalytiikka, useamman hengen samanaikainen näytönjako, piirtäminen jaetuille näytöille, taustahälyn vaimennus, integraatiot kuten GitHub ja Zapier, yhteys omiin tekoälytyökaluihin sekä 5 vieraspassia käyttäjäpaikkaa kohden kuukaudessa."
+          },
+          {
+            "title": "Enterprise",
+            "body": "Räätälöity hinta yli 100 hengen tiimeille tai virallisen hankintaprosessin kautta ostaville: kertakirjautuminen (SSO) ja SCIM, 99,99 %:n käytettävyyssitoumus ja tuki käyttöönotossa."
+          },
+          {
+            "title": "Ilmainen kokeilu",
+            "body": "7 päivää kaikilla Premiumin ominaisuuksilla niin monelle käyttäjäpaikalle kuin haluat."
+          }
+        ]
+      },
+      {
+        "title": "Mitä SoWork maksaa tiimin koon mukaan",
+        "body": [
+          "SoWork laskuttaa jokaisesta käyttäjäpaikasta. Tässä ovat Basic ja Premium tavallisille tiimikoille; enintään 10 hengen tiimi voi käyttää ilmaispakettia sen rajoitusten puitteissa."
+        ],
+        "table": {
+          "head": [
+            "Tiimi",
+            "Basic, vuosilaskutus",
+            "Basic, kuukausilaskutus",
+            "Premium, vuosilaskutus",
+            "Premium, kuukausilaskutus"
+          ],
+          "rows": [
+            [
+              "4 henkeä",
+              "21,60 $",
+              "24 $",
+              "48 $",
+              "60 $"
+            ],
+            [
+              "8 henkeä",
+              "43,20 $",
+              "48 $",
+              "96 $",
+              "120 $"
+            ],
+            [
+              "10 henkeä",
+              "54 $",
+              "60 $",
+              "120 $",
+              "150 $"
+            ],
+            [
+              "12 henkeä",
+              "64,80 $",
+              "72 $",
+              "144 $",
+              "180 $"
+            ],
+            [
+              "15 henkeä",
+              "81 $",
+              "90 $",
+              "180 $",
+              "225 $"
+            ],
+            [
+              "25 henkeä",
+              "135 $",
+              "150 $",
+              "300 $",
+              "375 $"
+            ],
+            [
+              "50 henkeä",
+              "270 $",
+              "300 $",
+              "600 $",
+              "750 $"
+            ]
+          ],
+          "note": "Kuukaudessa tiimiltä. Basic on 5,40 $ jäseneltä vuosilaskutuksella tai 6 $ kuukausilaskutuksella; Premium 12 $ tai 15 $ (SoWorkin hintasivu, marraskuu 2026). Ilman veroja."
+        }
+      },
+      {
+        "title": "Mitä ilmaisesta paketista puuttuu",
+        "items": [
+          {
+            "title": "Yli 30 minuutin kokoukset",
+            "body": "Jokainen kokous Free-paketissa päättyy 30 minuutin jälkeen."
+          },
+          {
+            "title": "Video",
+            "body": "Ilmaiset kokoukset ovat vain ääntä. Video tulee mukaan Basicissa."
+          },
+          {
+            "title": "Tallenteet ja tekoälymuistiinpanot",
+            "body": "Ei lainkaan Free-paketissa. Basic sisältää 2 viikossa, Premiumissa ei ole rajaa."
+          },
+          {
+            "title": "Vieraat",
+            "body": "Free-paketissa ei ole vieraspasseja, joten asiakkaat ja työnhakijat eivät voi tulla toimistoon."
+          },
+          {
+            "title": "Täysi chat",
+            "body": "Free-paketin chat on rajallinen. Basicissa on täysi tiimichat rajattomalla historialla."
+          }
+        ]
+      },
+      {
+        "title": "Miten laskutus toimii",
+        "items": [
+          {
+            "title": "Jokainen käyttäjäpaikka lasketaan",
+            "body": "SoWork laskuttaa käyttäjäpaikoittain kuukausittain tai vuosittain. Ylläpitäjät ja tiimiläiset vievät kukin yhden paikan."
+          },
+          {
+            "title": "Vieraat eivät vie käyttäjäpaikkoja",
+            "body": "Vieraat tulevat sisään vieraspasseilla: 2 passia käyttäjäpaikkaa kohden kuukaudessa Basicissa, 5 Premiumissa."
+          },
+          {
+            "title": "Vuosilaskutus säästää 10–20 %",
+            "body": "Basic putoaa 6 $:sta 5,40 $:iin paikkaa kohden vuosilaskutuksella ja Premium 15 $:sta 12 $:iin."
+          }
+        ]
+      },
+      {
+        "title": "Laskuesimerkit",
+        "items": [
+          {
+            "title": "6 hengen tiimi, jonka kokoukset venyvät",
+            "detail": "32,40 $ kuukaudessa",
+            "body": "Free sopii kuudelle hengelle, mutta kokoukset katkeavat 30 minuuttiin ja ovat vain ääntä. Basic kuudelle maksaa 32,40 $ kuukaudessa vuosilaskutuksella tai 36 $ kuukausilaskutuksella."
+          },
+          {
+            "title": "12 hengen tiimi, joka haluaa tekoälymuistiinpanot",
+            "detail": "144 $ kuukaudessa",
+            "body": "Premium 12 hengelle maksaa 144 $ kuukaudessa vuosilaskutuksella (1 728 $ vuodessa) tai 180 $ kuukausilaskutuksella. Basic maksaisi 64,80 $ kahdella viikoittaisella tallenteella."
+          },
+          {
+            "title": "15 hengen tiimi, joka tapaa asiakkaita",
+            "detail": "30 tai 75 vieraspassia",
+            "body": "Viisitoista käyttäjäpaikkaa tuo 30 vieraspassia kuukaudessa Basicissa (81 $ kuukaudessa vuosilaskutuksella) ja 75 Premiumissa (180 $)."
+          }
+        ]
+      },
+      {
+        "title": "Sama tiimi muualla",
+        "body": [
+          "Mitä samat tiimit maksavat kuukaudessa muissa [virtuaalitoimistoissa](/guides/best-virtual-office-software) halvimmalla sopivalla maksullisella paketilla."
+        ],
+        "table": {
+          "head": [
+            "Tiimi",
+            "SoWork Basic, vuosilaskutus",
+            "TinyFloor",
+            "Gather, vuosilaskutus",
+            "Kumospace Business, vuosilaskutus",
+            "Roam"
+          ],
+          "rows": [
+            [
+              "4 henkeä",
+              "21,60 $",
+              "29 $",
+              "48 $",
+              "Ilmainen (enintään 5 jäsentä)",
+              "78 $"
+            ],
+            [
+              "8 henkeä",
+              "43,20 $",
+              "29 $",
+              "96 $",
+              "128 $",
+              "156 $"
+            ],
+            [
+              "12 henkeä",
+              "64,80 $",
+              "29 $",
+              "144 $",
+              "192 $",
+              "234 $"
+            ]
+          ],
+          "note": "Kunkin tuotteen omalta hintasivulta marraskuussa 2026, ilman veroja. Roam laskuttaa vain kuukausittain aktiivista jäsentä kohden. SoWorkin ilmaispaketti kattaa enintään 10 jäsentä 30 minuutin äänikokouksilla. TinyFloor on ilmainen enintään 3 hengelle."
+        }
+      },
+      {
+        "title": "Milloin SoWork kannattaa",
+        "items": [
+          {
+            "title": "Kokouksenne ovat lyhyitä ja ääni riittää",
+            "body": "Enintään 10 henkeä voi käyttää ilmaispakettia niin kauan kuin haluaa."
+          },
+          {
+            "title": "Haluat tallenteet ja tekoälymuistiinpanot toimistoon",
+            "body": "Premium tallentaa jokaisen kokouksen tiivistelmillä, litteroinneilla ja toimintakohdilla ja antaa omien tekoälytyökalujesi hakea niistä."
+          },
+          {
+            "title": "Esihenkilöt haluavat tiimianalytiikkaa",
+            "body": "Premium raportoi työajoista, kokouksista ja perehdytyksestä viikkoraportilla."
+          },
+          {
+            "title": "Haluat valita sovelluksen tai selaimen välillä",
+            "body": "SoWork toimii työpöytäsovelluksessa tai selaimessa, ja puhelinsovellus hoitaa chatin ja kokoukset."
+          },
+          {
+            "title": "Milloin ei",
+            "body": "Jos tiimisi tarvitsee lähinnä [nähdä, kuka on paikalla](/team-presence), jutella ja pitää kokouksia, ilmaispaketin 30 minuutin äänikokoukset voivat olla liian vähän ja Premiumin tallenteet sekä analytiikka enemmän kuin tarvitset."
+          }
+        ]
+      },
+      {
+        "title": "Näin tarkistimme",
+        "body": [
+          "SoWorkin hinnat ovat sivulta sowork.com/pricing, kuukausihinnat sen kuukausivalitsimesta ja pakettien rajat SoWorkin faktasivulta (sowork.com/facts, päivitetty 24. marraskuuta 2026), molemmat luettu marraskuussa 2026. Muiden tuotteiden hinnat ovat niiden omilta hintasivuilta samassa kuussa. Kun sivu ei kertonut jotain, jätimme sen pois arvaamisen sijaan. Hinnat muuttuvat: tarkista toimittajan sivu ennen ostamista."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on toimisto, jossa liikutaan, kuten SoWork: näet kuka on paikalla, menet jonkun luo juttelemaan, kokoonnutte kokoushuoneessa, chattailette ja jaatte näyttöä, suoraan selaimessa ilman asennuksia. Se maksaa $29 kuukaudessa koko tiimille, yksi hinta riippumatta siitä, kuinka monta kutsut, ja jokainen uusi toimisto saa 14 päivää Prota ilmaiseksi. Siinä ei ole tallenteita, tekoälymuistiinpanoja, tiimianalytiikkaa eikä toimistoeditoria, joten jos tarvitset niitä, SoWork Premium sopii paremmin."
+    },
+    "faq": [
+      {
+        "q": "Paljonko SoWork maksaa?",
+        "a": "Basic on 5,40 $ jäseneltä kuukaudessa vuosilaskutuksella tai 6 $ kuukausilaskutuksella; Premium on 12 $ vuosilaskutuksella tai 15 $ kuukausilaskutuksella. Enterprise on räätälöity."
+      },
+      {
+        "q": "Onko SoWork ilmainen?",
+        "a": "Kyllä, enintään 10 jäsenelle vain ääntä tukevilla 30 minuutin kokouksilla, rajallisella chatilla ja ilman tallenteita, tekoälyä tai vieraita."
+      },
+      {
+        "q": "Paljonko SoWork maksaa 10 hengelle?",
+        "a": "Basic on 54 $ kuukaudessa vuosilaskutuksella tai 60 $ kuukausilaskutuksella; Premium 120 $ tai 150 $. Kymmenen henkeä voi myös käyttää ilmaispakettia sen rajoitusten puitteissa."
+      },
+      {
+        "q": "Mitä eroa on SoWork Basicilla ja Premiumilla?",
+        "a": "Basic tuo videon, rajattoman kokousten pituuden ja täyden chatin sekä 2 tallennetta viikossa. Premium tuo rajattomat tallenteet tekoälymuistiinpanoilla, tiimianalytiikan, useamman samanaikaisen näytönjaon, taustahälyn vaimennuksen ja integraatiot."
+      },
+      {
+        "q": "Laskuttaako SoWork vieraista?",
+        "a": "Vieraat eivät vie maksullisia käyttäjäpaikkoja. He tulevat sisään vieraspasseilla: 2 paikkaa kohden kuukaudessa Basicissa, 5 Premiumissa, ei yhtään Free-paketissa."
+      },
+      {
+        "q": "Onko SoWorkilla ilmainen kokeilu?",
+        "a": "Kyllä, 7 päivää kaikilla Premiumin ominaisuuksilla rajattomalle määrälle käyttäjäpaikkoja."
+      },
+      {
+        "q": "Toimiiko SoWork selaimessa?",
+        "a": "Kyllä, tai sen työpöytäsovelluksessa, ja puhelinsovellus on saatavilla chattiin ja kokouksiin. TinyFloor toimii selaimessa."
+      },
+      {
+        "q": "Mitä muut virtuaalitoimistot maksavat?",
+        "a": "10 hengelle: Gather on 120 $ kuukaudessa vuosilaskutuksella, Kumospace Business 160 $, Roam 195 $ ja TinyFloor 29 $ koko tiimille. [Kymmenen virtuaalitoimiston vertailumme](/guides/best-virtual-office-software) esittelee loput."
+      }
+    ]
   }
 }

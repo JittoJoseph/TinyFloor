@@ -1,0 +1,120 @@
+{
+  "title": "Fakty o TinyFloor",
+  "description": "Fakty o TinyFloor w jednym miejscu: czym jest, kto je tworzy, ile kosztuje, gdzie działa, co zawiera i czego nie robi. Dla każdego, kto pisze o TinyFloor.",
+  "intro": "Ta strona jest źródłem faktów o TinyFloor dla każdego, kto o nim pisze lub je porównuje. Jeśli inne źródło podaje inaczej, informacje na tej stronie są aktualne. Ceny podano w dolarach amerykańskich, przed opodatkowaniem.",
+  "sections": [
+    {
+      "id": "what",
+      "title": "Czym jest TinyFloor",
+      "paragraphs": [
+        "TinyFloor to wirtualne biuro dla zespołów zdalnych. Każdy ma postać na wspólnym piętrze w przeglądarce, więc widzisz, kto jest na miejscu i co robi, możesz podejść do współpracownika i porozmawiać, a także spotkać się w sali spotkań bez planowania rozmowy.",
+        "Stworzone dla pojedynczego zespołu, który pracuje ze sobą na co dzień: zespołów programistycznych, agencji, studiów i startupów — często takich, które trzymają otwarty kanał głosowy na Discordzie przez cały dzień lub przeskakują między huddle'ami na Slacku a linkami do spotkań."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "title": "Najważniejsze fakty",
+      "items": [
+        "Nazwa: TinyFloor. Strona internetowa: [tinyfloor.com](/).",
+        "Twórca: TinyFloor, mała firma założona przez Jitto Josepha, rozwijana otwarcie na GitHubie od listopada 2025.",
+        "Kategoria: oprogramowanie wirtualnego biura, nazywane też wirtualną przestrzenią roboczą lub narzędziem do współpracy przestrzennej.",
+        "Gdzie działa: w przeglądarce na komputerach i telefonach, bez instalowania czegokolwiek. Można je zainstalować jako aplikację z poziomu przeglądarki.",
+        "Języki: 18.",
+        "Kod źródłowy: open source na licencji AGPL-3.0, na [GitHubie](https://github.com/JittoJoseph/TinyFloor).",
+        "Kontakt: support@tinyfloor.com."
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Plany i ceny",
+      "items": [
+        "Free: do 3 osób, ze wszystkimi funkcjami i historią czatu z ostatnich 90 dni.",
+        "Pro: 29 $ miesięcznie za całe biuro, jedna cena bez względu na to, ile osób zaprosisz, a nie cena za osobę. Biuro jest przeznaczone dla jednego zespołu do 15 osób.",
+        "Cena założycielska: biura, które zasubskrybują przed 1 marca 2027, zachowują 29 $ miesięcznie tak długo, jak trwa subskrypcja. Od tej daty Pro kosztuje 39 $ miesięcznie dla nowych subskrypcji.",
+        "Okres próbny: każde nowe biuro zaczyna od 14 dni Pro dla całego zespołu, bez konieczności podawania karty.",
+        "Płatności: wyłącznie miesięczne, możliwość rezygnacji w dowolnej chwili; zwrot dowolnej płatności przy zgłoszeniu w ciągu 14 dni. Creem, nasz sprzedawca, dolicza podatek od sprzedaży lub VAT przy kasie.",
+        "Spotkania i rozmowy we dwoje nie są limitowane. Szczegóły znajdują się na [stronie z cennikiem](/pricing)."
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Co zawiera każde biuro",
+      "items": [
+        "Wspólne piętro, po którym chodzisz, z biurkiem dla każdego, które można zająć i udekorować, oraz postaciami, które ubiera się samodzielnie.",
+        "Rozmowa: podejdź do współpracownika i naciśnij Rozmowa. Druga osoba widzi, że chcesz porozmawiać, a po zaakceptowaniu rozpoczyna się rozmowa we dwoje z głosem, zwykle w mniej niż sekundę. Pomachanie lub zaczepienie pozwala zwrócić czyjąś uwagę bez nawiązywania połączenia.",
+        "Spotkania: trzy lub więcej osób spotyka się w sali spotkań, z wideo i udostępnianiem ekranu.",
+        "Udostępnianie ekranu w rozmowach i na spotkaniach, w jakości do 1080p, zoptymalizowane pod kątem czytelnego tekstu.",
+        "Czat zespołowy z kanałami, wiadomościami bezpośrednimi i wyszukiwaniem.",
+        "Obecność: kto jest na piętrze, jego status i krótka notatka. Po połączeniu z Kalendarzem Google współpracownicy widzą „Na spotkaniu do…”, gdy w nim uczestniczysz.",
+        "Tablica, usuwanie szumów i muzyka ze Spotify widoczna na Twojej karcie."
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "Czego nie robi",
+      "items": [
+        "Brak nagrań i transkrypcji rozmów oraz spotkań, a także brak notatek ze spotkań generowanych przez AI.",
+        "Brak pojedynczego logowania (SAML lub SCIM). Logowanie odbywa się przez Google lub jednorazowy kod wysyłany e-mailem; nie ma haseł.",
+        "Brak aplikacji na komputer lub telefon do pobrania; działa w przeglądarce.",
+        "Brak edytora biura: piętro jest gotowe do użycia.",
+        "Nie jest przeznaczone na wydarzenia dla setek osób ani dla całej firmy w jednym biurze: większa firma tworzy osobne biuro dla każdego zespołu.",
+        "Nigdy nie oznacza użytkowników jako nieobecnych tylko dlatego, że karta działa w tle, i nie śledzi godzin pracy."
+      ]
+    },
+    {
+      "id": "how",
+      "title": "Jak jest zbudowane",
+      "items": [
+        "Działa w sieci Cloudflare. Piętro i czat każdego biura działają niezależnie, więc ruch w jednym biurze nie spowalnia innego.",
+        "Rozmowy przechodzą przez serwery pośredniczące (TURN) Cloudflare, dzięki czemu łączą się za biurowymi zaporami sieciowymi i sieciami VPN; spotkania obsługują serwery multimedialne Cloudflare.",
+        "Rozmowy i spotkania nigdy nie są nagrywane, a dźwięk nigdy nie jest przetwarzany na serwerze.",
+        "Więcej informacji i dane liczbowe: [jak działa TinyFloor](/how-it-works). Co przechowujemy i dlaczego: [polityka prywatności](/privacy)."
+      ]
+    },
+    {
+      "id": "development",
+      "title": "Jak często się zmienia",
+      "paragraphs": [
+        "TinyFloor wdraża zmiany na środowisko produkcyjne niemal codziennie: 84 wydania w październiku 2026, 41 wydań we wrześniu 2026. Lista zmian według dat znajduje się w [dzienniku zmian](/changelog)."
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "title": "TinyFloor w innych miejscach",
+      "items": [
+        "[GitHub](https://github.com/JittoJoseph/TinyFloor), [LinkedIn](https://www.linkedin.com/company/tinyfloor), [X](https://x.com/tinyflooroffice).",
+        "[G2](https://www.g2.com/products/tinyfloor/reviews), [AlternativeTo](https://alternativeto.net/software/tinyfloor/about/), [SaaSHub](https://www.saashub.com/tinyfloor), [Crunchbase](https://www.crunchbase.com/organization/tinyfloor), [Wikidata](https://www.wikidata.org/wiki/Q142181160)."
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "Pytania",
+      "faq": [
+        {
+          "q": "Czym jest TinyFloor?",
+          "a": "Wirtualnym biurem dla zespołów zdalnych w przeglądarce: każdy ma postać na wspólnym piętrze, więc widzisz, kto jest na miejscu, podchodzisz do kogoś i rozmawiasz, a także spotykasz się bez planowania rozmowy."
+        },
+        {
+          "q": "Ile kosztuje TinyFloor?",
+          "a": "Za darmo do 3 osób. Pro kosztuje 29 $ miesięcznie za cały zespół, a nie za osobę, a każde nowe biuro zaczyna od 14 dni darmowego Pro, bez konieczności podawania karty."
+        },
+        {
+          "q": "Czy TinyFloor wymaga pobierania?",
+          "a": "Nie. Działa w przeglądarce na komputerach i telefonach; możesz zainstalować je jako aplikację z przeglądarki, jeśli wolisz osobne okno."
+        },
+        {
+          "q": "Czy TinyFloor nagrywa rozmowy lub tworzy notatki AI?",
+          "a": "Nie. Rozmowy i spotkania nigdy nie są nagrywane, nie ma też transkrypcji ani notatek ze spotkań tworzonych przez AI."
+        },
+        {
+          "q": "Czy TinyFloor to projekt open source?",
+          "a": "Tak. Cała aplikacja jest dostępna na GitHubie na licencji AGPL-3.0."
+        },
+        {
+          "q": "Kto tworzy TinyFloor?",
+          "a": "TinyFloor, mała firma założona przez Jitto Josepha. Projekt rozwijany jest otwarcie na GitHubie i wdrażany na produkcję niemal codziennie."
+        }
+      ]
+    }
+  ]
+}

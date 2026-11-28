@@ -1,0 +1,113 @@
+{
+  "title": "Aide TinyFloor",
+  "description": "Réponses aux questions courantes sur TinyFloor : tarifs, fonctionnement de l'essai, invitation de l'équipe, appels, confidentialité et résiliation.",
+  "intro": "Des réponses courtes aux questions que se posent les équipes sur TinyFloor, chacune sur sa propre page. Vous ne trouvez pas la vôtre ? Écrivez à support@tinyfloor.com.",
+  "topics": {
+    "plans": "Offres et facturation",
+    "start": "Premiers pas",
+    "calls": "Appels et connexion",
+    "privacy": "Confidentialité et sécurité"
+  },
+  "details": "Détails",
+  "related": "Questions associées",
+  "all": "Toutes les questions",
+  "articles": {
+    "is-tinyfloor-free": {
+      "q": "TinyFloor est-il gratuit ?",
+      "answer": "Oui, jusqu'à 3 personnes, avec toutes les fonctionnalités. Pro coûte 29 $ par mois pour toute l'équipe, et chaque nouveau bureau commence avec 14 jours de Pro offerts.",
+      "items": [
+        "Free comprend l'étage, Parler, les réunions, le chat, le partage d'écran et la vidéo HD, jusqu'à 3 personnes sur l'étage en même temps, et conserve les 90 derniers jours d'historique de chat.",
+        "Pro est un seul prix pour tout le bureau, pas un prix par personne, avec de la place pour toute votre équipe, l'intégralité de votre historique de chat et une aide prioritaire.",
+        "Les bureaux qui s'abonnent avant le 1er mars 2027 conservent 29 $ par mois tant que leur abonnement continue. Voir les [tarifs](/pricing)."
+      ]
+    },
+    "how-does-the-free-trial-work": {
+      "q": "Comment fonctionne l'essai gratuit de TinyFloor ?",
+      "answer": "Chaque nouveau bureau commence sur Pro pendant 14 jours, avec de la place pour toute l'équipe et sans carte bancaire requise. Quand il se termine, vous choisissez Pro ou restez sur Free.",
+      "items": [
+        "Il n'y a rien à résilier : si vous ne vous abonnez pas, le bureau passe à Free.",
+        "Personne n'est retiré et rien n'est supprimé à la fin de l'essai. Si plus de 3 personnes sont membres, elles peuvent toutes continuer à venir pendant encore 14 jours, sans que personne d'autre ne puisse rejoindre ; ensuite, 3 personnes peuvent être sur l'étage en même temps et tout le monde conserve le chat.",
+        "S'abonner à tout moment permet de poursuivre sur Pro sans interruption."
+      ]
+    },
+    "how-many-people-can-join-an-office": {
+      "q": "Combien de personnes peuvent rejoindre un bureau TinyFloor ?",
+      "answer": "Jusqu'à 15 avec Pro et 3 en même temps avec Free. Un bureau est fait pour une équipe qui travaille ensemble chaque jour.",
+      "paragraphs": [
+        "Une plus grande entreprise donne à chaque équipe son propre bureau, chacun avec son propre étage, son chat et sa salle de réunion. TinyFloor n'est pas fait pour des événements réunissant des centaines de personnes."
+      ]
+    },
+    "how-do-i-cancel": {
+      "q": "Comment résilier TinyFloor et puis-je être remboursé ?",
+      "answer": "L'administrateur d'un bureau peut résilier Pro à tout moment depuis la page de facturation du bureau. L'offre court jusqu'à la fin de la période payée, puis le bureau passe à Free, et rien n'est supprimé.",
+      "items": [
+        "Demandez-le dans les 14 jours suivant un paiement et vous êtes remboursé en totalité : écrivez à support@tinyfloor.com.",
+        "La facturation est mensuelle uniquement, vous n'avez donc jamais une année restante à payer.",
+        "Les prix sont en dollars américains ; Creem, notre revendeur, ajoute la TVA ou la taxe de vente éventuelle au paiement. Les détails se trouvent dans la [politique de remboursement](/refunds)."
+      ]
+    },
+    "does-tinyfloor-need-a-download": {
+      "q": "Faut-il télécharger TinyFloor ?",
+      "answer": "Non. TinyFloor fonctionne dans n'importe quel navigateur moderne sur ordinateur ou sur téléphone, sans rien à installer.",
+      "paragraphs": [
+        "Si vous préférez l'avoir dans sa propre fenêtre, vous pouvez l'installer comme une application depuis le navigateur. Il n'y a rien à mettre à jour : c'est toujours la dernière version."
+      ]
+    },
+    "does-tinyfloor-work-on-phones": {
+      "q": "TinyFloor fonctionne-t-il sur téléphone ?",
+      "answer": "Oui, dans le navigateur du téléphone : vous pouvez parcourir l'étage, parler, rejoindre des réunions et utiliser le chat. Le partage d'écran nécessite un ordinateur.",
+      "paragraphs": [
+        "Sur un téléphone, vous pouvez regarder l'écran partagé par quelqu'un d'autre, mais pas partager le vôtre. Il n'y a aucune application à télécharger sur un store."
+      ]
+    },
+    "how-do-i-invite-my-team": {
+      "q": "Comment inviter mon équipe sur TinyFloor ?",
+      "answer": "Copiez le lien d'invitation du bureau et envoyez-le à votre équipe. Vos collègues l'ouvrent, se connectent avec Google ou un code reçu par e-mail, et s'installent à un bureau.",
+      "items": [
+        "Un seul lien fonctionne pour tout le monde, et un administrateur peut le réinitialiser.",
+        "Dans les paramètres du bureau, un administrateur choisit si chacun peut partager le lien ou seulement les administrateurs.",
+        "Chaque personne dans le bureau se connecte ; il n'y a pas de mot de passe à définir."
+      ]
+    },
+    "does-tinyfloor-record-calls": {
+      "q": "TinyFloor enregistre-t-il les appels ?",
+      "answer": "Non. Les appels et les réunions ne sont jamais enregistrés, et l'audio n'est jamais traité ni stocké sur un serveur.",
+      "paragraphs": [
+        "L'annulation d'écho et la suppression du bruit s'exécutent dans votre propre navigateur. TinyFloor ne propose pas non plus de transcription ni de notes de réunion par IA. Si vous avez besoin d'enregistrements, un outil qui en dispose vous conviendra mieux."
+      ]
+    },
+    "where-is-my-data-stored": {
+      "q": "Où TinyFloor stocke-t-il mes données ?",
+      "answer": "Sur le réseau de Cloudflare, qui héberge le site, l'application et ses données, et achemine les appels. Tout transite par des connexions chiffrées.",
+      "items": [
+        "L'étage et le chat de chaque bureau fonctionnent de manière autonome, séparés des autres bureaux.",
+        "Si vous connectez Google Calendar, TinyFloor conserve uniquement vos plages d'indisponibilité, pendant quelques minutes ; vos événements ne sont pas stockés. La déconnexion les supprime et révoque l'accès.",
+        "Pour obtenir une copie de vos informations ou supprimer votre compte, écrivez à support@tinyfloor.com depuis l'e-mail de votre compte ; nous répondons sous 30 jours.",
+        "La liste complète de ce que nous conservons et pourquoi se trouve dans la [politique de confidentialité](/privacy)."
+      ]
+    },
+    "does-tinyfloor-have-single-sign-on": {
+      "q": "TinyFloor propose-t-il l'authentification unique (SSO) ?",
+      "answer": "Non. TinyFloor ne propose pas d'authentification unique SAML ou SCIM. Les personnes se connectent avec Google ou avec un code à usage unique envoyé par e-mail, sans mot de passe.",
+      "paragraphs": [
+        "Si votre entreprise exige une authentification unique via son fournisseur d'identité, TinyFloor ne conviendra pas pour le moment."
+      ]
+    },
+    "does-tinyfloor-work-behind-a-firewall-or-vpn": {
+      "q": "TinyFloor fonctionne-t-il derrière un pare-feu d'entreprise ou un VPN ?",
+      "answer": "Oui, dans la plupart des cas. Chaque appel passe par le relais de Cloudflare et bascule d'UDP vers TCP et TLS si nécessaire, de sorte qu'une simple connexion HTTPS suffit.",
+      "paragraphs": [
+        "Les appels ne tentent pas de connecter directement les navigateurs entre eux, ce qui échoue souvent sur les réseaux d'entreprise et mobiles. Plus de détails et de chiffres dans [comment fonctionne TinyFloor](/how-it-works)."
+      ]
+    },
+    "does-tinyfloor-keep-working-in-a-background-tab": {
+      "q": "TinyFloor continue-t-il de fonctionner dans un onglet en arrière-plan ?",
+      "answer": "Oui. Vous restez sur l'étage et dans vos appels pendant que vous travaillez dans d'autres onglets, et TinyFloor ne vous marque jamais absent simplement parce que son onglet est en arrière-plan.",
+      "items": [
+        "Vos collègues peuvent toujours vous voir sur l'étage et demander à vous parler.",
+        "La musique de Spotify continue d'être diffusée.",
+        "Si votre connexion est interrompue, l'étage se reconnecte automatiquement et vous replace à votre bureau."
+      ]
+    }
+  }
+}

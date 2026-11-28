@@ -1,0 +1,113 @@
+{
+  "title": "TinyFloor-ohjeet",
+  "description": "Vastauksia yleisiin kysymyksiin TinyFloorista: mitä se maksaa, miten kokeilu toimii, tiimin kutsuminen, puhelut, tietosuoja ja mitä tapahtuu, kun perut tilauksen.",
+  "intro": "Lyhyitä vastauksia kysymyksiin, joita tiimit kysyvät TinyFloorista, jokainen omalla sivullaan. Etkö löytänyt etsimääsi? Kirjoita osoitteeseen support@tinyfloor.com.",
+  "topics": {
+    "plans": "Paketit ja laskutus",
+    "start": "Aloittaminen",
+    "calls": "Puhelut ja yhteys",
+    "privacy": "Tietosuoja ja turvallisuus"
+  },
+  "details": "Tiedot",
+  "related": "Liittyvät kysymykset",
+  "all": "Kaikki kysymykset",
+  "articles": {
+    "is-tinyfloor-free": {
+      "q": "Onko TinyFloor ilmainen?",
+      "answer": "Kyllä, enintään 3 hengelle, ja kaikki ominaisuudet ovat mukana. Pro maksaa $29 kuukaudessa koko tiimille, ja jokainen uusi toimisto alkaa 14 päivän ilmaisella Prolla.",
+      "items": [
+        "Free sisältää kerroksen, Puhu-painikkeen, kokoukset, chatin, näytön jakamisen ja HD-videon enintään 3 hengelle kerrallaan kerroksessa ja säilyttää chatin viimeiset 90 päivää.",
+        "Pro on yksi hinta koko toimistolle, ei henkilökohtainen hinta, ja siinä on tilaa koko tiimillesi, koko keskusteluhistoria ja ensisijainen apu.",
+        "Toimistot, jotka tilaavat ennen 1. maaliskuuta 2027, pitävät hinnan $29 kuukaudessa niin kauan kuin tilaus jatkuu. Katso [hinnoittelu](/pricing)."
+      ]
+    },
+    "how-does-the-free-trial-work": {
+      "q": "Miten TinyFloorin ilmainen kokeilu toimii?",
+      "answer": "Jokainen uusi toimisto aloittaa Prolla 14 päiväksi, ja tilaa on koko tiimille ilman korttia. Kun kokeilu päättyy, valitset Pron tai jatkat Freellä.",
+      "items": [
+        "Mitään ei tarvitse perua: jos et tilaa, toimisto siirtyy Freehen.",
+        "Ketään ei poisteta eikä mitään hävitetä kokeilun päättyessä. Jos jäseniä on yli 3, kaikki voivat tulla sisään vielä 14 päivän ajan, mutta uusia ei voi liittyä; sen jälkeen kerroksessa voi olla 3 henkeä kerrallaan ja kaikki pitävät chatin.",
+        "Tilaaminen missä tahansa vaiheessa pitää Pron käynnissä ilman katkoa."
+      ]
+    },
+    "how-many-people-can-join-an-office": {
+      "q": "Montako henkeä voi liittyä TinyFloor-toimistoon?",
+      "answer": "Enintään 15 Prossa ja 3 kerrallaan Freessä. Toimisto on yhdelle tiimille, joka tekee töitä yhdessä joka päivä.",
+      "paragraphs": [
+        "Isompi yritys antaa jokaiselle tiimille oman toimiston, joilla jokaisella on oma kerros, chat ja kokoushuone. TinyFlooria ei ole tehty satojen ihmisten tapahtumiin."
+      ]
+    },
+    "how-do-i-cancel": {
+      "q": "Miten perun TinyFloorin, ja saanko rahani takaisin?",
+      "answer": "Toimiston ylläpitäjä voi perua Pron milloin vain toimiston laskutussivulta. Paketti on voimassa maksetun jakson loppuun, minkä jälkeen toimisto siirtyy Freehen, eikä mitään poisteta.",
+      "items": [
+        "Pyydä 14 päivän kuluessa mistä tahansa maksusta, niin saat kaiken takaisin: kirjoita osoitteeseen support@tinyfloor.com.",
+        "Laskutus on vain kuukausittaista, joten maksettavaa vuotta ei koskaan jää jäljelle.",
+        "Hinnat ovat Yhdysvaltain dollareina; jälleenmyyjämme Creem lisää mahdollisen myynti- tai arvonlisäveron kassalla. Yksityiskohdat ovat [palautusehdoissa](/refunds)."
+      ]
+    },
+    "does-tinyfloor-need-a-download": {
+      "q": "Täytyykö TinyFloor ladata?",
+      "answer": "Ei. TinyFloor toimii kaikissa nykyaikaisissa selaimissa tietokoneella ja puhelimella ilman asennusta.",
+      "paragraphs": [
+        "Jos haluat sen omaan ikkunaansa, voit asentaa sen sovelluksena selaimesta. Mitään ei tarvitse päivittää: käytössä on aina uusin versio."
+      ]
+    },
+    "does-tinyfloor-work-on-phones": {
+      "q": "Toimiiko TinyFloor puhelimella?",
+      "answer": "Kyllä, puhelimen selaimessa: voit liikkua kerroksessa, puhua, liittyä kokouksiin ja chattailla. Näytön jakaminen vaatii tietokoneen.",
+      "paragraphs": [
+        "Puhelimella voit katsoa toisen jakamaa näyttöä, mutta et jakaa omaasi. Sovelluskaupasta ei tarvitse ladata mitään sovellusta."
+      ]
+    },
+    "how-do-i-invite-my-team": {
+      "q": "Miten kutsun tiimini TinyFlooriin?",
+      "answer": "Kopioi toimiston kutsulinkki ja lähetä se tiimillesi. He avaavat sen, kirjautuvat sisään Googlella tai sähköpostikoodilla ja ottavat paikkansa.",
+      "items": [
+        "Yksi linkki toimii kaikille, ja ylläpitäjä voi nollata sen.",
+        "Toimiston asetuksissa ylläpitäjä valitsee, voiko kuka tahansa toimistossa jakaa linkin vai vain ylläpitäjät.",
+        "Kaikki toimistossa kirjautuvat sisään; salasanoja ei tarvitse määrittää."
+      ]
+    },
+    "does-tinyfloor-record-calls": {
+      "q": "Tallentaako TinyFloor puheluita?",
+      "answer": "Ei. Puheluita ja kokouksia ei tallenneta koskaan, eikä ääntä koskaan käsitellä tai säilytetä palvelimella.",
+      "paragraphs": [
+        "Kaiunpoisto ja kohinanvaimennus toimivat omassa selaimessasi. TinyFloorissa ei ole myöskään litterointeja tai tekoälypohjaisia kokousmuistiinpanoja. Jos tarvitset tallenteita, työkalu, jossa ne ovat, sopii paremmin."
+      ]
+    },
+    "where-is-my-data-stored": {
+      "q": "Missä tietoni säilytetään?",
+      "answer": "Cloudflaren verkossa, joka ylläpitää sivustoa, sovellusta ja sen tietoja sekä välittää puhelut. Kaikki kulkee salattujen yhteyksien yli.",
+      "items": [
+        "Jokaisen toimiston kerros ja chat toimivat omillaan, erillään muista toimistoista.",
+        "Jos yhdistät Google Calendarin, TinyFloor säilyttää vain varatut aikasi muutaman minuutin ajan; tapahtumiasi ei tallenneta. Yhteyden katkaiseminen poistaa ne ja peruu pääsyn.",
+        "Jos haluat kopion tiedoistasi tai poistaa tilisi, kirjoita osoitteeseen support@tinyfloor.com tilisi sähköpostista; vastaamme 30 päivän kuluessa.",
+        "Koko lista siitä, mitä säilytämme ja miksi, on [tietosuojaselosteessa](/privacy)."
+      ]
+    },
+    "does-tinyfloor-have-single-sign-on": {
+      "q": "Onko TinyFloorissa kertakirjautumista?",
+      "answer": "Ei. TinyFloorissa ei ole SAML- tai SCIM-kertakirjautumista. Käyttäjät kirjautuvat sisään Googlella tai sähköpostiin lähetettävällä kertakoodilla, eikä salasanoja ole.",
+      "paragraphs": [
+        "Jos yrityksesi vaatii kertakirjautumista identiteetintarjoajansa kautta, TinyFloor ei vielä sovi teille."
+      ]
+    },
+    "does-tinyfloor-work-behind-a-firewall-or-vpn": {
+      "q": "Toimiiko TinyFloor yrityksen palomuurin tai VPN:n takana?",
+      "answer": "Kyllä, useimmissa tapauksissa. Jokainen puhelu kulkee Cloudflaren välityspalvelimen kautta ja siirtyy tarvittaessa UDP:stä TCP:hen ja TLS:ään, joten läpimenoon tarvitaan vain tavallinen HTTPS.",
+      "paragraphs": [
+        "Puhelut eivät yritä yhdistää selaimia suoraan toisiinsa, mikä usein epäonnistuu toimisto- ja mobiiliverkoissa. Lisää tietoa ja luvut löytyvät sivulta [miten TinyFloor toimii](/how-it-works)."
+      ]
+    },
+    "does-tinyfloor-keep-working-in-a-background-tab": {
+      "q": "Toimiiko TinyFloor edelleen taustavälilehdellä?",
+      "answer": "Kyllä. Pysyt kerroksessa ja puheluissasi työskennellessäsi muilla välilehdillä, eikä TinyFloor koskaan merkitse sinua poissaolevaksi siksi, että sen välilehti on taustalla.",
+      "items": [
+        "Tiimikaverit näkevät sinut yhä kerroksessa ja voivat pyytää juttusille.",
+        "Musiikki Spotifysta soi edelleen.",
+        "Jos yhteytesi katkeaa, kerros yhdistää automaattisesti uudelleen ja palauttaa sinut työpöytäsi ääreen."
+      ]
+    }
+  }
+}

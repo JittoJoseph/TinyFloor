@@ -1,0 +1,21 @@
+{
+  "label": "Blogi",
+  "meta": {
+    "title": "Blogi: etätiimien kysymyksiä, vastaukset numeroina",
+    "description": "Mitä etätiimit kysyvät ennen kuin valitsevat työtapansa. Vastauksia lukuineen ja lähteineen TinyFloorin tekijöiltä."
+  },
+  "title": "Etätiimien kysymyksiä, <em>vastaukset numeroina.</em>",
+  "body": "Mitä etätiimit kysyvät ennen kuin päättävät, miten työskentelevät yhdessä: kuluja, vertailuja ja tutkimuksia, jokainen lähteineen.",
+  "categories": {
+    "costs": "Kustannukset",
+    "comparisons": "Vertailut",
+    "remoteWork": "Etätyö"
+  },
+  "latest": "Uusimmat",
+  "takeaways": "Keskeiset havainnot",
+  "sources": "Lähteet",
+  "related": "Aiheeseen liittyvät artikkelit",
+  "guides": "Oppaat samasta aiheesta",
+  "fromBlog": "Blogista",
+  "all": "Kaikki artikkelit"
+}

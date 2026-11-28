@@ -1,0 +1,113 @@
+{
+  "title": "TinyFloor Hilfe-Center",
+  "description": "Antworten auf häufige Fragen zu TinyFloor: Kosten, Testphase, Einladungen fürs Team, Anrufe, Datenschutz und was nach einer Kündigung passiert.",
+  "intro": "Kurze Antworten auf die Fragen, die Teams zu TinyFloor stellen, jeweils auf einer eigenen Seite. Deine Frage fehlt? Schreib an support@tinyfloor.com.",
+  "topics": {
+    "plans": "Tarife und Abrechnung",
+    "start": "Erste Schritte",
+    "calls": "Anrufe und Verbindung",
+    "privacy": "Datenschutz und Sicherheit"
+  },
+  "details": "Details",
+  "related": "Ähnliche Fragen",
+  "all": "Alle Fragen",
+  "articles": {
+    "is-tinyfloor-free": {
+      "q": "Ist TinyFloor kostenlos?",
+      "answer": "Ja, für bis zu 3 Personen, mit allen Funktionen. Pro kostet 29 $ im Monat für das ganze Team, und jedes neue Büro startet mit 14 Tagen Pro gratis.",
+      "items": [
+        "Free enthält die Etage, Sprechen, Meetings, Chat, Bildschirmfreigabe und HD-Video für bis zu 3 Personen gleichzeitig auf der Etage. Die letzten 90 Tage Chatverlauf bleiben erhalten.",
+        "Pro hat einen Preis für das ganze Büro, keinen Preis pro Person, mit Platz für dein ganzes Team, vollständigem Chatverlauf und bevorzugter Hilfe.",
+        "Büros, die vor dem 1. März 2027 ein Abo abschließen, behalten 29 $ im Monat, solange ihr Abo läuft. Siehe [Preise](/pricing)."
+      ]
+    },
+    "how-does-the-free-trial-work": {
+      "q": "Wie funktioniert die kostenlose Testphase von TinyFloor?",
+      "answer": "Jedes neue Büro startet mit 14 Tagen Pro, mit Platz für das ganze Team und ohne Karte. Danach entscheidest du dich für Pro oder bleibst bei Free.",
+      "items": [
+        "Du musst nichts kündigen: Wenn du kein Abo abschließt, wechselt das Büro zu Free.",
+        "Nach der Testphase wird niemand entfernt und nichts gelöscht. Hat das Büro mehr als 3 Mitglieder, können alle noch weitere 14 Tage hinein, während niemand Neues dazukommt. Danach können 3 Personen gleichzeitig auf der Etage sein, und alle behalten den Chat.",
+        "Du kannst jederzeit ein Abo abschließen, damit Pro ohne Unterbrechung weiterläuft."
+      ]
+    },
+    "how-many-people-can-join-an-office": {
+      "q": "Wie viele Personen können ein TinyFloor-Büro nutzen?",
+      "answer": "Bis zu 15 mit Pro und 3 gleichzeitig mit Free. Ein Büro ist für ein Team gedacht, das jeden Tag zusammenarbeitet.",
+      "paragraphs": [
+        "Ein größeres Unternehmen gibt jedem Team ein eigenes Büro, jeweils mit eigener Etage, eigenem Chat und Meetingraum. TinyFloor ist nicht für Events mit Hunderten von Personen gebaut."
+      ]
+    },
+    "how-do-i-cancel": {
+      "q": "Wie kündige ich TinyFloor, und bekomme ich mein Geld zurück?",
+      "answer": "Ein Admin kann Pro jederzeit auf der Abrechnungsseite des Büros kündigen. Der Tarif läuft bis zum Ende des bezahlten Zeitraums. Danach wechselt das Büro zu Free, und nichts wird gelöscht.",
+      "items": [
+        "Melde dich innerhalb von 14 Tagen nach einer Zahlung, und du bekommst den vollen Betrag zurück: Schreib an support@tinyfloor.com.",
+        "Die Abrechnung erfolgt nur monatlich. Es bleibt also nie ein ganzes Jahr zu bezahlen.",
+        "Preise in US-Dollar. Creem, unser Wiederverkäufer, schlägt beim Bezahlen die jeweilige Umsatz- oder Mehrwertsteuer auf. Details stehen in den [Rückerstattungsbedingungen](/refunds)."
+      ]
+    },
+    "does-tinyfloor-need-a-download": {
+      "q": "Muss ich TinyFloor herunterladen?",
+      "answer": "Nein. TinyFloor läuft in jedem modernen Browser auf Computern und Handys, ohne Installation.",
+      "paragraphs": [
+        "Wenn du ein eigenes Fenster möchtest, kannst du es über den Browser als App installieren. Du musst nichts aktualisieren: Du nutzt immer die neueste Version."
+      ]
+    },
+    "does-tinyfloor-work-on-phones": {
+      "q": "Funktioniert TinyFloor auf dem Handy?",
+      "answer": "Ja, im Browser deines Handys: Du kannst über die Etage laufen, sprechen, an Meetings teilnehmen und chatten. Um deinen Bildschirm zu teilen, brauchst du einen Computer.",
+      "paragraphs": [
+        "Auf dem Handy kannst du die Bildschirmfreigabe anderer ansehen, aber deinen eigenen Bildschirm nicht teilen. Es gibt keine App zum Herunterladen aus einem App Store."
+      ]
+    },
+    "how-do-i-invite-my-team": {
+      "q": "Wie lade ich mein Team zu TinyFloor ein?",
+      "answer": "Kopiere den Einladungslink des Büros und schick ihn deinem Team. Alle öffnen ihn, melden sich mit Google oder einem Code per E-Mail an und nehmen Platz.",
+      "items": [
+        "Ein Link funktioniert für alle. Ein Admin kann ihn zurücksetzen.",
+        "In den Büroeinstellungen legt ein Admin fest, ob alle im Büro den Link teilen dürfen oder nur Admins.",
+        "Alle im Büro melden sich an. Passwörter müssen nicht eingerichtet werden."
+      ]
+    },
+    "does-tinyfloor-record-calls": {
+      "q": "Zeichnet TinyFloor Anrufe auf?",
+      "answer": "Nein. Anrufe und Meetings werden nie aufgezeichnet. Audio wird nie auf einem Server verarbeitet oder gespeichert.",
+      "paragraphs": [
+        "Echounterdrückung und Rauschunterdrückung laufen in deinem eigenen Browser. TinyFloor bietet auch keine Transkripte oder KI-Meetingnotizen. Wenn du Aufnahmen brauchst, passt ein Tool mit dieser Funktion besser."
+      ]
+    },
+    "where-is-my-data-stored": {
+      "q": "Wo speichert TinyFloor meine Daten?",
+      "answer": "Im Netz von Cloudflare. Dort laufen die Website, die App und ihre Daten sowie die Anrufe. Alle Daten werden über verschlüsselte Verbindungen übertragen.",
+      "items": [
+        "Etage und Chat jedes Büros laufen unabhängig und getrennt von anderen Büros.",
+        "Wenn du Google Calendar verbindest, hält TinyFloor nur deine belegten Zeiten für wenige Minuten vor. Deine Termine werden nicht gespeichert. Beim Trennen der Verbindung werden diese Daten gelöscht und der Zugriff widerrufen.",
+        "Für eine Kopie deiner Daten oder die Löschung deines Kontos schreib von der E-Mail-Adresse deines Kontos an support@tinyfloor.com. Wir antworten innerhalb von 30 Tagen.",
+        "Die vollständige Liste der gespeicherten Daten und ihrer Zwecke steht in der [Datenschutzerklärung](/privacy)."
+      ]
+    },
+    "does-tinyfloor-have-single-sign-on": {
+      "q": "Bietet TinyFloor Single Sign-on?",
+      "answer": "Nein. TinyFloor bietet kein Single Sign-on über SAML oder SCIM. Die Anmeldung erfolgt mit Google oder einem einmaligen Code per E-Mail. Passwörter gibt es nicht.",
+      "paragraphs": [
+        "Wenn dein Unternehmen Single Sign-on über seinen Identitätsanbieter voraussetzt, passt TinyFloor derzeit nicht."
+      ]
+    },
+    "does-tinyfloor-work-behind-a-firewall-or-vpn": {
+      "q": "Funktioniert TinyFloor hinter einer Firmen-Firewall oder einem VPN?",
+      "answer": "Ja, in den meisten Fällen. Jeder Anruf läuft über Cloudflares Relay und wechselt bei Bedarf von UDP zu TCP und TLS. Dadurch reicht gewöhnlicher HTTPS-Verkehr aus, um die Verbindung herzustellen.",
+      "paragraphs": [
+        "Anrufe versuchen nicht, Browser direkt miteinander zu verbinden, was in Firmen- und Mobilfunknetzen oft scheitert. Mehr dazu, mit Zahlen, steht unter [So funktioniert TinyFloor](/how-it-works)."
+      ]
+    },
+    "does-tinyfloor-keep-working-in-a-background-tab": {
+      "q": "Funktioniert TinyFloor auch in einem Tab im Hintergrund?",
+      "answer": "Ja. Du bleibst auf der Etage und in deinen Anrufen, während du in anderen Tabs arbeitest. TinyFloor markiert dich nie als abwesend, weil sein Tab im Hintergrund ist.",
+      "items": [
+        "Dein Team sieht dich weiterhin auf der Etage und kann dich um ein Gespräch bitten.",
+        "Musik von Spotify läuft weiter.",
+        "Wenn deine Verbindung abbricht, verbindet sich die Etage automatisch neu und setzt dich zurück an deinen Schreibtisch."
+      ]
+    }
+  }
+}

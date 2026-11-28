@@ -1,0 +1,120 @@
+{
+  "title": "Feiten over TinyFloor",
+  "description": "De feiten over TinyFloor op één plek: wat het is, wie het maakt, wat het kost, waar het draait, wat erin zit en wat het niet doet. Voor iedereen die over TinyFloor schrijft.",
+  "intro": "Deze pagina is de referentie voor feiten over TinyFloor, voor iedereen die erover schrijft of het vergelijkt. Als een andere bron hiervan afwijkt, is deze pagina de actuele. Prijzen zijn in Amerikaanse dollars, exclusief btw.",
+  "sections": [
+    {
+      "id": "what",
+      "title": "Wat TinyFloor is",
+      "paragraphs": [
+        "TinyFloor is een virtueel kantoor voor remote teams. Iedereen heeft een karakter op een gedeelde vloer in de browser, zodat je ziet wie er is en wat diegene doet, naar een collega toe kunt lopen om te praten, en samenkomt in een vergaderruimte, zonder een gesprek in te plannen.",
+        "Het is gemaakt voor één team dat elke dag samenwerkt: softwareteams, bureaus, studio's en startups, vaak teams die de hele dag een spraakkanaal op Discord openhouden of schakelen tussen Slack huddles en meetinglinks."
+      ]
+    },
+    {
+      "id": "quick-facts",
+      "title": "Snelle feiten",
+      "items": [
+        "Naam: TinyFloor. Website: [tinyfloor.com](/).",
+        "Gemaakt door: TinyFloor, een klein bedrijf opgericht door Jitto Joseph, openbaar gebouwd op GitHub sinds november 2025.",
+        "Categorie: virtueel-kantoorsoftware, ook wel een virtuele werkruimte of ruimtelijke samenwerkingstool genoemd.",
+        "Waar het draait: in de browser op desktop en telefoons, zonder iets te installeren. Het kan vanuit de browser als app worden geïnstalleerd.",
+        "Talen: 18.",
+        "Broncode: open source onder AGPL-3.0, op [GitHub](https://github.com/JittoJoseph/TinyFloor).",
+        "Contact: support@tinyfloor.com."
+      ]
+    },
+    {
+      "id": "pricing",
+      "title": "Abonnementen en prijzen",
+      "items": [
+        "Free: tot 3 mensen, met alle functies, en de laatste 90 dagen chatgeschiedenis.",
+        "Pro: $29 per maand voor het hele kantoor, één prijs hoeveel mensen je ook uitnodigt, geen prijs per persoon. Een kantoor is voor één team, tot 15 mensen.",
+        "Oprichtersprijs: kantoren die vóór 1 maart 2027 een abonnement nemen, behouden $ 29 per maand zolang hun abonnement loopt. Vanaf die datum kost Pro $ 39 per maand voor nieuwe abonnementen.",
+        "Proefperiode: elk nieuw kantoor begint met 14 dagen Pro voor het hele team, zonder kaart nodig.",
+        "Facturering: alleen maandelijks, altijd opzegbaar; geld terug bij elke betaling indien binnen 14 dagen gevraagd. Creem, onze wederverkoper, berekent btw of omzetbelasting bij het afrekenen.",
+        "Meetings en gesprekken tussen twee mensen worden niet gemeten. Details staan op de [prijzenpagina](/pricing)."
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Wat er in elk kantoor zit",
+      "items": [
+        "Een gedeelde vloer waar je rondloopt, met een bureau voor iedereen dat ze kunnen claimen en inrichten, en karakters die mensen zelf aankleden.",
+        "Praten: loop naar een collega toe en druk op Praten. Diegene ziet dat je wilt praten, en zodra die accepteert is het een 1-op-1-gesprek dat met audio begint, meestal binnen een seconde. Met zwaaien of porren vraag je iemands aandacht zonder gesprek.",
+        "Meetings: drie of meer mensen ontmoeten elkaar in de vergaderruimte, met video en scherm delen.",
+        "Scherm delen in gesprekken en meetings, tot 1080p, afgestemd op scherpe tekst.",
+        "Teamchat met kanalen, directe berichten en zoeken.",
+        "Aanwezigheid: wie er op de verdieping is, hun status en een korte notitie. Met Google Calendar gekoppeld zien collega's \"In een meeting tot…\" terwijl je in gesprek bent.",
+        "Een whiteboard, ruisonderdrukking en muziek van Spotify die op je kaartje te zien is."
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "Wat het niet doet",
+      "items": [
+        "Geen opnames of transcripties van gesprekken en meetings, en geen AI-vergadernotities.",
+        "Geen single sign-on (SAML of SCIM). Mensen loggen in met Google of een eenmalige code per e-mail; er zijn geen wachtwoorden.",
+        "Geen desktop- of telefoon-app om te downloaden; het draait in de browser.",
+        "Geen kantooreditor: de verdieping is kant-en-klaar.",
+        "Niet voor evenementen met honderden mensen, of voor een heel bedrijf in één kantoor: een groter bedrijf geeft elk team een eigen kantoor.",
+        "Het markeert mensen nooit als afwezig omdat hun tabblad op de achtergrond staat, en het houdt geen werkuren bij."
+      ]
+    },
+    {
+      "id": "how",
+      "title": "Hoe het is gebouwd",
+      "items": [
+        "Draait op het netwerk van Cloudflare. De vloer en chat van elk kantoor draaien zelfstandig, zodat een druk kantoor een ander niet vertraagt.",
+        "Gesprekken lopen via het relais (TURN) van Cloudflare, zodat ze verbinding maken achter kantoorfirewalls en vpn's; meetings lopen via de mediaservers van Cloudflare.",
+        "Gesprekken en meetings worden nooit opgenomen, en audio wordt nooit op een server verwerkt.",
+        "Meer, met de cijfers: [hoe TinyFloor werkt](/how-it-works). Wat er bewaard wordt en waarom: het [privacybeleid](/privacy)."
+      ]
+    },
+    {
+      "id": "development",
+      "title": "Hoe vaak het verandert",
+      "paragraphs": [
+        "TinyFloor brengt bijna elke dag updates naar productie: 84 releases in oktober 2026, 41 releases in september 2026. Wat er per datum veranderd is, staat in de [changelog](/changelog)."
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "title": "TinyFloor elders",
+      "items": [
+        "[GitHub](https://github.com/JittoJoseph/TinyFloor), [LinkedIn](https://www.linkedin.com/company/tinyfloor), [X](https://x.com/tinyflooroffice).",
+        "[G2](https://www.g2.com/products/tinyfloor/reviews), [AlternativeTo](https://alternativeto.net/software/tinyfloor/about/), [SaaSHub](https://www.saashub.com/tinyfloor), [Crunchbase](https://www.crunchbase.com/organization/tinyfloor), [Wikidata](https://www.wikidata.org/wiki/Q142181160)."
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "Vragen",
+      "faq": [
+        {
+          "q": "Wat is TinyFloor?",
+          "a": "Een virtueel kantoor voor remote teams, in de browser: iedereen heeft een karakter op een gedeelde vloer, zodat je ziet wie er is, naar iemand toe kunt lopen om te praten, en kunt overleggen zonder een gesprek in te plannen."
+        },
+        {
+          "q": "Wat kost TinyFloor?",
+          "a": "Gratis voor maximaal 3 mensen. Pro kost $29 per maand voor het hele team, niet per persoon, en elk nieuw kantoor begint met 14 dagen Pro gratis, zonder kaart nodig."
+        },
+        {
+          "q": "Moet je iets downloaden voor TinyFloor?",
+          "a": "Nee. Het draait in de browser op desktop en telefoons; je kunt het vanuit de browser als app installeren als je een eigen venster wilt."
+        },
+        {
+          "q": "Neemt TinyFloor gesprekken op of zijn er AI-notities?",
+          "a": "Nee. Gesprekken en meetings worden nooit opgenomen, en er zijn geen transcripties of AI-vergadernotities."
+        },
+        {
+          "q": "Is TinyFloor open source?",
+          "a": "Ja. De hele app staat op GitHub onder de AGPL-3.0-licentie."
+        },
+        {
+          "q": "Wie maakt TinyFloor?",
+          "a": "TinyFloor, een klein bedrijf opgericht door Jitto Joseph. Het wordt openbaar gebouwd op GitHub en brengt bijna elke dag updates naar productie."
+        }
+      ]
+    }
+  ]
+}

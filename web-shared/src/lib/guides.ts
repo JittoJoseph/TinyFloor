@@ -69,10 +69,10 @@ export const GUIDES: Guide[] = [
   // Buyers comparing products and prices (docs/search.md). Competitors' prices are checked against their own pages; bump `updated` when they are.
   { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-11-03", pages: ["virtualOffice", "gather", "kumospace", "proximityChat"], related: ["gatherPricing", "remoteTools", "proximityChat"] },
   { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-11-03", pages: ["gather", "gatherVsKumospace", "virtualOffice"], related: ["bestVirtualOffice", "proximityChat", "remoteTools"] },
-  // The prices of the other virtual offices buyers ask assistants about, in English first: the questions are asked in English (docs/search.md).
-  { slug: "roam-pricing", key: "roamPricing", published: "2026-11-28", updated: "2026-11-28", pages: ["roam", "virtualOffice", "presence"], related: ["bestVirtualOffice", "gatherPricing", "soworkPricing"], locales: ["en"] },
-  { slug: "kumospace-pricing", key: "kumospacePricing", published: "2026-11-28", updated: "2026-11-28", pages: ["kumospace", "gatherVsKumospace", "virtualOffice"], related: ["bestVirtualOffice", "gatherPricing", "soworkPricing"], locales: ["en"] },
-  { slug: "sowork-pricing", key: "soworkPricing", published: "2026-11-28", updated: "2026-11-28", pages: ["sowork", "gather", "virtualOffice"], related: ["bestVirtualOffice", "gatherPricing", "kumospacePricing"], locales: ["en"] },
+  // What the other virtual offices buyers ask about cost, worked out from their own pricing pages.
+  { slug: "roam-pricing", key: "roamPricing", published: "2026-11-28", updated: "2026-11-28", pages: ["roam", "virtualOffice", "presence"], related: ["bestVirtualOffice", "gatherPricing", "soworkPricing"] },
+  { slug: "kumospace-pricing", key: "kumospacePricing", published: "2026-11-28", updated: "2026-11-28", pages: ["kumospace", "gatherVsKumospace", "virtualOffice"], related: ["bestVirtualOffice", "gatherPricing", "soworkPricing"] },
+  { slug: "sowork-pricing", key: "soworkPricing", published: "2026-11-28", updated: "2026-11-28", pages: ["sowork", "gather", "virtualOffice"], related: ["bestVirtualOffice", "gatherPricing", "kumospacePricing"] },
 ];
 
 /** The languages a guide is written in. */

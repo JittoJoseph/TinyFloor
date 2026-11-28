@@ -1,0 +1,113 @@
+{
+  "title": "Hulp bij TinyFloor",
+  "description": "Antwoorden op veelgestelde vragen over TinyFloor: wat het kost, hoe de proefperiode werkt, je team uitnodigen, gesprekken, privacy en wat er gebeurt als je opzegt.",
+  "intro": "Korte antwoorden op vragen die teams stellen over TinyFloor, elk op een eigen pagina. Staat je vraag er niet bij? Schrijf naar support@tinyfloor.com.",
+  "topics": {
+    "plans": "Abonnementen en betaling",
+    "start": "Aan de slag",
+    "calls": "Gesprekken en verbinding",
+    "privacy": "Privacy en beveiliging"
+  },
+  "details": "Details",
+  "related": "Gerelateerde vragen",
+  "all": "Alle vragen",
+  "articles": {
+    "is-tinyfloor-free": {
+      "q": "Is TinyFloor gratis?",
+      "answer": "Ja, voor maximaal 3 mensen, met alle functies. Pro kost $29 per maand voor het hele team, en elk nieuw kantoor begint met 14 dagen Pro gratis.",
+      "items": [
+        "Free heeft de verdieping, Praten, meetings, chat, scherm delen en hd-video, voor maximaal 3 mensen tegelijk op de verdieping, en bewaart de laatste 90 dagen aan chatgeschiedenis.",
+        "Pro is één prijs voor het hele kantoor, geen prijs per persoon, met ruimte voor je hele team, al je chatgeschiedenis en voorrang bij hulp.",
+        "Kantoren die vóór 1 maart 2027 een abonnement nemen, behouden $29 per maand zolang hun abonnement loopt. Zie [prijzen](/pricing)."
+      ]
+    },
+    "how-does-the-free-trial-work": {
+      "q": "Hoe werkt de gratis proefperiode van TinyFloor?",
+      "answer": "Elk nieuw kantoor begint 14 dagen op Pro, met ruimte voor het hele team en zonder dat een betaalkaart nodig is. Als het afloopt, kies je voor Pro of blijf je op Free.",
+      "items": [
+        "Je hoeft niets op te zeggen: neem je geen abonnement, dan gaat het kantoor naar Free.",
+        "Er wordt niemand verwijderd en er verdwijnt niets wanneer de proefperiode afloopt. Zijn er meer dan 3 leden, dan kunnen zij er allemaal nog 14 dagen in terwijl er niemand nieuws bij kan komen; daarna kunnen er 3 tegelijk op de verdieping zijn en behoudt iedereen de chat.",
+        "Neem je op enig moment een abonnement, dan loopt Pro zonder onderbreking door."
+      ]
+    },
+    "how-many-people-can-join-an-office": {
+      "q": "Hoeveel mensen kunnen lid worden van een TinyFloor-kantoor?",
+      "answer": "Tot 15 op Pro en 3 tegelijk op Free. Een kantoor is voor één team dat elke dag samenwerkt.",
+      "paragraphs": [
+        "Een groter bedrijf geeft elk team een eigen kantoor, elk met een eigen verdieping, chat en vergaderruimte. TinyFloor is niet gebouwd voor evenementen met honderden mensen."
+      ]
+    },
+    "how-do-i-cancel": {
+      "q": "Hoe zeg ik TinyFloor op, en kan ik geld terugkrijgen?",
+      "answer": "Een beheerder van het kantoor kan Pro op elk moment opzeggen via de facturatiepagina van het kantoor. Het abonnement loopt door tot het einde van de betaalde periode, daarna gaat het kantoor naar Free en er wordt niets verwijderd.",
+      "items": [
+        "Vraag het binnen 14 dagen na een betaling en je krijgt alles terug: schrijf naar support@tinyfloor.com.",
+        "Facturatie is uitsluitend maandelijks, dus je zit nooit vast aan een heel jaar.",
+        "Prijzen zijn in Amerikaanse dollars; Creem, onze wederverkoper, rekent bij het afrekenen eventuele btw of omzetbelasting. Details staan in het [terugbetalingsbeleid](/refunds)."
+      ]
+    },
+    "does-tinyfloor-need-a-download": {
+      "q": "Moet je iets downloaden voor TinyFloor?",
+      "answer": "Nee. TinyFloor werkt in elke moderne browser op computer of telefoon, zonder iets te installeren.",
+      "paragraphs": [
+        "Wil je het in een eigen venster, dan kun je het vanuit de browser als app installeren. Er valt niets te updaten: je hebt altijd de nieuwste versie."
+      ]
+    },
+    "does-tinyfloor-work-on-phones": {
+      "q": "Werkt TinyFloor op telefoons?",
+      "answer": "Ja, in de browser van de telefoon: je kunt over de verdieping lopen, praten, deelnemen aan meetings en chatten. Je scherm delen vereist een computer.",
+      "paragraphs": [
+        "Op een telefoon kun je het gedeelde scherm van iemand anders bekijken, maar niet je eigen scherm delen. Er is geen app te downloaden uit een appstore."
+      ]
+    },
+    "how-do-i-invite-my-team": {
+      "q": "Hoe nodig ik mijn team uit voor TinyFloor?",
+      "answer": "Kopieer de uitnodigingslink van het kantoor en stuur deze naar je team. Zij openen de link, loggen in met Google of een e-mailcode en nemen plaats.",
+      "items": [
+        "Eén link werkt voor iedereen, en een beheerder kan deze opnieuw instellen.",
+        "In de instellingen van het kantoor kiest een beheerder of iedereen in het kantoor de link mag delen of alleen beheerders.",
+        "Iedereen in een kantoor logt in; er zijn geen wachtwoorden om in te stellen."
+      ]
+    },
+    "does-tinyfloor-record-calls": {
+      "q": "Neemt TinyFloor gesprekken op?",
+      "answer": "Nee. Gesprekken en meetings worden nooit opgenomen, en audio wordt nooit verwerkt of opgeslagen op een server.",
+      "paragraphs": [
+        "Echowerwijdering en ruisonderdrukking draaien in je eigen browser. TinyFloor heeft ook geen transcripties of AI-vergadernotities. Heb je opnames nodig, dan past een tool die dat biedt beter bij je."
+      ]
+    },
+    "where-is-my-data-stored": {
+      "q": "Waar slaat TinyFloor mijn gegevens op?",
+      "answer": "Op het netwerk van Cloudflare, dat de site, de app en de data host, en gesprekken afhandelt. Alles verloopt via versleutelde verbindingen.",
+      "items": [
+        "De verdieping en chat van elk kantoor draaien zelfstandig, gescheiden van andere kantoren.",
+        "Koppel je Google Calendar, dan bewaart TinyFloor alleen je bezette tijden voor enkele minuten; je afspraken worden niet opgeslagen. Ontkoppelen verwijdert ze en trekt de toegang in.",
+        "Om een kopie van je gegevens op te vragen of je account te verwijderen, schrijf je vanaf het e-mailadres van je account naar support@tinyfloor.com; we antwoorden binnen 30 dagen.",
+        "Het volledige overzicht van wat we bewaren en waarom staat in het [privacybeleid](/privacy)."
+      ]
+    },
+    "does-tinyfloor-have-single-sign-on": {
+      "q": "Heeft TinyFloor single sign-on?",
+      "answer": "Nee. TinyFloor heeft geen SAML- of SCIM-single sign-on. Mensen loggen in met Google of met een eenmalige code naar hun e-mailadres, en er zijn geen wachtwoorden.",
+      "paragraphs": [
+        "Als je bedrijf single sign-on via een eigen identity provider vereist, past TinyFloor op dit moment nog niet."
+      ]
+    },
+    "does-tinyfloor-work-behind-a-firewall-or-vpn": {
+      "q": "Werkt TinyFloor achter een firewall of vpn van een bedrijf?",
+      "answer": "Ja, in de meeste gevallen. Elk gesprek loopt via de relay van Cloudflare en schakelt zo nodig terug van UDP naar TCP en TLS, zodat alleen gewone HTTPS nodig is om erdoor te komen.",
+      "paragraphs": [
+        "Gesprekken proberen browsers niet rechtstreeks met elkaar te verbinden, wat op kantoor- en mobiele netwerken vaak mislukt. Meer informatie, inclusief de cijfers, vind je in [hoe TinyFloor werkt](/how-it-works)."
+      ]
+    },
+    "does-tinyfloor-keep-working-in-a-background-tab": {
+      "q": "Blijft TinyFloor werken in een achtergrondtabblad?",
+      "answer": "Ja. Je blijft op de verdieping en in je gesprekken terwijl je in andere tabbladen werkt, en TinyFloor zet je status nooit op afwezig omdat het tabblad op de achtergrond staat.",
+      "items": [
+        "Collega's kunnen je nog steeds op de verdieping zien en vragen om te praten.",
+        "Muziek van Spotify blijft doorspelen.",
+        "Valt je verbinding weg, dan maakt de verdieping vanzelf opnieuw verbinding en zet je weer aan je bureau."
+      ]
+    }
+  }
+}

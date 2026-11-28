@@ -1,0 +1,183 @@
+{
+  "label": "Far usare un ufficio virtuale al team",
+  "meta": {
+    "title": "Come far usare davvero un ufficio virtuale al team da remoto",
+    "description": "Perché gli uffici virtuali si svuotano dopo la prima settimana e un piano di due settimane per farlo diventare il luogo in cui il tuo team da remoto parla."
+  },
+  "coverAlt": "Una porta color crema aperta nel suo telaio, con uno zerbino giallo e una piccola pianta gialla in vaso, su sfondo blu.",
+  "title": "Come far <em>usare davvero</em> un ufficio virtuale al tuo team",
+  "intro": "La maggior parte degli uffici virtuali non fallisce per le funzionalità. Fallisce nella seconda settimana, quando il piano è vuoto, nessuno ha un motivo per aprirlo e l'unica persona che lo fa si sente controllata. Un team che continua a usarlo gli ha dato uno scopo preciso, ha concordato le regole e lo ha riempito intenzionalmente nelle prime due settimane. Ecco come fare. Sviluppiamo TinyFloor, un ufficio virtuale, quindi abbiamo un interesse diretto; questi consigli valgono comunque per qualsiasi strumento.",
+  "takeaways": [
+    "Un ufficio virtuale si svuota quando non ha uno scopo: dagliene uno, come domande veloci e brevi conversazioni al posto dei link per le riunioni.",
+    "Invita tutto il team nello stesso giorno. Un piano vuoto è il motivo principale per cui le persone smettono di aprirlo.",
+    "Sposta una riunione ricorrente nell'ufficio durante la prima settimana, così tutti hanno un motivo per entrare.",
+    "Concorda le regole prima del primo giorno: è facoltativo, nessuno tiene traccia degli orari, le videocamere sono spente per impostazione predefinita e ogni richiesta di parlare può attendere.",
+    "La presenza visibile dei responsabili e la loro disponibilità a essere interrotti contano più di qualsiasi funzionalità."
+  ],
+  "sections": [
+    {
+      "title": "Perché gli uffici virtuali si svuotano",
+      "items": [
+        {
+          "title": "Non ha uno scopo preciso",
+          "body": "Se le domande passano ancora dalla chat e le chiamate richiedono ancora un link per la riunione, l'ufficio diventa solo una scheda in più senza nulla dentro. E le persone chiudono le schede vuote."
+        },
+        {
+          "title": "Non c'è nessuno",
+          "body": "La prima persona che lo apre trova un piano vuoto, e così anche la seconda. Ognuno deduce che non viene usato e smette di entrare. La presenza funziona solo se gran parte del team è lì contemporaneamente."
+        },
+        {
+          "title": "Dà la sensazione di essere controllati",
+          "body": "Se il manager è l'unico ad aprirlo, o se lo strumento segnala chi era online e per quanto tempo, le persone lo percepiscono come un controllo e se ne tengono lontane."
+        },
+        {
+          "title": "È più complicato di ciò che sostituisce",
+          "body": "Se avviare una conversazione richiede più passaggi di una breve chiamata su Slack, le persone tornano a usare Slack."
+        }
+      ]
+    },
+    {
+      "title": "Prima del primo giorno: definisci il suo scopo",
+      "body": [
+        "Decidi l'unica cosa a cui serve l'ufficio e riassumila in una frase. Per la maggior parte dei team è questa: quando hai bisogno di qualcuno per un minuto, ti avvicini e parli, invece di prenotare una chiamata o aspettare una risposta scritta. Tutto il resto, come gli standup e i momenti informali, viene dopo.",
+        "Poi concordate come funziona e mettetelo per iscritto dove il team possa vederlo:"
+      ],
+      "items": [
+        {
+          "title": "È facoltativo",
+          "body": "Essere sul piano mostra che ci sei. Non esserci non significa nulla."
+        },
+        {
+          "title": "Nessuno tiene traccia degli orari",
+          "body": "Nessun report sul tempo online, nessun timer di inattività, nessun controllo su chi si è collegato e quando."
+        },
+        {
+          "title": "Le videocamere sono spente per impostazione predefinita",
+          "body": "La voce basta per una domanda veloce. Si accende la videocamera quando serve."
+        },
+        {
+          "title": "Chiunque può dire non adesso",
+          "body": "Una richiesta di parlare può essere rifiutata o risposta più tardi, e uno stato indica quando sei concentrato."
+        }
+      ]
+    },
+    {
+      "title": "Prima settimana: riempilo intenzionalmente",
+      "items": [
+        {
+          "title": "Invita tutti nello stesso giorno",
+          "detail": "Giorno 1",
+          "body": "Invia il link di invito a tutto il team contemporaneamente, con lo scopo riassunto in una frase e le regole. Un piano in cui tutti compaiono la prima mattina è il segnale più forte che è lì che si trova il team."
+        },
+        {
+          "title": "Sposta una riunione nell'ufficio",
+          "detail": "Giorni 1–5",
+          "body": "Tieni lo standup giornaliero o la riunione settimanale del team nella sala riunioni dell'ufficio invece che tramite un link. Dà a tutti un motivo per aprirlo nello stesso momento e l'abitudine di lasciarlo aperto dopo."
+        },
+        {
+          "title": "I responsabili danno l'esempio e restano disponibili",
+          "detail": "Tutti i giorni",
+          "body": "Chi ha impostato l'ufficio dovrebbe stare sul piano tutto il giorno e rispondere a ogni richiesta di parlare. In [uno studio su consulenti passati al lavoro da remoto](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/), ciò che ha aiutato è stato un manager che ha chiarito al team di poterlo chiamare in qualsiasi momento tra le 9 e le 17; l'ufficio rende visibile questa disponibilità."
+        },
+        {
+          "title": "Rispondi alle domande veloci lì",
+          "detail": "Tutti i giorni",
+          "body": "Quando in chat arriva una domanda che richiederebbe un minuto a voce, rispondi con «passi di qui?» invece di scrivere un paragrafo. Due o tre volte al giorno bastano a mostrare al team a cosa serve l'ufficio."
+        }
+      ]
+    },
+    {
+      "title": "Seconda settimana: fallo diventare l'abitudine",
+      "items": [
+        {
+          "title": "Sostituisci i link, non gli strumenti",
+          "body": "Mantieni l'app di chat per il lavoro scritto. Smetti di condividere link per le chiamate brevi; l'ufficio sostituisce proprio quelli."
+        },
+        {
+          "title": "Aprilo all'inizio della giornata",
+          "body": "Chiedi alle persone di aprirlo quando iniziano a lavorare, come fanno con la chat. Fissare la scheda o installarlo come app dal browser aiuta."
+        },
+        {
+          "title": "Organizza un momento informale",
+          "body": "Un saluto il venerdì, un pranzo in videochiamata, un gioco: una volta alla settimana è sufficiente. Non deve essere il motivo principale per cui l'ufficio esiste."
+        }
+      ]
+    },
+    {
+      "title": "Dopo due settimane: fai tre domande",
+      "body": [
+        "Chiedi al team, non alla dashboard. Se le risposte sono positive, continua; altrimenti, rivedi lo scopo prima di cambiare strumento."
+      ],
+      "items": [
+        {
+          "title": "Questa settimana hai parlato con qualcuno lì con cui altrimenti ti saresti scambiato messaggi?",
+          "body": "Questo dimostra che l'ufficio sta facendo il suo lavoro."
+        },
+        {
+          "title": "Lo lasci aperto mentre lavori?",
+          "body": "Se la risposta è no, chiedi cosa spinge le persone a chiuderlo: il rumore, la videocamera, la sensazione di essere controllati o il fatto che non ci sia nessuno."
+        },
+        {
+          "title": "Hai mai avuto la sensazione di essere controllato?",
+          "body": "Se qualcuno risponde di sì, risolvi prima questo aspetto, prima di cambiare qualsiasi altra cosa."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fare mai",
+      "items": [
+        {
+          "title": "Rendere obbligatoria la presenza",
+          "body": "Imporre alle persone di essere sul piano trasforma l'ufficio in un cartellino da timbrare, e le persone troveranno modi per sembrare presenti."
+        },
+        {
+          "title": "Usarlo per controllare le persone",
+          "body": "La prima volta che un manager fa notare chi non era online, l'ufficio smette di essere un posto in cui parlare."
+        },
+        {
+          "title": "Mantenere sia la vecchia che la nuova abitudine",
+          "body": "Se le chiamate brevi possono avvenire in entrambi i modi, continueranno a svolgersi nel vecchio modo. Scegli l'ufficio per le conversazioni brevi e dillo chiaramente."
+        }
+      ]
+    },
+    {
+      "title": "Quando un ufficio virtuale non è la soluzione adatta",
+      "body": [
+        "Se il tuo team ha orari che raramente coincidono, perché è distribuito su molti fusi orari o lavora intenzionalmente quasi solo per iscritto, non ci saranno abbastanza persone sul piano contemporaneamente per giustificare l'apertura. I canali scritti, gli stati chiari e gli aggiornamenti registrati funzioneranno meglio. Un ufficio virtuale ripaga i team che lavorano insieme, negli stessi orari, ogni giorno."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Dove si colloca TinyFloor",
+    "body": "TinyFloor è pensato per questo tipo di adozione: un unico link di invito per tutto il team, un piano nel browser senza nulla da installare, una sala riunioni per lo standup e il pulsante Parla per chiedere a qualcuno un minuto, con la possibilità di accettare o rispondere più tardi. Non segna mai le persone come assenti solo perché la scheda è in background e non tiene traccia degli orari. Pro costa $29 al mese per tutto il team e ogni nuovo ufficio inizia con 14 giorni di Pro gratis, circa la durata del piano descritto sopra."
+  },
+  "faq": [
+    {
+      "q": "Perché i team smettono di usare il loro ufficio virtuale?",
+      "a": "Di solito perché non ha uno scopo chiaro, il piano è vuoto quando lo aprono o dà la sensazione di essere controllati. Dargli un solo scopo, invitare tutti contemporaneamente e stabilire che è facoltativo e non monitorato risolve la maggior parte di questi problemi."
+    },
+    {
+      "q": "L'uso dell'ufficio virtuale dovrebbe essere obbligatorio?",
+      "a": "No. La presenza obbligatoria lo trasforma in un cartellino da timbrare. Rendilo il posto più semplice in cui parlare e le persone entreranno perché è utile."
+    },
+    {
+      "q": "Quanto tempo serve a un team per abituarsi a un ufficio virtuale?",
+      "a": "Circa due settimane: una prima settimana per riempirlo intenzionalmente, spostandovi una riunione e con i responsabili presenti sul piano, e una seconda per farlo diventare la scelta predefinita per le conversazioni brevi."
+    },
+    {
+      "q": "Un ufficio virtuale sostituisce Slack?",
+      "a": "Non per il lavoro scritto. Sostituisce i link alle riunioni e le brevi chiamate avviate per conversazioni rapide; mantieni la chat per ciò che può attendere."
+    },
+    {
+      "q": "E se il nostro team è distribuito su molti fusi orari?",
+      "a": "Un ufficio virtuale è utile soprattutto quando le persone condividono diverse ore di lavoro al giorno. Con poche ore in comune, i canali scritti e gli stati chiari funzioneranno meglio."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/",
+      "note": "Interviste a 51 knowledge worker presso una società di servizi professionali, da aprile a giugno 2020, compreso un manager che invitava a chiamare in qualsiasi momento tra le 9 e le 17."
+    }
+  ]
+}

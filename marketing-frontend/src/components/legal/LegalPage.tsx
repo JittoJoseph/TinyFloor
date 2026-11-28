@@ -18,7 +18,8 @@ export interface LegalSection {
  * sections in large, quiet type. Paragraphs open with their point in bold
  * where a section lists several things. Written in English, and marked as
  * English, whichever language the site is in; `note` says so in the reader's
- * language.
+ * language. The facts and the help center are translated, and say so with
+ * `lang`, `dir` and `updatedLine`.
  */
 export function LegalPage({
   path,
@@ -27,6 +28,9 @@ export function LegalPage({
   intro,
   sections,
   note,
+  lang = "en",
+  dir = "ltr",
+  updatedLine,
 }: {
   path: string;
   title: string;
@@ -34,14 +38,19 @@ export function LegalPage({
   intro: ReactNode;
   sections: LegalSection[];
   note?: string;
+  /** The language the page is written in, for the few that are translated (facts, help). */
+  lang?: string;
+  dir?: "ltr" | "rtl";
+  /** The date line in the page's language; "Last updated <date>" when it's in English. */
+  updatedLine?: string;
 }) {
   return (
     <MarketingShell path={path}>
-      <article lang="en" dir="ltr" className={cn(COLUMN, "pb-24 pt-32 sm:pb-32 sm:pt-40")}>
+      <article lang={lang} dir={dir} className={cn(COLUMN, "pb-24 pt-32 sm:pb-32 sm:pt-40")}>
         <div className="max-w-[760px]">
           {note && <p className="mb-6 inline-flex rounded-full bg-muted px-3 py-1 text-[13px] text-muted-foreground">{note}</p>}
           <h1 className="text-[30px] font-normal leading-[1.2] tracking-[-0.012em] sm:text-[34px]">{title}</h1>
-          <p className="mt-3 text-[15px] text-faint sm:text-[16px]">Last updated {updated}</p>
+          <p className="mt-3 text-[15px] text-faint sm:text-[16px]">{updatedLine ?? `Last updated ${updated}`}</p>
           <div className="mt-5 text-[17px] leading-[1.6] text-muted-foreground sm:text-[19px]">{intro}</div>
         </div>
 

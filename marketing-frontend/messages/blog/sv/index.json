@@ -1,0 +1,21 @@
+{
+  "label": "Blogg",
+  "meta": {
+    "title": "Blogg: Frågor från distansteam, besvarade med siffror",
+    "description": "Vad distansteam undrar innan de väljer hur de ska jobba ihop, besvarat med siffror och källor, från oss som bygger TinyFloor."
+  },
+  "title": "Frågor från distansteam, <em>besvarade med siffror.</em>",
+  "body": "Vad distansteam undrar innan de väljer hur de ska jobba ihop: kostnader, jämförelser och undersökningar, var och en med sina källor.",
+  "categories": {
+    "costs": "Kostnader",
+    "comparisons": "Jämförelser",
+    "remoteWork": "Distansarbete"
+  },
+  "latest": "Senaste",
+  "takeaways": "Viktigaste slutsatserna",
+  "sources": "Källor",
+  "related": "Relaterade artiklar",
+  "guides": "Guider om samma ämne",
+  "fromBlog": "Från bloggen",
+  "all": "Alla artiklar"
+}

@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog: vragen van remote teams, beantwoord met cijfers",
+    "description": "Wat remote teams vragen voordat ze kiezen hoe ze samenwerken, beantwoord met cijfers en bronnen, door de makers van TinyFloor."
+  },
+  "title": "Vragen van remote teams, <em>beantwoord met cijfers.</em>",
+  "body": "Wat remote teams vragen voordat ze kiezen hoe ze samenwerken: kosten, vergelijkingen en onderzoek, elk met de bronnen erbij.",
+  "categories": {
+    "costs": "Kosten",
+    "comparisons": "Vergelijkingen",
+    "remoteWork": "Remote werken"
+  },
+  "latest": "Nieuwste",
+  "takeaways": "Belangrijkste punten",
+  "sources": "Bronnen",
+  "related": "Gerelateerde artikelen",
+  "guides": "Gidsen over hetzelfde onderwerp",
+  "fromBlog": "Uit het blog",
+  "all": "Alle artikelen"
+}

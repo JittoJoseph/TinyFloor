@@ -1,0 +1,183 @@
+{
+  "label": "Tiimin saaminen käyttämään virtuaalitoimistoa",
+  "meta": {
+    "title": "Miten saada etätiimi oikeasti käyttämään virtuaalitoimistoa",
+    "description": "Miksi virtuaalitoimistot tyhjenevät ensimmäisen viikon jälkeen ja kahden viikon suunnitelma tiimille: mitä siirtää, mitä sopia ja mitä välttää."
+  },
+  "coverAlt": "Kermanvärinen ovi avoimena karmissaan, keltainen ovimatto ja pieni keltainen ruukkukasvi sinisellä taustalla.",
+  "title": "Miten saat tiimisi <em>oikeasti käyttämään</em> virtuaalitoimistoa",
+  "intro": "Useimmat virtuaalitoimistot eivät kaadu ominaisuuksien puutteeseen. Ne kaatuvat toisella viikolla, kun kerros on tyhjä, kenelläkään ei ole syytä avata sitä ja ainoa paikalla olija kokee olevansa tarkkailtavana. Tiimi, joka jatkaa käyttöä, on antanut toimistolle selkeän tehtävän, sopinut toimintatavoista ja täyttänyt tilan suunnitelmallisesti kahden ensimmäisen viikon ajan. Näin se tehdään. Kehitämme virtuaalitoimisto TinyFlooria, joten meillä on asiassa oma lehmä ojassa, mutta neuvot pätevät mihin tahansa työkaluun.",
+  "takeaways": [
+    "Virtuaalitoimisto tyhjenee, jos sillä ei ole selkeää tehtävää: anna sille yksi, kuten nopeat kysymykset ja lyhyet keskustelut kokouslinkkien sijaan.",
+    "Kutsu koko tiimi samana päivänä. Tyhjä kerros on yleisin syy siihen, miksi ihmiset lakkaavat avaamasta tilaa.",
+    "Siirrä yksi toistuva kokous toimistoon ensimmäisellä viikolla, jotta kaikilla on syy tulla paikalle.",
+    "Sovi säännöt ennen ensimmäistä päivää: käyttö on vapaaehtoista, tunteja ei seurata, kamerat ovat oletuksena pois päältä ja keskustelupyynnöt voivat odottaa.",
+    "Esihenkilöiden näkyvä läsnäolo ja tavoitettavuus merkitsee enemmän kuin mikään yksittäinen ominaisuus."
+  ],
+  "sections": [
+    {
+      "title": "Miksi virtuaalitoimistot tyhjenevät",
+      "items": [
+        {
+          "title": "Sillä ei ole tehtävää",
+          "body": "Jos kysymykset menevät edelleen chattiin ja puhelut kokouslinkkeihin, toimisto on vain yksi tyhjä välilehti lisää. Ihmiset sulkevat välilehdet, joissa ei tapahdu mitään."
+        },
+        {
+          "title": "Kukaan ei ole paikalla",
+          "body": "Ensimmäinen avaaja löytää tyhjän kerroksen, samoin toinen. Molemmat päättelevät, ettei sitä käytetä, ja lakkaavat käymästä. Läsnäolo toimii vain silloin, kun suurin osa tiimistä on paikalla yhtä aikaa."
+        },
+        {
+          "title": "Se tuntuu tarkkailulta",
+          "body": "Jos esihenkilö on ainoa paikalla olija tai jos työkalu raportoi paikallaoloajoista, ihmiset kokevat sen valvonnaksi ja pysyvät poissa."
+        },
+        {
+          "title": "Se on vaikeampi kuin korvattava tapa",
+          "body": "Jos keskustelun aloittaminen vaatii enemmän vaiheita kuin Slackin huddle, ihmiset palaavat takaisin huddleen."
+        }
+      ]
+    },
+    {
+      "title": "Ennen ensimmäistä päivää: anna sille tehtävä",
+      "body": [
+        "Päättäkää yksi asia, jota varten toimisto on olemassa, ja tiivistäkää se yhteen lauseeseen. Useimmille tiimeille se on tämä: kun tarvitset jotakuta hetkeksi, kävelet luo ja puhut sen sijaan, että varaisit puhelun tai odottaisit viestiä. Kaikki muu, kuten päiväpalaverit ja vapaamuotoiset hetket, tulee sen jälkeen.",
+        "Sopikaa sitten toimintatavoista ja kirjatkaa ne paikkaan, josta tiimi näkee ne:"
+      ],
+      "items": [
+        {
+          "title": "Se on vapaaehtoista",
+          "body": "Kerroksessa oleminen kertoo, että olet tavoitettavissa. Poissaolo ei tarkoita mitään."
+        },
+        {
+          "title": "Kukaan ei seuraa tunteja",
+          "body": "Ei paikallaoloraportteja, ei joutilaisuuden mittareita, ei kirjautumisaikojen tarkkailua."
+        },
+        {
+          "title": "Kamerat ovat oletuksena pois päältä",
+          "body": "Ääni riittää nopeaan kysymykseen. Kameran voi laittaa päälle silloin, kun siitä on hyötyä."
+        },
+        {
+          "title": "Kuka tahansa voi sanoa ei nyt",
+          "body": "Puhumispyynnön voi hylätä tai siihen voi vastata myöhemmin, ja tilaviesti kertoo, kun keskityt syventymistä vaativaan työhön."
+        }
+      ]
+    },
+    {
+      "title": "Ensimmäinen viikko: täytä se suunnitelmallisesti",
+      "items": [
+        {
+          "title": "Kutsu kaikki samana päivänä",
+          "detail": "Päivä 1",
+          "body": "Lähetä kutsulinkki koko tiimille kerralla ja liitä mukaan toimiston yhden lauseen tehtävä sekä säännöt. Kerros, jossa kaikki näkyvät ensimmäisenä aamuna, viestii selkeimmin siitä, että tiimi on täällä."
+        },
+        {
+          "title": "Siirrä yksi kokous toimistoon",
+          "detail": "Päivät 1–5",
+          "body": "Pidä päivittäinen standup tai viikoittainen tiimipalaveri toimiston kokoushuoneessa erillisen linkin sijaan. Se antaa kaikille syyn avata toimisto samaan aikaan ja totuttaa jättämään sen auki palaverin jälkeen."
+        },
+        {
+          "title": "Esihenkilöt näyttävät esimerkkiä ja pysyvät tavoitettavissa",
+          "detail": "Joka päivä",
+          "body": "Toimiston pystyttäneen henkilön tulisi olla kerroksessa koko päivän ja vastata jokaiseen keskustelupyyntöön. [Etätöihin siirtyneitä konsultteja koskevassa tutkimuksessa](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/) auttoi erityisesti esihenkilö, joka teki selväksi, että tiimi sai soittaa hänelle milloin vain klo 9 ja 17 välillä. Toimisto tekee tämän näkyväksi."
+        },
+        {
+          "title": "Vastaa nopeisiin kysymyksiin siellä",
+          "detail": "Joka päivä",
+          "body": "Kun chattiin tulee kysymys, jonka selvittäminen puhumalla kestäisi minuutin, vastaa pitkän viestin sijaan ”tule juttelemaan”. Kaksi tai kolme tällaista päivässä opettaa tiimille, mihin toimisto on tarkoitettu."
+        }
+      ]
+    },
+    {
+      "title": "Toinen viikko: tee siitä oletus",
+      "items": [
+        {
+          "title": "Korvaa linkit, älä työkaluja",
+          "body": "Pidä chat-sovellus kirjallista työtä varten. Lakkaa jakamasta kokouslinkkejä lyhyitä keskusteluja varten; toimisto korvaa ne."
+        },
+        {
+          "title": "Avaa se heti päivän alussa",
+          "body": "Pyydä tiimiä avaamaan toimisto työpäivän alkaessa aivan kuten chat-sovellus. Välilehden kiinnittäminen tai sovelluksen asentaminen selaimesta auttaa rutiinin luomisessa."
+        },
+        {
+          "title": "Järjestä yksi vapaamuotoinen hetki siellä",
+          "body": "Perjantaikahvit, yhteinen lounas videolla tai peli: kerran viikossa riittää. Sen ei tarvitse olla syy toimiston olemassaoloon."
+        }
+      ]
+    },
+    {
+      "title": "Kahden viikon jälkeen: kysy kolme kysymystä",
+      "body": [
+        "Kysy tiimiltä, älä analytiikasta. Jos vastaukset ovat myöntäviä, jatkakaa samaan malliin; jos eivät, muuttakaa toimiston käyttötarkoitusta ennen kuin vaihdatte työkalua."
+      ],
+      "items": [
+        {
+          "title": "Puhuitko toimistossa tällä viikolla jonkun kanssa, jolle olisit muuten laittanut viestin?",
+          "body": "Silloin toimisto tekee tehtävänsä."
+        },
+        {
+          "title": "Pidätkö toimistoa auki työskennellessäsi?",
+          "body": "Jos et, kysy mikä saa sulkemaan sen: äänet, kamera, tarkkailun tunne vai se, ettei kukaan muu ole paikalla."
+        },
+        {
+          "title": "Onko toimisto koskaan tuntunut tarkkailulta?",
+          "body": "Jos joku vastaa kyllä, korjaa tämä ensin riippumatta siitä, mitä muuta muutat."
+        }
+      ]
+    },
+    {
+      "title": "Mitä ei pidä koskaan tehdä",
+      "items": [
+        {
+          "title": "Tee läsnäolosta pakollista",
+          "body": "Vaatimus olla kerroksessa muuttaa toimiston leimakelloksi, ja ihmiset keksitelevät tapoja näyttää olevansa paikalla."
+        },
+        {
+          "title": "Käytä sitä ihmisten kyttäämiseen",
+          "body": "Heti kun esihenkilö mainitsee, kuka ei ollut paikalla, toimisto lakkaa olemasta luonteva paikka jutella."
+        },
+        {
+          "title": "Pidä kiinni sekä vanhasta että uudesta",
+          "body": "Jos lyhyet puhelut voi hoitaa kummalla tavalla vain, ne hoidetaan vanhalla tavalla. Valitse toimisto lyhyitä keskusteluja varten ja sano se ääneen."
+        }
+      ]
+    },
+    {
+      "title": "Milloin virtuaalitoimisto ei ole oikea ratkaisu",
+      "body": [
+        "Jos tiiminne työajat menevät harvoin päällekkäin useiden aikavyöhykkeiden tai tietoisen asynkronisen työskentelyn vuoksi, kerroksessa ei ole tarpeeksi ihmisiä yhtä aikaa, jotta tilan avaaminen kannattaisi. Kirjalliset kanavat, selkeät tilaviestit ja tallennetut katsaukset toimivat silloin paremmin. Virtuaalitoimisto maksaa itsensä takaisin tiimille, joka tekee töitä yhdessä, samaan aikaan, joka päivä."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Mihin TinyFloor sopii",
+    "body": "TinyFloor on rakennettu juuri tällaista käyttöönottoa varten: yksi kutsulinkki koko tiimille, kerros selaimessa ilman asennuksia, kokoushuone standupia varten ja Puhu-painike, jolla pyytää toiselta minuuttia ja johon toinen voi vastata heti tai myöhemmin. Se ei koskaan merkitse ketään poissaolevaksi taustavälilehden takia eikä seuraa työtunteja. Pro maksaa $29 kuukaudessa koko tiimille, ja jokainen uusi toimisto alkaa 14 päivän ilmaisella Prolla, mikä vastaa juuri yllä olevaa suunnitelmaa."
+  },
+  "faq": [
+    {
+      "q": "Miksi tiimit lakkaavat käyttämästä virtuaalitoimistoaan?",
+      "a": "Yleensä siksi, että sillä ei ole selkeää tehtävää, kerros on tyhjä avattaessa tai se tuntuu tarkkailulta. Selkeän tehtävän antaminen, kaikkien kutsuminen kerralla ja sopiminen siitä, että käyttö on vapaaehtoista eikä sitä seurata, ratkaisee useimmat ongelmat."
+    },
+    {
+      "q": "Pitäisikö virtuaalitoimiston käytön olla pakollista?",
+      "a": "Ei. Pakollinen läsnäolo muuttaa sen leimakelloksi. Tee siitä helpoin paikka jutella, niin ihmiset tulevat sinne, koska se on hyödyllistä."
+    },
+    {
+      "q": "Kuinka kauan tiimiltä menee tottua virtuaalitoimistoon?",
+      "a": "Noin kaksi viikkoa: ensimmäisellä viikolla tila täytetään suunnitelmallisesti siirtämällä kokous sinne ja pitämällä esihenkilöt tavoitettavissa, ja toisella viikolla siitä tehdään oletuspaikka lyhyille keskusteluille."
+    },
+    {
+      "q": "Korvaako virtuaalitoimisto Slackin?",
+      "a": "Ei kirjallisen työn osalta. Se korvaa kokouslinkit ja huddlet, joita aloitetaan lyhyitä keskusteluja varten. Kirjalliset asiat hoidetaan edelleen chatissa."
+    },
+    {
+      "q": "Entä jos tiimimme on jakautunut useille aikavyöhykkeille?",
+      "a": "Virtuaalitoimisto auttaa eniten silloin, kun työajat menevät päällekkäin useamman tunnin päivässä. Jos päällekkäisyyttä on vähän, kirjalliset kanavat ja selkeät tilaviestit toimivat paremmin."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/",
+      "note": "51 tietotyöläisen haastattelut asiantuntijapalveluyrityksessä huhti–kesäkuussa 2020, mukaan lukien esihenkilö, joka kehotti tiimiään soittamaan milloin vain klo 9–17 välillä."
+    }
+  ]
+}

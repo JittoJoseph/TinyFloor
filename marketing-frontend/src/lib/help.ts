@@ -1,175 +1,74 @@
+import { cache } from "react";
+import { localeCodes, type Locale } from "web-shared/lib/i18n/routing";
+import en from "../../messages/help/en.json";
+import { HELP_PAGES, type HelpPlace, type HelpTopic } from "@/lib/help-pages";
+
+export type { HelpTopic };
+
 /**
  * Answers to the questions people ask about TinyFloor itself, one page each:
  * an assistant asked "is TinyFloor free?" or "does TinyFloor record calls?"
  * finds the page whose title is the question, and quotes its first line
  * (docs/search.md). The answer comes first, in a sentence or two; the details
- * follow. In English only, like How it works. Every answer is the product's
- * as it is: keep them in step with the pricing page, lib/facts.ts and the app.
- * Links are written `[words](/path)`.
+ * follow. The order, topics and links between questions are here; the words
+ * are in messages/help/<locale>.json, written for each language. Every answer
+ * is the product's as it is: keep them in step with the pricing page,
+ * lib/facts.ts and the app. Links are written `[words](/path)`.
  */
 
 export const HELP_PATH = "/help";
 /** The day these answers were last checked (YYYY-MM-DD). */
 export const HELP_UPDATED = "2026-11-28";
 
-export const HELP_TITLE = "TinyFloor help";
-export const HELP_DESCRIPTION =
-  "Answers to common questions about TinyFloor: what it costs, how the trial works, inviting your team, calls, privacy and what happens when you cancel.";
-export const HELP_INTRO = "Short answers to the questions teams ask about TinyFloor, each on its own page. Can't find yours? Write to support@tinyfloor.com.";
+const TOPICS: HelpTopic[] = ["plans", "start", "calls", "privacy"];
 
-export type HelpTopic = "plans" | "start" | "calls" | "privacy";
-
-export const HELP_TOPICS: Record<HelpTopic, string> = {
-  plans: "Plans and billing",
-  start: "Getting started",
-  calls: "Calls and connection",
-  privacy: "Privacy and security",
-};
-
-export interface HelpArticle {
-  slug: string;
-  topic: HelpTopic;
+/** One question's words. */
+export interface HelpAnswer {
   /** The question, as people ask it: the page's title. */
   q: string;
   /** The answer in a sentence or two, first on the page and in its FAQ markup. */
   answer: string;
   paragraphs?: string[];
   items?: string[];
-  /** Other questions to read next, by slug. */
-  related: string[];
 }
 
-export const HELP: HelpArticle[] = [
-  {
-    slug: "is-tinyfloor-free",
-    topic: "plans",
-    q: "Is TinyFloor free?",
-    answer: "Yes, for up to 3 people, with every feature. Pro is $29 a month for the whole team, and every new office starts with 14 days of Pro free.",
-    items: [
-      "Free has the floor, Talk, meetings, chat, screen sharing and HD video, for up to 3 people on the floor at once, and keeps the last 90 days of chat history.",
-      "Pro is one price for the whole office, not a price per person, with room for your whole team, all of your chat history and priority help.",
-      "Offices that subscribe before 1 March 2027 keep $29 a month for as long as they stay subscribed. See [pricing](/pricing).",
-    ],
-    related: ["how-does-the-free-trial-work", "how-many-people-can-join-an-office", "how-do-i-cancel"],
-  },
-  {
-    slug: "how-does-the-free-trial-work",
-    topic: "plans",
-    q: "How does the TinyFloor free trial work?",
-    answer: "Every new office starts on Pro for 14 days, with room for the whole team and no card needed. When it ends, you choose Pro or stay on Free.",
-    items: [
-      "There's nothing to cancel: if you don't subscribe, the office moves to Free.",
-      "Nobody is removed and nothing is deleted when the trial ends. If more than 3 people are members, they can all still come in for 14 more days, while nobody new joins; after that, 3 can be on the floor at once and everyone keeps the chat.",
-      "Subscribing at any point keeps Pro going without a gap.",
-    ],
-    related: ["is-tinyfloor-free", "how-do-i-cancel", "how-many-people-can-join-an-office"],
-  },
-  {
-    slug: "how-many-people-can-join-an-office",
-    topic: "plans",
-    q: "How many people can join a TinyFloor office?",
-    answer: "Up to 15 on Pro and 3 at a time on Free. An office is for one team that works together every day.",
-    paragraphs: [
-      "A bigger company gives each team an office of its own, each with its own floor, chat and meeting room. TinyFloor isn't built for events with hundreds of people.",
-    ],
-    related: ["is-tinyfloor-free", "how-do-i-invite-my-team"],
-  },
-  {
-    slug: "how-do-i-cancel",
-    topic: "plans",
-    q: "How do I cancel TinyFloor, and can I get a refund?",
-    answer: "An office's admin can cancel Pro any time from the office's billing page. The plan runs to the end of what you paid for, then the office moves to Free, and nothing is deleted.",
-    items: [
-      "Ask within 14 days of any payment and you get all of it back: write to support@tinyfloor.com.",
-      "Billing is monthly only, so there's never a year left to pay for.",
-      "Prices are in US dollars; Creem, our reseller, adds any sales tax or VAT at checkout. Details are in the [refund policy](/refunds).",
-    ],
-    related: ["is-tinyfloor-free", "how-does-the-free-trial-work"],
-  },
-  {
-    slug: "does-tinyfloor-need-a-download",
-    topic: "start",
-    q: "Does TinyFloor need a download?",
-    answer: "No. TinyFloor runs in any modern browser on a computer or a phone, with nothing to install.",
-    paragraphs: [
-      "If you'd like it in its own window, you can install it as an app from the browser. There's nothing to update: it's always the latest version.",
-    ],
-    related: ["does-tinyfloor-work-on-phones", "how-do-i-invite-my-team", "does-tinyfloor-keep-working-in-a-background-tab"],
-  },
-  {
-    slug: "does-tinyfloor-work-on-phones",
-    topic: "start",
-    q: "Does TinyFloor work on phones?",
-    answer: "Yes, in the phone's browser: you can walk the floor, talk, join meetings and chat. Sharing your screen needs a computer.",
-    paragraphs: ["On a phone you can watch someone else's shared screen, but not share your own. There's no app to download from an app store."],
-    related: ["does-tinyfloor-need-a-download", "does-tinyfloor-work-behind-a-firewall-or-vpn"],
-  },
-  {
-    slug: "how-do-i-invite-my-team",
-    topic: "start",
-    q: "How do I invite my team to TinyFloor?",
-    answer: "Copy the office's invite link and send it to your team. They open it, sign in with Google or an email code, and take a seat.",
-    items: [
-      "One link works for everyone, and an admin can reset it.",
-      "In the office's settings, an admin chooses whether anyone in the office can share the link or only admins.",
-      "Everyone in an office signs in; there are no passwords to set up.",
-    ],
-    related: ["how-many-people-can-join-an-office", "does-tinyfloor-have-single-sign-on", "does-tinyfloor-need-a-download"],
-  },
-  {
-    slug: "does-tinyfloor-record-calls",
-    topic: "privacy",
-    q: "Does TinyFloor record calls?",
-    answer: "No. Calls and meetings are never recorded, and audio is never processed or stored on a server.",
-    paragraphs: [
-      "Echo cancellation and noise removal run in your own browser. TinyFloor also has no transcripts or AI meeting notes. If you need recordings, a tool that has them will suit you better.",
-    ],
-    related: ["where-is-my-data-stored", "does-tinyfloor-keep-working-in-a-background-tab"],
-  },
-  {
-    slug: "where-is-my-data-stored",
-    topic: "privacy",
-    q: "Where does TinyFloor store my data?",
-    answer: "On Cloudflare's network, which hosts the site, the app and its data, and carries calls. Everything travels over encrypted connections.",
-    items: [
-      "Each office's floor and chat run on their own, separate from other offices.",
-      "If you connect Google Calendar, TinyFloor keeps only your busy times, for a few minutes; your events aren't stored. Disconnecting deletes them and revokes access.",
-      "To get a copy of your information or delete your account, write to support@tinyfloor.com from your account's email; we reply within 30 days.",
-      "The full list of what we keep and why is in the [privacy policy](/privacy).",
-    ],
-    related: ["does-tinyfloor-record-calls", "does-tinyfloor-have-single-sign-on"],
-  },
-  {
-    slug: "does-tinyfloor-have-single-sign-on",
-    topic: "privacy",
-    q: "Does TinyFloor have single sign-on?",
-    answer: "No. TinyFloor has no SAML or SCIM single sign-on. People sign in with Google or with a one-time code sent to their email, and there are no passwords.",
-    paragraphs: ["If your company requires single sign-on through its identity provider, TinyFloor isn't a fit yet."],
-    related: ["how-do-i-invite-my-team", "where-is-my-data-stored"],
-  },
-  {
-    slug: "does-tinyfloor-work-behind-a-firewall-or-vpn",
-    topic: "calls",
-    q: "Does TinyFloor work behind a company firewall or VPN?",
-    answer: "Yes, in most cases. Every call goes through Cloudflare's relay and falls back from UDP to TCP and TLS, so it only needs ordinary HTTPS to get through.",
-    paragraphs: [
-      "Calls don't try to connect browsers directly to each other, which often fails on office and phone networks. More, with the numbers, is in [how TinyFloor works](/how-it-works).",
-    ],
-    related: ["does-tinyfloor-keep-working-in-a-background-tab", "does-tinyfloor-work-on-phones"],
-  },
-  {
-    slug: "does-tinyfloor-keep-working-in-a-background-tab",
-    topic: "calls",
-    q: "Does TinyFloor keep working in a background tab?",
-    answer: "Yes. You stay on the floor and in your calls while you work in other tabs, and TinyFloor never marks you away because its tab is in the background.",
-    items: [
-      "Teammates can still see you on the floor and ask to talk.",
-      "Music from Spotify keeps playing.",
-      "If your connection drops, the floor reconnects by itself and puts you back at your desk.",
-    ],
-    related: ["does-tinyfloor-work-behind-a-firewall-or-vpn", "does-tinyfloor-record-calls"],
-  },
-];
+export interface HelpCopy {
+  title: string;
+  description: string;
+  intro: string;
+  topics: Record<HelpTopic, string>;
+  details: string;
+  related: string;
+  all: string;
+  articles: Record<string, HelpAnswer>;
+}
 
-export const helpPath = (article: HelpArticle) => `${HELP_PATH}/${article.slug}`;
-export const helpBySlug = (slug: string) => HELP.find((article) => article.slug === slug);
+export interface HelpArticle extends HelpAnswer, HelpPlace {}
+
+
+/** The help center in English, for llms.txt and as the fallback. */
+export const HELP_EN: HelpCopy = en;
+export const HELP_TITLE = HELP_EN.title;
+export const HELP_DESCRIPTION = HELP_EN.description;
+export const HELP_INTRO = HELP_EN.intro;
+export const HELP_TOPICS = HELP_EN.topics;
+export const HELP_TOPIC_ORDER = TOPICS;
+
+/** The languages the help center is written in; anywhere else the English shows, marked as English. */
+export const HELP_LOCALES: readonly Locale[] = localeCodes;
+
+const articlesIn = (copy: HelpCopy): HelpArticle[] => HELP_PAGES.map((one) => ({ ...one, ...copy.articles[one.slug] }));
+
+/** Every question in English, in order. */
+export const HELP: HelpArticle[] = articlesIn(HELP_EN);
+
+export const helpCopy = cache(async (locale: string): Promise<HelpCopy> => {
+  if (locale === "en" || !HELP_LOCALES.includes(locale as Locale)) return HELP_EN;
+  return (await import(`../../messages/help/${locale}.json`)).default as HelpCopy;
+});
+
+/** Every question in a language, in order. */
+export const helpIn = async (locale: string) => articlesIn(await helpCopy(locale));
+
+export const helpPath = (article: Pick<HelpArticle, "slug">) => `${HELP_PATH}/${article.slug}`;
+export const helpBySlug = (slug: string) => HELP_PAGES.find((article) => article.slug === slug);

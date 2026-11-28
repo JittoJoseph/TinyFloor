@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog: preguntas de equipos remotos, respondidas con números",
+    "description": "Lo que se preguntan los equipos remotos antes de elegir cómo trabajar juntos, respondido con números y sus fuentes por quienes hacen TinyFloor."
+  },
+  "title": "Preguntas de equipos remotos, <em>respondidas con números.</em>",
+  "body": "Lo que se preguntan los equipos remotos antes de elegir cómo trabajar juntos: costes, comparativas y análisis, cada uno con sus fuentes.",
+  "categories": {
+    "costs": "Costes",
+    "comparisons": "Comparativas",
+    "remoteWork": "Trabajo remoto"
+  },
+  "latest": "Lo último",
+  "takeaways": "Puntos clave",
+  "sources": "Fuentes",
+  "related": "Artículos relacionados",
+  "guides": "Guías sobre el mismo tema",
+  "fromBlog": "Del blog",
+  "all": "Todos los artículos"
+}

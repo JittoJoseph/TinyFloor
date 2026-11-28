@@ -270,10 +270,10 @@
     "voiceSendHint": "lähetä",
     "voiceDeleteHint": "poista",
     "meetingStartedAt": "Alkoi {time}",
-    "talkWants": "{name} haluaa jutella",
-    "talkWanted": "{name} halusi jutella",
-    "talkAsked": "Pyysit juttelemaan",
-    "talkTalking": "Juttelette"
+    "talkWants": "{name} haluaa puhua",
+    "talkWanted": "{name} halusi puhua",
+    "talkAsked": "Pyysit puhumaan",
+    "talkTalking": "Puhutte nyt"
   },
   "proximity": {
     "talk": "Puhu",

@@ -270,10 +270,10 @@
     "voiceSendHint": "send",
     "voiceDeleteHint": "slet",
     "meetingStartedAt": "Startet {time}",
-    "talkWants": "{name} vil gerne tale",
-    "talkWanted": "{name} ville gerne tale",
-    "talkAsked": "Du bad om at tale",
-    "talkTalking": "Taler nu"
+    "talkWants": "{name} vil gerne snakke",
+    "talkWanted": "{name} ville gerne snakke",
+    "talkAsked": "Du bad om at snakke",
+    "talkTalking": "Snakker nu"
   },
   "proximity": {
     "talk": "Snak",

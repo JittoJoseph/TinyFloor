@@ -270,10 +270,10 @@
     "voiceSendHint": "发送",
     "voiceDeleteHint": "删除",
     "meetingStartedAt": "开始于 {time}",
-    "talkWants": "{name} 想和你聊聊",
-    "talkWanted": "{name} 想和你聊过",
-    "talkAsked": "你请求了交谈",
-    "talkTalking": "正在交谈"
+    "talkWants": "{name} 想和你说话",
+    "talkWanted": "{name} 刚才想和你说话",
+    "talkAsked": "你请求了说话",
+    "talkTalking": "正在说话"
   },
   "proximity": {
     "talk": "说话",

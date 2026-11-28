@@ -1,0 +1,127 @@
+{
+  "label": "Spontaneous conversations in remote teams",
+  "meta": {
+    "title": "Spontaneous Conversations in Remote Teams: What Research Shows and What Works",
+    "description": "What remote teams lose when unplanned conversations stop, from studies of 61,182 Microsoft employees, software engineers and 51 consultants, and six things remote teams do about it."
+  },
+  "coverAlt": "Two cream speech bubbles, one large and one small, beside a small yellow mug, on a coral background.",
+  "title": "How do remote teams keep <em>spontaneous conversations?</em>",
+  "intro": "A remote team rarely loses its meetings. It loses the conversations nobody scheduled: a quick question across the desk, a decision overheard, someone asked to look at your screen for a minute. Research shows the loss is real, that it falls hardest on the newest people, and that remote companies put it back on purpose. Here is what the studies found, what teams do about it, and how to choose. We make TinyFloor, a virtual office, so we're not neutral; we've kept to what the sources say.",
+  "takeaways": [
+    "When Microsoft went fully remote in 2020, its 61,182 US employees' collaboration became more static and siloed, and communication moved from live to written.",
+    "Software engineers who sat near their teammates got 18.3% more feedback on their code; most of the gain went to newer and younger engineers.",
+    "In interviews with 51 consultants who moved to remote work, the quick questions and informal feedback went missing first, and scheduled social time felt artificial.",
+    "25% of fully remote employees felt lonely a lot of the previous day, against 16% of those working only on-site.",
+    "GitLab, an all-remote company, asks every new hire to schedule at least five coffee chats and organizes informal communication on purpose."
+  ],
+  "sections": [
+    {
+      "title": "What do remote teams lose?",
+      "body": [
+        "The largest study is Microsoft's own. [Researchers used the emails, calendars, messages and calls of 61,182 US Microsoft employees](https://www.nature.com/articles/s41562-021-01196-4) in the first six months of 2020, when the whole company moved to remote work. Their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and communication shifted from live conversation to writing. The authors suggest this may make it harder for new information to travel across a company.",
+        "Being near teammates also changes how much people learn from each other. [A study of software engineers at a Fortune 500 company from 2019 to 2024](https://www.nber.org/papers/w31880) used the 2020 office closures and the later return-to-office mandates to compare teams that sat together with teams that were already spread out. Sitting near teammates increased the feedback engineers got on their code by 18.3% and improved its quality. The gain went mostly to less-tenured and younger engineers. There was a cost too: experienced engineers wrote less code when they sat near their teammates.",
+        "Asked about it directly, people describe the same thing. In [interviews with 51 knowledge workers at a professional services firm](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/) during the 2020 lockdown, the informal exchanges went missing first: the quick question raised in front of the team, the feedback given walking out of a meeting. As one put it, you can't just grab two people and talk something through; you have to schedule a time. Managers noticed their teams had stopped asking the questions they would have asked in person."
+      ]
+    },
+    {
+      "title": "Is it only about feeling connected?",
+      "body": [
+        "Partly. In [Gallup's State of the Global Workplace 2024](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx), 25% of fully remote employees said they had felt lonely a lot of the previous day, against 21% of hybrid employees and 16% of those working only on-site. In [Buffer's 2023 survey of 3,000 remote workers](https://buffer.com/state-of-remote-work/2023), loneliness was the second most common struggle, named by 23%; yet 75% said they feel connected to their colleagues.",
+        "But the studies above are mostly about work, not mood: questions that don't get asked, feedback that doesn't get given, decisions that only part of the team hears about. That's why the fixes that last are the ones that make a short work conversation easy, not only the ones that make time for socializing."
+      ]
+    },
+    {
+      "title": "Why scheduling it doesn't fully work",
+      "body": [
+        "The first fix most teams reach for is a calendar slot: a weekly social call, virtual drinks, a standing coffee chat. They help relationships. But in the interviews with consultants, people found that scheduled social time could feel artificial, and that the informal work talk it was meant to replace still didn't happen, because a 30-second question isn't worth a meeting.",
+        "What's missing is a low-cost way to start a short conversation at the moment you need it, without a link, an invite or a reason. Teams that solved it gave people a standing place to be reachable, and permission to interrupt. In the same study, one person's manager had told them they could call her any time between 9 and 5."
+      ]
+    },
+    {
+      "title": "Six things remote teams do about it",
+      "items": [
+        {
+          "title": "Organize informal communication on purpose",
+          "body": "[GitLab, which has no offices](https://handbook.gitlab.com/handbook/company/culture/all-remote/informal-communication/), treats informal communication as something to organize rather than leave to chance: every new hire schedules at least five coffee chats, and the company lists more than 15 ways people connect, from social calls to Ask Me Anything sessions with leaders."
+        },
+        {
+          "title": "A channel for quick questions",
+          "body": "One chat channel where half-formed questions are welcome and answered in the open, so the answer helps the next person too. It costs nothing, and works across time zones. It doesn't help with the questions that need a minute of talking."
+        },
+        {
+          "title": "Open coworking calls",
+          "body": "A voice or video room that stays open for a few hours, where people work quietly and anyone can ask something out loud. GitLab lists coworking calls among its informal practices. The catch is that someone has to keep joining it, or it empties."
+        },
+        {
+          "title": "Random pairings",
+          "body": "A bot or a rota that pairs two people from different teams for a short chat every week or two; GitLab uses one. It builds the relationships that make asking easier, but it isn't there when you have a question."
+        },
+        {
+          "title": "Show who can be interrupted",
+          "body": "A status that says plainly when it's fine to interrupt and when it isn't, kept up to date. Most chat apps have one; what matters is that the team agrees what each one means and that people set it themselves."
+        },
+        {
+          "title": "A virtual office",
+          "body": "A shared floor where everyone on the team appears while they're working, so you can see who's around and start a conversation by walking up to them, without a link. It's the closest to sitting together, and it only works if people keep it open and nobody uses it to watch them. Our [comparison of virtual office software](/guides/best-virtual-office-software) covers the options and prices."
+        }
+      ]
+    },
+    {
+      "title": "Which to start with",
+      "table": {
+        "head": ["Approach", "Effort", "Best for", "Watch out for"],
+        "rows": [
+          ["A quick-questions channel", "Minutes to set up", "Questions that can wait an hour", "Questions that need talking through"],
+          ["Open coworking calls", "A standing link", "Teams in one or two time zones", "Rooms that empty after a week"],
+          ["Random pairings", "A chat app bot", "Cross-team relationships", "Not there when a question comes up"],
+          ["Clear statuses", "A team agreement", "Fewer worried interruptions", "Statuses nobody updates"],
+          ["A virtual office", "A new tool to adopt", "Teams that work together every day", "Feeling watched, if it's done wrong"]
+        ],
+        "note": "Most teams combine two: a channel for what can wait, and one live place for what can't."
+      }
+    },
+    {
+      "title": "How to keep it from feeling like surveillance",
+      "items": [
+        { "title": "Make it a place, not a requirement", "body": "Nobody should have to be in the open room or the virtual office to prove they're working. If it's useful, people come." },
+        { "title": "Don't track activity", "body": "No idle timers, no online-hours reports. Someone reading in another tab is still working." },
+        { "title": "Cameras off by default", "body": "Voice is enough for a quick question. Video is for when it helps." },
+        { "title": "Let people decline", "body": "A request to talk that can be declined, or answered later, keeps interruptions polite. A call that rings until someone picks up doesn't." }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "TinyFloor is a virtual office in the browser for one team that works together every day. Everyone is on one floor while they work, so you can see who's around; walk up to a teammate and press Talk, and they can accept or answer later. It never marks people away because their tab is in the background, and calls are never recorded. Pro is $29 a month for the whole team, and every new office starts with 14 days of Pro free."
+  },
+  "faq": [
+    {
+      "q": "Why do remote teams lose spontaneous conversations?",
+      "a": "Because starting a conversation remotely takes a link, an invite or a reason, and a 30-second question isn't worth any of them. Studies of Microsoft employees and of consultants in 2020 found that remote work shifted communication from live to written, and that quick questions and informal feedback went missing first."
+    },
+    {
+      "q": "Does remote work hurt collaboration?",
+      "a": "It changes it. When Microsoft went fully remote, its employees' collaboration became more siloed, with fewer links between groups. A study of software engineers found that sitting near teammates increased code feedback by 18.3%, mostly for newer engineers, while experienced engineers wrote less code."
+    },
+    {
+      "q": "How do you recreate water cooler conversations remotely?",
+      "a": "Give people a low-cost way to start a short conversation when they need one: a channel for quick questions, an open coworking call, random coffee pairings, clear statuses, or a virtual office where you can see who's around and walk up to talk. Most teams combine a written channel with one live place."
+    },
+    {
+      "q": "Are scheduled social calls enough?",
+      "a": "They help relationships, but they don't replace quick work conversations. People interviewed after moving to remote work said scheduled social time could feel artificial, and the 30-second questions still didn't get asked."
+    },
+    {
+      "q": "How do you stop an always-open room from feeling like surveillance?",
+      "a": "Make it optional, don't track activity or online hours, keep cameras off by default, and let people decline or postpone a request to talk."
+    }
+  ],
+  "sources": [
+    { "title": "Yang et al., The effects of remote work on collaboration among information workers, Nature Human Behaviour (2021)", "url": "https://www.nature.com/articles/s41562-021-01196-4", "note": "61,182 US Microsoft employees, first half of 2020: more static and siloed collaboration, less live communication." },
+    { "title": "Emanuel, Harrington and Pallais, The Power of Proximity to Coworkers, NBER Working Paper 31880 (revised June 2026)", "url": "https://www.nber.org/papers/w31880", "note": "Software engineers at a Fortune 500 firm, 2019 to 2024: 18.3% more code feedback when sitting near teammates." },
+    { "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/", "note": "Interviews with 51 knowledge workers at a professional services firm, April to June 2020." },
+    { "title": "Gallup, 1 in 5 Employees Worldwide Feel Lonely", "url": "https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx", "note": "State of the Global Workplace 2024: loneliness by work location." },
+    { "title": "Buffer, 2023 State of Remote Work", "url": "https://buffer.com/state-of-remote-work/2023", "note": "Survey of 3,000 remote workers." },
+    { "title": "GitLab Handbook, Informal Communication in an all-remote environment", "url": "https://handbook.gitlab.com/handbook/company/culture/all-remote/informal-communication/", "note": "Coffee chats, coworking calls, social calls and more than 15 ways GitLab organizes informal communication." }
+  ]
+}

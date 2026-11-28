@@ -788,3 +788,34 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
 - **The feature pages' pictures are in every language**, the same picture
   with alt text written in each language, and the sitemap lists them on each
   page's entry.
+
+## Answer-shaped pages (28 November)
+
+- **Assistants name us when the question names what we are.** Asked for a
+  virtual office "in the browser, no download, one flat price" for 8 people,
+  ChatGPT put TinyFloor first and told the user to try it first. Asked for the
+  best virtual office for 10 people, or alternatives to the best-known one
+  for 12, it named six others and not us. The category answers come from pages written as the
+  buyer's question with a year in the title, vendor pricing pages, and small
+  "with real prices" lists, not from Google rank: the product named most often
+  gets almost no Google traffic.
+- **The searches behind an answer add "2026", "pricing", "comparison" and
+  "review"** to the user's words, so titles that carry the year and the price
+  match them.
+- **Questions about a product by name are answered from its own help pages
+  and a facts page,** one question per page, dated. So the site now has
+  [/facts](https://www.tinyfloor.com/facts) (the reference, one fact a line,
+  dated, in llms.txt and the footer) and [/help](https://www.tinyfloor.com/help)
+  (twelve questions, each its own page with FAQ markup), both in English.
+- **Demand is in assistants, not search.** "Is <product> good" and "<product>
+  pricing" for the best-known products run to hundreds or thousands of
+  questions a month in ChatGPT against tens of Google searches, and in English.
+  The new pricing guides and the "is it worth it" post are in English only for
+  that reason.
+- **Problem questions cite research, not vendors.** Asked how a remote team
+  keeps quick conversations, ChatGPT cited Microsoft's study, academic papers
+  and GitLab's handbook. The post on spontaneous conversations is built from
+  those sources, so it can be cited alongside them.
+- **To measure:** run the same four buyer prompts through DataForSEO's ChatGPT
+  scraper each month, and check which of our pages its LLM-mentions data shows
+  as cited (22 answers on 28 November, mostly the team-building guides).

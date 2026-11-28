@@ -814,7 +814,7 @@
           {
             "title": "SoWork",
             "detail": "Free for 10 members · Basic $5.40 a member a month billed yearly",
-            "body": "A virtual office with meeting rooms, team chat and calendar integration. The free plan fits up to 10 members but limits meetings to 30 minutes and has no recordings. Premium, at $12 a member a month billed yearly, adds AI summaries, unlimited recordings and analytics. [Full comparison](/sowork-alternative)."
+            "body": "A virtual office with meeting rooms, team chat and calendar integration. The free plan fits up to 10 members but limits meetings to 30 minutes and has no recordings. Premium, at $12 a member a month billed yearly, adds AI summaries, unlimited recordings and analytics. [Full comparison](/sowork-alternative), and [what it costs](/guides/sowork-pricing)."
           },
           {
             "title": "Spot",
@@ -824,7 +824,7 @@
           {
             "title": "Kumospace",
             "detail": "Free for 5 members · Business $16 a user a month",
-            "body": "A polished space with spatial audio and desktop and mobile apps, popular for social events as well as offices. The free plan covers 5 members and one floor. It's among the more expensive for a team of 10 or more. [Full comparison](/kumospace-alternative)."
+            "body": "A polished space with spatial audio and desktop and mobile apps, popular for social events as well as offices. The free plan covers 5 members and one floor. It's among the more expensive for a team of 10 or more. [Full comparison](/kumospace-alternative), and [what it costs](/guides/kumospace-pricing)."
           },
           {
             "title": "WorkAdventure",
@@ -839,7 +839,7 @@
           {
             "title": "Roam",
             "detail": "No free plan · $19.50 an active member a month",
-            "body": "A desktop app for Mac and Windows that bundles a virtual office with meetings, chat, an AI assistant and webinars. You only pay for members who use it that month. It's a whole workplace suite, priced like one. [Full comparison](/roam-alternative)."
+            "body": "A desktop app for Mac, Windows and Linux that bundles a virtual office with meetings, chat, an AI assistant and webinars. You only pay for members who use it that month. It's a whole workplace suite, priced like one. [Full comparison](/roam-alternative), and [what it costs](/guides/roam-pricing)."
           },
           {
             "title": "oVice",
@@ -1340,7 +1340,8 @@
       {
         "title": "The same team elsewhere",
         "body": [
-          "What the same teams pay a month on other [virtual offices](/guides/best-virtual-office-software), on the cheapest plan that fits them."
+          "What the same teams pay a month on other [virtual offices](/guides/best-virtual-office-software), on the cheapest plan that fits them.",
+          "For what each of them costs at other team sizes, see [SoWork's](/guides/sowork-pricing), [Kumospace's](/guides/kumospace-pricing) and [Roam's](/guides/roam-pricing) pricing."
         ],
         "table": {
           "head": [
@@ -5282,6 +5283,814 @@
       {
         "q": "Should the question of the day be a poll?",
         "a": "Two-choice questions like \"this or that\" and \"would you rather\" work well as polls. Open questions get better answers in the chat."
+      }
+    ]
+  },
+  "roamPricing": {
+    "label": "Roam pricing",
+    "meta": {
+      "title": "Roam Pricing 2026: $19.50 per Active Member, What Teams Pay",
+      "description": "Roam costs $19.50 per active member a month in 2026, billed monthly, and $20.88 from 2027, with no free plan. What that comes to for teams of 4 to 50, who counts as active, and what the same team pays elsewhere."
+    },
+    "title": "What does <em>Roam cost?</em>",
+    "intro": "Roam sells one plan: everything it makes, for one price per active member, billed monthly. This guide works out what that comes to for your team, who counts toward the bill, what changes in 2027, and what the same team pays on other virtual offices. Every Roam figure is from Roam's own pricing page, read in November 2026; prices are in US dollars, before tax.",
+    "sections": [
+      {
+        "title": "Roam's plan",
+        "body": [
+          "Roam has no tiers. One bundle includes all ten of its products, and every team pays the same rate for each active member."
+        ],
+        "items": [
+          {
+            "title": "The price",
+            "body": "$19.50 per active member a month in 2026, billed monthly. There is no yearly plan, no annual commitment and no discount for paying ahead."
+          },
+          {
+            "title": "What's in the bundle",
+            "body": "The virtual office with drop-in meetings, Theater for all-hands presentations, AInbox for messages, Lobby for booking meetings with people outside the company, Magicast screen recording, Magic Minutes AI meeting notes, On-It as an AI assistant, On-Air for events, W!N for recognition and rewards, and the mobile app."
+          },
+          {
+            "title": "Free trial",
+            "body": "14 days, no credit card. Each person added later also gets 14 days free before they count toward the bill."
+          },
+          {
+            "title": "Prices by country",
+            "body": "Roam sets prices by country. Companies in India paying in rupees, for example, see ₹888 per active member a month. Check the page from where you'll be billed."
+          }
+        ]
+      },
+      {
+        "title": "What Roam costs by team size",
+        "body": [
+          "Roam counts active members: the people who use Roam that month. Here is the bill when everyone on the team uses it."
+        ],
+        "table": {
+          "head": [
+            "Active members",
+            "2026, a month",
+            "2027, a month",
+            "A year at the 2026 rate"
+          ],
+          "rows": [
+            [
+              "4",
+              "$78",
+              "$83.52",
+              "$936"
+            ],
+            [
+              "6",
+              "$117",
+              "$125.28",
+              "$1,404"
+            ],
+            [
+              "8",
+              "$156",
+              "$167.04",
+              "$1,872"
+            ],
+            [
+              "10",
+              "$195",
+              "$208.80",
+              "$2,340"
+            ],
+            [
+              "12",
+              "$234",
+              "$250.56",
+              "$2,808"
+            ],
+            [
+              "15",
+              "$292.50",
+              "$313.20",
+              "$3,510"
+            ],
+            [
+              "25",
+              "$487.50",
+              "$522",
+              "$5,850"
+            ],
+            [
+              "50",
+              "$975",
+              "$1,044",
+              "$11,700"
+            ]
+          ],
+          "note": "$19.50 per active member a month in 2026 and $20.88 in 2027, billed monthly (Roam's pricing page, November 2026). Before tax."
+        }
+      },
+      {
+        "title": "Who counts as an active member",
+        "items": [
+          {
+            "title": "People who use Roam that month",
+            "body": "Roam charges for the members who use it during the month. Someone on leave for the whole month isn't billed; someone who opens it once is."
+          },
+          {
+            "title": "Guests are free",
+            "body": "Clients, prospects and partners who join with a guest badge don't count toward active members."
+          },
+          {
+            "title": "New people start on a trial",
+            "body": "Everyone added to the team gets 14 days free before they show up on the bill."
+          }
+        ]
+      },
+      {
+        "title": "What changes in 2027",
+        "body": [
+          "Roam publishes next year's rate on its pricing page: $20.88 per active member a month from 2027, about 7% more than in 2026.",
+          "For a team of 10 that is $208.80 a month instead of $195, or $165.60 more over the year. Because Roam bills monthly, there is no yearly plan to lock in the 2026 rate."
+        ]
+      },
+      {
+        "title": "Worked examples",
+        "items": [
+          {
+            "title": "A team of 8 who all come in every day",
+            "detail": "$156 a month",
+            "body": "Eight active members pay $156 a month, $1,872 a year. From 2027, $167.04 a month."
+          },
+          {
+            "title": "A team of 12 with two part-timers",
+            "detail": "$195 to $234 a month",
+            "body": "In a month when the two part-time people don't open Roam, the team pays for 10: $195. In a month when everyone does, $234."
+          },
+          {
+            "title": "A team of 20 that meets clients",
+            "detail": "$390 a month, guests free",
+            "body": "Twenty active members pay $390 a month. Clients who join as guests add nothing."
+          }
+        ]
+      },
+      {
+        "title": "The same team elsewhere",
+        "body": [
+          "What the same teams pay a month on other [virtual offices](/guides/best-virtual-office-software), on the lowest-priced plan that fits them."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Roam",
+            "TinyFloor",
+            "Gather, billed yearly",
+            "SoWork Basic, billed yearly",
+            "Kumospace Business, billed yearly"
+          ],
+          "rows": [
+            [
+              "4 people",
+              "$78",
+              "$29",
+              "$48",
+              "$21.60",
+              "Free (up to 5 members)"
+            ],
+            [
+              "8 people",
+              "$156",
+              "$29",
+              "$96",
+              "$43.20",
+              "$128"
+            ],
+            [
+              "12 people",
+              "$234",
+              "$29",
+              "$144",
+              "$64.80",
+              "$192"
+            ]
+          ],
+          "note": "From each product's own pricing page in November 2026, before tax. Roam bills monthly only; the others are shown billed yearly, their lowest rate. SoWork's free plan covers up to 10 members with audio meetings capped at 30 minutes. TinyFloor is free for up to 3 people."
+        }
+      },
+      {
+        "title": "When Roam is worth it",
+        "items": [
+          {
+            "title": "You'd otherwise buy several tools",
+            "body": "Roam's case is the bundle. If you'd pay separately for AI meeting notes, a screen recorder, a scheduling page and team messaging, one price for all of them can come to less."
+          },
+          {
+            "title": "Attendance changes month to month",
+            "body": "Paying only for people who used it suits teams with contractors, seasonal staff or long leave."
+          },
+          {
+            "title": "You want an app that's always open",
+            "body": "Roam is installed on the computer, with apps for macOS, Windows and Linux, and for phones."
+          },
+          {
+            "title": "You need SOC 2",
+            "body": "Roam's pricing page lists SOC 2 Type II and GDPR compliance."
+          },
+          {
+            "title": "When it isn't",
+            "body": "If your team mostly needs to [see who's around](/team-presence), talk and meet, most of the bundle goes unused, and you still pay for every person who opens it."
+          }
+        ]
+      },
+      {
+        "title": "How we checked",
+        "body": [
+          "Roam's prices, the 2027 rate, the trial and who counts as active come from ro.am/pricing, and the apps from ro.am/download, read in November 2026. The other products' prices come from their own pricing pages in the same month. Where a page didn't say something, we left it out rather than guess. Prices change: check the vendor's page before you buy."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor does the office part of what Roam does: you see who's around, walk up to someone and talk, meet in a meeting room, chat and share your screen, in the browser with nothing to install. It costs $29 a month for the whole team, one price however many people you invite, and every new office starts with 14 days of Pro free. It has no AI notes, recording, scheduling or events, so if your team would use Roam's whole bundle, Roam is the better fit."
+    },
+    "faq": [
+      {
+        "q": "How much does Roam cost?",
+        "a": "$19.50 per active member a month in 2026, billed monthly, for all of Roam's products. Roam has published $20.88 for 2027."
+      },
+      {
+        "q": "Does Roam have a free plan?",
+        "a": "No. Roam has a 14-day free trial with no credit card, and each person added later gets 14 days free before they count."
+      },
+      {
+        "q": "How much does Roam cost for 10 people?",
+        "a": "$195 a month when all ten use it that month, $2,340 a year. From 2027, $208.80 a month."
+      },
+      {
+        "q": "What is an active member in Roam?",
+        "a": "A member who uses Roam during the month. Members who don't open it that month, and guests, aren't billed."
+      },
+      {
+        "q": "Does Roam have yearly billing or discounts?",
+        "a": "No. Roam bills monthly only and says it gives no discounts."
+      },
+      {
+        "q": "Does Roam charge for guests?",
+        "a": "No. External people with guest badges don't count toward active members."
+      },
+      {
+        "q": "Does Roam run in the browser?",
+        "a": "Roam is an app you install, for macOS, Windows and Linux, with a mobile app. TinyFloor runs in the browser with nothing to install."
+      },
+      {
+        "q": "What do other virtual offices cost?",
+        "a": "For 10 people: Gather is $120 a month billed yearly, SoWork Basic $54, Kumospace Business $160, and TinyFloor $29 for the whole team. Our [comparison of ten virtual offices](/guides/best-virtual-office-software) has the rest."
+      }
+    ]
+  },
+  "kumospacePricing": {
+    "label": "Kumospace pricing",
+    "meta": {
+      "title": "Kumospace Pricing 2026: Free for 5, Then $16 a Member, What Teams Pay",
+      "description": "Kumospace is free for up to 5 members, then $16 a member a month billed yearly or $20 monthly, with a 5-member minimum. What that comes to for teams of 5 to 50, what the free plan leaves out, and what the same team pays elsewhere."
+    },
+    "title": "What does <em>Kumospace cost?</em>",
+    "intro": "Kumospace has a free plan for small teams and one paid plan, Business, billed for every member. This guide works out what Business comes to for your team, what the free plan includes, how adding and removing people is billed, and what the same team pays on other virtual offices. Every Kumospace figure is from Kumospace's own pricing page, read in November 2026; prices are in US dollars, before tax.",
+    "sections": [
+      {
+        "title": "Kumospace's plans",
+        "items": [
+          {
+            "title": "Free",
+            "body": "$0 for up to 5 registered members. One floor, a public space, basic chat, the desktop and mobile apps, and furniture you can arrange. Up to 50 guests, who can each be in the space up to 4 hours a week."
+          },
+          {
+            "title": "Business",
+            "body": "$16 a member a month billed yearly, or $20 billed monthly, for at least 5 members. Adds chat channels and group messages, unlimited chat history, recording, user analytics, more floors, and access controls such as a password or a list of allowed emails. 14-day free trial."
+          },
+          {
+            "title": "Enterprise",
+            "body": "Priced by Kumospace's sales team. Adds single sign-on, a custom domain, an uptime SLA, HIPAA compliance, unlimited guests and a dedicated customer success contact."
+          }
+        ]
+      },
+      {
+        "title": "What Kumospace costs by team size",
+        "body": [
+          "Kumospace bills every member: the people who use the space regularly. Here is Business for common team sizes; a team of up to 5 can stay on the free plan."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Billed monthly",
+            "Billed yearly, a month",
+            "A year, billed yearly"
+          ],
+          "rows": [
+            [
+              "5 people",
+              "$100",
+              "$80",
+              "$960"
+            ],
+            [
+              "6 people",
+              "$120",
+              "$96",
+              "$1,152"
+            ],
+            [
+              "8 people",
+              "$160",
+              "$128",
+              "$1,536"
+            ],
+            [
+              "10 people",
+              "$200",
+              "$160",
+              "$1,920"
+            ],
+            [
+              "12 people",
+              "$240",
+              "$192",
+              "$2,304"
+            ],
+            [
+              "15 people",
+              "$300",
+              "$240",
+              "$2,880"
+            ],
+            [
+              "25 people",
+              "$500",
+              "$400",
+              "$4,800"
+            ],
+            [
+              "50 people",
+              "$1,000",
+              "$800",
+              "$9,600"
+            ]
+          ],
+          "note": "Business at $20 a member a month, or $16 billed yearly, with a minimum of 5 members (Kumospace's pricing page, November 2026). Before tax."
+        }
+      },
+      {
+        "title": "What the free plan leaves out",
+        "items": [
+          {
+            "title": "A private space",
+            "body": "Free spaces are public. Locking the space with a password or to a list of emails is a Business feature."
+          },
+          {
+            "title": "Recording",
+            "body": "Recording meetings and presentations is Business and up."
+          },
+          {
+            "title": "Chat channels and full history",
+            "body": "Free has basic chat. Channels, group messages and unlimited chat history are Business."
+          },
+          {
+            "title": "More than one floor",
+            "body": "Free gives you one floor; Business has unlimited floors."
+          },
+          {
+            "title": "Analytics",
+            "body": "Who came to the space, where they went and for how long is Business."
+          }
+        ]
+      },
+      {
+        "title": "How the bill works",
+        "items": [
+          {
+            "title": "Every member is a seat",
+            "body": "Kumospace bills per member, with at least 5 on Business. Guests don't count as members, but each can stay up to 4 hours a week, and Free and Business allow up to 50 of them."
+          },
+          {
+            "title": "Yearly is 20% less, paid up front",
+            "body": "A yearly plan is one payment for the year at $16 a member a month. Monthly has no commitment."
+          },
+          {
+            "title": "Adding people is billed at once",
+            "body": "A new member is charged straight away, pro rata for the rest of the billing period."
+          },
+          {
+            "title": "Removing people isn't credited",
+            "body": "A removed member stays on the bill until the end of the billing period, with no credit. On a yearly plan, that period is the year."
+          },
+          {
+            "title": "No refunds",
+            "body": "Kumospace doesn't give refunds. The 14-day trial is the time to test it."
+          }
+        ]
+      },
+      {
+        "title": "Worked examples",
+        "items": [
+          {
+            "title": "A team of 5",
+            "detail": "Free, or $80 a month",
+            "body": "Five people fit the free plan. If they need recording or a private space, Business is $80 a month billed yearly ($960 up front), or $100 a month billed monthly."
+          },
+          {
+            "title": "A team of 8 that grows to 12",
+            "detail": "$128, then $192 a month",
+            "body": "On a yearly plan, the four new members are charged at once for the rest of the year, and the rate goes from $128 to $192 a month."
+          },
+          {
+            "title": "A team of 12 billed monthly",
+            "detail": "$240 a month",
+            "body": "Twelve members billed monthly pay $240 a month, $2,880 a year. Billed yearly it's $192 a month, paid as $2,304 up front."
+          }
+        ]
+      },
+      {
+        "title": "The same team elsewhere",
+        "body": [
+          "What the same teams pay a month on other [virtual offices](/guides/best-virtual-office-software), on the lowest-priced plan that fits them."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Kumospace, billed yearly",
+            "TinyFloor",
+            "Gather, billed yearly",
+            "SoWork Basic, billed yearly",
+            "Roam"
+          ],
+          "rows": [
+            [
+              "4 people",
+              "Free (up to 5 members)",
+              "$29",
+              "$48",
+              "$21.60",
+              "$78"
+            ],
+            [
+              "8 people",
+              "$128",
+              "$29",
+              "$96",
+              "$43.20",
+              "$156"
+            ],
+            [
+              "12 people",
+              "$192",
+              "$29",
+              "$144",
+              "$64.80",
+              "$234"
+            ]
+          ],
+          "note": "From each product's own pricing page in November 2026, before tax. Roam bills monthly only, per active member. SoWork's free plan covers up to 10 members with audio meetings capped at 30 minutes. TinyFloor is free for up to 3 people."
+        }
+      },
+      {
+        "title": "When Kumospace is worth it",
+        "items": [
+          {
+            "title": "Your team is 5 or fewer",
+            "body": "The free plan fits, with desktop and phone apps, as long as a public space and basic chat are enough."
+          },
+          {
+            "title": "You want to furnish the space",
+            "body": "Kumospace lets you choose flooring, seating, decor and activities such as games, whiteboards and YouTube screens."
+          },
+          {
+            "title": "You need apps on every device",
+            "body": "Kumospace has desktop apps for Windows and macOS and phone apps for iOS and Android."
+          },
+          {
+            "title": "You need HIPAA or an uptime SLA",
+            "body": "Both are on the Enterprise plan."
+          },
+          {
+            "title": "When it isn't",
+            "body": "Past five people, every member is billed every month, at least five of them. If your team mostly needs to [see who's around](/team-presence), talk and meet, that adds up for features you may not use."
+          }
+        ]
+      },
+      {
+        "title": "How we checked",
+        "body": [
+          "Kumospace's prices, plan contents and billing rules come from kumospace.com/pricing and the questions answered on it, read in November 2026. The other products' prices come from their own pricing pages in the same month. Where a page didn't say something, we left it out rather than guess. Prices change: check the vendor's page before you buy."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is, like Kumospace, an office you walk around in, where you talk by walking up to someone, with a meeting room, chat and screen sharing. It runs in the browser with nothing to install. It costs $29 a month for the whole team, one price however many people you invite, and every new office starts with 14 days of Pro free. It has no recording, phone app or office editor, so if you rely on those, Kumospace is the better fit."
+    },
+    "faq": [
+      {
+        "q": "How much does Kumospace cost?",
+        "a": "Business is $16 a member a month billed yearly, or $20 billed monthly, for at least 5 members. Enterprise is priced by Kumospace's sales team."
+      },
+      {
+        "q": "Is Kumospace free?",
+        "a": "Yes, for up to 5 registered members, with one floor, a public space and basic chat. Recording, private spaces and more floors need Business."
+      },
+      {
+        "q": "How much does Kumospace cost for 10 people?",
+        "a": "$160 a month billed yearly ($1,920 a year), or $200 a month billed monthly."
+      },
+      {
+        "q": "Is there a minimum number of members?",
+        "a": "Yes. Business is billed for at least 5 members."
+      },
+      {
+        "q": "Does Kumospace charge for guests?",
+        "a": "No. Guests don't count as members, but each can be in the space up to 4 hours a week, and Free and Business allow up to 50."
+      },
+      {
+        "q": "Does Kumospace give refunds?",
+        "a": "No. It offers a 14-day free trial instead. Members you remove stay on the bill until the end of the billing period."
+      },
+      {
+        "q": "Does Kumospace run in the browser?",
+        "a": "Yes, and it also has desktop apps for Windows and macOS and phone apps. TinyFloor runs in the browser only."
+      },
+      {
+        "q": "What do other virtual offices cost?",
+        "a": "For 10 people: Gather is $120 a month billed yearly, SoWork Basic $54, Roam $195, and TinyFloor $29 for the whole team. Our [comparison of ten virtual offices](/guides/best-virtual-office-software) has the rest."
+      }
+    ]
+  },
+  "soworkPricing": {
+    "label": "SoWork pricing",
+    "meta": {
+      "title": "SoWork Pricing 2026: Free for 10, Basic $5.40, Premium $12, What Teams Pay",
+      "description": "SoWork is free for up to 10 members with 30-minute audio meetings, then $5.40 or $12 a member a month billed yearly ($6 or $15 monthly). What each plan includes, what teams pay, and what the same team pays elsewhere."
+    },
+    "title": "What does <em>SoWork cost?</em>",
+    "intro": "SoWork has a free plan and two paid plans, Basic and Premium, each billed per seat. This guide sets out what each plan includes, what it comes to for your team, what the free plan leaves out, and what the same team pays on other virtual offices. Every SoWork figure is from SoWork's pricing page and its facts page, read in November 2026; prices are in US dollars, before tax.",
+    "sections": [
+      {
+        "title": "SoWork's plans",
+        "items": [
+          {
+            "title": "Free",
+            "body": "$0 for up to 10 members. Meetings are audio only and end after 30 minutes, chat and office customization are limited, and there are no recordings, analytics, AI or guest passes."
+          },
+          {
+            "title": "Basic",
+            "body": "$5.40 a member a month billed yearly, or $6 monthly. Video and meetings with no time limit, full team chat with unlimited history, Google and Outlook calendars, 2 meeting recordings with AI notes a week, and 2 guest passes per seat a month."
+          },
+          {
+            "title": "Premium",
+            "body": "$12 a member a month billed yearly, or $15 monthly. Unlimited recordings with AI summaries, transcripts and action items, team analytics, several people sharing screens at once, drawing on shared screens, noise cancellation, integrations such as GitHub and Zapier, a connection for your own AI tools, and 5 guest passes per seat a month."
+          },
+          {
+            "title": "Enterprise",
+            "body": "Custom pricing, for teams of over 100 or with a formal procurement process: single sign-on and SCIM, a 99.99% uptime commitment and help with the rollout."
+          },
+          {
+            "title": "Free trial",
+            "body": "7 days with every Premium feature, for as many seats as you like."
+          }
+        ]
+      },
+      {
+        "title": "What SoWork costs by team size",
+        "body": [
+          "SoWork bills every seat. Here are Basic and Premium for common team sizes; a team of up to 10 can use the free plan, within its limits."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "Basic, billed yearly",
+            "Basic, monthly",
+            "Premium, billed yearly",
+            "Premium, monthly"
+          ],
+          "rows": [
+            [
+              "4 people",
+              "$21.60",
+              "$24",
+              "$48",
+              "$60"
+            ],
+            [
+              "8 people",
+              "$43.20",
+              "$48",
+              "$96",
+              "$120"
+            ],
+            [
+              "10 people",
+              "$54",
+              "$60",
+              "$120",
+              "$150"
+            ],
+            [
+              "12 people",
+              "$64.80",
+              "$72",
+              "$144",
+              "$180"
+            ],
+            [
+              "15 people",
+              "$81",
+              "$90",
+              "$180",
+              "$225"
+            ],
+            [
+              "25 people",
+              "$135",
+              "$150",
+              "$300",
+              "$375"
+            ],
+            [
+              "50 people",
+              "$270",
+              "$300",
+              "$600",
+              "$750"
+            ]
+          ],
+          "note": "A month, per team. Basic is $5.40 a member billed yearly or $6 monthly; Premium $12 or $15 (SoWork's pricing page, November 2026). Before tax."
+        }
+      },
+      {
+        "title": "What the free plan leaves out",
+        "items": [
+          {
+            "title": "Meetings longer than 30 minutes",
+            "body": "Every meeting on Free ends after 30 minutes."
+          },
+          {
+            "title": "Video",
+            "body": "Free meetings are audio only. Video starts on Basic."
+          },
+          {
+            "title": "Recordings and AI notes",
+            "body": "None on Free. Basic has 2 a week; Premium has no limit."
+          },
+          {
+            "title": "Guests",
+            "body": "Free has no guest passes, so clients and candidates can't join you in the office."
+          },
+          {
+            "title": "Full chat",
+            "body": "Free's chat is limited. Basic has full team chat with unlimited history."
+          }
+        ]
+      },
+      {
+        "title": "How the bill works",
+        "items": [
+          {
+            "title": "Every seat counts",
+            "body": "SoWork bills per seat, monthly or yearly. Admins and teammates each take a seat."
+          },
+          {
+            "title": "Guests don't take seats",
+            "body": "Guests come in on guest passes instead: 2 per seat a month on Basic, 5 on Premium."
+          },
+          {
+            "title": "Yearly saves 10 to 20%",
+            "body": "Basic drops from $6 to $5.40 a seat billed yearly, and Premium from $15 to $12."
+          }
+        ]
+      },
+      {
+        "title": "Worked examples",
+        "items": [
+          {
+            "title": "A team of 6 whose meetings run long",
+            "detail": "$32.40 a month",
+            "body": "Free fits six people, but meetings stop at 30 minutes and are audio only. Basic for six is $32.40 a month billed yearly, or $36 monthly."
+          },
+          {
+            "title": "A team of 12 that wants AI notes",
+            "detail": "$144 a month",
+            "body": "Premium for 12 is $144 a month billed yearly ($1,728 a year), or $180 monthly. Basic would be $64.80, with 2 recordings a week."
+          },
+          {
+            "title": "A team of 15 that meets clients",
+            "detail": "30 or 75 guest passes",
+            "body": "Fifteen seats come with 30 guest passes a month on Basic ($81 a month billed yearly) and 75 on Premium ($180)."
+          }
+        ]
+      },
+      {
+        "title": "The same team elsewhere",
+        "body": [
+          "What the same teams pay a month on other [virtual offices](/guides/best-virtual-office-software), on the lowest-priced paid plan that fits them."
+        ],
+        "table": {
+          "head": [
+            "Team",
+            "SoWork Basic, billed yearly",
+            "TinyFloor",
+            "Gather, billed yearly",
+            "Kumospace Business, billed yearly",
+            "Roam"
+          ],
+          "rows": [
+            [
+              "4 people",
+              "$21.60",
+              "$29",
+              "$48",
+              "Free (up to 5 members)",
+              "$78"
+            ],
+            [
+              "8 people",
+              "$43.20",
+              "$29",
+              "$96",
+              "$128",
+              "$156"
+            ],
+            [
+              "12 people",
+              "$64.80",
+              "$29",
+              "$144",
+              "$192",
+              "$234"
+            ]
+          ],
+          "note": "From each product's own pricing page in November 2026, before tax. Roam bills monthly only, per active member. SoWork's free plan covers up to 10 members with audio meetings capped at 30 minutes. TinyFloor is free for up to 3 people."
+        }
+      },
+      {
+        "title": "When SoWork is worth it",
+        "items": [
+          {
+            "title": "Your meetings are short and audio is enough",
+            "body": "Up to 10 people can use the free plan for as long as they like."
+          },
+          {
+            "title": "You want recordings and AI notes in the office",
+            "body": "Premium records every meeting with summaries, transcripts and action items, and lets your own AI tools search them."
+          },
+          {
+            "title": "Managers want team analytics",
+            "body": "Premium reports on working hours, meetings and onboarding, with a weekly report."
+          },
+          {
+            "title": "You want the choice of app or browser",
+            "body": "SoWork runs in a desktop app or the browser, with a phone app for chat and meetings."
+          },
+          {
+            "title": "When it isn't",
+            "body": "If your team mostly needs to [see who's around](/team-presence), talk and meet, the free plan's 30-minute audio meetings may be too little, and Premium's recordings and analytics more than you need."
+          }
+        ]
+      },
+      {
+        "title": "How we checked",
+        "body": [
+          "SoWork's prices come from sowork.com/pricing, with the monthly prices read off its monthly toggle, and the plan limits from SoWork's facts page (sowork.com/facts, updated 24 November 2026), both read in November 2026. The other products' prices come from their own pricing pages in the same month. Where a page didn't say something, we left it out rather than guess. Prices change: check the vendor's page before you buy."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is an office you walk around in, like SoWork: you see who's around, walk up to someone and talk, meet in a meeting room, chat and share your screen, in the browser with nothing to install. It costs $29 a month for the whole team, one price however many people you invite, and every new office starts with 14 days of Pro free. It has no recordings, AI notes, team analytics or office editor, so if you rely on those, SoWork Premium is the better fit."
+    },
+    "faq": [
+      {
+        "q": "How much does SoWork cost?",
+        "a": "Basic is $5.40 a member a month billed yearly, or $6 monthly; Premium is $12 billed yearly, or $15 monthly. Enterprise is custom."
+      },
+      {
+        "q": "Is SoWork free?",
+        "a": "Yes, for up to 10 members, with audio-only meetings that end after 30 minutes, limited chat and no recordings, AI or guests."
+      },
+      {
+        "q": "How much does SoWork cost for 10 people?",
+        "a": "Basic is $54 a month billed yearly or $60 monthly; Premium $120 or $150. Ten people can also use the free plan, within its limits."
+      },
+      {
+        "q": "What's the difference between SoWork Basic and Premium?",
+        "a": "Basic adds video, unlimited meeting length and full chat, with 2 recordings a week. Premium adds unlimited recordings with AI notes, team analytics, several screen shares at once, noise cancellation and integrations."
+      },
+      {
+        "q": "Does SoWork charge for guests?",
+        "a": "Guests don't take paid seats. They come in on guest passes: 2 per seat a month on Basic, 5 on Premium, none on Free."
+      },
+      {
+        "q": "Does SoWork have a free trial?",
+        "a": "Yes, 7 days with every Premium feature, for unlimited seats."
+      },
+      {
+        "q": "Does SoWork run in the browser?",
+        "a": "Yes, or in its desktop app, with a phone app for chat and meetings. TinyFloor runs in the browser."
+      },
+      {
+        "q": "What do other virtual offices cost?",
+        "a": "For 10 people: Gather is $120 a month billed yearly, Kumospace Business $160, Roam $195, and TinyFloor $29 for the whole team. Our [comparison of ten virtual offices](/guides/best-virtual-office-software) has the rest."
       }
     ]
   }

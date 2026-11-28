@@ -65,7 +65,7 @@ export const LANDINGS: Landing[] = [
   { slug: "kumospace-alternative", key: "kumospace", group: "compare", competitor: "Kumospace", checked: "2026-10", related: ["gatherVsKumospace", "gather", "sowork"] },
   { slug: "sococo-alternative", key: "sococo", group: "compare", competitor: "Sococo", checked: "2026-10", related: ["ovice", "roam", "gather"] },
   { slug: "ovice-alternative", key: "ovice", group: "compare", competitor: "oVice", checked: "2026-10", related: ["zep", "sococo", "gather"] },
-  { slug: "roam-alternative", key: "roam", group: "compare", competitor: "Roam", checked: "2026-10", related: ["teamflow", "sococo", "gather"] },
+  { slug: "roam-alternative", key: "roam", group: "compare", competitor: "Roam", checked: "2026-11", related: ["teamflow", "sococo", "gather"] },
   { slug: "teamflow-alternative", key: "teamflow", group: "compare", competitor: "Teamflow", checked: "2026-10", related: ["roam", "gather", "spatialchat"] },
   { slug: "spatialchat-alternative", key: "spatialchat", group: "compare", competitor: "SpatialChat", checked: "2026-10", related: ["kumospace", "workadventure", "gather"] },
   { slug: "sowork-alternative", key: "sowork", group: "compare", competitor: "SoWork", checked: "2026-10", related: ["spot", "gather", "kumospace"] },

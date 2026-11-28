@@ -132,6 +132,8 @@ export async function SiteFooter({ path = "/" }: { path?: string }) {
   const company: FooterLink[] = [
     { label: t("about"), href: "/about" },
     { label: t("howItWorks"), href: "/how-it-works" },
+    { label: t("facts"), href: "/facts" },
+    { label: t("help"), href: "/help" },
     { label: t("changelog"), href: "/changelog" },
     // The blog, in the languages it has posts in (lib/blog).
     ...(blog ? [{ label: blog.label, href: BLOG_PATH }] : []),

@@ -18,8 +18,10 @@ import { blogUi, postsWithCopy } from "@/lib/blog-copy";
 import { PLANS } from "@/lib/plans";
 import { FOUNDING, foundingOpen } from "web-shared/lib/founding";
 import { CHANGELOG, CHANGELOG_PATH, RELEASES, changelogPath } from "@/lib/changelog";
-import { HOW_IT_WORKS, HOW_IT_WORKS_DESCRIPTION, HOW_IT_WORKS_INTRO, HOW_IT_WORKS_PATH, HOW_IT_WORKS_TITLE } from "@/lib/how-it-works";
+import { HOW_IT_WORKS, type HowItWorksSection, HOW_IT_WORKS_DESCRIPTION, HOW_IT_WORKS_INTRO, HOW_IT_WORKS_PATH, HOW_IT_WORKS_TITLE } from "@/lib/how-it-works";
 import { SUPPORT_EMAIL } from "web-shared/lib/site";
+import { FACTS, FACTS_DESCRIPTION, FACTS_INTRO, FACTS_PATH, FACTS_TITLE } from "@/lib/facts";
+import { HELP, HELP_DESCRIPTION, HELP_PATH, HELP_TITLE, helpPath } from "@/lib/help";
 import { MORE_FEATURES, absoluteUrl } from "web-shared/lib/structured-data";
 
 /**
@@ -59,6 +61,17 @@ const GROUP_TITLES: Record<LandingGroup, string> = { features: "Features", teams
 /** Links to the site's own pages in text kept in lib/, written `[words](/path)`, made whole. */
 const linked = (value: string) => value.replace(/\]\((\/[^)]*)\)/g, (_, to: string) => `](${url(to)})`);
 
+/** A section of How it works or the facts, as text: its paragraphs, its list and its questions. */
+const sectionText = (section: HowItWorksSection) => [
+  `### ${section.title}`,
+  "",
+  ...(section.paragraphs ?? []).flatMap((paragraph) => [linked(paragraph), ""]),
+  ...(section.items ?? []).map((item) => `- ${linked(item)}`),
+  ...(section.items ? [""] : []),
+  ...(section.faq ?? []).flatMap(({ q, a }) => [`**${q}** ${linked(a)}`, ""]),
+];
+
+
 /**
  * What an assistant needs to answer a buyer's situation, stated plainly: the
  * price as a team pays it, the trial, who it fits and who it doesn't, how it
@@ -80,6 +93,7 @@ function keyFacts(): string[] {
     "- **Runs in the browser** on desktop and phones, nothing to install. Calls go through Cloudflare's relay and meetings through Cloudflare's media servers; screen sharing is up to 1080p at 15 frames a second, tuned for sharp text.",
     `- **Ships to production almost every day:** ${earlier.map((one) => `${one.count} releases in ${one.month}`).join(", ")}; the [changelog](${url(CHANGELOG_PATH)}) lists what changed by date.`,
     "- **Open source** under AGPL-3.0: https://github.com/JittoJoseph/TinyFloor",
+    `- **The facts in one place,** dated, for anyone writing about TinyFloor: [${FACTS_TITLE}](${url(FACTS_PATH)}).`,
     `- **How it works,** with the numbers and what it doesn't do yet: [${HOW_IT_WORKS_TITLE}](${url(HOW_IT_WORKS_PATH)}).`,
     "",
   ];
@@ -127,6 +141,9 @@ export async function llmsTxt(): Promise<string> {
     "",
     ...list([
       ...product,
+      [FACTS_TITLE, FACTS_PATH, FACTS_DESCRIPTION],
+      [HELP_TITLE, HELP_PATH, HELP_DESCRIPTION],
+      ...HELP.map((article): Link => [article.q, helpPath(article), article.answer]),
       [HOW_IT_WORKS_TITLE, HOW_IT_WORKS_PATH, HOW_IT_WORKS_DESCRIPTION],
       ["Changelog", CHANGELOG_PATH, "What changed in TinyFloor, by the day it went live."],
     ]),
@@ -313,13 +330,28 @@ export async function llmsFullTxt(): Promise<string> {
     "",
     HOW_IT_WORKS_INTRO,
     "",
-    ...HOW_IT_WORKS.flatMap((section) => [
-      `### ${section.title}`,
+    ...HOW_IT_WORKS.flatMap(sectionText),
+    `## ${FACTS_TITLE}`,
+    "",
+    url(FACTS_PATH),
+    "",
+    FACTS_INTRO,
+    "",
+    ...FACTS.flatMap(sectionText),
+    `## ${HELP_TITLE}`,
+    "",
+    url(HELP_PATH),
+    "",
+    ...HELP.flatMap((article) => [
+      `### ${article.q}`,
       "",
-      ...(section.paragraphs ?? []).flatMap((paragraph) => [linked(paragraph), ""]),
-      ...(section.items ?? []).map((item) => `- ${linked(item)}`),
-      ...(section.items ? [""] : []),
-      ...(section.faq ?? []).flatMap(({ q, a }) => [`**${q}** ${linked(a)}`, ""]),
+      url(helpPath(article)),
+      "",
+      linked(article.answer),
+      "",
+      ...(article.paragraphs ?? []).flatMap((paragraph) => [linked(paragraph), ""]),
+      ...(article.items ?? []).map((item) => `- ${linked(item)}`),
+      ...(article.items ? [""] : []),
     ]),
     "## Changelog",
     "",

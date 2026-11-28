@@ -1,0 +1,183 @@
+{
+  "label": "Getting a team to use a virtual office",
+  "meta": {
+    "title": "How to Get Your Remote Team to Actually Use a Virtual Office",
+    "description": "Why virtual offices empty out after the first week, and a two-week plan to make one the place your remote team talks: what to move into it, what to agree on, and what never to do."
+  },
+  "coverAlt": "A cream door standing open in its frame, with a yellow doormat and a small yellow potted plant, on a blue background.",
+  "title": "How to get your team to <em>actually use</em> a virtual office",
+  "intro": "Most virtual offices don't fail on features. They fail in the second week, when the floor is empty, nobody has a reason to open it, and the one person who does feels watched. A team that keeps using one has given it a job, agreed how it works, and filled it on purpose for the first two weeks. This is how to do that. We make TinyFloor, a virtual office, so we have a stake in this; the advice holds for any of them.",
+  "takeaways": [
+    "A virtual office empties out when it has no job: give it one, such as quick questions and short talks instead of meeting links.",
+    "Invite the whole team on the same day. An empty floor is the most common reason people stop opening it.",
+    "Move one recurring meeting into it in the first week, so everyone has a reason to come in.",
+    "Agree the rules before day one: it's optional, nobody tracks hours, cameras are off by default, and any request to talk can wait.",
+    "Leaders being visibly there, and interruptible, matters more than any feature."
+  ],
+  "sections": [
+    {
+      "title": "Why virtual offices empty out",
+      "items": [
+        {
+          "title": "It has no job",
+          "body": "If questions still go to chat and calls still go through meeting links, the office is one more tab with nothing in it. People close tabs with nothing in them."
+        },
+        {
+          "title": "Nobody's there",
+          "body": "The first person to open it finds an empty floor, and so does the second. Each concludes it isn't used, and stops coming. Presence only works when most of the team is there at once."
+        },
+        {
+          "title": "It feels like being watched",
+          "body": "If the manager is the only one who opens it, or if it reports who was online and for how long, people read it as monitoring and stay away."
+        },
+        {
+          "title": "It's harder than what it replaces",
+          "body": "If starting a talk takes more steps than a Slack huddle, people go back to the huddle."
+        }
+      ]
+    },
+    {
+      "title": "Before day one: give it a job",
+      "body": [
+        "Decide the one thing the office is for, and say it in a sentence. For most teams it's this: when you need someone for a minute, you walk over and talk, instead of booking a call or waiting on a message. Everything else, like standups and socials, comes after.",
+        "Then agree how it works, and write it down where the team will see it:"
+      ],
+      "items": [
+        {
+          "title": "It's optional",
+          "body": "Being on the floor shows you're around. Not being there means nothing."
+        },
+        {
+          "title": "Nobody tracks hours",
+          "body": "No online-time reports, no idle timers, no looking at who logged in when."
+        },
+        {
+          "title": "Cameras are off by default",
+          "body": "Voice is enough for a quick question. Turn the camera on when it helps."
+        },
+        {
+          "title": "Anyone can say not now",
+          "body": "A request to talk can be declined or answered later, and a status note says when you're heads-down."
+        }
+      ]
+    },
+    {
+      "title": "Week one: fill it on purpose",
+      "items": [
+        {
+          "title": "Invite everyone on the same day",
+          "detail": "Day 1",
+          "body": "Send the invite link to the whole team at once, with the one-sentence job and the rules. A floor where everyone appears on the first morning is the strongest signal that it's where the team is."
+        },
+        {
+          "title": "Move one meeting in",
+          "detail": "Days 1–5",
+          "body": "Hold the daily standup, or the weekly team meeting, in the office's meeting room instead of a link. It gives everyone a reason to open it at the same time, and the habit of leaving it open afterwards."
+        },
+        {
+          "title": "Leaders go first, and stay interruptible",
+          "detail": "Every day",
+          "body": "The person who set it up should be on the floor all day and answer every request to talk. In [a study of consultants who moved to remote work](https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/), what helped was a manager who made it clear her team could call her any time between 9 and 5; the office makes that visible."
+        },
+        {
+          "title": "Answer quick questions there",
+          "detail": "Every day",
+          "body": "When a question arrives in chat that would take a minute to talk through, reply with \"walk over?\" instead of a paragraph. Two or three of those a day teach the team what the office is for."
+        }
+      ]
+    },
+    {
+      "title": "Week two: make it the default",
+      "items": [
+        {
+          "title": "Replace links, not tools",
+          "body": "Keep your chat app for written work. Stop pasting meeting links for short talks; the office replaces those."
+        },
+        {
+          "title": "Open it with the day",
+          "body": "Ask people to open it when they start work, the way they open chat. Pinning the tab or installing it as an app from the browser helps."
+        },
+        {
+          "title": "Do one social thing there",
+          "body": "A Friday catch-up, a lunch on video, a game: once a week is enough. It shouldn't be the reason the office exists."
+        }
+      ]
+    },
+    {
+      "title": "After two weeks: ask three questions",
+      "body": [
+        "Ask the team, not the dashboard. If the answers are yes, keep going; if not, change the job before you change the tool."
+      ],
+      "items": [
+        {
+          "title": "Did you talk to someone there this week who you'd otherwise have messaged?",
+          "body": "That's the office doing its job."
+        },
+        {
+          "title": "Do you leave it open while you work?",
+          "body": "If not, ask what makes people close it: noise, the camera, feeling watched, or nobody there."
+        },
+        {
+          "title": "Has it ever felt like being watched?",
+          "body": "If anyone says yes, fix that first, whatever else you change."
+        }
+      ]
+    },
+    {
+      "title": "What never to do",
+      "items": [
+        {
+          "title": "Make presence mandatory",
+          "body": "Requiring people to be on the floor turns it into a timesheet, and people find ways to look present."
+        },
+        {
+          "title": "Use it to check on people",
+          "body": "The first time a manager mentions who wasn't online, the office stops being a place to talk."
+        },
+        {
+          "title": "Keep both the old and the new",
+          "body": "If short calls can still go either way, they'll go the old way. Pick the office for short talks and say so."
+        }
+      ]
+    },
+    {
+      "title": "When a virtual office isn't the answer",
+      "body": [
+        "If your team rarely overlaps, because it's spread across many time zones or works mostly in writing on purpose, there won't be enough people on the floor at once to make it worth opening. Written channels, clear statuses and recorded updates will serve you better. A virtual office pays off for a team that works together, at the same time, every day."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "TinyFloor is built for this kind of rollout: one invite link for the whole team, a floor in the browser with nothing to install, a meeting room for the standup, and Talk to ask someone for a minute, which they can accept or answer later. It never marks people away because their tab is in the background and doesn't track hours. Pro is $29 a month for the whole team, and every new office starts with 14 days of Pro free, about the length of the plan above."
+  },
+  "faq": [
+    {
+      "q": "Why do teams stop using their virtual office?",
+      "a": "Usually because it has no clear job, the floor is empty when people open it, or it feels like being watched. Giving it one job, inviting everyone at once and agreeing that it's optional and untracked fixes most of it."
+    },
+    {
+      "q": "Should using the virtual office be mandatory?",
+      "a": "No. Required presence turns it into a timesheet. Make it the easiest place to talk, and people come because it's useful."
+    },
+    {
+      "q": "How long does it take for a team to get used to a virtual office?",
+      "a": "About two weeks: a first week to fill it on purpose, with a meeting moved in and leaders on the floor, and a second to make it the default for short talks."
+    },
+    {
+      "q": "Does a virtual office replace Slack?",
+      "a": "Not for written work. It replaces the meeting links and huddles you start for short conversations; keep chat for what can wait."
+    },
+    {
+      "q": "What if our team is spread across many time zones?",
+      "a": "A virtual office helps most when people overlap for several hours a day. With little overlap, written channels and clear statuses will serve you better."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Experimenting during the shift to virtual team work, Information and Organization (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9761399/",
+      "note": "Interviews with 51 knowledge workers at a professional services firm, April to June 2020, including a manager who invited calls any time between 9 and 5."
+    }
+  ]
+}

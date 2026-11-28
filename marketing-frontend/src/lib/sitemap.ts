@@ -14,6 +14,8 @@ import { TWO_TRUTHS_UPDATED } from "@/lib/tools/two-truths";
 import { WOULD_YOU_RATHER_UPDATED } from "@/lib/tools/would-you-rather";
 import { CHANGELOG_PAGES, CHANGELOG_UPDATED, changelogImage, changelogListPath, changelogOnPage, changelogPageCount, changelogPath } from "@/lib/changelog";
 import { HOW_IT_WORKS_PATH, HOW_IT_WORKS_UPDATED } from "@/lib/how-it-works";
+import { FACTS_PATH, FACTS_UPDATED } from "@/lib/facts";
+import { HELP, HELP_PATH, HELP_UPDATED, helpPath } from "@/lib/help";
 import { BLOG_LOCALES, BLOG_PATH, POSTS, postPath } from "@/lib/blog";
 import { PRIVACY_UPDATED } from "@/components/legal/privacy";
 import { REFUNDS_UPDATED } from "@/components/legal/refunds";
@@ -71,6 +73,9 @@ export const SITEMAPS = {
       ...LANDINGS.map(({ key, slug, updated }) => ({ path: `/${slug}`, updated: updated ?? LANDINGS_UPDATED, images: landingImages(key) })),
     ].flatMap(everyLanguage),
     { path: HOW_IT_WORKS_PATH, updated: HOW_IT_WORKS_UPDATED },
+    { path: FACTS_PATH, updated: FACTS_UPDATED },
+    { path: HELP_PATH, updated: HELP_UPDATED },
+    ...HELP.map((article) => ({ path: helpPath(article), updated: HELP_UPDATED })),
     { path: "/privacy", updated: day(PRIVACY_UPDATED) },
     { path: "/terms", updated: day(TERMS_UPDATED) },
     { path: "/refunds", updated: day(REFUNDS_UPDATED) },

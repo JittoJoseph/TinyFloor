@@ -20,6 +20,7 @@
   <a href="https://www.tinyfloor.com/create"><b>Make an office</b></a> ·
   <a href="#pricing"><b>Pricing</b></a> ·
   <a href="https://www.tinyfloor.com/changelog"><b>Changelog</b></a> ·
+  <a href="https://www.tinyfloor.com/facts"><b>Facts</b></a> ·
   <a href="#questions"><b>Questions</b></a>
 </p>
 
@@ -131,11 +132,12 @@ The code is open source under the AGPL-3.0, so you can read how it works and wha
 
 ## How often it ships
 
-TinyFloor is live at [tinyfloor.com](https://www.tinyfloor.com) and ships to production almost every day: 84 releases in October 2026 and 41 in September, each a merge to `master` that deploys the sites, the API and the realtime worker. What changed for people using it is in the [changelog](https://www.tinyfloor.com/changelog). How calls, meetings and screen sharing work, with the numbers, and what TinyFloor doesn't do yet, is on [how TinyFloor works](https://www.tinyfloor.com/how-it-works).
+TinyFloor is live at [tinyfloor.com](https://www.tinyfloor.com) and ships to production almost every day: 84 releases in October 2026 and 41 in September, each a merge to `master` that deploys the sites, the API and the realtime worker. What changed for people using it is in the [changelog](https://www.tinyfloor.com/changelog). How calls, meetings and screen sharing work, with the numbers, and what TinyFloor doesn't do yet, is on [how TinyFloor works](https://www.tinyfloor.com/how-it-works). The facts about TinyFloor in one place, dated, are on [TinyFloor facts](https://www.tinyfloor.com/facts), and short answers to common questions are in the [help center](https://www.tinyfloor.com/help).
 
 ## Read more
 
 - **[The blog](https://www.tinyfloor.com/blog):** questions remote teams ask, answered with numbers and their sources, from [remote work statistics](https://www.tinyfloor.com/blog/remote-work-statistics) to [what a virtual office costs](https://www.tinyfloor.com/blog/virtual-office-cost) and [Zoom fatigue](https://www.tinyfloor.com/blog/zoom-fatigue).
+- **What other virtual offices cost:** [Gather](https://www.tinyfloor.com/guides/gather-pricing), [SoWork](https://www.tinyfloor.com/guides/sowork-pricing), [Kumospace](https://www.tinyfloor.com/guides/kumospace-pricing) and [Roam](https://www.tinyfloor.com/guides/roam-pricing), worked out for your team size from each product's own pricing page.
 - **[Guides for remote team leads](https://www.tinyfloor.com/guides):** from [remote team culture](https://www.tinyfloor.com/guides/how-to-build-remote-team-culture) to [async communication](https://www.tinyfloor.com/guides/async-communication) and [the best virtual office software](https://www.tinyfloor.com/guides/best-virtual-office-software).
 - **[Free tools](https://www.tinyfloor.com/tools)** for remote teams: a [time zone meeting planner](https://www.tinyfloor.com/tools/time-zone-meeting-planner), [icebreaker questions](https://www.tinyfloor.com/tools/icebreaker-questions) and more.
 

@@ -19,7 +19,7 @@
       },
       {
         "q": "Miten läheisyyteen perustuva videochat toimii?",
-        "a": "Kävele jonkun luo, niin hänen viereensä ilmestyy soittopainike. Yksi napautus aloittaa puhelun, ja kun puhutte, voit laittaa kameran päälle tai jakaa näyttösi. Puhelut kulkevat WebRTC:llä Cloudflaren verkon kautta, joten ne toimivat missä tahansa toimisto- tai kotiverkossa ja pysyvät auki, kunnes joku lopettaa. Ryhmänä liityt kokoukseen, ja hahmosi kävelee kokoushuoneeseen."
+        "a": "Kävele kollegan luo ja pysähdy: hänen nimilappunsa avautuu valinnoiksi Vilkuta, Tökkää, Viesti ja Puhu. Paina Puhu, niin kollega näkee, että haluat puhua; kun hän suostuu, puhe alkaa äänellä alle sekunnissa, ja voit laittaa kameran päälle tai jakaa näytön. Keskustelut kulkevat WebRTC:llä Cloudflaren verkossa, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa ja jatkuvat, kunnes toinen teistä lähtee. Ryhmänä liity kokoukseen, niin hahmosi kävelee neuvotteluhuoneeseen."
       },
       {
         "q": "Onko TinyFloor ilmainen?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Kävele juttelemaan",
-            "body": "Kuten astuessa ympyrään Wonderissa, aloitat puhelun asettumalla jonkun viereen. Ryhmästä toiseen siirrytään kävelemällä."
+            "body": "Kuin astuisit piiriin Wonderissa: puhut jonkun kanssa kävelemällä hänen luokseen. Ryhmästä toiseen siirtyminen on pelkkää kävelyä."
           },
           {
             "title": "Yhä selaimessa",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Lähichat",
         "meta": {
-          "title": "Läheisyyteen perustuva videochat etätiimeille",
-          "description": "Läheisyyschat etätiimeille: kävele hahmollasi tiimiläisen luo aloittaaksesi puhelun. Ilmainen pienille tiimeille, selaimessa, ei latauksia."
+          "title": "Lähichat etätiimeille",
+          "description": "Lähichat etätiimeille: mene kollegan luo ja paina Puhu. Ääni alle sekunnissa, ei avoimia mikrofoneja, selaimessa ilman asennusta."
         },
         "title": "<em>Lähichat</em>, joka alkaa, kun kävelet luo.",
-        "subtitle": "TinyFloorissa se, missä seisot, ratkaisee kenen kanssa puhut. Kävele jonkun luo soittaaksesi, liity kokoukseen puhuaksesi ryhmänä ja jatka matkaa, kun olette valmiita.",
+        "subtitle": "TinyFloorissa se, missä seisot, ratkaisee, kenen kanssa puhut. Mene jonkun luo ja pyydä puhumaan, kokoontukaa ryhmänä neuvotteluhuoneeseen ja jatka matkaa, kun olette valmiita.",
         "faq": [
           {
             "q": "Mikä on lähichat?",
-            "a": "Lähichat yhdistää sinut ihmisiin sen mukaan, missä hahmosi on. Puhut lähelläsi olevien kanssa, kuten oikeassa huoneessa."
+            "a": "Lähichat yhdistää sinut ihmisiin sen mukaan, missä hahmosi on. TinyFloorissa menet kollegan luo ja pyydät puhumaan, kuin poikkeaisit hänen pöytänsä luona."
           },
           {
-            "q": "Päättyykö puhelu, jos kävelen pois?",
-            "a": "Ei. Yhdistetty puhelu pysyy yhdistettynä, kunnes joku lopettaa sen, joten liikkuminen ei katkaise sitä."
+            "q": "Loppuuko keskustelu, jos kävelen pois?",
+            "a": "Ei. Kun puhutte, keskustelu jatkuu, kunnes toinen teistä lähtee, joten kerroksessa liikkuminen ei katkaise sitä."
           },
           {
             "q": "Voiko useampi kuin kaksi puhua?",
-            "a": "Puhelu on kahden kesken. Kävele kolmannen luo ja tee siitä kokous, tai liity toimiston kokoukseen puhuaksesi ryhmänä."
+            "a": "Kaksi puhuu, kolme tai useampi pitää kokouksen. Mene kolmannen henkilön luo ja tee siitä kokous, tai liity toimiston pääkokoukseen puhumaan ryhmänä."
           },
           {
-            "q": "Onko se ilmainen?",
-            "a": "Kyllä, enintään 3 hengen toimistolle, selaimessa tietokoneella ja mobiilissa."
+            "q": "Entä jos kukaan ei vastaa?",
+            "a": "Puolen minuutin jälkeen saat siitä tiedon, ja pyyntö odottaa yksityisviesteissänne muodossa ”halusi puhua”, ja Puhu-painikkeella voit kysyä uudelleen."
+          },
+          {
+            "q": "Mitä se maksaa?",
+            "a": "Jokainen uusi toimisto saa 14 päivää Prota. Sen jälkeen Pro on yksi hinta koko toimistolle, ja enintään 3 hengen toimisto voi jäädä Freelle."
           }
         ],
         "line": "Kävele viereen ja puhu, ilman linkkiä"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Sopiiko se pariohjelmointiin?",
-            "a": "Sopii. Kävele kollegan luo, aloita puhelu ja jaa näyttösi. Ota kolmas mukaan, niin siitä tulee kokous."
+            "a": "Kyllä. Mene kollegan luo, paina Puhu ja jaa näyttösi. Kun kolmas henkilö liittyy, siitä tulee kokous."
           },
           {
             "q": "Kuinka iso kehitystiimi voi olla?",

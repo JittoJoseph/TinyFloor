@@ -635,7 +635,8 @@ class ChatSocket {
           pending,
         });
         if (seen && message.message.seq > 0 && !message.message.meeting) this.send({ t: "chat_read", channel, seq: message.message.seq });
-        else if (!mine) {
+        // An ask to talk's card stays quiet: the ask itself is already on the floor, with its own sound.
+        else if (!mine && !message.message.talk) {
           // A sound only for what's yours, the same as the rail's count: a busy channel stays quiet.
           if (isDm(channel) || forMe) playSound("message");
           this.incoming.forEach((listener) => listener(message.message));

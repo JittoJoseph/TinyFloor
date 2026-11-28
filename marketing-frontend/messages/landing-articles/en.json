@@ -2215,28 +2215,25 @@
   "pairProgramming": [
     {
       "title": "How a pairing session starts",
+      "numbered": true,
       "body": [
         "In an office, pairing often starts with \"got a minute?\" at someone's desk. Remote, it usually needs a calendar invite, so it happens less. On TinyFloor it starts the way it did in the office."
       ],
       "items": [
         {
           "title": "See who's free",
-          "detail": "1",
           "body": "Desks and [statuses](/team-presence) show who's heads down, who's away and who's already in a call. Busy means wait; available means walk over."
         },
         {
           "title": "Walk over and talk",
-          "detail": "2",
           "body": "Stand next to them and tap to call. It starts with voice; turn a camera on if you want one."
         },
         {
           "title": "Share and work",
-          "detail": "3",
           "body": "Share a window, a tab or your whole screen: the editor, the terminal, the failing test."
         },
         {
           "title": "Walk back",
-          "detail": "4",
           "body": "Hang up and you're back at your own work. The call stays connected while you move, so nothing drops if you wander."
         }
       ]
@@ -2688,28 +2685,25 @@
   "meetingRoom": [
     {
       "title": "How a meeting works on TinyFloor",
+      "numbered": true,
       "body": [
         "Most video tools start from a link. TinyFloor starts from a room: every office has a main meeting that's always open, and anyone can start another one beside it."
       ],
       "items": [
         {
           "title": "Join",
-          "detail": "1",
           "body": "Press Join on the office's meeting. A quick check shows your camera and microphone, then your character walks into the meeting room."
         },
         {
           "title": "Talk",
-          "detail": "2",
           "body": "Voice first; turn your camera on if you want. Whoever is talking takes the big card, with three more beside it."
         },
         {
           "title": "Share",
-          "detail": "3",
           "body": "Share a window, a tab or your screen. It goes on the stage next to the people."
         },
         {
           "title": "Walk out",
-          "detail": "4",
           "body": "Leave and you're back on the floor. Walked out by mistake? Rejoin is one press."
         }
       ],
@@ -3029,7 +3023,7 @@
     {
       "title": "What it doesn't do",
       "body": [
-        "Presence doesn't sync with your calendar, Slack or your operating system, and statuses don't change on a schedule. There are no custom status messages yet. If you need presence across all your tools, your chat app's status is the place for it; TinyFloor's is about who's on the floor right now."
+        "Presence doesn't sync with Slack or your operating system, and statuses don't change on a schedule. Google Calendar is the one exception: connect it, and while you're in a meeting teammates see \"In a meeting until 3:30\" on your name tag, unless you've left a note of your own. If you need presence across all your tools, your chat app's status is the place for it; TinyFloor's is about who's on the floor right now."
       ]
     }
   ],
@@ -3529,28 +3523,28 @@
         "head": [
           "",
           "Open spatial audio",
-          "Proximity to call (TinyFloor)"
+          "Walk up and ask (TinyFloor)"
         ],
         "rows": [
           [
             "How talking starts",
             "Walk near someone and you hear each other",
-            "Stand next to someone and tap Call"
+            "Walk up to someone and press Talk"
           ],
           [
             "Microphones",
             "Open while you're near anyone",
-            "Off until a call starts"
+            "Off until they say yes"
           ],
           [
             "Who hears you",
             "Anyone who wanders close",
-            "Only the person you called"
+            "Only the person you're talking to"
           ],
           [
             "Background noise",
             "Shared with whoever is near",
-            "Stays with you until you call"
+            "Stays with you until you talk"
           ],
           [
             "Good for",
@@ -3562,56 +3556,72 @@
     },
     {
       "title": "How it works on TinyFloor",
+      "numbered": true,
       "items": [
         {
           "title": "Walk up",
-          "detail": "1",
-          "body": "Move your character next to a teammate. A small card appears with a Call button."
+          "body": "Walk your character over to a teammate and stop. Their name tag opens into Wave, Poke, Message and Talk."
         },
         {
-          "title": "Call",
-          "detail": "2",
-          "body": "They see \"Calling you\" and can answer or decline. If they're [busy](/team-presence) or don't answer, you're told, and nothing else happens."
+          "title": "Ask",
+          "body": "Press Talk. They see your character and that you want to talk, and choose Talk or Not now. If they're [busy](/team-presence) or don't answer within half a minute, you're told, and nothing else happens."
         },
         {
           "title": "Talk",
-          "detail": "3",
-          "body": "The call starts with voice. Turn on a camera or share a screen if it helps."
+          "body": "It starts with voice, usually in under a second. Turn on a camera or share a screen if it helps."
         },
         {
           "title": "Walk around",
-          "detail": "4",
-          "body": "Once connected, the call stays up until someone hangs up, so moving across the floor doesn't drop it."
+          "body": "Once you're talking, it lasts until one of you leaves, so moving across the floor doesn't cut it off."
         },
         {
           "title": "Add a third",
-          "detail": "5",
-          "body": "A call is two people. Walk up to a third and TinyFloor offers to make it a [meeting](/virtual-meeting-room) for the three of you."
+          "body": "Two people talk; three or more meet. Walk up to a third person while you're talking and TinyFloor offers to make it a [meeting](/virtual-meeting-room)."
         }
       ],
       "image": {
-        "src": "/screens/calls.webp",
-        "alt": "A call on TinyFloor's floor: Nathan and Ryan standing together between the desks, with the call's controls below"
+        "src": "/screens/talk.webp",
+        "alt": "Asking to talk on TinyFloor: a card at the top of the floor shows Ryan's character, \"wants to talk\", and the buttons Not now and Talk"
       }
     },
     {
-      "title": "Why calls instead of open audio",
+      "title": "Asking without interrupting",
+      "body": [
+        "Not everything needs a conversation. Beside Talk are two smaller ways to reach someone, and an ask that goes unanswered doesn't disappear."
+      ],
+      "items": [
+        {
+          "title": "A wave says hello",
+          "body": "A hand goes up over your character for everyone nearby to see. It asks for nothing back."
+        },
+        {
+          "title": "A poke asks for a moment",
+          "body": "Their character jolts and they get a note with Poke back: a nudge to look up when they can."
+        },
+        {
+          "title": "A missed ask waits for them",
+          "body": "If they weren't at their desk, it stays in your [direct messages](/team-chat) with them as \"wanted to talk\", with a Talk button to ask again once you're both around."
+        }
+      ]
+    },
+    {
+      "title": "Why ask first instead of open audio",
       "items": [
         {
           "title": "Nobody overhears by accident",
-          "body": "Your microphone is only on in a call or a meeting. Passing someone's desk never lets you hear them."
+          "body": "Your microphone is only on while you're talking or in a meeting. Passing someone's desk never lets you hear them."
         },
         {
           "title": "Focus stays possible",
-          "body": "A floor full of open microphones is a noisy room. Calls keep the rest of the floor quiet."
+          "body": "A floor full of open microphones is a noisy room. Asking first keeps the rest of the floor quiet, and Not now is always an answer."
         },
         {
           "title": "It still feels spontaneous",
-          "body": "Walking over and tapping Call takes a couple of seconds, about the same as leaning over to a colleague."
+          "body": "Walking over and pressing Talk takes a couple of seconds, about the same as leaning over to a colleague."
         },
         {
           "title": "It works on any network",
-          "body": "Calls go through Cloudflare's relay network, so they connect behind office firewalls and on mobile networks, with nothing to install."
+          "body": "Talks go through Cloudflare's relays, so they connect behind office firewalls and on mobile networks, with nothing to install."
         }
       ]
     },
@@ -3625,18 +3635,26 @@
         "rows": [
           [
             "Ask one person a quick question",
-            "Walk up and call"
+            "Walk up and press Talk"
+          ],
+          [
+            "Say hello without interrupting",
+            "Wave"
+          ],
+          [
+            "Get someone's attention for later",
+            "Poke, or send a message"
           ],
           [
             "Pull a third person in",
-            "Walk up to them during the call; it becomes a meeting"
+            "Walk up to them while you're talking; it becomes a meeting"
           ],
           [
             "Talk with the whole team",
             "Join the office's main meeting"
           ],
           [
-            "Ask someone who's busy",
+            "Reach someone who's busy",
             "Write in the chat instead, and let them come to you"
           ]
         ]
@@ -3645,7 +3663,7 @@
     {
       "title": "What it doesn't do",
       "body": [
-        "TinyFloor doesn't have open spatial audio, so a group can't chat just by standing together; three or more people go to a meeting. It isn't built for events or games with hundreds of people, and there's no phone dial-in. If you want a lively space where voices drift as you walk around, a product built around spatial audio will suit you better; if you want a quiet office where talking is one tap away, this is it."
+        "TinyFloor doesn't have open spatial audio, so a group can't talk just by standing together; three or more people meet in a meeting. It isn't built for events or games with hundreds of people, and there's no phone dial-in. If you want a lively space where voices drift as you walk around, a product built around spatial audio will suit you better; if you want a quiet office where talking is a few seconds away, this is it."
       ]
     }
   ],

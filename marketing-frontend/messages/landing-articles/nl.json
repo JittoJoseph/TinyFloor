@@ -2215,28 +2215,25 @@
   "pairProgramming": [
     {
       "title": "Zo begint een pairing-sessie",
+      "numbered": true,
       "body": [
         "Op kantoor begint pair programming vaak met \"heb je even?\" bij iemands bureau. Remote is er meestal een agenda-uitnodiging voor nodig, dus gebeurt het minder. In TinyFloor begint het zoals op kantoor."
       ],
       "items": [
         {
           "title": "Zien wie vrij is",
-          "detail": "1",
           "body": "Bureaus en [statussen](/team-presence) laten zien wie geconcentreerd werkt, wie afwezig is en wie al in een gesprek zit. Bezet betekent wachten; beschikbaar betekent erheen lopen."
         },
         {
           "title": "Erheen lopen en praten",
-          "detail": "2",
           "body": "Ga ernaast staan en tik om te bellen. Het begint met stem; zet een camera aan als je wilt."
         },
         {
           "title": "Delen en werken",
-          "detail": "3",
           "body": "Deel een venster, een tabblad of je hele scherm: de editor, de terminal, de falende test."
         },
         {
           "title": "Teruglopen",
-          "detail": "4",
           "body": "Hang op en je bent terug bij je eigen werk. Het gesprek blijft verbonden terwijl je beweegt, dus er valt niets weg als je rondloopt."
         }
       ]
@@ -2688,28 +2685,25 @@
   "meetingRoom": [
     {
       "title": "Zo werkt een meeting in TinyFloor",
+      "numbered": true,
       "body": [
         "De meeste videotools beginnen met een link. TinyFloor begint met een ruimte: elk kantoor heeft een hoofdmeeting die altijd open is, en iedereen kan er een andere naast starten."
       ],
       "items": [
         {
           "title": "Meedoen",
-          "detail": "1",
           "body": "Druk op Meedoen bij de meeting van het kantoor. Een korte check laat je camera en microfoon zien, en dan loopt je poppetje de vergaderruimte in."
         },
         {
           "title": "Praten",
-          "detail": "2",
           "body": "Eerst stem; zet je camera aan als je wilt. Wie praat krijgt de grote kaart, met drie andere ernaast."
         },
         {
           "title": "Delen",
-          "detail": "3",
           "body": "Deel een venster, een tabblad of je scherm. Het verschijnt op het podium naast de mensen."
         },
         {
           "title": "Naar buiten",
-          "detail": "4",
           "body": "Verlaat de meeting en je bent terug op de verdieping. Per ongeluk weggelopen? Opnieuw meedoen is één klik."
         }
       ],
@@ -3029,7 +3023,7 @@
     {
       "title": "Wat het niet doet",
       "body": [
-        "Aanwezigheid synchroniseert niet met je agenda, Slack of je besturingssysteem, en statussen veranderen niet volgens een schema. Eigen statusberichten zijn er nog niet. Heb je aanwezigheid nodig over al je tools, dan is de status van je chatapp de plek; die van TinyFloor zegt wie er nu op de verdieping is."
+        "Aanwezigheid synchroniseert niet met Slack of je besturingssysteem, en statussen veranderen niet volgens een schema. Google Agenda is de enige uitzondering: koppel het, en terwijl je in een meeting zit zien collega's \"In een meeting tot 15:30\" op je naamlabel, tenzij je zelf een notitie hebt achtergelaten. Heb je aanwezigheid nodig over al je tools heen, dan is de status in je chatapp de plek; die van TinyFloor gaat over wie er nu op de verdieping is."
       ]
     }
   ],
@@ -3529,28 +3523,28 @@
         "head": [
           "",
           "Open ruimtelijk geluid",
-          "Nabijheid om te bellen (TinyFloor)"
+          "Erheen lopen en vragen (TinyFloor)"
         ],
         "rows": [
           [
             "Hoe een gesprek begint",
             "Loop naar iemand toe en jullie horen elkaar",
-            "Ga naast iemand staan en tik op Bellen"
+            "Loop naar iemand toe en druk op Praten"
           ],
           [
             "Microfoons",
             "Open zolang je bij iemand in de buurt bent",
-            "Uit tot een gesprek begint"
+            "Uit tot de ander ja zegt"
           ],
           [
             "Wie je hoort",
             "Iedereen die in de buurt komt",
-            "Alleen de persoon die je belt"
+            "Alleen degene met wie je praat"
           ],
           [
             "Achtergrondgeluid",
             "Gedeeld met wie er in de buurt is",
-            "Blijft bij jou tot je belt"
+            "Blijft bij jou tot jullie praten"
           ],
           [
             "Goed voor",
@@ -3562,56 +3556,72 @@
     },
     {
       "title": "Zo werkt het in TinyFloor",
+      "numbered": true,
       "items": [
         {
           "title": "Erheen lopen",
-          "detail": "1",
-          "body": "Zet je poppetje naast een collega. Er verschijnt een kleine kaart met een knop Bellen."
+          "body": "Loop met je personage naar een collega en blijf staan. Het naamlabel opent in Zwaaien, Porren, Bericht en Praten."
         },
         {
-          "title": "Bellen",
-          "detail": "2",
-          "body": "Die ziet \"Belt je\" en kan opnemen of weigeren. Is die [bezet](/team-presence) of neemt die niet op, dan hoor je dat, en verder gebeurt er niets."
+          "title": "Vragen",
+          "body": "Druk op Praten. De ander ziet je personage en dat je wilt praten, en kiest Praten of Nu niet. Is die [bezig](/team-presence) of antwoordt die niet binnen een halve minuut, dan hoor je dat, en verder gebeurt er niets."
         },
         {
           "title": "Praten",
-          "detail": "3",
-          "body": "Het gesprek begint met stem. Zet een camera aan of deel een scherm als dat helpt."
+          "body": "Het begint met spraak, meestal binnen een seconde. Zet een camera aan of deel je scherm als dat helpt."
         },
         {
           "title": "Rondlopen",
-          "detail": "4",
-          "body": "Eenmaal verbonden blijft het gesprek staan tot iemand ophangt, dus over de verdieping lopen verbreekt het niet."
+          "body": "Zodra jullie praten, blijft het gesprek bestaan tot een van jullie weggaat, dus rondlopen over de verdieping verbreekt het niet."
         },
         {
           "title": "Een derde erbij",
-          "detail": "5",
-          "body": "Een gesprek is twee mensen. Loop naar een derde en TinyFloor biedt aan er een [meeting](/virtual-meeting-room) voor jullie drieën van te maken."
+          "body": "Met z'n tweeën praat je, vanaf drie vergader je. Loop tijdens het gesprek naar een derde persoon en TinyFloor biedt aan er een [meeting](/virtual-meeting-room) van te maken."
         }
       ],
       "image": {
-        "src": "/screens/calls.webp",
-        "alt": "Een gesprek op de verdieping van TinyFloor: twee mensen samen tussen de bureaus, met de bediening van het gesprek onderaan"
+        "src": "/screens/talk.webp",
+        "alt": "Een vraag om te praten in TinyFloor: bovenaan de verdieping een kaart met Ryans personage, 'wil even praten' en de knoppen Nu niet en Praten"
       }
     },
     {
-      "title": "Waarom gesprekken in plaats van open geluid",
+      "title": "Iemand bereiken zonder te storen",
+      "body": [
+        "Niet alles vraagt om een gesprek. Naast Praten zijn er twee kleinere manieren om iemand te bereiken, en een vraag zonder antwoord gaat niet verloren."
+      ],
+      "items": [
+        {
+          "title": "Zwaaien zegt hallo",
+          "body": "Er gaat een hand omhoog boven je personage, zichtbaar voor iedereen in de buurt. Het vraagt niets terug."
+        },
+        {
+          "title": "Porren vraagt om even",
+          "body": "Hun personage schrikt op en ze krijgen een melding met Terugporren: een seintje om op te kijken zodra het uitkomt."
+        },
+        {
+          "title": "Een gemiste vraag blijft wachten",
+          "body": "Zat de ander niet aan het bureau, dan blijft de vraag in jullie [privéberichten](/team-chat) staan als 'wilde praten', met een knop Praten om het opnieuw te vragen zodra jullie er allebei zijn."
+        }
+      ]
+    },
+    {
+      "title": "Waarom eerst vragen in plaats van open audio",
       "items": [
         {
           "title": "Niemand luistert per ongeluk mee",
-          "body": "Je microfoon staat alleen aan in een gesprek of meeting. Langs een bureau lopen laat je nooit iemand horen."
+          "body": "Je microfoon staat alleen aan terwijl je praat of in een meeting zit. Langs een bureau lopen laat je nooit iemand horen."
         },
         {
           "title": "Concentratie blijft mogelijk",
-          "body": "Een verdieping vol open microfoons is een lawaaiige ruimte. Gesprekken houden de rest van de verdieping stil."
+          "body": "Een verdieping vol open microfoons is een lawaaiige ruimte. Eerst vragen houdt de rest van de verdieping stil, en Nu niet is altijd een antwoord."
         },
         {
           "title": "Het voelt toch spontaan",
-          "body": "Erheen lopen en op Bellen tikken kost een paar seconden, ongeveer zo lang als opzij leunen naar een collega."
+          "body": "Erheen lopen en op Praten drukken kost een paar seconden, ongeveer zo lang als je naar een collega overbuigen."
         },
         {
           "title": "Het werkt op elk netwerk",
-          "body": "Gesprekken lopen via het relaynetwerk van Cloudflare, dus ze komen tot stand achter bedrijfsfirewalls en op mobiele netwerken, zonder installatie."
+          "body": "Gesprekken lopen via de relays van Cloudflare, dus ze komen tot stand achter bedrijfsfirewalls en op mobiele netwerken, zonder iets te installeren."
         }
       ]
     },
@@ -3625,7 +3635,15 @@
         "rows": [
           [
             "Eén persoon een snelle vraag stellen",
-            "Erheen lopen en bellen"
+            "Erheen lopen en op Praten drukken"
+          ],
+          [
+            "Hallo zeggen zonder te storen",
+            "Zwaaien"
+          ],
+          [
+            "Iemands aandacht vragen voor later",
+            "Porren, of een bericht sturen"
           ],
           [
             "Een derde erbij halen",
@@ -3645,7 +3663,7 @@
     {
       "title": "Wat het niet doet",
       "body": [
-        "TinyFloor heeft geen open ruimtelijk geluid, dus een groep kan niet praten door gewoon bij elkaar te staan; vanaf drie mensen ga je naar een meeting. Het is niet gemaakt voor evenementen of games met honderden mensen, en er is geen telefonische inbelmogelijkheid. Wil je een levendige ruimte waar stemmen aanzwellen en wegvallen terwijl je rondloopt, dan past een product rond ruimtelijk geluid beter; wil je een rustig kantoor waar praten één tik weg is, dan is dit het."
+        "TinyFloor heeft geen open ruimtelijke audio, dus een groep kan niet praten door alleen bij elkaar te staan; vanaf drie mensen kom je samen in een meeting. Het is niet gemaakt voor evenementen of games met honderden mensen, en inbellen per telefoon kan niet. Wil je een levendige ruimte waar stemmen opkomen en wegebben terwijl je rondloopt, dan past een product rond ruimtelijke audio beter; wil je een rustig kantoor waar een gesprek een paar seconden weg is, dan is het dit."
       ]
     }
   ],

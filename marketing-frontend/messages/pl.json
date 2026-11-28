@@ -19,7 +19,7 @@
       },
       {
         "q": "Jak działa czat wideo zbliżeniowy?",
-        "a": "Podejdź do kogoś, a obok tej osoby pojawi się przycisk połączenia. Jedno kliknięcie rozpoczyna rozmowę, a w trakcie możesz włączyć kamerę lub udostępnić ekran. Rozmowy idą przez WebRTC w sieci Cloudflare, więc działają w każdej sieci biurowej i domowej i trwają, dopóki ktoś się nie rozłączy. W grupie dołącz do spotkania, a twoja postać pójdzie do sali spotkań."
+        "a": "Podejdź do kogoś z zespołu i się zatrzymaj: jego plakietka z imieniem rozwinie się w Pomachaj, Zaczep, Wiadomość i Rozmowa. Naciśnij Rozmowa, a ta osoba zobaczy, że chcesz porozmawiać; gdy się zgodzi, zaczyna się od głosu w niecałą sekundę i możesz włączyć kamerę lub udostępnić ekran. Rozmowy idą przez WebRTC w sieci Cloudflare, więc łączą się w każdej sieci biurowej i domowej i trwają, aż jedno z was wyjdzie. W grupie dołącz do spotkania, a twoja postać wejdzie do sali spotkań."
       },
       {
         "q": "Czy TinyFloor jest darmowy?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Podejdź, żeby porozmawiać",
-            "body": "Jak przy wejściu do kręgu w Wonder, rozmowę zaczynasz, stając obok kogoś. Przejście do innej grupy to po prostu spacer."
+            "body": "Jak wejście do kręgu w Wonder: rozmawiasz z kimś, podchodząc do niego. Przechodzenie między grupami to po prostu chodzenie."
           },
           {
             "title": "Wciąż w przeglądarce",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Czat zbliżeniowy",
         "meta": {
-          "title": "Czat wideo zbliżeniowy dla zespołów zdalnych",
-          "description": "Czat zbliżeniowy dla zespołów zdalnych: podejdź postacią do kogoś z zespołu, żeby zacząć rozmowę. Za darmo dla małych zespołów, w przeglądarce, bez pobierania."
+          "title": "Czat zbliżeniowy dla zespołów zdalnych",
+          "description": "Czat zbliżeniowy dla zespołów zdalnych: podejdź do kogoś z zespołu i naciśnij Rozmowa. Głos w niecałą sekundę, bez otwartych mikrofonów, w przeglądarce bez instalacji."
         },
         "title": "<em>Czat zbliżeniowy</em>, który zaczyna się, gdy podchodzisz.",
-        "subtitle": "W TinyFloor to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś, żeby zadzwonić, dołącz do spotkania, żeby porozmawiać w grupie, i idź dalej, gdy skończycie.",
+        "subtitle": "W TinyFloor to, gdzie stoisz, decyduje, z kim rozmawiasz. Podejdź do kogoś i poproś o rozmowę, spotkajcie się w grupie w sali spotkań i idź dalej, kiedy skończycie.",
         "faq": [
           {
             "q": "Czym jest czat zbliżeniowy?",
-            "a": "Czat zbliżeniowy łączy Cię z ludźmi w zależności od tego, gdzie stoi Twoja postać. Rozmawiasz z osobami w pobliżu, jak w prawdziwym pomieszczeniu."
+            "a": "Czat zbliżeniowy łączy cię z ludźmi na podstawie tego, gdzie stoi twoja postać. W TinyFloor podchodzisz do kogoś z zespołu i prosisz o rozmowę, tak jakbyś zajrzał(a) do jego biurka."
           },
           {
-            "q": "Czy rozmowa kończy się, gdy odejdę?",
-            "a": "Nie. Połączona rozmowa trwa, dopóki ktoś się nie rozłączy, więc chodzenie jej nie przerywa."
+            "q": "Czy rozmowa się skończy, gdy odejdę?",
+            "a": "Nie. Kiedy już rozmawiacie, rozmowa trwa, aż jedno z was wyjdzie, więc chodzenie po piętrze jej nie przerywa."
           },
           {
             "q": "Czy może rozmawiać więcej niż dwie osoby?",
-            "a": "Rozmowa to dwie osoby. Podejdź do trzeciej i zamień ją w spotkanie albo dołącz do spotkania biura, żeby porozmawiać w grupie."
+            "a": "We dwoje się rozmawia, od trzech osób robi się spotkanie. Podejdź do trzeciej osoby i zrób z tego spotkanie albo dołącz do głównego spotkania biura, żeby porozmawiać w grupie."
           },
           {
-            "q": "Czy to jest darmowe?",
-            "a": "Tak, dla biura do 3 osób, w przeglądarce na komputerze i telefonie."
+            "q": "A jeśli ktoś nie odpowie?",
+            "a": "Po pół minucie dowiesz się o tym, a prośba poczeka w waszych wiadomościach prywatnych jako „chciał(a) porozmawiać”, z przyciskiem Rozmowa, żeby zapytać ponownie."
+          },
+          {
+            "q": "Ile to kosztuje?",
+            "a": "Każde nowe biuro dostaje 14 dni Pro. Potem Pro to jedna cena za całe biuro, a biuro do 3 osób może zostać na Free."
           }
         ],
         "line": "Podejdź i rozmawiaj, bez linku"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Czy nadaje się do programowania w parach?",
-            "a": "Tak. Podejdź do współpracownika, zacznij rozmowę i udostępnij ekran. Dołącz trzecią osobę, a zrobi się spotkanie."
+            "a": "Tak. Podejdź do kogoś z zespołu, naciśnij Rozmowa i udostępnij ekran. Dodaj trzecią osobę, a zrobi się spotkanie."
           },
           {
             "q": "Jak duży może być zespół inżynierski?",

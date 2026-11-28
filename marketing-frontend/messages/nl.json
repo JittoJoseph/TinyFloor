@@ -19,7 +19,7 @@
       },
       {
         "q": "Hoe werkt proximity-videochat?",
-        "a": "Loop naar iemand toe en naast diegene verschijnt een belknop. Eén tik start het gesprek, en zodra jullie praten kun je je camera aanzetten of je scherm delen. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze werken op elk kantoor- of thuisnetwerk en blijven staan tot iemand ophangt. Voor een groep doe je mee aan een meeting en loopt je poppetje naar de vergaderruimte."
+        "a": "Loop naar een collega en blijf staan: het naamlabel opent in Zwaaien, Porren, Bericht en Praten. Druk op Praten en de ander ziet dat je wilt praten; zodra die ja zegt, begint het met spraak binnen een seconde, en kun je je camera aanzetten of je scherm delen. Gesprekken lopen via WebRTC over het netwerk van Cloudflare, dus ze komen tot stand op elk kantoor- of thuisnetwerk, en blijven bestaan tot een van jullie weggaat. Voor een groep ga je naar een meeting, en je personage loopt de vergaderruimte in."
       },
       {
         "q": "Is TinyFloor gratis?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Loop erheen om te praten",
-            "body": "Net als een cirkel binnenstappen op Wonder start je een gesprek door naast iemand te gaan staan. Van groep wisselen is gewoon lopen."
+            "body": "Zoals een kring binnenstappen in Wonder, praat je met iemand door naar die persoon toe te lopen. Van groep wisselen is gewoon lopen."
           },
           {
             "title": "Nog steeds in de browser",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Proximity chat",
         "meta": {
-          "title": "Videochat op nabijheid voor remote teams",
-          "description": "Nabijheidschat voor remote teams: loop met je personage naar een teamgenoot om een gesprek te starten. Gratis voor kleine teams, in de browser, zonder download."
+          "title": "Proximity chat voor remote teams",
+          "description": "Proximity chat voor remote teams: loop naar een collega en druk op Praten. Spraak binnen een seconde, geen open microfoons, in de browser zonder iets te installeren."
         },
         "title": "<em>Proximity chat</em> die begint als je erheen loopt.",
-        "subtitle": "In TinyFloor bepaalt waar je staat met wie je praat. Loop naar iemand toe om te bellen, doe mee aan een meeting om als groep te praten en loop verder als je klaar bent.",
+        "subtitle": "In TinyFloor bepaalt waar je staat met wie je praat. Loop naar iemand toe en vraag om te praten, kom als groep samen in een vergaderruimte, en loop verder als jullie klaar zijn.",
         "faq": [
           {
             "q": "Wat is proximity chat?",
-            "a": "Proximity chat verbindt je met mensen op basis van waar je personage staat. Je praat met de mensen bij je in de buurt, zoals in een echte ruimte."
+            "a": "Proximity chat verbindt je met mensen op basis van waar je personage staat. In TinyFloor loop je naar een collega en vraag je om te praten, zoals je even bij iemands bureau langsgaat."
           },
           {
-            "q": "Stopt het gesprek als ik wegloop?",
-            "a": "Nee. Een verbonden gesprek blijft verbonden tot iemand ophangt, dus rondlopen verbreekt het niet."
+            "q": "Stopt het als ik wegloop?",
+            "a": "Nee. Zodra jullie praten, blijft het gesprek bestaan tot een van jullie weggaat, dus rondlopen over de verdieping verbreekt het niet."
           },
           {
             "q": "Kunnen meer dan twee mensen praten?",
-            "a": "Een gesprek is met z’n tweeën. Loop naar een derde toe en maak er een meeting van, of doe mee aan de meeting van het kantoor om als groep te praten."
+            "a": "Met z'n tweeën praat je, vanaf drie vergader je. Loop naar een derde persoon en maak er een meeting van, of ga naar de hoofdmeeting van het kantoor om als groep te praten."
           },
           {
-            "q": "Is het gratis?",
-            "a": "Ja, voor een kantoor tot 3 mensen, in de browser op desktop en mobiel."
+            "q": "En als de ander niet antwoordt?",
+            "a": "Na een halve minuut hoor je dat, en de vraag wacht in jullie privéberichten als 'wilde praten', met een knop Praten om het opnieuw te vragen."
+          },
+          {
+            "q": "Wat kost het?",
+            "a": "Elk nieuw kantoor krijgt 14 dagen Pro. Daarna is Pro één prijs voor het hele kantoor, en een kantoor met maximaal 3 mensen kan op Free blijven."
           }
         ],
         "line": "Loop erheen om te praten, zonder link"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Is het geschikt voor pair programming?",
-            "a": "Ja. Loop naar een collega, start een gesprek en deel je scherm. Haal een derde erbij en het wordt een vergadering."
+            "a": "Ja. Loop naar een collega, druk op Praten en deel je scherm. Komt er een derde persoon bij, dan wordt het een meeting."
           },
           {
             "q": "Hoe groot mag een engineeringteam zijn?",

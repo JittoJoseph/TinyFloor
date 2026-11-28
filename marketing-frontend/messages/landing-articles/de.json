@@ -2215,28 +2215,25 @@
   "pairProgramming": [
     {
       "title": "So beginnt eine Pairing-Session",
+      "numbered": true,
       "body": [
         "Im Büro beginnt Pairing oft mit „Hast du kurz Zeit?“ am Schreibtisch. Remote braucht es meist eine Kalendereinladung, also passiert es seltener. In TinyFloor beginnt es so wie im Büro."
       ],
       "items": [
         {
           "title": "Sehen, wer frei ist",
-          "detail": "1",
           "body": "Schreibtische und [Status](/team-presence) zeigen, wer konzentriert arbeitet, wer weg ist und wer schon in einem Call ist. Beschäftigt heißt warten; verfügbar heißt hingehen."
         },
         {
           "title": "Hingehen und reden",
-          "detail": "2",
           "body": "Stell dich daneben und tippe, um anzurufen. Es beginnt mit Stimme; schalte eine Kamera ein, wenn du willst."
         },
         {
           "title": "Teilen und arbeiten",
-          "detail": "3",
           "body": "Teile ein Fenster, einen Tab oder den ganzen Bildschirm: den Editor, das Terminal, den roten Test."
         },
         {
           "title": "Zurückgehen",
-          "detail": "4",
           "body": "Leg auf, und du bist zurück bei deiner Arbeit. Der Call bleibt verbunden, während du dich bewegst, es bricht also nichts ab, wenn du herumläufst."
         }
       ]
@@ -2688,28 +2685,25 @@
   "meetingRoom": [
     {
       "title": "So funktioniert ein Meeting in TinyFloor",
+      "numbered": true,
       "body": [
         "Die meisten Videotools beginnen mit einem Link. TinyFloor beginnt mit einem Raum: Jedes Büro hat ein Hauptmeeting, das immer offen ist, und jede und jeder kann daneben ein weiteres starten."
       ],
       "items": [
         {
           "title": "Beitreten",
-          "detail": "1",
           "body": "Drück im Meeting des Büros auf Beitreten. Ein kurzer Check zeigt Kamera und Mikrofon, dann geht deine Figur in den Besprechungsraum."
         },
         {
           "title": "Reden",
-          "detail": "2",
           "body": "Zuerst Stimme; schalte die Kamera ein, wenn du willst. Wer spricht, bekommt die große Karte, mit drei weiteren daneben."
         },
         {
           "title": "Teilen",
-          "detail": "3",
           "body": "Teile ein Fenster, einen Tab oder deinen Bildschirm. Er erscheint auf der Bühne neben den Leuten."
         },
         {
           "title": "Rausgehen",
-          "detail": "4",
           "body": "Verlass das Meeting, und du bist zurück auf der Fläche. Aus Versehen rausgegangen? Wieder beitreten ist ein Klick."
         }
       ],
@@ -3029,7 +3023,7 @@
     {
       "title": "Was es nicht kann",
       "body": [
-        "Präsenz synchronisiert sich nicht mit deinem Kalender, mit Slack oder deinem Betriebssystem, und Status ändern sich nicht nach Zeitplan. Eigene Statustexte gibt es noch nicht. Wenn du Präsenz über alle Tools brauchst, ist der Status deiner Chat-App der richtige Ort; der von TinyFloor sagt, wer gerade auf der Fläche ist."
+        "Präsenz wird nicht mit Slack oder deinem Betriebssystem abgeglichen, und Status ändern sich nicht nach Zeitplan. Google Kalender ist die eine Ausnahme: Verbinde ihn, und während du in einem Meeting bist, sehen andere „In einem Meeting bis 15:30“ auf deinem Namensschild, sofern du keine eigene Notiz hinterlassen hast. Wenn du Präsenz über alle deine Tools brauchst, ist der Status deiner Chat-App der richtige Ort; der von TinyFloor zeigt, wer gerade auf der Etage ist."
       ]
     }
   ],
@@ -3529,28 +3523,28 @@
         "head": [
           "",
           "Offenes räumliches Audio",
-          "Nähe zum Anruf (TinyFloor)"
+          "Hingehen und fragen (TinyFloor)"
         ],
         "rows": [
           [
             "Wie ein Gespräch beginnt",
             "Geh in die Nähe von jemandem, und ihr hört euch",
-            "Stell dich neben jemanden und tippe auf Anrufen"
+            "Zu jemandem gehen und auf Sprechen drücken"
           ],
           [
             "Mikrofone",
             "Offen, solange du in jemandes Nähe bist",
-            "Aus, bis ein Anruf beginnt"
+            "Aus, bis die andere Person zusagt"
           ],
           [
             "Wer dich hört",
             "Jeder, der in die Nähe kommt",
-            "Nur die Person, die du angerufen hast"
+            "Nur die Person, mit der du sprichst"
           ],
           [
             "Hintergrundgeräusche",
             "Geteilt mit allen in der Nähe",
-            "Bleiben bei dir, bis du anrufst"
+            "Bleiben bei dir, bis ihr sprecht"
           ],
           [
             "Gut für",
@@ -3562,56 +3556,72 @@
     },
     {
       "title": "So funktioniert es in TinyFloor",
+      "numbered": true,
       "items": [
         {
           "title": "Hingehen",
-          "detail": "1",
-          "body": "Bewege deine Figur neben eine Kollegin. Eine kleine Karte mit einem Anrufen-Knopf erscheint."
+          "body": "Geh mit deiner Figur zu einer Kollegin und bleib stehen. Ihr Namensschild öffnet sich zu Winken, Anstupsen, Nachricht und Sprechen."
         },
         {
-          "title": "Anrufen",
-          "detail": "2",
-          "body": "Sie sieht „Ruft dich an“ und kann annehmen oder ablehnen. Ist sie [beschäftigt](/team-presence) oder geht nicht ran, erfährst du es, und sonst passiert nichts."
+          "title": "Fragen",
+          "body": "Drück auf Sprechen. Sie sieht deine Figur und dass du sprechen möchtest, und wählt Sprechen oder Nicht jetzt. Ist sie [beschäftigt](/team-presence) oder antwortet nicht innerhalb einer halben Minute, erfährst du es, und sonst passiert nichts."
         },
         {
           "title": "Reden",
-          "detail": "3",
-          "body": "Der Anruf beginnt mit Stimme. Schalte eine Kamera ein oder teile den Bildschirm, wenn es hilft."
+          "body": "Es beginnt mit Stimme, meist in unter einer Sekunde. Schalte eine Kamera ein oder teile den Bildschirm, wenn es hilft."
         },
         {
           "title": "Herumgehen",
-          "detail": "4",
-          "body": "Einmal verbunden, bleibt der Anruf bestehen, bis jemand auflegt, also bricht er nicht ab, wenn du über die Fläche gehst."
+          "body": "Sobald ihr sprecht, bleibt das Gespräch bestehen, bis jemand von euch geht, also reißt es nicht ab, wenn du über die Etage läufst."
         },
         {
           "title": "Eine dritte Person dazu",
-          "detail": "5",
-          "body": "Ein Anruf ist zwei Personen. Geh zu einer dritten, und TinyFloor bietet an, daraus ein [Meeting](/virtual-meeting-room) für euch drei zu machen."
+          "body": "Zwei Leute sprechen, ab drei trifft man sich. Geh während des Gesprächs zu einer dritten Person, und TinyFloor bietet an, daraus ein [Meeting](/virtual-meeting-room) zu machen."
         }
       ],
       "image": {
-        "src": "/screens/calls.webp",
-        "alt": "Ein Anruf auf der Etage von TinyFloor: zwei Leute stehen zusammen zwischen den Schreibtischen, unten die Steuerung des Anrufs"
+        "src": "/screens/talk.webp",
+        "alt": "Eine Gesprächsanfrage in TinyFloor: oben auf der Etage eine Karte mit Ryans Figur, „möchte sprechen“ und den Knöpfen Nicht jetzt und Sprechen"
       }
     },
     {
-      "title": "Warum Anrufe statt offenem Audio",
+      "title": "Fragen, ohne zu stören",
+      "body": [
+        "Nicht alles braucht ein Gespräch. Neben Sprechen gibt es zwei kleinere Wege, jemanden zu erreichen, und eine unbeantwortete Anfrage geht nicht verloren."
+      ],
+      "items": [
+        {
+          "title": "Winken sagt Hallo",
+          "body": "Über deiner Figur geht eine Hand hoch, für alle in der Nähe sichtbar. Es verlangt keine Antwort."
+        },
+        {
+          "title": "Anstupsen bittet um einen Moment",
+          "body": "Ihre Figur zuckt zusammen, und sie bekommt einen Hinweis mit Zurückstupsen: ein Anstoß, aufzuschauen, wenn es passt."
+        },
+        {
+          "title": "Eine verpasste Anfrage wartet",
+          "body": "War sie nicht am Platz, bleibt die Anfrage in euren [Direktnachrichten](/team-chat) als „wollte sprechen“, mit einem Sprechen-Knopf, um noch einmal zu fragen, sobald ihr beide da seid."
+        }
+      ]
+    },
+    {
+      "title": "Warum erst fragen statt offenem Audio",
       "items": [
         {
           "title": "Niemand hört zufällig mit",
-          "body": "Dein Mikrofon ist nur in einem Anruf oder Meeting an. Wer an einem Schreibtisch vorbeigeht, hört dort nie etwas."
+          "body": "Dein Mikrofon ist nur an, während du sprichst oder in einem Meeting bist. Wer an einem Schreibtisch vorbeigeht, hört dort nie etwas."
         },
         {
           "title": "Konzentration bleibt möglich",
-          "body": "Eine Fläche voller offener Mikrofone ist ein lauter Raum. Anrufe halten den Rest der Fläche ruhig."
+          "body": "Eine Etage voller offener Mikrofone ist ein lauter Raum. Erst zu fragen hält den Rest der Etage ruhig, und Nicht jetzt ist immer eine Antwort."
         },
         {
           "title": "Es fühlt sich trotzdem spontan an",
-          "body": "Hingehen und auf Anrufen tippen dauert ein paar Sekunden, etwa so lange wie sich zur Kollegin hinüberzulehnen."
+          "body": "Hingehen und auf Sprechen drücken dauert ein paar Sekunden, etwa so lange wie sich zur Kollegin hinüberzulehnen."
         },
         {
           "title": "Es funktioniert in jedem Netz",
-          "body": "Anrufe laufen über das Relay-Netz von Cloudflare, sie kommen also auch hinter Firmen-Firewalls und in Mobilnetzen zustande, ohne Installation."
+          "body": "Gespräche laufen über die Relays von Cloudflare, sie kommen also auch hinter Firmen-Firewalls und in Mobilnetzen zustande, ohne Installation."
         }
       ]
     },
@@ -3625,11 +3635,19 @@
         "rows": [
           [
             "Einer Person eine kurze Frage stellen",
-            "Hingehen und anrufen"
+            "Hingehen und auf Sprechen drücken"
+          ],
+          [
+            "Hallo sagen, ohne zu stören",
+            "Winken"
+          ],
+          [
+            "Jemanden auf später aufmerksam machen",
+            "Anstupsen oder eine Nachricht schreiben"
           ],
           [
             "Eine dritte Person dazuholen",
-            "Während des Anrufs zu ihr gehen; daraus wird ein Meeting"
+            "Während ihr sprecht zu ihr gehen; daraus wird ein Meeting"
           ],
           [
             "Mit dem ganzen Team reden",
@@ -3645,7 +3663,7 @@
     {
       "title": "Was es nicht kann",
       "body": [
-        "TinyFloor hat kein offenes räumliches Audio, eine Gruppe kann also nicht einfach durch Zusammenstehen reden; ab drei Leuten geht ihr in ein Meeting. Es ist nicht für Events oder Spiele mit Hunderten von Leuten gebaut, und es gibt keine Telefoneinwahl. Wenn du einen lebhaften Raum willst, in dem Stimmen beim Herumgehen auf- und abschwellen, passt ein Produkt mit räumlichem Audio besser; wenn du ein ruhiges Büro willst, in dem Reden einen Tipp entfernt ist, ist es das hier."
+        "TinyFloor hat kein offenes räumliches Audio, eine Gruppe kann also nicht einfach durch Zusammenstehen reden; ab drei Leuten trefft ihr euch in einem Meeting. Es ist nicht für Events oder Spiele mit Hunderten von Leuten gebaut, und es gibt keine Telefoneinwahl. Wenn du einen lebhaften Raum willst, in dem Stimmen beim Herumgehen ineinander übergehen, passt ein Produkt rund um räumliches Audio besser; wenn du ein ruhiges Büro willst, in dem ein Gespräch nur ein paar Sekunden entfernt ist, ist es dieses."
       ]
     }
   ],

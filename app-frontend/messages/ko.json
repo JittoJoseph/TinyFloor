@@ -270,8 +270,8 @@
     "voiceSendHint": "보내기",
     "voiceDeleteHint": "삭제",
     "meetingStartedAt": "{time} 시작됨",
-    "talkWants": "{name}님이 대화를 원해요",
-    "talkWanted": "{name}님이 대화를 원했어요",
+    "talkWants": "{name}님이 대화하고 싶어 해요",
+    "talkWanted": "{name}님이 대화하고 싶어 했어요",
     "talkAsked": "대화를 요청했어요",
     "talkTalking": "대화 중"
   },

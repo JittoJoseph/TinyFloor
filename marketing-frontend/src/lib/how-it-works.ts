@@ -9,7 +9,7 @@
 
 export const HOW_IT_WORKS_PATH = "/how-it-works";
 /** The day these words last changed (YYYY-MM-DD). */
-export const HOW_IT_WORKS_UPDATED = "2026-11-07";
+export const HOW_IT_WORKS_UPDATED = "2026-11-28";
 
 export const HOW_IT_WORKS_TITLE = "How TinyFloor works";
 export const HOW_IT_WORKS_DESCRIPTION =
@@ -31,7 +31,7 @@ export const HOW_IT_WORKS: HowItWorksSection[] = [
     id: "calls",
     title: "Calls",
     paragraphs: [
-      "Walk up to a teammate and start a call: it's one to one, and it starts with voice. The camera is a button, off again at your next call.",
+      "Walk up to a teammate and press Talk: they see that you want to talk, and once they say yes it's one to one and starts with voice, usually in under a second. The camera is a button, off again the next time you talk.",
     ],
     items: [
       "Every call goes through Cloudflare's relay (TURN), so it connects the same way behind an office firewall, a VPN or a phone network as at home. In testing, direct connections between browsers almost never worked on real networks, so we don't try them.",

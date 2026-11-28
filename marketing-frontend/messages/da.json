@@ -19,7 +19,7 @@
       },
       {
         "q": "Hvordan virker nærhedsbaseret videochat?",
-        "a": "Gå hen til nogen, og en opkaldsknap dukker op ved siden af dem. Et tryk starter opkaldet, og når I taler, kan du tænde dit kamera eller dele din skærm. Opkald kører over WebRTC gennem Cloudflares netværk, så de virker på ethvert kontor- eller hjemmenetværk og holder, indtil nogen lægger på. Til en gruppe deltager du i et møde, og din figur går ind i mødelokalet."
+        "a": "Gå hen til en kollega og stop: navneskiltet åbner sig til Vink, Prik, Besked og Snak. Tryk på Snak, så ser kollegaen, at du gerne vil snakke; når vedkommende siger ja, starter det med stemme på under et sekund, og du kan tænde kameraet eller dele skærmen. Samtaler kører over WebRTC i Cloudflares netværk, så de forbindes på ethvert kontor- eller hjemmenetværk og varer, indtil en af jer går. Til en gruppe deltager du i et møde, og din figur går ind i mødelokalet."
       },
       {
         "q": "Er TinyFloor gratis?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Gå hen for at snakke",
-            "body": "Ligesom at træde ind i en cirkel på Wonder starter du et opkald ved at stille dig ved siden af nogen. At skifte gruppe er bare at gå."
+            "body": "Ligesom at træde ind i en cirkel i Wonder snakker du med nogen ved at gå hen til dem. At skifte mellem grupper er bare at gå."
           },
           {
             "title": "Stadig i browseren",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Nærhedschat",
         "meta": {
-          "title": "Videochat på nært hold til remote teams",
-          "description": "Nærhedschat til remote teams: gå din figur hen til en kollega for at starte et opkald. Gratis for små teams, i browseren, uden download."
+          "title": "Nærhedschat til fjernteams",
+          "description": "Nærhedschat til fjernteams: gå hen til en kollega og tryk på Snak. Stemme på under et sekund, ingen åbne mikrofoner, i browseren uden installation."
         },
         "title": "<em>Nærhedschat</em>, der starter, når du går hen.",
-        "subtitle": "I TinyFloor afgør det, hvor du står, hvem du taler med. Gå hen til nogen for at ringe til dem, deltag i et møde for at tale som gruppe, og gå videre, når I er færdige.",
+        "subtitle": "I TinyFloor afgør, hvor du står, hvem du snakker med. Gå hen til nogen og spørg om en snak, mødes som gruppe i et mødelokale, og gå videre, når I er færdige.",
         "faq": [
           {
             "q": "Hvad er nærhedschat?",
-            "a": "Nærhedschat forbinder dig med folk ud fra, hvor din figur står. Du snakker med dem, der er tæt på dig, som i et rigtigt rum."
+            "a": "Nærhedschat forbinder dig med folk ud fra, hvor din figur står. I TinyFloor går du hen til en kollega og spørger om en snak, som når du kigger forbi nogens skrivebord."
           },
           {
-            "q": "Slutter opkaldet, hvis jeg går væk?",
-            "a": "Nej. Et forbundet opkald fortsætter, indtil nogen lægger på, så det afbrydes ikke, når du går rundt."
+            "q": "Slutter det, hvis jeg går væk?",
+            "a": "Nej. Når I først snakker, varer samtalen, indtil en af jer går, så det afbryder den ikke, at du bevæger dig rundt på etagen."
           },
           {
             "q": "Kan flere end to snakke?",
-            "a": "Et opkald er to personer. Gå hen til en tredje og gør det til et møde, eller deltag i kontorets møde for at tale som gruppe."
+            "a": "To snakker, tre eller flere holder møde. Gå hen til en tredje person og gør det til et møde, eller deltag i kontorets hovedmøde for at snakke som gruppe."
           },
           {
-            "q": "Er det gratis?",
-            "a": "Ja, for et kontor med op til 3 personer, i browseren på computer og mobil."
+            "q": "Hvad hvis ingen svarer?",
+            "a": "Efter et halvt minut får du besked, og anmodningen venter i jeres direkte beskeder som \"ville gerne snakke\", med en Snak-knap til at spørge igen."
+          },
+          {
+            "q": "Hvad koster det?",
+            "a": "Hvert nyt kontor får 14 dage med Pro. Derefter er Pro én pris for hele kontoret, og et kontor med op til 3 personer kan blive på Free."
           }
         ],
         "line": "Gå hen og snak, uden link"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Passer det til parprogrammering?",
-            "a": "Ja. Gå hen til en kollega, start et opkald, og del skærmen. Tag en tredje med, så bliver det et møde."
+            "a": "Ja. Gå hen til en kollega, tryk på Snak og del din skærm. Kommer en tredje person med, bliver det et møde."
           },
           {
             "q": "Hvor stort kan et udviklingsteam være?",

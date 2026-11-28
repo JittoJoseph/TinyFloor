@@ -2215,28 +2215,25 @@
   "pairProgramming": [
     {
       "title": "Come inizia una sessione di pair programming",
+      "numbered": true,
       "body": [
         "In ufficio, il pair programming spesso inizia con un \"hai un minuto?\" alla scrivania di qualcuno. Da remoto di solito serve un invito in calendario, quindi succede meno. Su TinyFloor inizia come in ufficio."
       ],
       "items": [
         {
           "title": "Vedere chi è libero",
-          "detail": "1",
           "body": "Scrivanie e [stati](/team-presence) mostrano chi è concentrato, chi è assente e chi è già in chiamata. Occupato vuol dire aspettare; disponibile vuol dire andare."
         },
         {
           "title": "Avvicinarsi e parlare",
-          "detail": "2",
           "body": "Mettiti accanto e tocca per chiamare. Si parte con la voce; accendi una videocamera se vuoi."
         },
         {
           "title": "Condividere e lavorare",
-          "detail": "3",
           "body": "Condividi una finestra, una scheda o l'intero schermo: l'editor, il terminale, il test che fallisce."
         },
         {
           "title": "Tornare",
-          "detail": "4",
           "body": "Riattacca e sei di nuovo al tuo lavoro. La chiamata resta connessa mentre ti muovi, quindi non cade niente se ti sposti."
         }
       ]
@@ -2688,28 +2685,25 @@
   "meetingRoom": [
     {
       "title": "Come funziona una riunione su TinyFloor",
+      "numbered": true,
       "body": [
         "La maggior parte degli strumenti video parte da un link. TinyFloor parte da una stanza: ogni ufficio ha una riunione principale sempre aperta, e chiunque può avviarne un'altra accanto."
       ],
       "items": [
         {
           "title": "Entrare",
-          "detail": "1",
           "body": "Premi Partecipa nella riunione dell'ufficio. Un controllo rapido mostra videocamera e microfono, poi il tuo personaggio entra nella sala riunioni."
         },
         {
           "title": "Parlare",
-          "detail": "2",
           "body": "Prima la voce; accendi la videocamera se vuoi. Chi parla prende la scheda grande, con altre tre accanto."
         },
         {
           "title": "Condividere",
-          "detail": "3",
           "body": "Condividi una finestra, una scheda o lo schermo. Compare sul palco accanto alle persone."
         },
         {
           "title": "Uscire",
-          "detail": "4",
           "body": "Esci e sei di nuovo sul piano. Uscito per sbaglio? Rientrare è un clic."
         }
       ],
@@ -3029,7 +3023,7 @@
     {
       "title": "Cosa non fa",
       "body": [
-        "La presenza non si sincronizza con il calendario, con Slack o con il sistema operativo, e gli stati non cambiano in base a un orario. Non ci sono ancora messaggi di stato personalizzati. Se ti serve una presenza comune a tutti i tuoi strumenti, lo stato della tua app di chat è il posto giusto; quello di TinyFloor dice chi è sul piano in questo momento."
+        "La presenza non si sincronizza con Slack o con il sistema operativo, e gli stati non cambiano a orario. Google Calendar è l'unica eccezione: collegalo e, mentre sei in riunione, i colleghi vedono \"In riunione fino alle 15:30\" sulla tua targhetta col nome, a meno che tu non abbia lasciato una nota tua. Se ti serve una presenza su tutti i tuoi strumenti, lo stato della tua app di chat è il posto giusto; quello di TinyFloor riguarda chi è sul piano adesso."
       ]
     }
   ],
@@ -3529,28 +3523,28 @@
         "head": [
           "",
           "Audio spaziale aperto",
-          "Prossimità per chiamare (TinyFloor)"
+          "Avvicinarsi e chiedere (TinyFloor)"
         ],
         "rows": [
           [
             "Come inizia la conversazione",
             "Ti avvicini a qualcuno e vi sentite",
-            "Ti metti accanto a qualcuno e tocchi Chiama"
+            "Avvicinati a qualcuno e premi Parla"
           ],
           [
             "Microfoni",
             "Aperti finché sei vicino a qualcuno",
-            "Spenti finché non inizia una chiamata"
+            "Spenti finché l'altro non dice sì"
           ],
           [
             "Chi ti sente",
             "Chiunque si avvicini",
-            "Solo la persona che hai chiamato"
+            "Solo la persona con cui stai parlando"
           ],
           [
             "Rumore di fondo",
             "Condiviso con chi è vicino",
-            "Resta con te finché non chiami"
+            "Resta con te finché non parlate"
           ],
           [
             "Adatto a",
@@ -3562,56 +3556,72 @@
     },
     {
       "title": "Come funziona su TinyFloor",
+      "numbered": true,
       "items": [
         {
           "title": "Avvicinarsi",
-          "detail": "1",
-          "body": "Porta il tuo personaggio accanto a un collega. Compare una piccola scheda con il pulsante Chiama."
+          "body": "Porta il tuo personaggio vicino a un collega e fermati. La sua targhetta col nome si apre in Saluta, Colpetto, Messaggio e Parla."
         },
         {
-          "title": "Chiamare",
-          "detail": "2",
-          "body": "Vede \"Ti sta chiamando\" e può rispondere o rifiutare. Se è [occupato](/team-presence) o non risponde, te lo dice e non succede altro."
+          "title": "Chiedi",
+          "body": "Premi Parla. Vede il tuo personaggio e che vuoi parlare, e sceglie Parla o Non ora. Se è [occupato](/team-presence) o non risponde entro mezzo minuto, lo sai, e non succede altro."
         },
         {
           "title": "Parlare",
-          "detail": "3",
-          "body": "La chiamata parte con la voce. Accendi una videocamera o condividi lo schermo se serve."
+          "body": "Si comincia con la voce, di solito in meno di un secondo. Accendi una videocamera o condividi lo schermo se aiuta."
         },
         {
           "title": "Muoversi",
-          "detail": "4",
-          "body": "Una volta connessa, la chiamata resta attiva finché qualcuno non riattacca, quindi attraversare il piano non la fa cadere."
+          "body": "Una volta che parlate, la conversazione dura finché uno dei due non se ne va, quindi muoverti per il piano non la interrompe."
         },
         {
           "title": "Aggiungere una terza persona",
-          "detail": "5",
-          "body": "Una chiamata è tra due persone. Avvicinati a una terza e TinyFloor propone di trasformarla in una [riunione](/virtual-meeting-room) per voi tre."
+          "body": "In due si parla, da tre in su ci si riunisce. Avvicinati a una terza persona mentre parlate e TinyFloor propone di farne una [riunione](/virtual-meeting-room)."
         }
       ],
       "image": {
-        "src": "/screens/calls.webp",
-        "alt": "Una chiamata sul piano di TinyFloor: due persone in piedi tra le scrivanie, con i comandi della chiamata in basso"
+        "src": "/screens/talk.webp",
+        "alt": "Una richiesta di parlare su TinyFloor: in cima al piano, una scheda con il personaggio di Ryan, \"vuole parlare\" e i pulsanti Non ora e Parla"
       }
     },
     {
-      "title": "Perché chiamate e non audio aperto",
+      "title": "Chiedere senza interrompere",
+      "body": [
+        "Non tutto ha bisogno di una conversazione. Accanto a Parla ci sono due modi più leggeri per raggiungere qualcuno, e una richiesta senza risposta non va persa."
+      ],
+      "items": [
+        {
+          "title": "Un saluto dice ciao",
+          "body": "Una mano si alza sopra il tuo personaggio, visibile a tutti quelli vicini. Non chiede niente in cambio."
+        },
+        {
+          "title": "Un colpetto chiede un momento",
+          "body": "Il suo personaggio sobbalza e riceve un avviso con Ricambia: una spinta ad alzare lo sguardo appena può."
+        },
+        {
+          "title": "Una richiesta persa resta lì",
+          "body": "Se non era alla scrivania, resta nei vostri [messaggi diretti](/team-chat) come \"voleva parlare\", con un pulsante Parla per chiedere di nuovo quando ci siete tutti e due."
+        }
+      ]
+    },
+    {
+      "title": "Perché chiedere prima invece dell'audio aperto",
       "items": [
         {
           "title": "Nessuno sente per caso",
-          "body": "Il tuo microfono è attivo solo in una chiamata o in una riunione. Passare accanto a una scrivania non ti fa mai sentire nessuno."
+          "body": "Il tuo microfono è attivo solo mentre parli o sei in una riunione. Passare accanto a una scrivania non ti fa mai sentire nessuno."
         },
         {
           "title": "Ci si può concentrare",
-          "body": "Un piano pieno di microfoni aperti è una stanza rumorosa. Le chiamate lasciano tranquillo il resto del piano."
+          "body": "Un piano pieno di microfoni aperti è una stanza rumorosa. Chiedere prima tiene tranquillo il resto del piano, e Non ora è sempre una risposta."
         },
         {
           "title": "Resta spontaneo",
-          "body": "Avvicinarsi e toccare Chiama richiede un paio di secondi, più o meno il tempo di sporgersi verso il collega accanto."
+          "body": "Avvicinarsi e premere Parla richiede un paio di secondi, più o meno come sporgersi verso un collega."
         },
         {
           "title": "Funziona su qualsiasi rete",
-          "body": "Le chiamate passano per la rete di relay di Cloudflare, quindi si connettono dietro i firewall aziendali e sulle reti mobili, senza installare niente."
+          "body": "Le conversazioni passano dai relay di Cloudflare, quindi si collegano dietro i firewall aziendali e sulle reti mobili, senza installare nulla."
         }
       ]
     },
@@ -3625,11 +3635,19 @@
         "rows": [
           [
             "Fare una domanda veloce a una persona",
-            "Avvicinati e chiama"
+            "Avvicinati e premi Parla"
+          ],
+          [
+            "Salutare senza interrompere",
+            "Saluta"
+          ],
+          [
+            "Attirare l'attenzione di qualcuno per dopo",
+            "Colpetto, o manda un messaggio"
           ],
           [
             "Coinvolgere una terza persona",
-            "Avvicinati a lei durante la chiamata; diventa una riunione"
+            "Avvicinati a lei mentre parlate; diventa una riunione"
           ],
           [
             "Parlare con tutto il team",
@@ -3645,7 +3663,7 @@
     {
       "title": "Cosa non fa",
       "body": [
-        "TinyFloor non ha audio spaziale aperto, quindi un gruppo non può chiacchierare solo stando vicino; da tre persone in su si va in riunione. Non è pensato per eventi o giochi con centinaia di persone, e non c'è accesso telefonico. Se vuoi uno spazio vivace dove le voci vanno e vengono mentre ti muovi, un prodotto basato sull'audio spaziale fa più al caso tuo; se vuoi un ufficio tranquillo dove parlare è a un tocco, è questo."
+        "TinyFloor non ha audio spaziale aperto, quindi un gruppo non può parlare solo stando vicino; da tre persone in su vi ritrovate in una riunione. Non è pensato per eventi o giochi con centinaia di persone, e non c'è l'accesso telefonico. Se vuoi uno spazio vivace dove le voci vanno e vengono mentre ti muovi, ti troverai meglio con un prodotto costruito sull'audio spaziale; se vuoi un ufficio tranquillo dove parlare è a pochi secondi, è questo."
       ]
     }
   ],

@@ -732,7 +732,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor uses the walk-up style: walk your character up to a teammate and a call button appears beside them, so nobody is heard by accident. Groups meet in the meeting room. It runs in the browser, and every new office starts with 14 days of Pro, no card needed."
+      "body": "TinyFloor uses the walk-up style: walk your character up to a teammate and press Talk, and nothing is heard until they say yes. Groups meet in the meeting room. It runs in the browser, and every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {

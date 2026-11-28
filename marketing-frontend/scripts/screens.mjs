@@ -10,11 +10,13 @@
 //     SESSION=... CHROME="C:/Program Files/Google/Chrome/Application/chrome.exe" node scripts/screens.mjs [name ...]
 //
 // The call takes two people: a second test account of the same office, signed in as
-// OTHER_SESSION, waits on the floor under the name OTHER_NAME (Ryan) and answers.
+// OTHER_SESSION, waits on the floor under the name OTHER_NAME (Ryan) and answers. So does an
+// ask to talk, the other way round: the second account walks up and asks, and the shot is
+// the one asked.
 //
 // Each shot is the app as people see it: light theme (or dark where the shot is about the
-// theme), no snow, no development badge, no trial banner, and nothing that isn't live (the
-// Calendar item stays out until it is). Floor shots depend on where your character starts,
+// theme), no snow, no development badge, no trial banner, and nothing that isn't live. Floor
+// shots depend on where your character starts,
 // so look at each one before keeping it. A shot without `steps` is composed from a file
 // that's already in public/ (the home page's floor pictures).
 import { mkdir, stat } from "node:fs/promises";
@@ -74,9 +76,54 @@ const SHOTS = {
     tone: "mint",
     radius: 40,
   },
+  // Someone asking you to talk: the second account walks up to you and presses Talk; the card is at the top of your floor.
+  talk: {
+    url: `/office/${OFFICE}`,
+    other: true,
+    steps: [["key", "Escape"], ["otherEval", nearest()], ["wait", 10000], ["otherButton", "Talk"], ["wait", 2500], ["move", 5, 5]],
+    crop: [700, 0, 1480, 900],
+    tone: "mint",
+    radius: 0,
+  },
+  // An ask that went unanswered, in your direct messages with them: "wanted to talk", with Talk to ask back.
+  "talk-card": {
+    url: `/office/${OFFICE}/chat`,
+    other: true,
+    steps: [["key", "Escape"], ["dm"], ["wait", 2500], ["move", 5, 5]],
+    crop: [760, 1140, 1040, 650],
+    tone: "blurple",
+    radius: 0,
+  },
+  // Stopped beside someone: their name tag opens into Wave, Poke, Message and Talk.
+  "proximity-card": {
+    url: `/office/${OFFICE}`,
+    other: true,
+    steps: [["key", "Escape"], ["eval", nearest()], ["wait", 10000], ["move", 5, 5]],
+    crop: [1383, 650, 1120, 700],
+    tone: "sun",
+    radius: 0,
+  },
+  // Decorating your desk, from the dock: the desk in focus and the panel beside it.
+  desk: {
+    url: `/office/${OFFICE}`,
+    steps: [["key", "Escape"], ["css", "[data-settle=you]"], ["css", "[data-settle=decorate]"], ["wait", 6000], ["move", 5, 5]],
+    crop: [300, 100, 2580, 1640],
+    tone: "coral",
+    radius: 0,
+  },
   meetings: { file: "home/meeting-room.webp", tone: "blurple", radius: 0 },
   campus: { file: "home/floor-still.webp", tone: "mint", radius: 0 },
 };
+
+/** The floor's script for walking up beside whoever else is on the floor, nearest first. */
+function nearest() {
+  return `(() => {
+    const s = __game.scene.scenes.find((x) => x.playerManager);
+    const others = s.playerManager.getPlayerList().filter((p) => p.id !== s.playerId);
+    const them = others.map((one) => s.playerManager.getPlayers().get(one.id)).filter(Boolean)[0];
+    if (them) s.movementManager.goTo(them.x - 56, them.y + 8, () => {});
+  })()`;
+}
 
 /** The floor's script for walking up beside someone, found by name (development builds keep the game on window.__game). */
 function near(name) {
@@ -118,6 +165,11 @@ async function photograph(shot) {
     if (kind === "wait") await page.waitForTimeout(a);
     if (kind === "eval") await page.evaluate(a);
     if (kind === "answer") await other.page.getByRole("button", { name: /answer/i }).first().click();
+    if (kind === "css") await page.locator(a).first().click();
+    // The first direct message in the sidebar.
+    if (kind === "dm") await page.locator("a[href*='/chat/dm']").first().click();
+    if (kind === "otherEval") await other.page.evaluate(a);
+    if (kind === "otherButton") await other.page.getByRole("button", { name: a, exact: true }).first().click();
     await page.waitForTimeout(1200);
   }
   await page.waitForTimeout(1500);
@@ -140,7 +192,7 @@ async function signIn(session, shot) {
   const page = await context.newPage();
   await page.goto(`${APP}${shot.url}`, { waitUntil: "load" });
   await page.waitForTimeout(8000);
-  await page.addStyleTag({ content: "nextjs-portal{display:none!important} a[href$='/calendar']{display:none!important}" });
+  await page.addStyleTag({ content: "nextjs-portal{display:none!important}" });
   if (await page.getByText(/trial has ended/i).count()) await page.getByRole("button", { name: /hide for today/i }).first().click().catch(() => {});
   return { context, page };
 }

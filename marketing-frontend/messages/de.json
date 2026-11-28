@@ -19,7 +19,7 @@
       },
       {
         "q": "Wie funktioniert Proximity-Videochat?",
-        "a": "Geh auf jemanden zu, und neben der Person erscheint ein Anruf-Button. Ein Tipp startet den Anruf, und sobald ihr sprecht, kannst du deine Kamera einschalten oder deinen Bildschirm teilen. Anrufe laufen über WebRTC durch das Netzwerk von Cloudflare, funktionieren also in jedem Büro- oder Heimnetz und bleiben bestehen, bis jemand auflegt. Für eine Gruppe tritt einem Meeting bei, und deine Figur geht in den Meetingraum."
+        "a": "Geh zu einer Kollegin und bleib stehen: Ihr Namensschild öffnet sich zu Winken, Anstupsen, Nachricht und Sprechen. Drück auf Sprechen, und sie sieht, dass du sprechen möchtest; sagt sie zu, beginnt es mit Stimme in unter einer Sekunde, und du kannst deine Kamera einschalten oder deinen Bildschirm teilen. Gespräche laufen über WebRTC im Netz von Cloudflare, sie kommen also in jedem Büro- oder Heimnetz zustande und bleiben bestehen, bis jemand von euch geht. Für eine Gruppe tritt einem Meeting bei, und deine Figur geht in den Meetingraum."
       },
       {
         "q": "Ist TinyFloor kostenlos?",
@@ -232,7 +232,7 @@
         "points": [
           {
             "title": "Hingehen und reden",
-            "body": "Wie beim Betreten eines Kreises auf Wonder startest du einen Anruf, indem du dich neben jemanden stellst. Zwischen Gruppen wechselst du einfach durch Laufen."
+            "body": "Wie beim Betreten eines Kreises in Wonder sprichst du mit jemandem, indem du zu ihm gehst. Zwischen Gruppen wechselst du einfach durch Gehen."
           },
           {
             "title": "Weiter im Browser",
@@ -319,27 +319,31 @@
       "proximityChat": {
         "label": "Proximity-Chat",
         "meta": {
-          "title": "Proximity-Videochat für Remote-Teams",
-          "description": "Proximity-Chat für Remote-Teams: Geh mit deiner Figur zu einer Kollegin oder einem Kollegen, um einen Anruf zu starten. Kostenlos für kleine Teams, im Browser, ohne Download."
+          "title": "Proximity-Chat für Remote-Teams",
+          "description": "Proximity-Chat für Remote-Teams: Geh zu einer Kollegin und drück auf Sprechen. Stimme in unter einer Sekunde, keine offenen Mikrofone, im Browser ohne Installation."
         },
         "title": "<em>Proximity-Chat</em>, der beginnt, wenn du hingehst.",
-        "subtitle": "In TinyFloor entscheidet dein Standort, mit wem du redest. Geh auf jemanden zu, um anzurufen, tritt einem Meeting bei, um als Gruppe zu reden, und geh weiter, wenn ihr fertig seid.",
+        "subtitle": "In TinyFloor entscheidet dein Standort, mit wem du redest. Geh zu jemandem und frag, ob ihr sprecht, trefft euch als Gruppe im Meetingraum, und geh weiter, wenn ihr fertig seid.",
         "faq": [
           {
             "q": "Was ist Proximity-Chat?",
-            "a": "Proximity-Chat verbindet dich mit Menschen danach, wo deine Figur steht. Du redest mit denen in deiner Nähe, so wie in einem echten Raum."
+            "a": "Proximity-Chat verbindet dich mit Menschen danach, wo deine Figur steht. In TinyFloor gehst du zu einer Kollegin und fragst, ob ihr sprecht, so wie du an ihrem Schreibtisch vorbeischauen würdest."
           },
           {
-            "q": "Endet der Anruf, wenn ich weggehe?",
-            "a": "Nein. Ein verbundener Anruf bleibt bestehen, bis jemand auflegt, Herumlaufen beendet ihn also nicht."
+            "q": "Endet das Gespräch, wenn ich weggehe?",
+            "a": "Nein. Sobald ihr sprecht, bleibt das Gespräch bestehen, bis jemand von euch geht, Herumlaufen beendet es also nicht."
           },
           {
             "q": "Können mehr als zwei Personen reden?",
-            "a": "Ein Anruf ist zu zweit. Geh auf eine dritte Person zu und mach ein Meeting daraus, oder tritt dem Meeting des Büros bei, um als Gruppe zu reden."
+            "a": "Zwei Leute sprechen, ab drei trifft man sich. Geh zu einer dritten Person und mach ein Meeting daraus, oder tritt dem Hauptmeeting des Büros bei, um als Gruppe zu reden."
           },
           {
-            "q": "Ist es kostenlos?",
-            "a": "Ja, für ein Büro mit bis zu 3 Personen, im Browser auf Desktop und Handy."
+            "q": "Was, wenn niemand antwortet?",
+            "a": "Nach einer halben Minute erfährst du es, und die Anfrage wartet in euren Direktnachrichten als „wollte sprechen“, mit einem Sprechen-Knopf, um noch einmal zu fragen."
+          },
+          {
+            "q": "Was kostet es?",
+            "a": "Jedes neue Büro bekommt 14 Tage Pro. Danach kostet Pro einen Preis für das ganze Büro, und ein Büro mit bis zu 3 Personen kann bei Free bleiben."
           }
         ],
         "line": "Hingehen und reden, ohne Link"
@@ -703,7 +707,7 @@
           },
           {
             "q": "Eignet es sich für Pair Programming?",
-            "a": "Ja. Geh zu jemandem aus dem Team, starte einen Anruf und teile deinen Bildschirm. Kommt eine dritte Person dazu, wird es ein Meeting."
+            "a": "Ja. Geh zu einer Kollegin, drück auf Sprechen und teile deinen Bildschirm. Kommt eine dritte Person dazu, wird daraus ein Meeting."
           },
           {
             "q": "Wie groß kann ein Engineering-Team sein?",

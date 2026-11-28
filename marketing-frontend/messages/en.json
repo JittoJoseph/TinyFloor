@@ -19,7 +19,7 @@
       },
       {
         "q": "How does proximity video chat work?",
-        "a": "Walk up to someone and a call button appears next to them. A tap starts a call, and once you're talking you can turn on your camera or share your screen. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they stay up until someone hangs up. For a group, join a meeting and your character walks into the meeting room."
+        "a": "Walk up to a teammate and stop: their name tag opens into Wave, Poke, Message and Talk. Press Talk and they see that you want to talk; once they say yes, it starts with voice in under a second, and you can turn on your camera or share your screen. Talks run over WebRTC through Cloudflare's network, so they connect on any office or home network, and they last until one of you leaves. For a group, join a meeting and your character walks into the meeting room."
       },
       {
         "q": "Is TinyFloor free?",
@@ -233,7 +233,7 @@
         "points": [
           {
             "title": "Walk up to talk",
-            "body": "Like stepping into a circle on Wonder, you start a call by standing next to someone. Moving between groups is just walking."
+            "body": "Like stepping into a circle on Wonder, you talk to someone by walking up to them. Moving between groups is just walking."
           },
           {
             "title": "Still in the browser",
@@ -320,27 +320,31 @@
       "proximityChat": {
         "label": "Proximity chat",
         "meta": {
-          "title": "Proximity Video Chat for Remote Teams",
-          "description": "Proximity chat for remote teams: walk your character up to a teammate to start a call. Free for small teams, in the browser, no download."
+          "title": "Proximity Chat for Remote Teams",
+          "description": "Proximity chat for remote teams: walk up to a teammate and press Talk. Voice in under a second, no open microphones, in the browser with nothing to install."
         },
         "title": "<em>Proximity chat</em> that starts when you walk over.",
-        "subtitle": "In TinyFloor, where you stand decides who you talk to. Walk up to someone to call them, join a meeting to talk as a group, and walk on when you are done.",
+        "subtitle": "In TinyFloor, where you stand decides who you talk to. Walk up to someone and ask to talk, meet as a group in a meeting room, and walk on when you're done.",
         "faq": [
           {
             "q": "What is proximity chat?",
-            "a": "Proximity chat connects you with people based on where your character is. You talk to the people near you, the way you would in a real room."
+            "a": "Proximity chat connects you with people based on where your character is. On TinyFloor you walk up to a teammate and ask to talk, the way you'd stop by someone's desk."
           },
           {
-            "q": "Does the call end when I walk away?",
-            "a": "No. Once a call is connected it stays connected until someone hangs up, so walking around does not drop it."
+            "q": "Does it end when I walk away?",
+            "a": "No. Once you're talking it lasts until one of you leaves, so walking around the floor doesn't cut it off."
           },
           {
             "q": "Can more than two people talk?",
-            "a": "A call is two people. Walk up to a third and make it a meeting, or join the office's meeting to talk as a group."
+            "a": "Two people talk; three or more meet. Walk up to a third person and make it a meeting, or join the office's main meeting to talk as a group."
           },
           {
-            "q": "Is it free?",
-            "a": "Yes, for an office of up to 3 people, in the browser on desktop and mobile."
+            "q": "What if they don't answer?",
+            "a": "You're told after half a minute, and the ask waits in your direct messages with them as \"wanted to talk\", with a Talk button to ask again."
+          },
+          {
+            "q": "How much does it cost?",
+            "a": "Every new office gets 14 days of Pro. After that, Pro is one price for the whole office, and an office of up to 3 people can stay on Free."
           }
         ],
         "line": "Walk up to talk, no link"
@@ -704,7 +708,7 @@
           },
           {
             "q": "Is it good for pair programming?",
-            "a": "Yes. Walk up to a teammate, start a call and share your screen. Add a third person and it becomes a meeting."
+            "a": "Yes. Walk up to a teammate, press Talk and share your screen. Add a third person and it becomes a meeting."
           },
           {
             "q": "How big can an engineering team be?",

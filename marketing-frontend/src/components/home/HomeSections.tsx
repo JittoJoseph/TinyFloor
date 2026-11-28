@@ -239,7 +239,7 @@ export function Countries() {
 /**
  * One sentence, large, and under it the floor's three moments in a row, each
  * with the small piece of the app that is that moment: the faces of who's in,
- * the card with the call button, the meeting room in progress.
+ * the card beside someone with Talk on it, the meeting room in progress.
  */
 export function Statement() {
   const t = useTranslations("homepage.statement");
@@ -259,7 +259,7 @@ export function Statement() {
     {
       key: "talk",
       href: "/proximity-chat",
-      visual: <NearbyBar name={olivia.name} seed={olivia.id} labels={{ call: p("call"), message: p("message") }} />,
+      visual: <NearbyBar name={olivia.name} labels={{ talk: p("talk"), message: p("message") }} />,
     },
     {
       key: "meet",
